@@ -34,3 +34,13 @@ sudo snap install intellij-idea-ultimate --classic --edge
 # setup projects directory
 mkdir ~/projects && cd ~/projects
 mkdir gitlab && mkdir github
+
+# install nvm
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
+# install sdkman
+curl -s "https://get.sdkman.io" | bash
+source "/home/jannis/.sdkman/bin/sdkman-init.sh"
