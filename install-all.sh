@@ -34,6 +34,7 @@ sudo snap install intellij-idea-ultimate --classic --edge
 # setup projects directory
 mkdir ~/projects && cd ~/projects
 mkdir gitlab && mkdir github
+cd ~
 
 # install nvm
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
@@ -44,3 +45,12 @@ export NVM_DIR="$HOME/.nvm"
 # install sdkman
 curl -s "https://get.sdkman.io" | bash
 source "/home/jannis/.sdkman/bin/sdkman-init.sh"
+
+# clone the dot-files repository
+cd ~/projects/github/
+git clone https://github.com/jeyj0/dot-files.git
+
+# use dot-files' .zshrc instead of home-directory .zshrc
+cp ~/.zshrc ~/.zshrc_old
+echo "source ~/projects/github/dot-files/.zshrc" >> ~/.zshrc
+cd ~
