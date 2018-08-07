@@ -48,3 +48,8 @@
 	1. MANUALLY download maven
 	2. extract .zip/.tar.gz to ~/maven/VE.RS.ION
 	3. `export PATH=$PATH:~/maven/VE.RS.ION/bin` // add maven to path to be executable
+13. Install gcc
+	1. `$ sudo apt-get install gcc`
+14. Install pyenv (python version manager) (using pyenv-installer)
+	1. `$ curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash`
+	2. install python 2.7: `$ pyenv install 2.7`

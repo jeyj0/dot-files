@@ -94,14 +94,8 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
+source ~/projects/privat/github/dot-files/paths.sh
 source ~/projects/privat/github/dot-files/aliases.sh
-
-export JAVA_HOME="~/.sdkman/candidates/java/current"
-export PATH=$PATH:~/maven/3.5.4/bin
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/jannis/.sdkman"
