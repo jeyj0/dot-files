@@ -25,3 +25,26 @@
 8. ```$ mkdir ~/projects && cd ~/projects```
 9. ```$ mkdir gitlab && mkdir github```
 10. ```$ git clone https://github.com/jeyj0/dot-files.git```
+11. Install docker
+	1. ```$ sudo apt-get update```
+	2. ```$ sudo apt-get install \
+    		apt-transport-https \
+    		ca-certificates \
+    		curl \
+    		software-properties-common```
+	3. ```$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -```
+	4. ```$ sudo add-apt-repository \
+   			"deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   			$(lsb_release -cs) \
+   			stable"```
+	5. ```$ sudo apt-get update```
+	6. ```$ sudo apt-get install docker-ce```
+	7. ```$ sudo groupadd docker```
+	8. ```$ sudo usermod -aG docker $USER```
+12. install sdkman
+	1. installation
+	2. add JAVA_HOME to exports: `export JAVA_HOME="~/.sdkman/candidates/java/current"`
+12. Install maven
+	1. MANUALLY download maven
+	2. extract .zip/.tar.gz to ~/maven/VE.RS.ION
+	3. `export PATH=$PATH:~/maven/VE.RS.ION/bin` // add maven to path to be executable
