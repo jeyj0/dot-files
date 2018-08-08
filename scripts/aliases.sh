@@ -10,6 +10,7 @@ alias gcm='git commit -m'
 alias gc='git checkout'
 alias gc-b='git checkout -b'
 alias glog='git log'
+alias ga='git add'
 
 # apt
 alias update-and-upgrade='sudo apt-get update && sudo apt-get upgrade'
