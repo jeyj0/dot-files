@@ -94,8 +94,8 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-source ~/projects/privat/github/dot-files/paths.sh
-source ~/projects/privat/github/dot-files/aliases.sh
+source ~/projects/privat/github/dot-files/scripts/paths.sh
+source ~/projects/privat/github/dot-files/scripts/aliases.sh
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/jannis/.sdkman"
