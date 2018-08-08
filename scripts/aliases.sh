@@ -15,3 +15,6 @@ alias ga='git add'
 # apt
 alias update-and-upgrade='sudo apt-get update && sudo apt-get upgrade'
 alias upgrade-kept-back='sudo apt-get --with-new-pkgs upgrade'
+
+# docker
+alias docker-mongo='docker run -d -p 27017:27017 -v ~/data:/data/db --name mongo mongo'
