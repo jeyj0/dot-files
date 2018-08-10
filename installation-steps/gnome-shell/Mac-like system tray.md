@@ -1,7 +1,5 @@
 # How to get a Mac-style system-tray on ubuntu
 
-1. Install Chrome
-2. ```$ sudo apt-get install chrome-gnome-shell```
 3. Go to https://extensions.gnome.org/extension/1160/dash-to-panel/ 
 4. install dash-to-panel
 5. turn the extension on
