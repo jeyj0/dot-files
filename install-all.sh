@@ -6,6 +6,9 @@ sudo apt-get install curl
 # install git
 sudo apt-get install git
 
+# install meld (graphical diff tool)
+sudo apt-get install meld
+
 ## configure git basics
 git config --global user.email "jeyj0.plus@gmail.com"
 git config --global user.name "Jannis Jorre"
