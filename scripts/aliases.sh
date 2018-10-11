@@ -13,8 +13,8 @@ alias gco-master='git checkout master'
 alias gco-b='git checkout -b'
 alias glog='git log'
 alias ga='git add'
-alias gd='git diff'
-alias gd-master='git diff master'
+alias gd='git difftool'
+alias gd-master='git difftool master'
 
 # apt
 alias update-and-upgrade='sudo apt-get update && sudo apt-get upgrade'
