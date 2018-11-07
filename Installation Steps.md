@@ -26,6 +26,7 @@
    3. set the inotify limit (watches on file system) higher, because of bigger projects:
       1. `$ sudo touch /etc/sysctl.d/idea.conf`
       1. `$ sudo echo "fs.inotify.max_user_watches = 524288" > /etc/sysctl.d/idea.conf`
+   4. Install plugin "Main Menu toggler"
 8. `$ mkdir ~/projects && cd ~/projects`
 9. `$ mkdir gitlab && mkdir github`
 10. `$ git clone https://github.com/jeyj0/dot-files.git`
