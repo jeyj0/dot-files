@@ -56,7 +56,7 @@ git clone https://github.com/jeyj0/dot-files.git
 
 # use dot-files' .zshrc instead of home-directory .zshrc
 cp ~/.zshrc ~/.zshrc_old
-echo "source ~/projects/privat/github/dot-files/.zshrc" > ~/.zshrc
+echo "source ~/projects/privat/dot-files/.zshrc" > ~/.zshrc
 cd ~
 
 chmod +x ~/projects/privat/github/dot-files/scripts/aliases.sh
