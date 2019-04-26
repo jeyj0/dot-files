@@ -49,16 +49,3 @@ export NVM_DIR="$HOME/.nvm"
 # install sdkman
 curl -s "https://get.sdkman.io" | bash
 source "~/.sdkman/bin/sdkman-init.sh"
-
-# clone the dot-files repository
-cd ~/projects/github/
-git clone https://github.com/jeyj0/dot-files.git
-
-# use dot-files' .zshrc instead of home-directory .zshrc
-cp ~/.zshrc ~/.zshrc_old
-echo "source ~/projects/privat/dot-files/.zshrc" > ~/.zshrc
-cd ~
-
-chmod +x ~/projects/privat/github/dot-files/scripts/aliases.sh
-chmod +x ~/projects/privat/github/dot-files/scripts/git-push.sh
-chmod +x ~/projects/privat/github/dot-files/scripts/paths.sh
