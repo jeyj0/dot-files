@@ -97,6 +97,21 @@ source $ZSH/oh-my-zsh.sh
 source ~/scripts/paths.sh
 source ~/scripts/aliases.sh
 
+# vi-mode
+bindkey -v
+
+bindkey '^r' history-incremental-search-backward
+
+function zle-line-init zle-keymap-select {
+    VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]%  %{$reset_color%}"
+    RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
+    zle reset-prompt
+}
+
+zle -N zle-line-init
+zle -N zle-keymap-select
+export KEYTIMEOUT=1
+
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/jannis/.sdkman"
 [[ -s "/home/jannis/.sdkman/bin/sdkman-init.sh" ]] && source "/home/jannis/.sdkman/bin/sdkman-init.sh"
