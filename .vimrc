@@ -4,6 +4,9 @@ set nocompatible
 " enable fuzzy-like finding
 set path+=**
 
+" do not save options when saving session
+set ssop-=options
+
 " enable line numbers
 :set number relativenumber
 
