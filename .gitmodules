@@ -7,3 +7,6 @@
 [submodule ".vim/bundle/vim-monokai"]
 	path = .vim/bundle/vim-monokai
 	url = git@github.com:crusoexia/vim-monokai.git
+[submodule "/home/jannis/.vim/bundle/nerdtree"]
+	path = /home/jannis/.vim/bundle/nerdtree
+	url = git@github.com:scrooloose/nerdtree.git

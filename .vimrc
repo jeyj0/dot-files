@@ -38,3 +38,6 @@ filetype plugin indent on
 
 " select color-theme
 colorscheme monokai
+
+execute "set <M-f>=\ef"
+nnoremap <silent> <M-f> :NERDTree<CR>:set norelativenumber<CR>
