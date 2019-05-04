@@ -25,3 +25,9 @@ tnoremap <M-h> <C-w>h<CR>
 tnoremap <M-j> <C-w>j<CR>
 tnoremap <M-k> <C-w>k<CR>
 tnoremap <M-l> <C-w>l<CR>
+
+" setup pathogen
+runtime bundle/vim-pathogen/autoload/pathogen.vim
+execute pathogen#infect()
+syntax on
+filetype plugin indent on
