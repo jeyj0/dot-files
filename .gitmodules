@@ -13,3 +13,6 @@
 [submodule ".vim/bundle/vim-vue"]
 	path = .vim/bundle/vim-vue
 	url = git@github.com:posva/vim-vue.git
+[submodule "/home/jannis/.vim/bundle/vim-javascript"]
+	path = /home/jannis/.vim/bundle/vim-javascript
+	url = git@github.com:pangloss/vim-javascript.git
