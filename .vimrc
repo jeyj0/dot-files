@@ -10,12 +10,6 @@ set ssop-=options
 " enable line numbers
 :set number relativenumber
 
-:augroup numbertoggle
-:  autocmd!
-:  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-:  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
-:augroup END
-
 " easily switch to normal mode for terminal buffer
 tnoremap <ESC><ESC> <C-\><C-N>
 
@@ -42,5 +36,6 @@ filetype plugin indent on
 " select color-theme
 colorscheme monokai
 
+let NERDTreeShowLineNumbers=0
 execute "set <M-f>=\ef"
-nnoremap <silent> <M-f> :NERDTree<CR>:set norelativenumber<CR>
+nnoremap <silent> <M-f> :NERDTreeToggle<CR>
