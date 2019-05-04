@@ -21,10 +21,10 @@ execute "set <M-h>=\eh"
 execute "set <M-j>=\ej"
 execute "set <M-k>=\ek"
 execute "set <M-l>=\el"
-nnoremap <M-h> :wincmd h<CR>
-nnoremap <M-j> :wincmd j<CR>
-nnoremap <M-k> :wincmd k<CR>
-nnoremap <M-l> :wincmd l<CR>
+nnoremap <silent> <M-h> :wincmd h<CR>
+nnoremap <silent> <M-j> :wincmd j<CR>
+nnoremap <silent> <M-k> :wincmd k<CR>
+nnoremap <silent> <M-l> :wincmd l<CR>
 tnoremap <M-h> <C-w>h
 tnoremap <M-j> <C-w>j
 tnoremap <M-k> <C-w>k
