@@ -16,15 +16,19 @@ set path+=**
 " easily switch to normal mode for terminal buffer
 tnoremap <ESC><ESC> <C-\><C-N>
 
-" remap window switching to Ctrl+[h,j,k,l]
+" remap window switching to Alt+[h,j,k,l]
+execute "set <M-h>=\eh"
+execute "set <M-j>=\ej"
+execute "set <M-k>=\ek"
+execute "set <M-l>=\el"
 nnoremap <M-h> :wincmd h<CR>
 nnoremap <M-j> :wincmd j<CR>
 nnoremap <M-k> :wincmd k<CR>
 nnoremap <M-l> :wincmd l<CR>
-tnoremap <M-h> <C-w>h<CR>
-tnoremap <M-j> <C-w>j<CR>
-tnoremap <M-k> <C-w>k<CR>
-tnoremap <M-l> <C-w>l<CR>
+tnoremap <M-h> <C-w>h
+tnoremap <M-j> <C-w>j
+tnoremap <M-k> <C-w>k
+tnoremap <M-l> <C-w>l
 
 " setup pathogen
 runtime bundle/vim-pathogen/autoload/pathogen.vim
