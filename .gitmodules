@@ -4,3 +4,6 @@
 [submodule ".vim/bundle/yaifa.vim"]
 	path = .vim/bundle/yaifa.vim
 	url = git@github.com:vim-scripts/yaifa.vim
+[submodule ".vim/bundle/vim-monokai"]
+	path = .vim/bundle/vim-monokai
+	url = git@github.com:crusoexia/vim-monokai.git
