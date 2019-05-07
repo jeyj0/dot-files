@@ -93,8 +93,6 @@ export EDITOR='vim'
 source ~/scripts/paths.sh
 source ~/scripts/aliases.sh
 
-export KEYTIMEOUT=0
-
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/jannis/.sdkman"
 [[ -s "/home/jannis/.sdkman/bin/sdkman-init.sh" ]] && source "/home/jannis/.sdkman/bin/sdkman-init.sh"
