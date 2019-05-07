@@ -39,3 +39,6 @@ colorscheme monokai
 let NERDTreeShowLineNumbers=0
 execute "set <M-f>=\ef"
 nnoremap <silent> <M-f> :NERDTreeToggle<CR>
+
+" custom settings
+set cul
