@@ -70,7 +70,7 @@ tnoremap <M-u> <C-M-PAGEDOWN>
 tnoremap <M-i> <C-M-PAGEUP>
 
 " select color-theme
-colorscheme monokai
+silent! colorscheme monokai
 
 let NERDTreeShowLineNumbers=0
 execute "set <M-f>=\ef"
