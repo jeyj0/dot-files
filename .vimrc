@@ -1,6 +1,16 @@
 " ############
 " PLUGINS
 " ############
+
+" download vim-plug (plugin-manager) if non-existent
+" (first-time start of vim on a new machine)
+" also installs plugins after vim has started
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 call plug#begin('~/.vim/plugged')
 
 if executable('ack') || executable('ag')
