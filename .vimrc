@@ -116,3 +116,7 @@ nnoremap <silent> <leader>T :terminal ++curwin<CR>
 " create split-shortcuts
 nnoremap <silent> <leader>v :vsp<CR>
 nnoremap <silent> <leader>x :sp<CR>
+
+" make text-search more intelligent
+set ignorecase
+set smartcase
