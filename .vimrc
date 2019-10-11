@@ -112,3 +112,7 @@ set clipboard=unnamedplus
 " create terminal shortcuts
 nnoremap <silent> <leader>t :terminal<CR>
 nnoremap <silent> <leader>T :terminal ++curwin<CR>
+
+" create split-shortcuts
+nnoremap <silent> <leader>v :vsp<CR>
+nnoremap <silent> <leader>x :sp<CR>
