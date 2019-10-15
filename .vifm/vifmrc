@@ -1,0 +1,8 @@
+set dotfiles
+
+" use same keybindings for switching windows as in vim (Alt+[h,l])
+nnoremap <M-l> <Space>
+nnoremap <M-h> <Space>
+
+" close vifm with Alt-f
+nnoremap <M-f> :q<CR>
