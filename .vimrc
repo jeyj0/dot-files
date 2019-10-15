@@ -17,13 +17,24 @@ if executable('ack') || executable('ag')
   Plug 'mileszs/ack.vim'
 endif
 
+Plug 'tpope/vim-sensible'
+
+" color schemes
+Plug 'crusoexia/vim-monokai'
+
+" file handling
+Plug 'vifm/vifm.vim'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'scrooloose/nerdtree'
+
+" better terminal integration
 Plug 'wincent/terminus'
+
+" frontend dev
 Plug 'pangloss/vim-javascript'
 Plug 'MaxMEllon/vim-jsx-pretty'
-Plug 'crusoexia/vim-monokai'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+
+" generic coding
 Plug 'vim-scripts/yaifa.vim'
 Plug 'ycm-core/YouCompleteMe', { 'do': 'python3 ./install.py' }
 
@@ -34,9 +45,6 @@ call plug#end()
 
 " fix stuff
 set nocompatible
-
-" do not save options when saving session
-set ssop-=options
 
 " enable line numbers
 set number relativenumber
@@ -72,10 +80,8 @@ tnoremap <M-i> <C-M-PAGEUP>
 " select color-theme
 silent! colorscheme monokai
 
-let NERDTreeShowLineNumbers=0
 execute "set <M-f>=\ef"
-nnoremap <silent> <M-f> :NERDTreeToggle<CR>
-let NERDTreeIgnore = ['^\..*\.swp$', '^.git$']
+nnoremap <silent> <M-f> :Vifm<CR>
 
 " custom settings
 set cul
