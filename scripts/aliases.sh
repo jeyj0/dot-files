@@ -23,3 +23,6 @@ alias upgrade-kept-back='sudo apt-get --with-new-pkgs upgrade'
 
 # docker
 alias docker-mongo='docker run -d -p 27017:27017 -v ~/data:/data/db --name mongo mongo'
+
+# make deletion of files on command line safer
+alias rm='trash'
