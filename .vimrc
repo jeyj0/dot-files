@@ -18,6 +18,12 @@ if executable('ack') || executable('ag')
 endif
 
 Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-airline'
+Plug 'tpope/vim-repeat' " repeatable plugin actions
+Plug 'tpope/vim-surround'
+
+" simpler text substitution
+Plug 'svermeulen/vim-subversive'
 
 " color schemes
 Plug 'crusoexia/vim-monokai'
@@ -126,3 +132,11 @@ nnoremap <silent> <leader>x :sp<CR>
 " make text-search more intelligent
 set ignorecase
 set smartcase
+
+" vim-subversive
+nmap s <plug>(SubversiveSubstitute)
+nmap ss <plug>(SubversiveSubstituteLine)
+nmap S <plug>(SubversiveSubstituteToEndOfLine)
+nmap <leader>s <plug>(SubversiveSubstituteRange)
+xmap <leader>s <plug>(SubversiveSubstituteRange)
+nmap <leader>ss <plug>(SubversiveSubstituteWordRange)
