@@ -76,11 +76,12 @@ tnoremap <M-k> <C-w>k
 tnoremap <M-l> <C-w>l
 
 " remap tab switching to Alt+[u,i]
+set esckeys
 execute "set <M-u>=\eu"
 execute "set <M-i>=\ei"
 nnoremap <silent> <M-u> :tabprevious<CR>
 nnoremap <silent> <M-i> :tabnext<CR>
-tnoremap <M-u> <C-M-PAGEDOWN>
+tnoremap <M-u> <C-W>
 tnoremap <M-i> <C-M-PAGEUP>
 
 " select color-theme
@@ -136,7 +137,6 @@ set smartcase
 " vim-subversive
 nmap s <plug>(SubversiveSubstitute)
 nmap ss <plug>(SubversiveSubstituteLine)
-nmap S <plug>(SubversiveSubstituteToEndOfLine)
 nmap <leader>s <plug>(SubversiveSubstituteRange)
 xmap <leader>s <plug>(SubversiveSubstituteRange)
 nmap <leader>ss <plug>(SubversiveSubstituteWordRange)
