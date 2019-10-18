@@ -81,8 +81,8 @@ execute "set <M-u>=\eu"
 execute "set <M-i>=\ei"
 nnoremap <silent> <M-u> :tabprevious<CR>
 nnoremap <silent> <M-i> :tabnext<CR>
-tnoremap <M-u> <C-W>
-tnoremap <M-i> <C-M-PAGEUP>
+tnoremap <M-u> <C-W>:tabprevious<CR>
+tnoremap <M-i> <C-W>:tabnext<CR>
 
 " select color-theme
 silent! colorscheme monokai
