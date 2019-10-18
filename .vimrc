@@ -40,6 +40,8 @@ Plug 'pangloss/vim-javascript'
 Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 
+Plug 'racer-rust/vim-racer'
+
 " generic coding
 Plug 'vim-scripts/yaifa.vim'
 Plug 'ycm-core/YouCompleteMe', { 'do': 'python3 ./install.py' }
