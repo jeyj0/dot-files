@@ -123,8 +123,8 @@ endif
 set clipboard=unnamedplus
 
 " create terminal shortcuts
-nnoremap <silent> <leader>t :terminal<CR>
-nnoremap <silent> <leader>T :terminal ++curwin<CR>
+nnoremap <silent> <leader>t :terminal ++close<CR>
+nnoremap <silent> <leader>T :terminal ++close ++curwin<CR>
 
 " create split-shortcuts
 nnoremap <silent> <leader>v :vsp<CR>
