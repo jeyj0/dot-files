@@ -40,7 +40,9 @@ Plug 'pangloss/vim-javascript'
 Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 
+" Rust development
 Plug 'racer-rust/vim-racer'
+Plug 'rust-lang/rust.vim'
 
 " generic coding
 Plug 'vim-scripts/yaifa.vim'
