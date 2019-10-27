@@ -17,6 +17,8 @@ if executable('ack') || executable('ag')
   Plug 'mileszs/ack.vim'
 endif
 
+Plug 'cohama/lexima.vim' " auto-closing things
+
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-airline'
 Plug 'tpope/vim-repeat' " repeatable plugin actions
@@ -144,3 +146,5 @@ nmap ss <plug>(SubversiveSubstituteLine)
 nmap <leader>s <plug>(SubversiveSubstituteRange)
 xmap <leader>s <plug>(SubversiveSubstituteRange)
 nmap <leader>ss <plug>(SubversiveSubstituteWordRange)
+
+nnoremap <silent> <leader>p :Prettier<CR>
