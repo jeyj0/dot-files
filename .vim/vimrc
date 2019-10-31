@@ -40,7 +40,7 @@ Plug 'wincent/terminus'
 " frontend dev
 Plug 'pangloss/vim-javascript'
 Plug 'MaxMEllon/vim-jsx-pretty'
-Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 
 " Rust development
 Plug 'racer-rust/vim-racer'
