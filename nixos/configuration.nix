@@ -160,6 +160,8 @@ in
 
   environment.systemPackages = with pkgs; [
     dmenu
+    # nodejs
+    unstable.nodejs-13_x
 
     # basic utilities
     curl
