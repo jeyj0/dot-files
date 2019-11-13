@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 GS_OUTPUT=$(git status >&1)
 
 regex_branch="On branch ([a-zA-Z0-9_\-]+)"
