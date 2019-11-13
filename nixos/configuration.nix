@@ -98,7 +98,10 @@ in
     };
 
     windowManager = {
-      default = "xmonad";
+      default = "i3";
+      i3 = {
+        enable = true;
+      };
       xmonad = {
         enable = true;
         enableContribAndExtras = true;
@@ -114,6 +117,7 @@ in
 
           main = xmonad desktopConfig
             { terminal = "kitty"
+            , modMask = mod4Mask
             , borderWidth = 1
             , normalBorderColor = "#cccccc"
             , focusedBorderColor = "#5555dd"
