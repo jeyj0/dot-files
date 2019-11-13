@@ -1,12 +1,11 @@
-# load nvm (node version manager)
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+if [ -d "$HOME/.config/nvm" ]; then
+	source $HOME/scripts/paths/nvm.sh
+fi
 
-# load pyenv (python version manager)
-export PATH="/home/jannis/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+if [ -d "$HOME/.pyenv" ]; then
+	source $HOME/scripts/paths/pyenv.sh
+fi
 
-export JAVA_HOME="~/.sdkman/candidates/java/current"
-export PATH=$PATH:~/maven/3.5.4/bin
+if [ -d "$HOME/.sdkman" ]; then
+	source $HOME/scripts/paths/sdkman.sh
+fi
