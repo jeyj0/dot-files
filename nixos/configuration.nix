@@ -165,6 +165,7 @@ in
     curl
     wget
     git
+    xclip
     trash-cli
     silver-searcher # ag (faster ack (faster & better grep))
 
