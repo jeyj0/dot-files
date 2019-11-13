@@ -21,4 +21,31 @@ Plug 'wincent/terminus'
 
 call plug#end()
 
+" visual settings
+set number relativenumber
 colorscheme monokai
+
+" navigation
+nnoremap <silent> <A-h> :wincmd h<cr>
+nnoremap <silent> <A-j> :wincmd j<cr>
+nnoremap <silent> <A-k> :wincmd k<cr>
+nnoremap <silent> <A-l> :wincmd l<cr>
+
+" coc.nvim config
+set updatetime=300
+
+"" use tab for completion
+inoremap <silent><expr> <TAB>
+  \ pumvisible() ? "\<C-n>" :
+  \ <SID>check_back_space() ? "\<TAB>" :
+  \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1] =~# '\s'
+endfunction
+
+" use c-space to trigger completion
+inoremap <silent><expr> <c-space> coc#refresh()
+
