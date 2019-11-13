@@ -95,28 +95,7 @@ in
 
     desktopManager = {
       xterm.enable = false;
-    #   default = "xfce";
-    #   xfce = {
-    #     enable = true;
-    #     noDesktop = true;
-    #   };
-    #   gnome3 = {
-    #     enable = true;
-    #   };
     };
-
-    # displayManager.lightdm = {
-    #   enable = true;
-    #   greeters.gtk.indicators = [
-    #     "~host"
-    #     "~spacer"
-    #     "~clock"
-    #     "~spacer"
-    #     "~a11y"
-    #     "~session"
-    #     "~power"
-    #   ];
-    # };
 
     windowManager = {
       default = "xmonad";
@@ -159,12 +138,6 @@ in
       syntaxHighlighting.enable = true;
       interactiveShellInit = ''
         export ZSH=${pkgs.oh-my-zsh}/share/oh-my-zsh/
-
-        # ZSH_THEME="robbyrussell"
-
-	# EDITOR="nvim"
-
-        # source $ZSH/oh-my-zsh.sh
       '';
       promptInit = "";
       ohMyZsh = {
@@ -211,7 +184,6 @@ in
   ];
 
   fonts = {
-  #   enableFontDir = true;
     fonts = with pkgs; [
       fira-code
     ];
