@@ -61,3 +61,5 @@ nnoremap af <Plug>(coc-funcobj-a)
 "" highlight symbol under cursor on CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
+" clear search highlighting on <space>
+nnoremap <silent> <space> :noh<cr>
