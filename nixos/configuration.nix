@@ -177,7 +177,7 @@ in
 
     # programs
     ## command line
-    unstable.neovim-unwrapped
+    unstable.neovim-unwrapped watchman # watchman for coc.nvim
     vifm
     ranger
     fzf

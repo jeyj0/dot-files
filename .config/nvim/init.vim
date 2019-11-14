@@ -14,12 +14,15 @@ call plug#begin('$HOME/.config/nvim/jeyj0-plugged')
 Plug 'crusoexia/vim-monokai'
 
 " autocompletion
-Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+Plug 'neoclide/coc.nvim', { 'branch': 'release', 'do': 'npm ci' }
 
 " better terminal integration (f.e. mouse support)
 Plug 'wincent/terminus'
 
 call plug#end()
+
+" for NixOS
+set shell=/bin/sh
 
 " visual settings
 set number relativenumber
@@ -46,6 +49,15 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1] =~# '\s'
 endfunction
 
-" use c-space to trigger completion
+"" use c-space to trigger completion
 inoremap <silent><expr> <c-space> coc#refresh()
+
+"" create function text object (if supported by languageserver)
+xnoremap if <Plug>(coc-funcobj-i)
+xnoremap af <Plug>(coc-funcobj-a)
+nnoremap if <Plug>(coc-funcobj-i)
+nnoremap af <Plug>(coc-funcobj-a)
+
+"" highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
 
