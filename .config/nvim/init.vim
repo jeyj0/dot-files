@@ -22,6 +22,11 @@ Plug 'wincent/terminus'
 call plug#end()
 
 let mapleader=","
+
+" set for-me-intuitive split opening
+set splitright
+set splitbelow
+
 " visual settings
 set number relativenumber
 colorscheme monokai
