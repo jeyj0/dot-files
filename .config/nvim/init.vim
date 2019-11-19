@@ -21,9 +21,6 @@ Plug 'wincent/terminus'
 
 call plug#end()
 
-" for NixOS
-set shell=/bin/sh
-
 " visual settings
 set number relativenumber
 colorscheme monokai
