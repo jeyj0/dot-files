@@ -21,6 +21,7 @@ Plug 'wincent/terminus'
 
 call plug#end()
 
+let mapleader=","
 " visual settings
 set number relativenumber
 colorscheme monokai
