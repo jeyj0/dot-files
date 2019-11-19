@@ -55,8 +55,6 @@ inoremap <silent><expr> <c-space> coc#refresh()
 "" create function text object (if supported by languageserver)
 xnoremap if <Plug>(coc-funcobj-i)
 xnoremap af <Plug>(coc-funcobj-a)
-nnoremap if <Plug>(coc-funcobj-i)
-nnoremap af <Plug>(coc-funcobj-a)
 
 "" highlight symbol under cursor on CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
