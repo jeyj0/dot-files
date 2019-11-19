@@ -40,17 +40,11 @@ nnoremap <silent> <A-l> :wincmd l<cr>
 " coc.nvim config
 set updatetime=300
 
-"" use tab for completion
-inoremap <silent><expr> <TAB>
-  \ pumvisible() ? "\<C-n>" :
-  \ <SID>check_back_space() ? "\<TAB>" :
-  \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1] =~# '\s'
-endfunction
+"" use tab to navigate completion list and Enter to select
+"" (only relevant for snippets)
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 "" use c-space to trigger completion
 inoremap <silent><expr> <c-space> coc#refresh()
