@@ -36,6 +36,26 @@ nnoremap <silent> <A-h> :wincmd h<cr>
 nnoremap <silent> <A-j> :wincmd j<cr>
 nnoremap <silent> <A-k> :wincmd k<cr>
 nnoremap <silent> <A-l> :wincmd l<cr>
+tnoremap <silent> <A-h> <C-\><C-n>:wincmd h<cr>
+tnoremap <silent> <A-j> <C-\><C-n>:wincmd j<cr>
+tnoremap <silent> <A-k> <C-\><C-n>:wincmd k<cr>
+tnoremap <silent> <A-l> <C-\><C-n>:wincmd l<cr>
+
+" setup terminal
+autocmd TermOpen * setlocal nonumber norelativenumber " no line numbers in terminal buffer
+autocmd TermOpen * startinsert " start terminal in terminal-mode
+
+"" exit terminal mode with Alt-n
+tnoremap <A-n> <C-\><C-N>
+
+"" create default terminal with <leader>-t
+nnoremap <leader>t :botright 20split +terminal<cr>
+""" create different terminals at different locations
+nnoremap <leader>T :terminal<cr>
+nnoremap <leader><leader>rt :botright vsplit +terminal<cr>
+nnoremap <leader><leader>lt :topleft vsplit +terminal<cr>
+nnoremap <leader><leader>tt :topleft split +terminal<cr>
+nnoremap <leader><leader>bt :botright split +terminal<cr>
 
 " coc.nvim config
 set updatetime=300
