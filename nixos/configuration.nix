@@ -174,6 +174,7 @@ in
     xclip
     trash-cli
     silver-searcher # ag (faster ack (faster & better grep))
+    htop
 
     # programs
     ## command line
