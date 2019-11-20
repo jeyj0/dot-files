@@ -21,14 +21,23 @@ Plug 'wincent/terminus'
 
 " use ranger
 Plug 'francoiscabrol/ranger.vim' " this sets <leader>f to open ranger
-Plug 'rbgrouleff/bclose.vim'
+Plug 'rbgrouleff/bclose.vim' " required by ranger
+
+" get fzf
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
 let mapleader=","
 
+" do not map <leader>bd to close buffer (bclose.vim)
+let g:bclose_no_plugin_maps = 1
+
 " use ranger when opening a directory
+let g:ranger_map_keys = 0
 let g:ranger_replace_netrw = 1
+nnoremap <leader>r :RangerWorkingDirectory<cr>
 
 " set for-me-intuitive split opening
 set splitright
@@ -99,3 +108,13 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " clear search highlighting on <space>
 nnoremap <silent> <space> :noh<cr>
+
+" open fuzzy-file-finder
+"" git-aware
+nnoremap <leader>f :GFiles<cr>
+"" git-unaware
+nnoremap <leader>F :Files<cr>
+"" fuzzy-find with ag
+nnoremap <leader>g :Ag<cr>
+"" buffers
+nnoremap <leader>b :Buffers<cr>
