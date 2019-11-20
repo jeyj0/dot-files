@@ -19,9 +19,16 @@ Plug 'neoclide/coc.nvim', { 'branch': 'release', 'do': 'npm ci' }
 " better terminal integration (f.e. mouse support)
 Plug 'wincent/terminus'
 
+" use ranger
+Plug 'francoiscabrol/ranger.vim' " this sets <leader>f to open ranger
+Plug 'rbgrouleff/bclose.vim'
+
 call plug#end()
 
 let mapleader=","
+
+" use ranger when opening a directory
+let g:ranger_replace_netrw = 1
 
 " set for-me-intuitive split opening
 set splitright
