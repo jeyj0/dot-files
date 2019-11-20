@@ -31,6 +31,9 @@ set splitbelow
 set ignorecase
 set smartcase
 
+" share clipboard with system
+set clipboard=unnamedplus
+
 " visual settings
 set number relativenumber
 colorscheme monokai
