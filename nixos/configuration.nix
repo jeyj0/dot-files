@@ -188,6 +188,7 @@ in
     ## other
     firefox
     unstable.qutebrowser
+    sxiv
   ];
 
   fonts = {
