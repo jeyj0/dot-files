@@ -95,6 +95,8 @@ NVM_HOME="${HOME}/.config/nvm"
 source ~/scripts/paths.sh
 source ~/scripts/aliases.sh
 
+export NVIM_LISTEN_ADDRESS='/tmp/nvimsocket'
+
 # automatically switch node version if .nvmrc file is present
 if [ -d "$NVM_HOME" ]; then
   autoload -U add-zsh-hook
