@@ -27,6 +27,10 @@ let mapleader=","
 set splitright
 set splitbelow
 
+" smart search
+set ignorecase
+set smartcase
+
 " visual settings
 set number relativenumber
 colorscheme monokai
