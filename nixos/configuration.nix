@@ -180,7 +180,7 @@ in
     ## command line
     unstable.neovim-unwrapped watchman # watchman for coc.nvim
     vifm
-    ranger
+    ranger highlight # highlight enables syntax highlighting in previews
     fzf
 
     # terminal emulators
