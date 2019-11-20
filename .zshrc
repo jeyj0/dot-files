@@ -73,7 +73,7 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # preferred editor for local and remote sessions
-export EDITOR='nvim'
+export EDITOR='zsh $HOME/scripts/neovim-remote.sh'
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -94,8 +94,6 @@ NVM_HOME="${HOME}/.config/nvm"
 
 source ~/scripts/paths.sh
 source ~/scripts/aliases.sh
-
-export NVIM_LISTEN_ADDRESS='/tmp/nvimsocket'
 
 # automatically switch node version if .nvmrc file is present
 if [ -d "$NVM_HOME" ]; then
