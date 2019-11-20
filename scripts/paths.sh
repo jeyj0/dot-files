@@ -1,3 +1,5 @@
+export PATH="$PATH:$HOME/.local/bin"
+
 if [ -d "$HOME/.config/nvm" ]; then
 	source $HOME/scripts/paths/nvm.sh
 fi
