@@ -53,10 +53,14 @@ nnoremap <silent> <A-h> :wincmd h<cr>
 nnoremap <silent> <A-j> :wincmd j<cr>
 nnoremap <silent> <A-k> :wincmd k<cr>
 nnoremap <silent> <A-l> :wincmd l<cr>
+nnoremap <silent> <A-u> :tabprevious<cr>
+nnoremap <silent> <A-i> :tabnext<cr>
 tnoremap <silent> <A-h> <C-\><C-n>:wincmd h<cr>
 tnoremap <silent> <A-j> <C-\><C-n>:wincmd j<cr>
 tnoremap <silent> <A-k> <C-\><C-n>:wincmd k<cr>
 tnoremap <silent> <A-l> <C-\><C-n>:wincmd l<cr>
+tnoremap <silent> <A-u> <C-\><C-n>:tabprevious<cr>
+tnoremap <silent> <A-u> <C-\><C-n>:tabnext<cr>
 
 " setup terminal
 autocmd TermOpen * setlocal nonumber norelativenumber " no line numbers in terminal buffer
