@@ -26,3 +26,6 @@ alias docker-mongo='docker run -d -p 27017:27017 -v ~/data:/data/db --name mongo
 
 # make deletion of files on command line safer
 alias rm='trash'
+
+# use only one instance of neovim
+alias nvim='nvr -s'

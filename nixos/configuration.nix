@@ -178,7 +178,9 @@ in
 
     # programs
     ## command line
-    unstable.neovim-unwrapped watchman # watchman for coc.nvim
+    unstable.neovim-unwrapped 
+      watchman # watchman for coc.nvim
+      neovim-remote # enable the use of only one neovim instance
     vifm
     ranger highlight # highlight enables syntax highlighting in previews
     fzf

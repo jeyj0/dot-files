@@ -3,3 +3,4 @@
 	name = Jannis Jorre
 [core]
 	excludesfile = ~/.config/git/global.gitignore
+	editor = nvr --remote-wait-silent

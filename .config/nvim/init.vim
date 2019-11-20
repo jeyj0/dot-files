@@ -45,6 +45,12 @@ set clipboard=unnamedplus
 set number relativenumber
 colorscheme monokai
 
+" configure neovim-remote use to work properly with git
+"" auto-delete git buffers when closing them (otherwise I'd have to bd them)
+autocmd FileType gitcommit,gitrebase,gitconfig set bufhidden=delete
+"" do not nest nvim instances to edit files
+let $GIT_EDITOR = 'nvr -cc tabnew --remote-wait'
+
 " navigation
 nnoremap <silent> <A-h> :wincmd h<cr>
 nnoremap <silent> <A-j> :wincmd j<cr>
