@@ -27,6 +27,10 @@ Plug 'rbgrouleff/bclose.vim' " required by ranger
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 
+" support javascript & jsx better
+Plug 'pangloss/vim-javascript'
+Plug 'MaxMEllon/vim-jsx-pretty'
+
 call plug#end()
 
 let mapleader=","
