@@ -11,3 +11,7 @@ fi
 if [ -d "$HOME/.sdkman" ]; then
 	source $HOME/scripts/paths/sdkman.sh
 fi
+
+if [ -d "$HOME/maven" ] && [[ $(ls -A $HOME/maven) ]]; then
+	source $HOME/scripts/paths/maven.sh
+fi
