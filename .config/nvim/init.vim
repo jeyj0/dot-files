@@ -27,6 +27,9 @@ Plug 'rbgrouleff/bclose.vim' " required by ranger
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 
+" better indentation
+Plug 'vim-scripts/yaifa.vim'
+
 " support javascript & jsx better
 Plug 'pangloss/vim-javascript'
 Plug 'MaxMEllon/vim-jsx-pretty'
