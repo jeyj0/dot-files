@@ -49,6 +49,8 @@ let g:airline_powerline_fonts = 1
 let g:airline_theme='minimalist'
 let g:bufferline_echo = 0
 let g:airline#extensions#tabline#enabled = 1
+let g:airline_mode_map = {}
+let g:airline_mode_map['ic'] = 'INSERT'
 
 let mapleader=","
 
