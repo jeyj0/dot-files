@@ -13,6 +13,12 @@ call plug#begin('$HOME/.config/nvim/jeyj0-plugged')
 " color-scheme
 Plug 'crusoexia/vim-monokai'
 
+" fancy status line
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'bling/vim-bufferline'
+Plug 'tpope/vim-fugitive'
+
 " autocompletion
 Plug 'neoclide/coc.nvim', { 'branch': 'release', 'do': 'npm ci' }
 
@@ -37,6 +43,11 @@ Plug 'pangloss/vim-javascript'
 Plug 'MaxMEllon/vim-jsx-pretty'
 
 call plug#end()
+
+set noshowmode
+let g:airline_powerline_fonts = 1
+let g:airline_theme='minimalist'
+let g:bufferline_echo = 0
 
 let mapleader=","
 
