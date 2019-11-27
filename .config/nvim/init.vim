@@ -146,6 +146,9 @@ nnoremap <leader>g :Ag<cr>
 "" buffers
 nnoremap <leader>b :Buffers<cr>
 
+" closing buffers
+nnoremap <silent> <leader>q :Bclose<cr>
+
 " easily split lines in normal mode
 " taken from drzel/vim-split-line
 nnoremap <CR> :keeppatterns substitute/\s*\%#\s*/\r/e <bar> normal! ==<CR>
