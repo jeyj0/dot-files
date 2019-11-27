@@ -30,6 +30,8 @@ Plug 'junegunn/fzf.vim'
 " better indentation
 Plug 'vim-scripts/yaifa.vim'
 
+Plug 'dag/vim-fish'
+
 " support javascript & jsx better
 Plug 'pangloss/vim-javascript'
 Plug 'MaxMEllon/vim-jsx-pretty'
