@@ -1,6 +1,7 @@
-#!/usr/bin/env zsh
-if [[ ! -z $(nvr --serverlist) ]]; then
-  nvr --remote-tab-wait-silent --servername $(nvr --serverlist | sed 1q) "$@"
+#!/usr/bin/env fish
+set serverlist (nvr --serverlist)
+if test -n "$serverlist"
+  nvr --remote-tab-wait-silent --servername (nvr --serverlist | sed 1q) $argv
 else
-  nvim "$@"
-fi
+  vim $argv
+end
