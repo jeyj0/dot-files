@@ -11,6 +11,7 @@ alias glog='git log'
 alias glog-graph='git log --graph --abbrev-commit --decorate --format=format:"%C(blue)%h%C(reset) - %C(white bold)%s%C(reset) %C(dim white)- %an%C(reset)%n""           %C(cyan)%aD%C(reset) %C(green)(%ar)%C(reset)%C(auto)%d%C(reset)"'
 alias ga='git add'
 alias gd='git diff'
+alias gdc='git diff --cached'
 
 # make deletion of files on command line safer
 alias rm='trash'
