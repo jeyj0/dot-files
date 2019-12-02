@@ -10,6 +10,9 @@ source $HOME/.config/nvim/plug.vim
 
 call plug#begin('$HOME/.config/nvim/jeyj0-plugged')
 
+" language support for basically everything
+Plug 'sheerun/vim-polyglot'
+
 " color-scheme
 Plug 'crusoexia/vim-monokai'
 
@@ -36,11 +39,6 @@ Plug 'junegunn/fzf.vim'
 " better indentation
 Plug 'vim-scripts/yaifa.vim'
 
-Plug 'dag/vim-fish'
-
-" support javascript & jsx better
-Plug 'pangloss/vim-javascript'
-Plug 'MaxMEllon/vim-jsx-pretty'
 
 call plug#end()
 
