@@ -2,5 +2,6 @@
   "coc.preferences.formatOnSaveFiletypes": [
     "json",
     "js"
-  ]
+  ],
+  "diagnostic.warningSign": "!"
 }
