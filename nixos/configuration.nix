@@ -151,7 +151,7 @@ in
   };
 
   # globally installed packages
- 
+
   # add unstable derivative, so I can install unstable packages
   nixpkgs.config = {
     allowUnfree = true;
@@ -178,7 +178,7 @@ in
 
     # programs
     ## command line
-    unstable.neovim-unwrapped 
+    unstable.neovim-unwrapped
       watchman # watchman for coc.nvim
       neovim-remote # enable the use of only one neovim instance
     vifm
