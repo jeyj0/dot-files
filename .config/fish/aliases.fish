@@ -1,7 +1,7 @@
 # git
 alias gs='git status'
 alias gss='git status -s'
-alias gpush='git_push'
+alias gpush='zsh $HOME/scripts/git-push.sh'
 alias gpull='git pull'
 alias gc='git commit'
 # alias gco='git_checkout'
