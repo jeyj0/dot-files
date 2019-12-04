@@ -19,6 +19,9 @@ Plug 'tpope/vim-surround'
 " language support for basically everything
 Plug 'sheerun/vim-polyglot'
 
+" auto-close brackets,...
+Plug 'cohama/lexima.vim'
+
 " color-scheme
 Plug 'crusoexia/vim-monokai'
 
