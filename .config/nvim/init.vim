@@ -48,6 +48,8 @@ Plug 'junegunn/fzf.vim'
 " better indentation
 Plug 'vim-scripts/yaifa.vim'
 
+" auto-formatting
+Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 
 call plug#end()
 
@@ -158,3 +160,11 @@ nnoremap <silent> <leader>q :Bclose<cr>
 " easily split lines in normal mode
 " taken from drzel/vim-split-line
 nnoremap <CR> :keeppatterns substitute/\s*\%#\s*/\r/e <bar> normal! ==<CR>
+
+" auto-format for different filetypes
+augroup formatbindings
+  autocmd! formatbindings
+  autocmd FileType *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html
+    \ nnoremap <buffer> <silent> <leader>p <Plug>(Prettier)
+  autocmd FileType rust nnoremap <buffer> <silent> <leader>p :RustFmt<cr>
+augroup end
