@@ -10,6 +10,12 @@ source $HOME/.config/nvim/plug.vim
 
 call plug#begin('$HOME/.config/nvim/jeyj0-plugged')
 
+" make some plugins support repeating actions by using .
+Plug 'tpope/vim-repeat'
+
+" modify surround brackets,...
+Plug 'tpope/vim-surround'
+
 " language support for basically everything
 Plug 'sheerun/vim-polyglot'
 
