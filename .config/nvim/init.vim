@@ -84,7 +84,7 @@ set number relativenumber
 colorscheme monokai
 
 " configure neovim-remote to work properly with git
-autocmd FileType gitcommit,gitrebase,gitconfig set bufhidden=delete
+autocmd FileType gitcommit,gitrebase,gitconfig,diff set bufhidden=delete
 
 " navigation
 nnoremap <silent> <A-h> :wincmd h<cr>
