@@ -53,6 +53,33 @@ Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 
 call plug#end()
 
+" Original implementation taken from:
+" https://www.reddit.com/r/vim/comments/ebaoku/function_to_google_any_text_object/
+function! WebSearch(type, ...)
+  let sel_save = &selection
+  let &selection = "inclusive"
+  let reg_save = @@
+
+  if a:0  " Invoked from Visual mode, use '< and '> marks.
+    silent exe "normal! `<" . a:type . "`>y"
+  elseif a:type == 'line'
+    silent exe "normal! '[V']y"
+  elseif a:type == 'block'
+    silent exe "normal! `[\<C-V>`]y"
+  else
+    silent exe "normal! `[v`]y"
+  endif
+
+  let search = substitute(trim(@@), ' \+', '+', 'g')
+  silent exe "!open 'https://duckduckgo.com/?q=" . search . "'"
+
+  let &selection = sel_save
+  let @@ = reg_save
+endfunction
+
+nnoremap <silent> gs :set opfunc=WebSearch<CR>g@
+vnoremap <silent> gs :<C-u>call WebSearch(visualmode(), 1)<CR>
+
 set noshowmode
 let g:airline_powerline_fonts = 1
 let g:airline_theme='minimalist'
