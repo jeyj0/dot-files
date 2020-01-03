@@ -141,13 +141,13 @@ autocmd TermOpen * startinsert " start terminal in terminal-mode
 tnoremap <A-n> <C-\><C-N>
 
 "" create default terminal with <leader>-t
-nnoremap <leader>t :botright 20split +terminal<cr>
+nnoremap <silent> <leader>t :botright 20split +terminal<cr>
 """ create different terminals at different locations
-nnoremap <leader>T :terminal<cr>
-nnoremap <leader><leader>rt :botright vsplit +terminal<cr>
-nnoremap <leader><leader>lt :topleft vsplit +terminal<cr>
-nnoremap <leader><leader>tt :topleft split +terminal<cr>
-nnoremap <leader><leader>bt :botright split +terminal<cr>
+nnoremap <silent> <leader>T :terminal<cr>
+nnoremap <silent> <leader><leader>rt :botright vsplit +terminal<cr>
+nnoremap <silent> <leader><leader>lt :topleft vsplit +terminal<cr>
+nnoremap <silent> <leader><leader>tt :topleft split +terminal<cr>
+nnoremap <silent> <leader><leader>bt :botright split +terminal<cr>
 
 " coc.nvim config
 set updatetime=300
