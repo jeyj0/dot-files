@@ -19,6 +19,9 @@ source $FISH_PATH/aliases.fish
 # do not show a welcome message
 set fish_greeting
 
+# load rust
+source $HOME/.cargo/env
+
 # use starship prompt
 starship init fish | source
 

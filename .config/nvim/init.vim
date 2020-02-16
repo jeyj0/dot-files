@@ -10,6 +10,9 @@ source $HOME/.config/nvim/plug.vim
 
 call plug#begin('$HOME/.config/nvim/jeyj0-plugged')
 
+" Working with jupyter notebooks in vim
+Plug 'szymonmaszke/vimpyter'
+
 " make some plugins support repeating actions by using .
 Plug 'tpope/vim-repeat'
 
@@ -28,14 +31,16 @@ Plug 'crusoexia/vim-monokai'
 " fancy status line
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'bling/vim-bufferline'
-Plug 'tpope/vim-fugitive'
+" Plug 'tpope/vim-fugitive'
 
 " autocompletion
 Plug 'neoclide/coc.nvim', { 'branch': 'release', 'do': 'npm ci' }
 
 " better terminal integration (f.e. mouse support)
 Plug 'wincent/terminus'
+
+" easy git staging
+Plug 'airblade/vim-gitgutter'
 
 " use ranger
 Plug 'francoiscabrol/ranger.vim' " this sets <leader>f to open ranger
@@ -51,7 +56,14 @@ Plug 'vim-scripts/yaifa.vim'
 " auto-formatting
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 
+" nice todo-list management
+Plug 'jeyj0/vim-todo-lists'
+
 call plug#end()
+
+" do not move items on state change for todo lists
+let g:VimTodoListsMoveItems = 0
+let g:VimTodoListsDatesEnabled = 1
 
 " Original implementation taken from:
 " https://www.reddit.com/r/vim/comments/ebaoku/function_to_google_any_text_object/
@@ -80,14 +92,22 @@ endfunction
 nnoremap <silent> gs :set opfunc=WebSearch<CR>g@
 vnoremap <silent> gs :<C-u>call WebSearch(visualmode(), 1)<CR>
 
+" fzf commands / shortcuts
+let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+
 set noshowmode
 let g:airline_powerline_fonts = 1
+let g:airline_section_y = 'B:%{bufnr("%")}' " buf.nr. instead of encoding
+let g:airline_section_z = '%l/%L:%c' " minimalistic line indicator
 let g:airline_theme='minimalist'
 let g:bufferline_echo = 0
 let g:airline_mode_map = {}
 let g:airline_mode_map['ic'] = 'INSERT'
 
 let mapleader=","
+
+" keymap to open default todo list
+nnoremap <silent> <leader>ls :topleft vsplit ~/main.todo<cr>
 
 " do not map <leader>bd to close buffer (bclose.vim)
 let g:bclose_no_plugin_maps = 1
