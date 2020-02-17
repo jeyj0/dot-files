@@ -57,3 +57,6 @@
 (map! "M-j" 'evil-window-down)
 (map! "M-k" 'evil-window-up)
 (map! "M-l" 'evil-window-right)
+
+;; switch to relative line numbering
+(setq display-line-numbers-type 'relative)
