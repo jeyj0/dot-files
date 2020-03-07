@@ -53,10 +53,10 @@
 ;; they are implemented.
 
 ;; Easier moving through windows (Alt+[h,j,k,l])
-(map! "M-h" 'evil-window-left)
-(map! "M-j" 'evil-window-down)
-(map! "M-k" 'evil-window-up)
-(map! "M-l" 'evil-window-right)
+; (map! "M-h" 'evil-window-left
+;       "M-j" 'evil-window-down
+;       "M-k" 'evil-window-up
+;       "M-l" 'evil-window-right)
 
 ;; Easier moving through buffers (Alt+[U,I])
 (map! "M-U" 'evil-prev-buffer)
