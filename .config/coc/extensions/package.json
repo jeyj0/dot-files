@@ -3,7 +3,7 @@
     "coc-css": ">=1.2.2",
     "coc-eslint": ">=1.2.6",
     "coc-html": ">=1.2.3",
-    "coc-java": ">=1.4.6",
+    "coc-java": ">=1.4.8",
     "coc-jest": ">=1.0.3",
     "coc-json": ">=1.2.4",
     "coc-markdownlint": ">=1.1.1",
