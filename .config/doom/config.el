@@ -59,15 +59,12 @@
 ;       "M-l" 'evil-window-right)
 
 ;; Easier moving through buffers (Alt+[U,I])
-(map! "M-U" 'evil-prev-buffer)
-(map! "M-I" 'evil-next-buffer)
+(map! "M-u" 'evil-prev-buffer
+      "M-i" 'evil-next-buffer)
 
 ;; Easier switching tabs (Alt+[u,i])
-(map! "M-u" '+workspace:switch-previous)
-(map! "M-i" '+workspace:switch-next)
-
-;; switch to relative line numbering
-(setq display-line-numbers-type 'relative)
+(map! "M-U" '+workspace:switch-previous
+      "M-I" '+workspace:switch-next)
 
 ;; open autocompletion more aggressively
 (setq company-idle-delay 0.05
