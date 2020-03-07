@@ -91,9 +91,5 @@
 (defvar host (substring (shell-command-to-string "hostname") 0 -1))
 ;;;; get hosts-dir from hostname
 (defvar hosts-dir "~/.config/doom/hosts/")
-;;;; add hosts-dir to load-path
-(add-to-list 'load-path hosts-dir)
 ;;;; actually load the settings of the current host
-(let ((init-host-feature (intern host)))
-  (require init-host-feature nil 'noerror))
-
+(load (concat hosts-dir host))
