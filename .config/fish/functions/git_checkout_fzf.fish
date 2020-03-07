@@ -1,4 +1,4 @@
-function gco -d "Fuzzy-find and checkout a branch"
+function git_checkout_fzf -d "Fuzzy-find and checkout a branch"
   git branch --all \
     | grep -v '/HEAD\s' \
     | string trim \
