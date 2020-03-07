@@ -83,6 +83,9 @@
 ;; start emacs in fullscreen
 (add-hook 'window-setup-hook #'toggle-frame-fullscreen)
 
+;; tell projectile where projects are to be found
+(setq projectile-project-search-path '("~/projects/"))
+
 ;; load host-specific settings
 ;;;; get hostname
 (defvar host (substring (shell-command-to-string "hostname") 0 -1))
