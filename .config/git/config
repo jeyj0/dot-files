@@ -1,5 +1,5 @@
 [user]
-	email = jeyj0.plus@gmail.com
+	email = jannis@jorre.dev
 	name = Jannis Jorre
 [core]
 	excludesfile = ~/.config/git/global.gitignore
