@@ -10,7 +10,7 @@
     "coc-marketplace": ">=1.7.0",
     "coc-prettier": ">=1.1.11",
     "coc-rls": ">=1.1.4",
-    "coc-tsserver": ">=1.4.10",
+    "coc-tsserver": ">=1.4.11",
     "coc-webpack": ">=1.4.0"
   }
 }
