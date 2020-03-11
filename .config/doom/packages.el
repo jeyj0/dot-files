@@ -23,6 +23,7 @@
 ;(package! some-package)
 
 (package! fish-mode)
+(package! web-mode)
 
 ;; To install a package directly from a particular repo, you'll need to specify
 ;; a `:recipe'. You'll find documentation on what `:recipe' accepts here:
