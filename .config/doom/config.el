@@ -93,3 +93,7 @@
 (defvar hosts-dir "~/.config/doom/hosts/")
 ;;;; actually load the settings of the current host
 (load (concat hosts-dir host))
+
+;; modes
+;;;; web-mode for tsx files
+(add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
