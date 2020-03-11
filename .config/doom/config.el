@@ -97,3 +97,7 @@
 ;; modes
 ;;;; web-mode for tsx files
 (add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
+
+;; enable fuzzy matching for ivy
+(setq ivy-re-builders-alist
+      '((t . ivy--regex-fuzzy)))
