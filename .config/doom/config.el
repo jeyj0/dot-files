@@ -101,3 +101,6 @@
 ;; enable fuzzy matching for ivy
 (setq ivy-re-builders-alist
       '((t . ivy--regex-fuzzy)))
+
+;; use ranger.el as default directory handler
+(ranger-override-dired-mode t)
