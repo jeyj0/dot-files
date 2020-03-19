@@ -12,17 +12,17 @@ fundle init
 source $FISH_PATH/paths.fish
 source $FISH_PATH/aliases.fish
 
+# do not show a welcome message
+set fish_greeting
+
+# use starship prompt
+starship init fish | source
+
 if test -d $NVM_DIR
   source $FISH_PATH/nvm.fish
 end
-
-# do not show a welcome message
-set fish_greeting
 
 # load rust
 if test -d $HOME/.cargo
   source $HOME/.cargo/env
 end
-
-# use starship prompt
-starship init fish | source
