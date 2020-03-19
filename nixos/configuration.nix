@@ -184,6 +184,7 @@ in
     trash-cli
     silver-searcher # ag (faster ack (faster & better grep))
     htop
+    entr
 
     # programs
     ## command line
