@@ -20,7 +20,9 @@ end
 set fish_greeting
 
 # load rust
-source $HOME/.cargo/env
+if test -d $HOME/.cargo
+  source $HOME/.cargo/env
+end
 
 # use starship prompt
 starship init fish | source
