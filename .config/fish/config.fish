@@ -13,7 +13,7 @@ source $FISH_PATH/paths.fish
 source $FISH_PATH/aliases.fish
 
 if test -d $NVM_DIR
-    source $FISH_PATH/nvm.fish
+  source $FISH_PATH/nvm.fish
 end
 
 # do not show a welcome message
