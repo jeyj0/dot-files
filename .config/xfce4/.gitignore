@@ -1,0 +1,6 @@
+terminal/accels.scm
+xfconf/xfce-perchannel-xml/displays.xml
+xfconf/xfce-perchannel-xml/keyboards.xml
+xfconf/xfce-perchannel-xml/xfwm4.xml
+xfconf/xfce-perchannel-xml/xfce4-*.xml
+!xfconf/xfce-perchannel-xml/keyboard-shortcuts.xml
