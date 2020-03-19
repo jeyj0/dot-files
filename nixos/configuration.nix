@@ -201,6 +201,7 @@ in
   fonts = {
     fonts = with pkgs; [
       fira-code
+      hack-font
     ];
   };
 
