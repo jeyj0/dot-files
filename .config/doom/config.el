@@ -81,7 +81,7 @@
 (setq ein:output-area-inlined-images nil)
 
 ;; start emacs in fullscreen
-(add-hook 'window-setup-hook #'toggle-frame-fullscreen)
+(add-hook 'window-setup-hook #'toggle-frame-maximized)
 
 ;; tell projectile where projects are to be found
 (setq projectile-project-search-path '("~/projects/"))
