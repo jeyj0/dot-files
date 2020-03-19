@@ -1,0 +1,12 @@
+/*
+!.gitignore
+
+# select what program's settings are synced
+!xfce4/
+!fish/
+!doom/
+!kitty/
+!nvim/
+!git/
+!i3/
+!starship.toml

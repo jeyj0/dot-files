@@ -1,4 +1,13 @@
 /*
+!.gitignore
+!.gitmodules
+!*.md
 
-# do not ignore xfce settings
-!.config/xfce4/**/*
+# do not ignore configs
+!.config/
+
+# do not ignore NixOS configs
+!nixos/
+
+# do not ignore my scripts
+!scripts/
