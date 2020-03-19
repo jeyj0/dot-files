@@ -103,28 +103,6 @@ in
       i3 = {
         enable = true;
       };
-      xmonad = {
-        enable = true;
-        enableContribAndExtras = true;
-        extraPackages = haskellPackages: [
-          haskellPackages.xmonad-contrib
-          haskellPackages.xmonad-extras
-          haskellPackages.xmonad
-          haskellPackages.xmobar
-        ];
-        config = ''
-          import XMonad
-          import XMonad.Config.Desktop
-
-          main = xmonad desktopConfig
-            { terminal = "kitty"
-            , modMask = mod4Mask
-            , borderWidth = 1
-            , normalBorderColor = "#cccccc"
-            , focusedBorderColor = "#5555dd"
-            }
-        '';
-      };
     };
   };
 
