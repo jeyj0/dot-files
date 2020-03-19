@@ -167,6 +167,8 @@ bar {
         status_command i3status
 }
 
-# CUSTOM additions
-hide_edge_borders both
-new_window 1pixel
+# disable titles, but use border
+for_window [class=".*"] border pixel 5
+gaps inner 5
+smart_borders on # no borders if there's only one window
+smart_gaps on # no gaps if there's only one window
