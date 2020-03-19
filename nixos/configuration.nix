@@ -96,6 +96,11 @@ in
 
     desktopManager = {
       xterm.enable = false;
+      xfce4-14 = {
+        enable = true;
+        enableXfwm = false;
+        noDesktop = true;
+      };
     };
 
     windowManager = {
