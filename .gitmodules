@@ -1,0 +1,3 @@
+[submodule "/home/jeyj0/.emacs.d"]
+	path = /home/jeyj0/.emacs.d
+	url = https://github.com/hlissner/doom-emacs
