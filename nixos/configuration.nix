@@ -176,6 +176,8 @@ in
       fd
       clang
 
+    rustup
+
     # basic utilities
     curl
     wget
