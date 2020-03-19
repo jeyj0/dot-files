@@ -3,4 +3,3 @@
 	name = Jannis Jorre
 [core]
 	excludesfile = ~/.config/git/global.gitignore
-	editor = git-editor
