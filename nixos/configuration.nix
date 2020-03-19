@@ -166,6 +166,11 @@ in
     };
   };
 
+  environment.variables = {
+    TERMINAL = "kitty";
+    EDITOR = "nvim";
+    VISUAL = "emacs";
+  };
   environment.systemPackages = with pkgs; [
     dmenu
     # nodejs
