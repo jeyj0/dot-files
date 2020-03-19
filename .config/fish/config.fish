@@ -23,6 +23,6 @@ if test -d $NVM_DIR
 end
 
 # load rust
-if test -d $HOME/.cargo
+if test -e $HOME/.cargo/env
   source $HOME/.cargo/env
 end
