@@ -170,6 +170,11 @@ in
     # nodejs
     unstable.nodejs-13_x
 
+    emacs
+      ripgrep
+      fd
+      clang
+
     # basic utilities
     curl
     wget
