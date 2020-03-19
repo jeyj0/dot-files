@@ -177,6 +177,7 @@ in
       clang
 
     rustup
+    wasm-pack
 
     # basic utilities
     curl
