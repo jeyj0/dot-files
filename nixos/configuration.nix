@@ -188,8 +188,8 @@ in
     unstable.neovim-unwrapped
       watchman # watchman for coc.nvim
       neovim-remote # enable the use of only one neovim instance
-    vifm
-    ranger highlight # highlight enables syntax highlighting in previews
+    ranger
+      highlight # highlight enables syntax highlighting in previews
     fzf
     starship # beautiful command prompt
 
