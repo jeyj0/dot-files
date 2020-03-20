@@ -196,6 +196,9 @@ in
     slack
     unstable.discord
 
+    # minecraft # while this should work, the package is currently broken
+    multimc
+
     # terminal emulators
     kitty
 
