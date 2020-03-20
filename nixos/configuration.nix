@@ -193,6 +193,9 @@ in
     fzf
     starship # beautiful command prompt
 
+    slack
+    unstable.discord
+
     # terminal emulators
     kitty
 
