@@ -63,7 +63,7 @@ in
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.jeyj0 = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "docker" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "docker" "audio" ]; # Enable ‘sudo’ for the user.
     shell = pkgs.fish;
     createHome = true;
     home = "/home/jeyj0";
@@ -89,6 +89,7 @@ in
   # Enable sound.
   sound.enable = true;
   hardware.pulseaudio.enable = true;
+  hardware.pulseaudio.support32Bit = true;
 
   services = {
     openssh.enable = true;
@@ -158,6 +159,7 @@ in
   # add unstable derivative, so I can install unstable packages
   nixpkgs.config = {
     allowUnfree = true;
+    pulseaudio = true;
     packageOverrides = pkgs: {
       unstable = import unstableTarball {
         config = config.nixpkgs.config;
