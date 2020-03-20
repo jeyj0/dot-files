@@ -169,7 +169,7 @@ bar {
 
 # disable titles, but use border
 for_window [class=".*"] border pixel 5
-gaps inner 5
+gaps inner 10
 smart_borders on # no borders if there's only one window
 smart_gaps on # no gaps if there's only one window
 
