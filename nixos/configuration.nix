@@ -194,6 +194,7 @@ in
     htop
     entr
     direnv # for project-wise environments
+    nitrogen # to set wallpapers
 
     # programs
     ## command line
