@@ -23,7 +23,10 @@ in
       /etc/nixos/hardware-configuration.nix
     ];
 
-  hardware.bluetooth.enable = true;
+  hardware = {
+    bluetooth.enable = true;
+    opengl.driSupport32Bit = true;
+  };
 
   # Use the GRUB 2 boot loader.
   boot.loader.grub.enable = true;
@@ -98,6 +101,8 @@ in
     enable = true;
     layout = "us";
 
+    videoDrivers = [ "nvidia" ];
+
     desktopManager = {
       xterm.enable = false;
       xfce4-14 = {
@@ -126,7 +131,7 @@ in
 
   virtualisation.docker = {
     enable = true;
-    # enableNvidia = true;
+    enableNvidia = true;
   };
 
   # system-wide program settings
