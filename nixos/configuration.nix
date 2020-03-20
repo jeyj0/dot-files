@@ -90,6 +90,7 @@ in
   services = {
     openssh.enable = true;
     lorri.enable = true;
+    blueman.enable = true;
   };
 
   # Enable the X11 windowing system.
