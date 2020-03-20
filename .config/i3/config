@@ -172,3 +172,6 @@ for_window [class=".*"] border pixel 5
 gaps inner 5
 smart_borders on # no borders if there's only one window
 smart_gaps on # no gaps if there's only one window
+
+# disable the focus following the mouse on hover
+focus_follows_mouse no
