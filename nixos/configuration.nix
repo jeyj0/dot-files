@@ -85,8 +85,9 @@ in
   sound.enable = true;
   hardware.pulseaudio.enable = true;
 
-  services.openssh = {
-    enable = true;
+  services = {
+    openssh.enable = true;
+    lorri.enable = true;
   };
 
   # Enable the X11 windowing system.
@@ -182,6 +183,7 @@ in
     silver-searcher # ag (faster ack (faster & better grep))
     htop
     entr
+    direnv # for project-wise environments
 
     # programs
     ## command line

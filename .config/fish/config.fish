@@ -26,3 +26,6 @@ end
 if test -e $HOME/.cargo/env
   source $HOME/.cargo/env
 end
+
+# add direnv hook
+eval (direnv hook fish)
