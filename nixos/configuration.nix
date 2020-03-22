@@ -202,6 +202,7 @@ in
     entr
     direnv # for project-wise environments
     nitrogen # to set wallpapers
+    compton # making windows fancy
 
     # programs
     ## command line
