@@ -3,6 +3,7 @@
 
 # select what program's settings are synced
 !xfce4/
+!autostart/
 !fish/
 !doom/
 !kitty/
