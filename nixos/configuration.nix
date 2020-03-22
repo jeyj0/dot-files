@@ -91,10 +91,17 @@ in
   hardware.pulseaudio.enable = true;
   hardware.pulseaudio.support32Bit = true;
 
+  location.provider = "geoclue2";
   services = {
     openssh.enable = true;
     lorri.enable = true;
     blueman.enable = true;
+    redshift = {
+      enable = true;
+      temperature = {
+        night = 3000;
+      };
+    };
   };
 
   # Enable the X11 windowing system.
