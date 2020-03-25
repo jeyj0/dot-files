@@ -1,1 +1,3 @@
 *.swp
+.envrc
+shell.nix
