@@ -230,6 +230,7 @@ in
       highlight # highlight enables syntax highlighting in previews
     fzf
     starship # beautiful command prompt
+    xorg.xwininfo
 
     slack
     unstable.discord
