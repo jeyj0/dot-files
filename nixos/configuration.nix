@@ -251,6 +251,7 @@ in
     fonts = with pkgs; [
       fira-code
       hack-font
+      font-awesome
     ];
   };
 
