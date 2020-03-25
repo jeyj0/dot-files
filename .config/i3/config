@@ -160,6 +160,9 @@ bindsym $mod+r mode "resize"
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.fish
 
+bindsym $mod+u workspace prev_on_output
+bindsym $mod+i workspace next_on_output
+
 # disable titles, but use border
 for_window [class=".*"] border pixel 5
 gaps inner 10
