@@ -210,6 +210,9 @@ in
     zip unzip
     docker-compose
 
+    google-cloud-sdk
+    kubectl
+
     # programs
     ## command line
     unstable.neovim-unwrapped
