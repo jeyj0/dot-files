@@ -1,0 +1,55 @@
+#define bg         #1c1e1f
+#define bg_alt     #222323
+#define base0      #1b2229
+#define base1      #151617
+#define base2      #1d1f20
+#define base3      #2d2e2e
+#define base4      #4e4e4e
+#define base5      #555556
+#define base6      #767679
+#define base7      #cfc0c5
+#define base8      #ffffff
+#define fg         #d6d6d4
+#define fg_alt     #556172
+#define grey       #525254
+#define red        #e74c3c
+#define orange     #fd971f
+#define green      #b6e63e
+#define teal       #b6e63e
+#define yellow     #e2c770
+#define blue       #268bd2
+#define dark_blue  #727280
+#define magenta    #fb2874
+#define violet     #9c91e4
+#define cyan       #66d9ef
+#define dark_cyan  #8fa1b3
+
+*background: bg
+*backgroundAlt: bg_alt
+*foreground: fg
+*foregroundAlt: fg_alt
+*fadeColor: bg_alt
+*cursorColor: fg_alt
+*pointerColorBackground: base0
+*pointerColorForeground: fg
+
+*color0: base0
+*color8: base3
+*color1: red
+*color9: orange
+*color2: teal
+*color10: green
+*color3: yellow
+*color11: yellow
+*color4: blue
+*color12: dark_blue
+*color5: magenta
+*color13: violet
+*color6: cyan
+*color14: dark_cyan
+*color7: fg
+*color15: fg_alt
+
+*primary: orange
+*warning: magenta
+*error: red

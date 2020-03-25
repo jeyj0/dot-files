@@ -2,6 +2,7 @@
 !.gitignore
 !.gitmodules
 !*.md
+!.Xresources
 
 # do not ignore configs
 !.config/

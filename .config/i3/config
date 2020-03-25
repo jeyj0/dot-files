@@ -175,10 +175,14 @@ focus_follows_mouse no
 mouse_warping none
 
 # colors
-client.focused          #fd971f #fd971f #fd971f #fd971f #fd971f
-client.focused_inactive #222222 #222222 #222222 #222222 #222222
-client.unfocused        #222222 #222222 #222222 #222222 #222222
-client.urgent           #fb2874 #fb2874 #fb2874 #fb2874 #fb2874
-client.placeholder      #222222 #222222 #222222 #222222 #222222
+set_from_resource $color_primary i3wm.primary #b6e63e
+set_from_resource $color_bg i3wm.background #000000
+set_from_resource $color_urgent i3wm.warning #550055
 
-client.background       #222222
+client.focused          $color_primary $color_primary $color_primary $color_primary $color_primary
+client.focused_inactive $color_bg      $color_bg      $color_bg      $color_bg      $color_bg
+client.unfocused        $color_bg      $color_bg      $color_bg      $color_bg      $color_bg
+client.urgent           $color_urgent  $color_urgent  $color_urgent  $color_urgent  $color_urgent
+client.placeholder      $color_bg      $color_bg      $color_bg      $color_bg      $color_bg
+
+client.background       $color_bg

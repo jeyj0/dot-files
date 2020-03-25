@@ -1,13 +1,13 @@
 [colors]
-bg = #1c1e1f
-fg-dim = #525254
-fg = #d6d6d4
-fg-warn = #fb2874
-fg-important = #fd971f
+bg = ${xrdb:polybar.background:#000000}
+fg = ${xrdb:polybar.foreground:#ffffff}
+fg-alt = ${xrdb:polybar.foregroundAlt:#777777}
+fg-warn = ${xrdb:polybar.warning:#ff0000}
+fg-primary = ${xrdb:polybar.primary:#00ff00}
 
 [bars]
 background = ${colors.bg}
-foreground = ${colors.fg-dim}
+foreground = ${colors.fg-alt}
 padding = 1
 module-margin = 1
 separator = |
@@ -38,7 +38,7 @@ padding = 1
 type = internal/i3
 pin-workspaces = true
 
-label-mode-foreground = ${colors.fg-important}
+label-mode-foreground = ${colors.fg-primary}
 
 label-focused = ${i3.label}
 label-unfocused = ${i3.label}
@@ -52,9 +52,9 @@ label-urgent-padding = ${i3.label}
 
 label-focused-foreground = ${colors.bg}
 label-visible-foreground = ${colors.fg}
-label-unfocused-foreground = ${colors.fg-dim}
+label-unfocused-foreground = ${colors.fg-alt}
 
-label-focused-background = ${colors.fg-important}
+label-focused-background = ${colors.fg-primary}
 label-urgent-background = ${colors.fg-warn}
 
 [module/datetime]
@@ -69,7 +69,7 @@ label = CPUs %percentage%%
 type = internal/network
 interface = enp0s31f6
 
-label-connected = " %local_ip% %downspeed:9% (down)  %upspeed:9% (up)"
+label-connected = "%local_ip% | %downspeed:9% (down) | %upspeed:9% (up)"
 
 [module/pulseaudio]
 type = internal/pulseaudio
