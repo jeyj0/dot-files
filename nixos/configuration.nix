@@ -208,6 +208,7 @@ in
     nitrogen # to set wallpapers
     compton # making windows fancy
     zip unzip
+    docker-compose
 
     # programs
     ## command line
