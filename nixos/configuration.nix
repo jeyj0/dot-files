@@ -217,6 +217,7 @@ in
     zip unzip
     docker-compose
 
+    now-cli
     google-cloud-sdk
     kubectl
 
