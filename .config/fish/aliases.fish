@@ -14,6 +14,9 @@ alias gdc='git diff --cached'
 # make deletion of files on command line safer
 alias rm='trash'
 
+# alias e to the default editor
+alias e='$VISUAL'
+
 # (neo)vim
 alias vim='if test -n "(nvr --serverlist)"; ensure_node; end; zsh $HOME/scripts/neovim-remote.sh'
 alias v='vim'
