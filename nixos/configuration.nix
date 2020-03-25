@@ -204,6 +204,7 @@ in
     silver-searcher # ag (faster ack (faster & better grep))
     htop
     entr
+    lsof
     direnv # for project-wise environments
     nitrogen # to set wallpapers
     compton # making windows fancy
