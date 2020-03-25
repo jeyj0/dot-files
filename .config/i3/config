@@ -158,8 +158,7 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-exec_always --no-startup-id $HOME/.config/polybar/launch.fish
-exec --no-startup-id fish -c 'sleep 2; nitrogen --restore'
+exec_always --no-startup-id fish -c 'sleep 2; setups_after_wm'
 
 bindsym $mod+u workspace prev_on_output
 bindsym $mod+i workspace next_on_output
