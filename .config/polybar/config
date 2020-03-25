@@ -38,7 +38,7 @@ padding = 1
 type = internal/i3
 pin-workspaces = true
 
-# label-separator = |
+label-mode-foreground = ${colors.fg-important}
 
 label-focused = ${i3.label}
 label-unfocused = ${i3.label}
@@ -51,6 +51,7 @@ label-visible-padding = ${i3.padding}
 label-urgent-padding = ${i3.label}
 
 label-focused-foreground = ${colors.bg}
+label-visible-foreground = ${colors.fg}
 label-unfocused-foreground = ${colors.fg-dim}
 
 label-focused-background = ${colors.fg-important}
