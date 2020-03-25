@@ -93,6 +93,10 @@ in
 
   location.provider = "geoclue2";
   services = {
+    emacs = {
+      enable = true;
+      install = true;
+    };
     openssh.enable = true;
     lorri.enable = true;
     blueman.enable = true;
@@ -177,13 +181,13 @@ in
   environment.variables = {
     TERMINAL = "kitty";
     EDITOR = "nvim";
-    VISUAL = "emacs";
+    VISUAL = "emacsclient";
   };
   environment.systemPackages = with pkgs; [
     # nodejs
     unstable.nodejs-13_x
 
-    emacs
+    # emacs
       ripgrep
       fd
       clang
