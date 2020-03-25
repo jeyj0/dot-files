@@ -97,6 +97,11 @@ in
       enable = true;
       install = true;
     };
+    unclutter = {
+      enable = true;
+      keystroke = true;
+      package = pkgs.unclutter-xfixes;
+    };
     openssh.enable = true;
     lorri.enable = true;
     blueman.enable = true;
