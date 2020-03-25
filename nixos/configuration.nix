@@ -207,6 +207,7 @@ in
     direnv # for project-wise environments
     nitrogen # to set wallpapers
     compton # making windows fancy
+    zip unzip
 
     # programs
     ## command line
