@@ -1,20 +1,12 @@
-[bar/bar1]
-bottom = true
-background = #fd971f
+[bar/bar]
+monitor = ${env:MONITOR:DP-0}
+bottom = false
+background = #1c1e1f
 
 scroll-up = i3wm-wsnext
 scroll-down = i3wm-wsprev
 
 modules-left = i3
-
-[bar/bar2]
-bottom = false
-background = #fd971f
-
-scroll-up = i3wm-wsnext
-scroll-down = i3wm-wsprev
-
-modules-center = i3
 
 [module/i3]
 type = internal/i3
