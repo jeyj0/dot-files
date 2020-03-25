@@ -132,6 +132,7 @@ in
         extraPackages = with pkgs; [
           dmenu
           i3status
+          polybarFull
           i3lock
           i3blocks
         ];
