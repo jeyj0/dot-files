@@ -10,9 +10,6 @@ source $HOME/.config/nvim/plug.vim
 
 call plug#begin('$HOME/.config/nvim/jeyj0-plugged')
 
-" Working with jupyter notebooks in vim
-Plug 'szymonmaszke/vimpyter'
-
 " make some plugins support repeating actions by using .
 Plug 'tpope/vim-repeat'
 
