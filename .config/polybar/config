@@ -28,7 +28,7 @@ scroll-down = i3wm-wsprev
 
 modules-left = i3
 modules-center = datetime
-modules-right = cpus lan-network pulseaudio
+modules-right = cpus lan-network pulseaudio session
 
 [i3]
 label = %index%
@@ -90,3 +90,11 @@ ramp-volume-1 = ""
 ramp-volume-2 = ""
 ramp-volume-font = 1
 ramp-volume-foreground = ${colors.fg}
+
+[module/session]
+type = custom/text
+content = Session
+
+content-foreground = ${colors.fg}
+
+click-left = xfce4-session-logout
