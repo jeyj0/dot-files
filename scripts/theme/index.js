@@ -4,6 +4,7 @@ const fs = require('fs').promises
 const THEMES = {
     'molokai': molokaiTheme(),
     'molokaiGreen': molokaiGreenTheme(),
+    'solarized': solarized(),
 }
 
 const command = process.argv[2]
@@ -18,7 +19,6 @@ switch (command) {
             console.error(`Unknown theme: ${theme}`)
             return
         }
-        console.log('Generating files for theme', theme)
         main(theme)
         break;
     default:
@@ -33,9 +33,9 @@ switch (command) {
 // REQUIRED KEYS:
 // bg
 // bg_alt
-// base[0-8]
 // fg
-// fg_alt
+// fg_emphasis
+// fg_secondary
 //
 // grey
 // red
@@ -54,37 +54,77 @@ switch (command) {
 // warning
 // error
 
+function solarized() {
+    const solarized = {
+        color0    : "#073642",
+        color1    : "#dc322f",
+        color2    : "#859900",
+        color3    : "#b58900",
+        color4    : "#268bd2",
+        color5    : "#d33682",
+        color6    : "#2aa198",
+        color7    : "#eee8d5",
+        color8    : "#002b36",
+        color9    : "#cb4b16",
+        color10   : "#586e75",
+        color11   : "#657b83",
+        color12   : "#839496",
+        color13   : "#6c71c4",
+        color14   : "#93a1a1",
+        color15   : "#fdf6e3",
+    }
+    solarized['base03'] = solarized.color8
+    solarized['base02'] = solarized.color0
+    solarized['base01'] = solarized.color10
+    solarized['base00'] = solarized.color11
+    solarized['base0'] = solarized.color12
+    solarized['base1'] = solarized.color14
+    solarized['base2'] = solarized.color7
+    solarized['base3'] = solarized.color15
+    solarized['yellow'] = solarized.color3
+    solarized['orange'] = solarized.color9
+    solarized['red'] = solarized.color1
+    solarized['magenta'] = solarized.color5
+    solarized['violet'] = solarized.color13
+    solarized['blue'] = solarized.color4
+    solarized['cyan'] = solarized.color6
+    solarized['green'] = solarized.color2
+
+    solarized['bg'] = solarized.base03
+    solarized['bg_alt'] = solarized.base02
+    solarized['fg'] = solarized.base0
+    solarized['fg_emphasis'] = solarized.base1
+    solarized['fg_secondary'] = solarized.base01
+
+    solarized['primary'] = solarized.blue
+    solarized['warning'] = solarized.orange
+    solarized['error'] = solarized.red
+    return solarized
+}
+
 function molokaiTheme() {
     const molokai = {
-        bg        : "#1c1e1f",
-        bg_alt    : "#222323",
-        base0     : "#1b2229",
-        base1     : "#151617",
-        base2     : "#1d1f20",
-        base3     : "#2d2e2e",
-        base4     : "#4e4e4e",
-        base5     : "#555556",
-        base6     : "#767679",
-        base7     : "#cfc0c5",
-        base8     : "#ffffff",
-        fg        : "#d6d6d4",
-        fg_alt    : "#556172",
-        grey      : "#525254",
-        red       : "#e74c3c",
-        orange    : "#fd971f",
-        green     : "#b6e63e",
-        teal      : "#b6e63e",
-        yellow    : "#e2c770",
-        blue      : "#268bd2",
-        dark_blue : "#727280",
-        magenta   : "#fb2874",
-        violet    : "#9c91e4",
-        cyan      : "#66d9ef",
-        dark_cyan : "#8fa1b3",
+        bg          : "#1c1e1f",
+        bg_alt      : "#222323",
+        fg          : "#d6d6d4",
+        fg_secondary: "#556172",
+        grey        : "#525254",
+        red         : "#e74c3c",
+        orange      : "#fd971f",
+        green       : "#b6e63e",
+        teal        : "#b6e63e",
+        yellow      : "#e2c770",
+        blue        : "#268bd2",
+        dark_blue   : "#727280",
+        magenta     : "#fb2874",
+        violet      : "#9c91e4",
+        cyan        : "#66d9ef",
+        dark_cyan   : "#8fa1b3",
     }
-    molokai['primary'] = molokai.orange
-    molokai['warning'] = molokai.magenta
-    molokai['error']   = molokai.red
+    molokai['fg_emphasis'] = molokai.fg
+    molokai['primary']     = molokai.orange
+    molokai['warning']     = molokai.magenta
+    molokai['error']       = molokai.red
     return molokai
 }
 
@@ -119,14 +159,14 @@ async function generateXResources(theme) {
         background: theme.bg,
         backgroundAlt: theme.bg_alt,
         foreground: theme.fg,
-        foregroundAlt: theme.fg_alt,
+        foregroundAlt: theme.fg_secondary,
         fadeColor: theme.bg_alt,
         cursorColor: theme.fg_alt,
-        pointerColorBackground: theme.base0,
+        pointerColorBackground: theme.bg,
         pointerColorForeground: theme.fg,
 
-        color0: theme.base0,
-        color8: theme.base3,
+        color0: theme.bg_alt,
+        color8: theme.bg,
         color1: theme.red,
         color9: theme.orange,
         color2: theme.teal,
