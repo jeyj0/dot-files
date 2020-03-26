@@ -1,0 +1,10 @@
+{
+  "name": "theme",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@wessberg/color": "^1.0.5"
+  }
+}
