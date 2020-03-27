@@ -4,6 +4,7 @@ const fs = require('fs').promises
 const THEMES = {
     'molokai': molokaiTheme(),
     'molokaiGreen': molokaiGreenTheme(),
+    'molokaiMagenta': molokaiMagentaTheme(),
     'solarized': solarized(),
 }
 
@@ -121,6 +122,23 @@ function molokaiTheme() {
         cyan        : "#66d9ef",
         dark_cyan   : "#8fa1b3",
     }
+    molokai['color0']  = molokai.bg_alt,
+    molokai['color8']  = molokai.bg,
+    molokai['color1']  = molokai.red,
+    molokai['color9']  = molokai.orange,
+    molokai['color2']  = molokai.teal,
+    molokai['color10'] = molokai.green,
+    molokai['color3']  = molokai.yellow,
+    molokai['color11'] = molokai.yellow,
+    molokai['color4']  = molokai.blue,
+    molokai['color12'] = molokai.dark_blue,
+    molokai['color5']  = molokai.magenta,
+    molokai['color13'] = molokai.violet,
+    molokai['color6']  = molokai.cyan,
+    molokai['color14'] = molokai.dark_cyan,
+    molokai['color7']  = molokai.fg,
+    molokai['color15'] = molokai.fg_secondary,
+
     molokai['fg_emphasis'] = molokai.fg
     molokai['primary']     = molokai.orange
     molokai['warning']     = molokai.magenta
@@ -134,6 +152,12 @@ function molokaiGreenTheme() {
     return molokaiGreen
 }
 
+function molokaiMagentaTheme() {
+    const molokaiMagenta = molokaiTheme()
+    molokaiMagenta.primary = molokaiMagenta.magenta
+    return molokaiMagenta
+}
+
 // ###################################################################
 // FILE GENERATION
 // ###################################################################
@@ -144,6 +168,7 @@ async function main(themename) {
     try {
         await Promise.all([
             generateXResources(theme),
+            generateKittyConf(theme),
         ])
     } catch (err) {
         console.error(err)
@@ -191,4 +216,18 @@ async function generateXResources(theme) {
         .reduce((contents, [key, value]) => `${contents}*${key}: ${value}\n`, '')
 
     await writeFile(path.join(process.env.HOME, '.Xresources'), fileContents)
+}
+
+async function generateKittyConf(theme) {
+    let template = await fs.readFile(path.join(process.env.HOME, '.config/configtemplates/kitty/kitty.conf'), "utf8")
+
+    const colorNames = Object.keys(theme)
+
+    console.debug(colorNames)
+
+    const config = colorNames.reduce((template, colorName) => {
+        return template.replace(`%${colorName}%`, theme[colorName])
+    }, template)
+
+    await writeFile(path.join(process.env.HOME, '.config/kitty/kitty.conf'), config)
 }
