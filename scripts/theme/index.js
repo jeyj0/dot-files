@@ -223,8 +223,6 @@ async function generateKittyConf(theme) {
 
     const colorNames = Object.keys(theme)
 
-    console.debug(colorNames)
-
     const config = colorNames.reduce((template, colorName) => {
         return template.replace(`%${colorName}%`, theme[colorName])
     }, template)
