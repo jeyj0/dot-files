@@ -186,7 +186,7 @@ async function generateXResources(theme) {
         foreground: theme.fg,
         foregroundAlt: theme.fg_secondary,
         fadeColor: theme.bg_alt,
-        cursorColor: theme.fg_alt,
+        cursorColor: theme.bg_alt,
         pointerColorBackground: theme.bg,
         pointerColorForeground: theme.fg,
 
