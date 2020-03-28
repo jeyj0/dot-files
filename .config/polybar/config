@@ -48,7 +48,7 @@ labev-urgent = ${i3.label}
 label-focused-padding = ${i3.padding}
 label-unfocused-padding = ${i3.padding}
 label-visible-padding = ${i3.padding}
-label-urgent-padding = ${i3.label}
+label-urgent-padding = ${i3.padding}
 
 label-focused-foreground = ${colors.bg}
 label-visible-foreground = ${colors.fg}
