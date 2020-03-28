@@ -104,3 +104,8 @@
 
 ;; use ranger.el as default directory handler
 (ranger-override-dired-mode t)
+
+;; automatically reload environment on switching buffer
+(use-package direnv
+  :config
+  (direnv-mode))
