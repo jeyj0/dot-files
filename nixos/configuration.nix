@@ -243,6 +243,7 @@ in
 
     ## other
     firefox
+    chromium
     unstable.qutebrowser
     sxiv
   ];
