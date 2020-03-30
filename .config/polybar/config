@@ -43,7 +43,7 @@ label-mode-foreground = ${colors.fg-primary}
 label-focused = ${i3.label}
 label-unfocused = ${i3.label}
 label-visible = ${i3.label}
-labev-urgent = ${i3.label}
+label-urgent = ${i3.label}
 
 label-focused-padding = ${i3.padding}
 label-unfocused-padding = ${i3.padding}
