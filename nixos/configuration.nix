@@ -192,6 +192,7 @@ in
   environment.systemPackages = with pkgs; [
     # nodejs
     unstable.nodejs-13_x
+    nodePackages.eslint
 
     # emacs
       ripgrep
