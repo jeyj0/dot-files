@@ -11,6 +11,7 @@
 !i3/
 !Thunar/
 !polybar/
+!VSCodium/
 !configtemplates/
 !starship.toml
 !compton.conf

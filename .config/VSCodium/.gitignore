@@ -1,0 +1,5 @@
+/*
+!.gitignore
+
+# select what files to sync
+!User/

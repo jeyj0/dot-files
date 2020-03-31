@@ -1,0 +1,43 @@
+// Place your key bindings in this file to override the defaultsauto[]
+[
+    {
+        "key": "lol",
+        "command": "openworkspace"
+    },
+    {
+        "key": "escape",
+        "command": "workbench.action.closeSidebar",
+        "when": "sideBarVisible"
+    },
+    {
+        "key": "tab",
+        "command": "-vscode-neovim.send",
+        "when": "editorTextFocus && editorLangId == 'magit'"
+    },
+    {
+        "key": "shift+v",
+        "command": "-magit.reverting",
+        "when": "editorTextFocus && editorLangId == 'magit'"
+    },
+    {
+        "key": "o",
+        "command": "magit.discard-at-point",
+        "when": "editorTextFocus && editorLangId == 'magit'"
+    },
+    {
+        "key": "k",
+        "command": "-magit.discard-at-point",
+        "when": "editorTextFocus && editorLangId == 'magit'"
+    },
+    {
+        "key": "alt+u",
+        "command": "workbench.action.previousEditor",
+        "when": "editorTextFocus && neovim.mode != insert",
+    },
+    {
+        "key": "alt+i",
+        "command": "workbench.action.nextEditor",
+        "when": "editorTextFocus && neovim.mode != insert",
+        "args": "<A-i>"
+    },
+]
