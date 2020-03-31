@@ -70,6 +70,9 @@ if exists('g:vscode')
 
     " search project
     nnoremap <leader>sp :<C-u>call VSCodeNotify('workbench.action.findInFiles')<CR>
+
+    " reload/switch color theme
+    nnoremap <leader>hrt :<C-u>call VSCodeNotify('workbench.action.selectTheme')<CR>
 endif
 if !exists('g:vscode')
     call plug#begin('$HOME/.config/nvim/jeyj0-plugged')
