@@ -59,6 +59,9 @@ if exists('g:vscode')
     " buffer kill
     nnoremap <leader>bk :<C-u>call VSCodeNotify('workbench.action.closeActiveEditor')<CR>
 
+    " open terminal
+    nnoremap <leader>ot :<C-u>call VSCodeNotify('workbench.panel.terminal.focus')<CR>
+
     " window split
     nnoremap <leader>ws :<C-u>call VSCodeNotify('workbench.editor.splitEditor')<CR>
 
