@@ -44,11 +44,17 @@ if exists('g:vscode')
     " find file
     nnoremap <leader><leader> :<C-u>call VSCodeNotify('workbench.action.quickOpen')<CR>
 
+    " file recent
+    nnoremap <leader>fr :<C-u>call VSCodeNotify('workbench.action.openRecent')<CR>
+
     " open folder/project
     nnoremap <leader>pp :<C-u>call VSCodeNotify('workbench.action.openWorkspace')<CR>
 
     " file save
     nnoremap <leader>fs :<C-u>call VSCodeNotify('workbench.action.files.save')<CR>
+
+    " buffer kill
+    nnoremap <leader>bk :<C-u>call VSCodeNotify('workbench.action.closeActiveEditor')<CR>
 
     " window split
     nnoremap <leader>ws :<C-u>call VSCodeNotify('workbench.editor.splitEditor')<CR>
