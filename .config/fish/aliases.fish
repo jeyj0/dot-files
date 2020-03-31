@@ -20,3 +20,6 @@ alias e='$VISUAL'
 # (neo)vim
 alias vim='if test -n "(nvr --serverlist)"; ensure_node; end; zsh $HOME/scripts/neovim-remote.sh'
 alias v='vim'
+
+# vscodium = vscode
+alias code='codium'
