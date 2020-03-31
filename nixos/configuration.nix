@@ -247,6 +247,7 @@ in
     chromium
     unstable.qutebrowser
     sxiv
+    gimp
   ];
 
   fonts = {
