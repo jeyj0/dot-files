@@ -47,6 +47,9 @@ if exists('g:vscode')
     " file recent
     nnoremap <leader>fr :<C-u>call VSCodeNotify('workbench.action.openRecent')<CR>
 
+    " file explorer
+    nnoremap <leader>fe :<C-u>call VSCodeNotify('workbench.files.action.focusFilesExplorer')<CR>
+
     " open folder/project
     nnoremap <leader>pp :<C-u>call VSCodeNotify('workbench.action.openWorkspace')<CR>
 
