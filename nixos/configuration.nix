@@ -199,6 +199,8 @@ in
       fd
       clang
 
+    unstable.vscodium
+
     rustup
     wasm-pack
 
