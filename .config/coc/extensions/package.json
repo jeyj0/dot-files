@@ -2,15 +2,15 @@
   "dependencies": {
     "coc-css": ">=1.2.2",
     "coc-eslint": ">=1.2.6",
-    "coc-html": ">=1.2.3",
+    "coc-html": ">=1.2.4",
     "coc-java": ">=1.4.8",
     "coc-jest": ">=1.0.3",
     "coc-json": ">=1.2.5",
     "coc-markdownlint": ">=1.1.1",
     "coc-marketplace": ">=1.7.0",
-    "coc-prettier": ">=1.1.11",
+    "coc-prettier": ">=1.1.12",
     "coc-rls": ">=1.1.4",
-    "coc-tsserver": ">=1.4.11",
+    "coc-tsserver": ">=1.4.12",
     "coc-webpack": ">=1.4.0"
   }
 }
