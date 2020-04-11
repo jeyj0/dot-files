@@ -28,7 +28,7 @@ scroll-down = i3wm-wsprev
 
 modules-left = i3
 modules-center = datetime
-modules-right = cpus lan-network pulseaudio session
+modules-right = cpus wlan-network lan-network battery0 battery1 pulseaudio session
 
 [i3]
 label = %index%
@@ -71,6 +71,10 @@ interface = enp0s31f6
 
 label-connected = "%local_ip% | %downspeed:9% (down) | %upspeed:9% (up)"
 
+[module/wlan-network]
+type = internal/network
+interface = wlp3s0
+
 [module/pulseaudio]
 type = internal/pulseaudio
 interval = 1
@@ -90,6 +94,26 @@ ramp-volume-1 = ""
 ramp-volume-2 = ""
 ramp-volume-font = 1
 ramp-volume-foreground = ${colors.fg}
+
+[battery]
+type = internal/battery
+poll-interval = 5
+
+time-format = %H:%M
+
+format-charging = <label-charging>
+label-charging = Charging (%percentage%% - %time%)
+
+label-full = Fully charged
+label-full-foreground = ${colors.fg-warn}
+
+[module/battery0]
+inherit = battery
+battery = BAT0
+
+[module/battery1]
+inherit = battery
+battery = BAT1
 
 [module/session]
 type = custom/text
