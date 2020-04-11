@@ -43,6 +43,8 @@ floating_modifier $alt
 
 # start a terminal
 bindsym $mod+t exec fish -c 'start_terminal' #i3-sensible-terminal
+# start a new editor
+bindsym $mod+e exec fish -c 'open_editor'
 
 # kill focused window
 bindsym $alt+F4 kill
@@ -77,9 +79,8 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+q layout stacking
+bindsym $mod+q layout toggle split
 bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+$alt+space floating toggle
