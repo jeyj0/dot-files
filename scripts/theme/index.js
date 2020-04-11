@@ -8,6 +8,15 @@ const THEMES = {
     'solarized': solarized(),
 }
 
+const HOSTS = {
+    'default': {
+        kitty_fontSize: 12,
+    },
+    'jannis-arcusx': {
+        kitty_fontSize: 17,
+    },
+}
+
 const command = process.argv[2]
 
 switch (command) {
@@ -165,10 +174,12 @@ function molokaiMagentaTheme() {
 async function main(themename) {
     const theme = THEMES[themename]
 
+    const hostSettings = HOSTS[require('os').hostname()] || {}
+
     try {
         await Promise.all([
-            generateXResources(theme),
-            generateKittyConf(theme),
+            generateXResources(theme, hostSettings),
+            generateKittyConf(theme, hostSettings),
         ])
     } catch (err) {
         console.error(err)
@@ -179,7 +190,7 @@ async function writeFile(path, content) {
     await fs.writeFile(path, content)
 }
 
-async function generateXResources(theme) {
+async function generateXResources(theme, _hostSettings) {
     const xresources = {
         background: theme.bg,
         backgroundAlt: theme.bg_alt,
@@ -218,14 +229,20 @@ async function generateXResources(theme) {
     await writeFile(path.join(process.env.HOME, '.Xresources'), fileContents)
 }
 
-async function generateKittyConf(theme) {
+async function generateKittyConf(theme, hostSettings) {
     let template = await fs.readFile(path.join(process.env.HOME, '.config/configtemplates/kitty/kitty.conf'), "utf8")
 
     const colorNames = Object.keys(theme)
 
+    function asTemplateVariable(varName) {
+        return `%${varName}%`
+    }
+
+    const fontSize = hostSettings.kitty_fontSize || HOSTS['default'].kitty_fontSize
+
     const config = colorNames.reduce((template, colorName) => {
-        return template.replace(`%${colorName}%`, theme[colorName])
-    }, template)
+        return template.replace(asTemplateVariable(colorName), theme[colorName])
+    }, template).replace(asTemplateVariable('fontSize'), fontSize)
 
     await writeFile(path.join(process.env.HOME, '.config/kitty/kitty.conf'), config)
 }
