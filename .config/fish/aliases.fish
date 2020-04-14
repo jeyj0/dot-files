@@ -1,3 +1,6 @@
+# general
+alias la='ls -lA'
+
 # git
 alias gs='git status'
 alias gss='git status -s'
