@@ -2,7 +2,7 @@
 [
     {
         "key": "lol",
-        "command": "openworkspace"
+        "command": "editor.action.commentLine"
     },
     {
         "key": "escape",
@@ -10,9 +10,19 @@
         "when": "sideBarVisible"
     },
     {
+        "key": "escape",
+        "command": "workbench.action.closePanel",
+        "when": "activePanel"
+    },
+    {
         "key": "tab",
         "command": "-vscode-neovim.send",
-        "when": "editorTextFocus && editorLangId == 'magit'"
+        // "when": "editorLangId == 'magit'"
+    },
+    {
+        "key": "tab",
+        "command": "search.action.focusSearchList",
+        "when": "focusedView == 'workbench.view.search'"
     },
     {
         "key": "shift+v",

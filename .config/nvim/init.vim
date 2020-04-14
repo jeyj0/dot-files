@@ -59,8 +59,20 @@ if exists('g:vscode')
     " buffer kill
     nnoremap <leader>bk :<C-u>call VSCodeNotify('workbench.action.closeActiveEditor')<CR>
 
+    " code comment
+    nnoremap <leader>cc :<C-u>call VSCodeNotify('editor.action.commentLine')<CR>
+
+    " code rename
+    nnoremap <leader>ciw :<C-u>call VSCodeNotify('editor.action.rename')<CR>
+
+    " code format
+    nnoremap <leader>cf :<C-u>call VSCodeNotify('editor.action.formatDocument')<CR>
+
     " open terminal
     nnoremap <leader>ot :<C-u>call VSCodeNotify('workbench.panel.terminal.focus')<CR>
+
+    " remove search highlighting
+    nnoremap <esc> :noh<CR>
 
     " window split
     nnoremap <leader>ws :<C-u>call VSCodeNotify('workbench.editor.splitEditor')<CR>
