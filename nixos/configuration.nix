@@ -102,7 +102,10 @@ in
       keystroke = true;
       package = pkgs.unclutter-xfixes;
     };
-    openssh.enable = true;
+    openssh = {
+      enable = true;
+      forwardX11 = true;
+    };
     lorri.enable = true;
     blueman.enable = true;
     redshift = {
