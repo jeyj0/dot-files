@@ -63,7 +63,12 @@ in
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.jeyj0 = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "docker" "audio" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [
+      "wheel" # Enable ‘sudo’ for the user.
+      "docker"
+      "audio"
+      "user-with-access-to-virtualbox"
+    ];
     shell = pkgs.fish;
     createHome = true;
     home = "/home/jeyj0";
@@ -150,6 +155,10 @@ in
 
   # services.clipmenu.enable = true;
 
+  virtualisation.virtualbox.host = {
+    enable = true;
+    enableExtensionPack = true;
+  };
   virtualisation.docker = {
     enable = true;
     enableNvidia = true;
