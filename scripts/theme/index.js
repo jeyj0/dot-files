@@ -6,6 +6,7 @@ const THEMES = {
     'molokaiGreen': molokaiGreenTheme(),
     'molokaiMagenta': molokaiMagentaTheme(),
     'solarized': solarized(),
+    'solarizedLight': solarizedLight(),
 }
 
 const HOSTS = {
@@ -110,6 +111,21 @@ function solarized() {
     solarized['warning'] = solarized.orange
     solarized['error'] = solarized.red
     return solarized
+}
+
+function solarizedLight() {
+    const solarizedTheme = solarized()
+
+    const solarizedLight = {
+        ...solarizedTheme,
+        bg: solarizedTheme.base3,
+        bg_alt: solarizedTheme.base2,
+        fg: solarizedTheme.base00,
+        fg_emphasis: solarizedTheme.base01,
+        fg_secondary: solarizedTheme.base1,
+    }
+
+    return solarizedLight
 }
 
 function molokaiTheme() {
