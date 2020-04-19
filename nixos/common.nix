@@ -18,21 +18,21 @@ in
   # should.
   system.stateVersion = "19.09"; # Did you read the comment?
 
-  imports =
-    [ # Include the results of the hardware scan.
-      /etc/nixos/hardware-configuration.nix
-    ];
+  # imports =
+    # [ # Include the results of the hardware scan.
+      # /etc/nixos/hardware-configuration.nix
+    # ];
 
   hardware = {
     bluetooth.enable = true;
     opengl = {
       driSupport32Bit = true;
-      extraPackages = with pkgs; [ vaapiIntel ];
+      # extraPackages = with pkgs; [ vaapiIntel ];
     };
   };
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  # boot.loader.systemd-boot.enable = true;
+  # boot.loader.efi.canTouchEfiVariables = true;
 
   # Use the GRUB 2 boot loader.
   # boot.loader.grub.efiSupport = true;
@@ -41,7 +41,7 @@ in
   # Define on which hard drive you want to install Grub.
 
   networking = {
-    hostName = "jannis-arcusx"; # Define your hostname.
+    # hostName = "jannis-arcusx"; # Define your hostname.
     # wireless.enable = true;  # Enables wireless support via wpa_supplicant.
     networkmanager.enable = true;
   };
@@ -51,8 +51,8 @@ in
   # replicates the default behaviour.
   networking.useDHCP = false;
   # networking.interfaces.enp0s31f6.useDHCP = true;
-  networking.interfaces.enp0s31f6.useDHCP = true;
-  networking.interfaces.wlp3s0.useDHCP = true;
+  # networking.interfaces.enp0s31f6.useDHCP = true;
+  # networking.interfaces.wlp3s0.useDHCP = true;
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -71,12 +71,7 @@ in
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.jeyj0 = {
     isNormalUser = true;
-    extraGroups = [
-      "wheel" # Enable ‘sudo’ for the user.
-      "docker"
-      "audio"
-      "user-with-access-to-virtualbox"
-    ];
+    extraGroups = [ "wheel" "docker" "audio" "video" ]; # Enable ‘sudo’ for the user.
     shell = pkgs.fish;
     createHome = true;
     home = "/home/jeyj0";
@@ -106,6 +101,7 @@ in
 
   location.provider = "geoclue2";
   services = {
+    printing.enable = true;
     emacs = {
       enable = true;
       install = true;
@@ -115,10 +111,7 @@ in
       keystroke = true;
       package = pkgs.unclutter-xfixes;
     };
-    openssh = {
-      enable = true;
-      forwardX11 = true;
-    };
+    openssh.enable = true;
     lorri.enable = true;
     blueman.enable = true;
     redshift = {
@@ -163,13 +156,9 @@ in
 
   # services.clipmenu.enable = true;
 
-  virtualisation.virtualbox.host = {
-    enable = true;
-    enableExtensionPack = true;
-  };
   virtualisation.docker = {
     enable = true;
-    enableNvidia = true;
+    # enableNvidia = true;
   };
 
   # system-wide program settings
@@ -219,7 +208,6 @@ in
       ripgrep
       fd
       clang
-      pandoc
 
     unstable.vscodium
 
@@ -241,7 +229,6 @@ in
     compton # making windows fancy
     zip unzip
     docker-compose
-    bat
 
     now-cli
     google-cloud-sdk
@@ -277,7 +264,11 @@ in
     sxiv
     gimp
 
+    apvlv
     evince
+    zoom-us
+    nextcloud-client
+    libreoffice
   ];
 
   fonts = {
@@ -285,7 +276,7 @@ in
       fira-code
       hack-font
       font-awesome
-      nerdfonts
+      open-sans
     ];
   };
 

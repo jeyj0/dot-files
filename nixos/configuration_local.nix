@@ -71,12 +71,7 @@ in
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.jeyj0 = {
     isNormalUser = true;
-    extraGroups = [
-      "wheel" # Enable ‘sudo’ for the user.
-      "docker"
-      "audio"
-      "user-with-access-to-virtualbox"
-    ];
+    extraGroups = [ "wheel" "docker" "audio" ]; # Enable ‘sudo’ for the user.
     shell = pkgs.fish;
     createHome = true;
     home = "/home/jeyj0";
@@ -115,10 +110,7 @@ in
       keystroke = true;
       package = pkgs.unclutter-xfixes;
     };
-    openssh = {
-      enable = true;
-      forwardX11 = true;
-    };
+    openssh.enable = true;
     lorri.enable = true;
     blueman.enable = true;
     redshift = {
@@ -163,10 +155,6 @@ in
 
   # services.clipmenu.enable = true;
 
-  virtualisation.virtualbox.host = {
-    enable = true;
-    enableExtensionPack = true;
-  };
   virtualisation.docker = {
     enable = true;
     enableNvidia = true;
@@ -219,7 +207,6 @@ in
       ripgrep
       fd
       clang
-      pandoc
 
     unstable.vscodium
 
@@ -241,7 +228,6 @@ in
     compton # making windows fancy
     zip unzip
     docker-compose
-    bat
 
     now-cli
     google-cloud-sdk
@@ -276,8 +262,6 @@ in
     unstable.qutebrowser
     sxiv
     gimp
-
-    evince
   ];
 
   fonts = {
@@ -285,7 +269,6 @@ in
       fira-code
       hack-font
       font-awesome
-      nerdfonts
     ];
   };
 
