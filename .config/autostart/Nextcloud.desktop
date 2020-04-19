@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Nextcloud
+GenericName=File Synchronizer
+Exec=/nix/store/55y4daaqms4c8pqcvsmqkgirgvfpj0pp-nextcloud-client-2.5.3/bin/.nextcloud-wrapped
+Terminal=false
+Icon=nextcloud
+Categories=Network
+Type=Application
+StartupNotify=false
+X-GNOME-Autostart-enabled=true
