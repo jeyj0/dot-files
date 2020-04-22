@@ -106,6 +106,7 @@
 (ranger-override-dired-mode t)
 
 ;; automatically reload environment on switching buffer
+(setq direnv-always-show-summary nil)
 (use-package direnv
   :config
   (direnv-mode))
