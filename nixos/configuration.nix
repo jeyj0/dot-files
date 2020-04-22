@@ -269,6 +269,7 @@ in
       fira-code
       hack-font
       font-awesome
+      nerdfonts
     ];
   };
 
