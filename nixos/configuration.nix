@@ -263,6 +263,8 @@ in
     unstable.qutebrowser
     sxiv
     gimp
+
+    evince
   ];
 
   fonts = {
