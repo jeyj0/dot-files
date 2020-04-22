@@ -231,6 +231,7 @@ in
     compton # making windows fancy
     zip unzip
     docker-compose
+    bat
 
     now-cli
     google-cloud-sdk
