@@ -210,6 +210,7 @@ in
       ripgrep
       fd
       clang
+      pandoc
 
     unstable.vscodium
 
