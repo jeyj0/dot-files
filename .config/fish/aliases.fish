@@ -26,3 +26,6 @@ alias v='vim'
 
 # vscodium = vscode
 alias code='codium'
+
+# utilities
+alias whatismyip='curl ipinfo.io/ip'
