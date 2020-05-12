@@ -4,14 +4,17 @@ let mapleader=" "
 " reload config with hrr
 nnoremap <leader>hrr :source ~/.config/nvim/init.vim<CR>
 
-" save with fs
+nnoremap <silent> <esc> :nohlsearch<cr>
+
+" handling files
 nnoremap <silent> <leader>fs :w<CR>
+
+" handling buffers
+nnoremap <silent> <leader>bk :Bclose<cr>
+nnoremap <silent> <leader>bb :Buffers<cr>
 
 " interactive git status with gg
 nnoremap <silent> <leader>gg :Git<cr>
-
-" closing a buffer
-nnoremap <silent> <leader>bk :Bclose<cr>
 
 " navigation
 nnoremap <silent> <A-h> :wincmd h<cr>
@@ -31,62 +34,61 @@ tnoremap <silent> <A-U> <C-\><C-n>:tabprevious<cr>
 tnoremap <silent> <A-i> <C-\><C-n>:bnext<cr>
 tnoremap <silent> <A-I> <C-\><C-n>:tabnext<cr>
 
-" web search
-nnoremap <silent> gs :set opfunc=WebSearch<CR>g@
-vnoremap <silent> gs :<C-u>call WebSearch(visualmode(), 1)<CR>
-
-" open ranger
-nnoremap <leader>r :RangerWorkingDirectory<cr>
-
-"" exit terminal mode with Alt-n
-tnoremap <A-n> <C-\><C-N>
-
-"" create default terminal with <leader>-t
-nnoremap <silent> <leader>t :botright 20split +terminal<cr>
-""" create different terminals at different locations
-nnoremap <silent> <leader>T :terminal<cr>
-nnoremap <silent> <leader><leader>rt :botright vsplit +terminal<cr>
-nnoremap <silent> <leader><leader>lt :topleft vsplit +terminal<cr>
-nnoremap <silent> <leader><leader>tt :topleft split +terminal<cr>
-nnoremap <silent> <leader><leader>bt :botright split +terminal<cr>
-
-"" use tab to navigate completion list and Enter to select
-"" (only relevant for snippets)
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-
-"" use c-space to trigger completion
-inoremap <silent><expr> <c-space> coc#refresh()
-
-"" create function text object (if supported by languageserver)
-xnoremap if <Plug>(coc-funcobj-i)
-xnoremap af <Plug>(coc-funcobj-a)
-
-" clear search highlighting on <space>
-nnoremap <silent> <space> :noh<cr>
-
-" open fuzzy-file-finder
-"" git-aware
-nnoremap <leader>f :GFiles<cr>
-"" git-unaware
-nnoremap <leader>F :Files<cr>
-"" fuzzy-find with ag
-nnoremap <leader>g :Ag<cr>
-"" buffers
-nnoremap <leader>b :Buffers<cr>
-
-" closing buffers
-nnoremap <silent> <leader>q :Bclose<cr>
 
 " easily split lines in normal mode
-" taken from drzel/vim-split-line
-nnoremap <CR> :keeppatterns substitute/\s*\%#\s*/\r/e <bar> normal! ==<CR>
+" taken and modified from drzel/vim-split-line
+nnoremap <A-CR> :keeppatterns substitute/\s*\%#\s*/\r/e <bar> normal! ==<CR>
 
-" auto-format for different filetypes
-augroup formatbindings
-autocmd! formatbindings
-autocmd FileType *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html
-    \ nnoremap <buffer> <silent> <leader>p <Plug>(Prettier)
-autocmd FileType rust nnoremap <buffer> <silent> <leader>p :RustFmt<cr>
-augroup end
+
+" " web search
+" nnoremap <silent> gs :set opfunc=WebSearch<CR>g@
+" vnoremap <silent> gs :<C-u>call WebSearch(visualmode(), 1)<CR>
+" 
+" " open ranger
+" nnoremap <leader>r :RangerWorkingDirectory<cr>
+" 
+" "" exit terminal mode with Alt-n
+" tnoremap <A-n> <C-\><C-N>
+" 
+" "" create default terminal with <leader>-t
+" nnoremap <silent> <leader>t :botright 20split +terminal<cr>
+" """ create different terminals at different locations
+" nnoremap <silent> <leader>T :terminal<cr>
+" nnoremap <silent> <leader><leader>rt :botright vsplit +terminal<cr>
+" nnoremap <silent> <leader><leader>lt :topleft vsplit +terminal<cr>
+" nnoremap <silent> <leader><leader>tt :topleft split +terminal<cr>
+" nnoremap <silent> <leader><leader>bt :botright split +terminal<cr>
+" 
+" "" use tab to navigate completion list and Enter to select
+" "" (only relevant for snippets)
+" inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" 
+" "" use c-space to trigger completion
+" inoremap <silent><expr> <c-space> coc#refresh()
+" 
+" "" create function text object (if supported by languageserver)
+" xnoremap if <Plug>(coc-funcobj-i)
+" xnoremap af <Plug>(coc-funcobj-a)
+" 
+" " clear search highlighting on <space>
+" nnoremap <silent> <space> :noh<cr>
+" 
+" " open fuzzy-file-finder
+" "" git-aware
+" nnoremap <leader>f :GFiles<cr>
+" "" git-unaware
+" nnoremap <leader>F :Files<cr>
+" "" fuzzy-find with ag
+" nnoremap <leader>g :Ag<cr>
+" "" buffers
+" nnoremap <leader>b :Buffers<cr>
+" 
+" " auto-format for different filetypes
+" augroup formatbindings
+" autocmd! formatbindings
+" autocmd FileType *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html
+"     \ nnoremap <buffer> <silent> <leader>p <Plug>(Prettier)
+" autocmd FileType rust nnoremap <buffer> <silent> <leader>p :RustFmt<cr>
+" augroup end
