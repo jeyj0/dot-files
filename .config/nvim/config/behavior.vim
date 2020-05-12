@@ -9,6 +9,9 @@ set splitbelow
 set ignorecase
 set smartcase
 
+" always keep signcolumn open
+set signcolumn=yes
+
 " setup terminal
 autocmd TermOpen * setlocal nonumber norelativenumber " no line numbers in terminal buffer
 autocmd TermOpen * startinsert " start terminal in terminal-mode
