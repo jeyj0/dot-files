@@ -8,6 +8,7 @@ nnoremap <silent> <esc> :nohlsearch<cr>
 
 " handling files
 nnoremap <silent> <leader>fs :w<CR>
+nnoremap <silent> <leader>fe :RangerWorkingDirectory<cr>
 
 " handling buffers
 nnoremap <silent> <leader>bk :Bclose<cr>
@@ -43,9 +44,6 @@ nnoremap <A-CR> :keeppatterns substitute/\s*\%#\s*/\r/e <bar> normal! ==<CR>
 " " web search
 " nnoremap <silent> gs :set opfunc=WebSearch<CR>g@
 " vnoremap <silent> gs :<C-u>call WebSearch(visualmode(), 1)<CR>
-" 
-" " open ranger
-" nnoremap <leader>r :RangerWorkingDirectory<cr>
 " 
 " "" exit terminal mode with Alt-n
 " tnoremap <A-n> <C-\><C-N>
