@@ -264,9 +264,11 @@ in
 
     apvlv
     evince
-    zoom-us
+
     nextcloud-client
     libreoffice
+    postman
+    openssl
   ];
 
   fonts = {
