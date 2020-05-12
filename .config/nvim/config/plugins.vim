@@ -34,7 +34,8 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 " autocompletion
-Plug 'neoclide/coc.nvim', { 'branch': 'release', 'do': 'npm ci' }
+" Plug 'neoclide/coc.nvim', { 'branch': 'release', 'do': 'npm ci' }
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
 " better terminal integration (f.e. mouse support)
 Plug 'wincent/terminus'
