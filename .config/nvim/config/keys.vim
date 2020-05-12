@@ -7,6 +7,7 @@ nnoremap <leader>hrr :source ~/.config/nvim/init.vim<CR>
 nnoremap <silent> <esc> :nohlsearch<cr>
 
 " handling files
+nnoremap <silent> <leader><leader> :GitFiles<cr>
 nnoremap <silent> <leader>fs :w<CR>
 nnoremap <silent> <leader>fe :RangerWorkingDirectory<cr>
 
