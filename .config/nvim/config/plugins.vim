@@ -11,12 +11,6 @@ source $HOME/.config/nvim/plug.vim
 
 call plug#begin('$HOME/.config/nvim/jeyj0-plugged')
 
-" plugins for different nvim runners
-if exists('g:vscode')
-    " TODO remove this
-    Plug 'asvetliakov/vscode-neovim', { 'dir': './vim' }
-endif
-
 " language support for basically everything
 Plug 'sheerun/vim-polyglot'
 
@@ -59,5 +53,11 @@ Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 
 " nice todo-list management
 Plug 'jeyj0/vim-todo-lists'
+
+" plugins for different nvim runners
+if exists('g:vscode')
+    " TODO remove this
+    Plug 'asvetliakov/vscode-neovim', { 'dir': './vim' }
+endif
 
 call plug#end()
