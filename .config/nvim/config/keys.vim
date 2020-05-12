@@ -47,10 +47,10 @@ inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
+" web search
+nnoremap <silent> <leader>gs :set opfunc=WebSearch<CR>g@
+vnoremap <silent> <leader>gs :<C-u>call WebSearch(visualmode(), 1)<CR>
 
-" " web search
-" nnoremap <silent> gs :set opfunc=WebSearch<CR>g@
-" vnoremap <silent> gs :<C-u>call WebSearch(visualmode(), 1)<CR>
 " 
 " "" exit terminal mode with Alt-n
 " tnoremap <A-n> <C-\><C-N>
