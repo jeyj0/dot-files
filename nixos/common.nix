@@ -60,7 +60,6 @@ in
 
   # Select internationalisation properties.
   i18n = {
-    consoleFont = "Fira-Code";
   #   consoleKeyMap = "us";
   #   defaultLocale = "en_US.UTF-8";
   };
