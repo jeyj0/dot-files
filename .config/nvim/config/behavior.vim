@@ -2,8 +2,8 @@
 set clipboard=unnamedplus
 
 " set for-me-intuitive split opening
-set splitright
-set splitbelow
+" set splitright
+" set splitbelow
 
 " smart search
 set ignorecase
