@@ -8,6 +8,7 @@ nnoremap <silent> <esc> :nohlsearch<cr>
 
 " handling files
 nnoremap <silent> <leader><leader> :GitFiles<cr>
+nnoremap <silent> <leader>fo :Files<cr>
 nnoremap <silent> <leader>fs :w<CR>
 nnoremap <silent> <leader>fe :RangerWorkingDirectory<cr>
 
