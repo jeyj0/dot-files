@@ -21,6 +21,9 @@ nnoremap <silent> <leader>bb :Buffers<cr>
 " interactive git status with gg
 nnoremap <silent> <leader>gg :Git<cr>
 
+" internal terminal
+nnoremap <silent> <leader>ot :botright 20split +terminal<cr>
+
 " navigation
 nnoremap <silent> <A-h> :wincmd h<cr>
 nnoremap <silent> <A-j> :wincmd j<cr>
@@ -53,44 +56,3 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 nnoremap <silent> <leader>gs :set opfunc=WebSearch<CR>g@
 vnoremap <silent> <leader>gs :<C-u>call WebSearch(visualmode(), 1)<CR>
 
-" 
-" "" exit terminal mode with Alt-n
-" tnoremap <A-n> <C-\><C-N>
-" 
-" "" create default terminal with <leader>-t
-" nnoremap <silent> <leader>t :botright 20split +terminal<cr>
-" """ create different terminals at different locations
-" nnoremap <silent> <leader>T :terminal<cr>
-" nnoremap <silent> <leader><leader>rt :botright vsplit +terminal<cr>
-" nnoremap <silent> <leader><leader>lt :topleft vsplit +terminal<cr>
-" nnoremap <silent> <leader><leader>tt :topleft split +terminal<cr>
-" nnoremap <silent> <leader><leader>bt :botright split +terminal<cr>
-" 
-" 
-" "" use c-space to trigger completion
-" inoremap <silent><expr> <c-space> coc#refresh()
-" 
-" "" create function text object (if supported by languageserver)
-" xnoremap if <Plug>(coc-funcobj-i)
-" xnoremap af <Plug>(coc-funcobj-a)
-" 
-" " clear search highlighting on <space>
-" nnoremap <silent> <space> :noh<cr>
-" 
-" " open fuzzy-file-finder
-" "" git-aware
-" nnoremap <leader>f :GFiles<cr>
-" "" git-unaware
-" nnoremap <leader>F :Files<cr>
-" "" fuzzy-find with ag
-" nnoremap <leader>g :Ag<cr>
-" "" buffers
-" nnoremap <leader>b :Buffers<cr>
-" 
-" " auto-format for different filetypes
-" augroup formatbindings
-" autocmd! formatbindings
-" autocmd FileType *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html
-"     \ nnoremap <buffer> <silent> <leader>p <Plug>(Prettier)
-" autocmd FileType rust nnoremap <buffer> <silent> <leader>p :RustFmt<cr>
-" augroup end
