@@ -23,6 +23,7 @@ Plug 'sheerun/vim-polyglot'
 " auto-close brackets,...
 Plug 'cohama/lexima.vim'
 
+" awesome git
 Plug 'tpope/vim-fugitive'
 
 " color-scheme
@@ -31,7 +32,6 @@ Plug 'crusoexia/vim-monokai'
 " fancy status line
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-" Plug 'tpope/vim-fugitive'
 
 " autocompletion
 Plug 'neoclide/coc.nvim', { 'branch': 'release', 'do': 'npm ci' }

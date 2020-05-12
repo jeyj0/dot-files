@@ -5,7 +5,28 @@ let mapleader=" "
 nnoremap <leader>hrr :source ~/.config/nvim/init.vim<CR>
 
 " save with fs
-nnoremap <leader>fs :w<CR>
+nnoremap <silent> <leader>fs :w<CR>
+
+" interactive git status with gg
+nnoremap <silent> <leader>gg :Git<cr>
+
+" navigation
+nnoremap <silent> <A-h> :wincmd h<cr>
+nnoremap <silent> <A-j> :wincmd j<cr>
+nnoremap <silent> <A-k> :wincmd k<cr>
+nnoremap <silent> <A-l> :wincmd l<cr>
+nnoremap <silent> <A-u> :bprevious<cr>
+nnoremap <silent> <A-U> :tabprevious<cr>
+nnoremap <silent> <A-i> :bnext<cr>
+nnoremap <silent> <A-I> :tabnext<cr>
+tnoremap <silent> <A-h> <C-\><C-n>:wincmd h<cr>
+tnoremap <silent> <A-j> <C-\><C-n>:wincmd j<cr>
+tnoremap <silent> <A-k> <C-\><C-n>:wincmd k<cr>
+tnoremap <silent> <A-l> <C-\><C-n>:wincmd l<cr>
+tnoremap <silent> <A-u> <C-\><C-n>:bprevious<cr>
+tnoremap <silent> <A-U> <C-\><C-n>:tabprevious<cr>
+tnoremap <silent> <A-i> <C-\><C-n>:bnext<cr>
+tnoremap <silent> <A-I> <C-\><C-n>:tabnext<cr>
 
 " web search
 nnoremap <silent> gs :set opfunc=WebSearch<CR>g@
@@ -16,25 +37,6 @@ nnoremap <silent> <leader>ls :topleft vsplit ~/main.todo<cr>
 
 " open ranger
 nnoremap <leader>r :RangerWorkingDirectory<cr>
-
-" navigation
-nnoremap <silent> <A-h> :wincmd h<cr>
-nnoremap <silent> <A-j> :wincmd j<cr>
-nnoremap <silent> <A-k> :wincmd k<cr>
-nnoremap <silent> <A-l> :wincmd l<cr>
-nnoremap <silent> <A-U> :bprevious<cr>
-nnoremap <silent> <A-u> :tabprevious<cr>
-nnoremap <silent> <A-I> :bnext<cr>
-nnoremap <silent> <A-i> :tabnext<cr>
-tnoremap <silent> <A-h> <C-\><C-n>:wincmd h<cr>
-tnoremap <silent> <A-j> <C-\><C-n>:wincmd j<cr>
-tnoremap <silent> <A-k> <C-\><C-n>:wincmd k<cr>
-tnoremap <silent> <A-l> <C-\><C-n>:wincmd l<cr>
-tnoremap <silent> <A-U> <C-\><C-n>:bprevious<cr>
-tnoremap <silent> <A-u> <C-\><C-n>:tabprevious<cr>
-tnoremap <silent> <A-I> <C-\><C-n>:bnext<cr>
-tnoremap <silent> <A-i> <C-\><C-n>:tabnext<cr>
-
 
 "" exit terminal mode with Alt-n
 tnoremap <A-n> <C-\><C-N>
