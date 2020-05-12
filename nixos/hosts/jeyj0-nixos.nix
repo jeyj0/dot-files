@@ -14,7 +14,7 @@ with lib;
 
   networking.hostName = "jeyj0-nixos";
 
-  networking.interfactes.enp0s31f6.useDHCP = true;
+  networking.interfaces.enp0s31f6.useDHCP = true;
 
   services.xserver.videoDrivers = [ "nvidia" ];
 
