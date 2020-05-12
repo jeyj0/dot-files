@@ -32,9 +32,6 @@ tnoremap <silent> <A-I> <C-\><C-n>:tabnext<cr>
 nnoremap <silent> gs :set opfunc=WebSearch<CR>g@
 vnoremap <silent> gs :<C-u>call WebSearch(visualmode(), 1)<CR>
 
-" keymap to open default todo list
-nnoremap <silent> <leader>ls :topleft vsplit ~/main.todo<cr>
-
 " open ranger
 nnoremap <leader>r :RangerWorkingDirectory<cr>
 
