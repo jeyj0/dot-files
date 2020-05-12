@@ -18,6 +18,12 @@ in
   # should.
   system.stateVersion = "19.09"; # Did you read the comment?
 
+  system.autoUpgrade = {
+    enable = true;
+    allowReboot = false;
+    channel = https://nixos.org/channels/nixos-20.03;
+  };
+
   # imports =
     # [ # Include the results of the hardware scan.
       # /etc/nixos/hardware-configuration.nix
@@ -127,9 +133,11 @@ in
 
     # videoDrivers = [ "nvidia" ];
 
+    displayManager.defaultSession = "xfce+i3";
+
     desktopManager = {
       xterm.enable = false;
-      xfce4-14 = {
+      xfce = {
         enable = true;
         enableXfwm = false;
         noDesktop = true;
@@ -137,7 +145,6 @@ in
     };
 
     windowManager = {
-      default = "i3";
       i3 = {
         enable = true;
         package = pkgs.i3-gaps;
@@ -199,7 +206,7 @@ in
   };
   environment.systemPackages = with pkgs; [
     # nodejs
-    unstable.nodejs-13_x
+    unstable.nodejs-14_x
     nodePackages.eslint
 
     # emacs
