@@ -12,6 +12,8 @@ nnoremap <silent> <leader>fo :Files<cr>
 nnoremap <silent> <leader>fs :w<CR>
 nnoremap <silent> <leader>fe :RangerWorkingDirectory<cr>
 
+nnoremap <silent> <leader>sp :Ag<cr>
+
 " handling buffers
 nnoremap <silent> <leader>bk :Bclose<cr>
 nnoremap <silent> <leader>bb :Buffers<cr>
