@@ -35,10 +35,15 @@ tnoremap <silent> <A-U> <C-\><C-n>:tabprevious<cr>
 tnoremap <silent> <A-i> <C-\><C-n>:bnext<cr>
 tnoremap <silent> <A-I> <C-\><C-n>:tabnext<cr>
 
-
 " easily split lines in normal mode
 " taken and modified from drzel/vim-split-line
 nnoremap <A-CR> :keeppatterns substitute/\s*\%#\s*/\r/e <bar> normal! ==<CR>
+
+" use tab to navigate completion list and Enter to select
+" (only relevant for snippets)
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 
 " " web search
@@ -57,11 +62,6 @@ nnoremap <A-CR> :keeppatterns substitute/\s*\%#\s*/\r/e <bar> normal! ==<CR>
 " nnoremap <silent> <leader><leader>tt :topleft split +terminal<cr>
 " nnoremap <silent> <leader><leader>bt :botright split +terminal<cr>
 " 
-" "" use tab to navigate completion list and Enter to select
-" "" (only relevant for snippets)
-" inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-" inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 " 
 " "" use c-space to trigger completion
 " inoremap <silent><expr> <c-space> coc#refresh()
