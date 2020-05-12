@@ -20,6 +20,9 @@ Plug 'cohama/lexima.vim'
 " awesome git
 Plug 'tpope/vim-fugitive'
 
+" narrow to region
+Plug 'chrisbra/NrrwRgn'
+
 " color-scheme
 Plug 'crusoexia/vim-monokai'
 
@@ -60,4 +63,14 @@ if exists('g:vscode')
     Plug 'asvetliakov/vscode-neovim', { 'dir': './vim' }
 endif
 
+" This is just a test of the narrow-to-region plugin
+
 call plug#end()
+
+" do not map <leader>bd to close buffer (bclose.vim)
+let g:bclose_no_plugin_maps = 1
+
+" use ranger when opening a directory
+let g:ranger_map_keys = 0
+let g:ranger_replace_netrw = 1
+

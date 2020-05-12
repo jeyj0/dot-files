@@ -1,9 +1,14 @@
 " share clipboard with system
 set clipboard=unnamedplus
 
-" set for-me-intuitive split opening
-" set splitright
-" set splitbelow
+" fzf commands / shortcuts
+let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+
+" configure neovim-remote to work properly with git
+autocmd FileType gitcommit,gitrebase,gitconfig,diff set bufhidden=delete
+
+" coc.nvim config
+set updatetime=300
 
 " smart search
 set ignorecase
