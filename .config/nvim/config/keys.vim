@@ -10,6 +10,9 @@ nnoremap <silent> <leader>fs :w<CR>
 " interactive git status with gg
 nnoremap <silent> <leader>gg :Git<cr>
 
+" closing a buffer
+nnoremap <silent> <leader>bk :Bclose<cr>
+
 " navigation
 nnoremap <silent> <A-h> :wincmd h<cr>
 nnoremap <silent> <A-j> :wincmd j<cr>
