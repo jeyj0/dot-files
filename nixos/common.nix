@@ -84,11 +84,10 @@ in
 
   # List services that you want to enable:
 
+  networking.firewall.enable = true;
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+  networking.firewall.allowedTCPPorts = [ 80 443 4443 8000 3000 8080 8001 8081 5000 ];
+  networking.firewall.allowedUDPPorts = [ 10000 ];
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
