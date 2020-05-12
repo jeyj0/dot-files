@@ -110,3 +110,6 @@
 (use-package direnv
   :config
   (direnv-mode))
+
+;; enable narrow-to-region
+(put 'narrow-to-region 'disabled nil)
