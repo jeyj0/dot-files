@@ -18,6 +18,34 @@ nnoremap <silent> <leader>sp :Ag<cr>
 nnoremap <silent> <leader>bk :Bclose<cr>
 nnoremap <silent> <leader>bb :Buffers<cr>
 
+" handling windows
+nnoremap <silent> <leader>tt :tab split<cr>
+
+" navigating code
+nmap gd <Plug>(coc-definition)
+nmap gr <Plug>(coc-rename)
+nmap [e <Plug>(coc-diagnostic-prev)
+nmap ]e <Plug>(coc-diagnostic-next)
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+xmap if <Plug>(coc-funcobj-i)
+omap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap af <Plug>(coc-funcobj-a)
+xmap ic <Plug>(coc-classobj-i)
+omap ic <Plug>(coc-classobj-i)
+xmap ac <Plug>(coc-classobj-a)
+omap ac <Plug>(coc-classobj-a)
+
 " interactive git status with gg
 nnoremap <silent> <leader>gg :Git<cr>
 
