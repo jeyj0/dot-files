@@ -48,7 +48,12 @@ Plug 'airblade/vim-gitgutter'
 
 " use ranger
 Plug 'francoiscabrol/ranger.vim' " this sets <leader>f to open ranger
+
+" buffer closing
 Plug 'rbgrouleff/bclose.vim' " required by ranger
+
+" in case I forget some keybinding, this should help me
+Plug 'liuchengxu/vim-which-key'
 
 " get fzf
 Plug 'junegunn/fzf'
@@ -58,7 +63,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'vim-scripts/yaifa.vim'
 
 " auto-formatting
-Plug 'prettier/vim-prettier', { 'do': 'npm install' }
+" Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 
 " nice todo-list management
 Plug 'jeyj0/vim-todo-lists'
@@ -73,10 +78,7 @@ endif
 
 call plug#end()
 
-" do not map <leader>bd to close buffer (bclose.vim)
+" do not map keys from some plugins
 let g:bclose_no_plugin_maps = 1
-
-" use ranger when opening a directory
 let g:ranger_map_keys = 0
-let g:ranger_replace_netrw = 1
-
+let g:gitgutter_map_keys = 0

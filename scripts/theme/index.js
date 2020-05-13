@@ -7,6 +7,8 @@ const THEMES = {
     'molokaiMagenta': molokaiMagentaTheme(),
     'solarized': solarized(),
     'solarizedLight': solarizedLight(),
+    'gruvbox': gruvbox(),
+    'gruvboxContrast': gruvboxContrast(),
 }
 
 const HOSTS = {
@@ -64,6 +66,47 @@ switch (command) {
 // primary
 // warning
 // error
+
+function gruvbox() {
+    const gruvbox = {
+        color0 : "#282828",
+        color1 : "#cc241d",
+        color2 : "#98971a",
+        color3 : "#d79921",
+        color4 : "#458588",
+        color5 : "#b16286",
+        color6 : "#689d6a",
+        color7 : "#a89984",
+        color8 : "#928374",
+        color9 : "#fb4934",
+        color10: "#b8bb26",
+        color11: "#fabd2f",
+        color12: "#83a598",
+        color13: "#d3869b",
+        color14: "#8ec07c",
+        color15: "#ebdbb2",
+    }
+    gruvbox['bg'] = gruvbox.color0
+    // gruvbox['bg_alt'] = "#1d2021"
+    gruvbox['bg_alt'] = "#1c1c1c"
+    gruvbox['fg'] = gruvbox.color15
+    gruvbox['fg_emphasis'] = gruvbox.color15
+    gruvbox['fg_secondary'] = gruvbox.color15
+
+    gruvbox['primary'] = gruvbox.color14 // "#fe8019"
+    gruvbox['warning'] = gruvbox.color11
+    gruvbox['error'] = gruvbox.color9
+
+    return gruvbox
+}
+
+function gruvboxContrast() {
+    const gruvboxContrast = gruvbox()
+    const gruvbox_ref = gruvbox()
+    gruvboxContrast.bg = gruvbox_ref.bg_alt
+    gruvboxContrast.bg_alt = gruvbox_ref.bg
+    return gruvboxContrast
+}
 
 function solarized() {
     const solarized = {

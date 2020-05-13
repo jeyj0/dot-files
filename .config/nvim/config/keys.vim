@@ -1,39 +1,102 @@
 " use space as leader
 let mapleader=" "
 
-" reload config with hrr
-nnoremap <leader>hrr :source ~/.config/nvim/init.vim<CR>
+" make remembering leader-mappings easier using which-key
+call which_key#register('<Space>', "g:which_key_map")
+nnoremap <silent> <leader> :<c-u>WhichKey '<Space>'<cr>
+vnoremap <silent> <leader> :<c-u>WhichKeyVisual '<Space>'<cr>
 
-nnoremap <silent> <esc> :nohlsearch<cr>
+"" which-key dict setup (for nice output from which-key)
+let g:which_key_map = {}
+let g:which_key_map[';'] = ':'
+let g:which_key_map.b = { 'name' : '+buffer' }
+  let g:which_key_map.b.b = 'buffers'
+  let g:which_key_map.b.u = 'prev'
+  let g:which_key_map.b.i = 'next'
+  let g:which_key_map.b.k = 'kill'
+let g:which_key_map.f = { 'name' : '+file' }
+  let g:which_key_map.f.e = 'explorer'
+  let g:which_key_map.f.s = 'save'
+  let g:which_key_map.f.o = 'open'
+let g:which_key_map.c = { 'name' : '+config' }
+  let g:which_key_map.c.e = 'edit'
+  let g:which_key_map.c.r = 'refresh'
+let g:which_key_map.w = { 'name' : '+window' }
+  let g:which_key_map.w.q = 'close'
+  let g:which_key_map.w.s = 'vsplit'
+  let g:which_key_map.w.v = 'edit'
+  let g:which_key_map.w.p = 'prev'
+  let g:which_key_map.w.H = 'switch left'
+  let g:which_key_map.w.J = 'switch down'
+  let g:which_key_map.w.K = 'switch up'
+  let g:which_key_map.w.L = 'switch right'
+  let g:which_key_map.w['='] = 'autoresize'
+let g:which_key_map.n = { 'name' : '+narrow' }
+  let g:which_key_map.n.r = 'region'
+let g:which_key_map.g = { 'name' : '+git' }
+  let g:which_key_map.g.g = 'interactive status'
+  let g:which_key_map.g.s = 'status'
+  let g:which_key_map.g.c = { 'name' : '+commit' }
+    let g:which_key_map.g.c.c = 'create'
+  let g:which_key_map.g.f = { 'name' : '+file' }
+    let g:which_key_map.g.f.b = 'blame'
+  let g:which_key_map.g.b = { 'name' : '+branch' }
+    let g:which_key_map.g.b.b = 'checkout'
+let g:which_key_map.o = { 'name' : '+open' }
+  let g:which_key_map.o.t = 'terminal'
+let g:which_key_map.s = { 'name' : '+search' }
+  let g:which_key_map.s.w = 'web'
+  let g:which_key_map.s.p = 'project'
+let g:which_key_map.h = 'left (win)'
+let g:which_key_map.j = 'down (win)'
+let g:which_key_map.k = 'up (win)'
+let g:which_key_map.l = 'right (win)'
+let g:which_key_map.u = 'prev buffer'
+let g:which_key_map.i = 'next buffer'
 
-" handling files
+" CONFIG
+nnoremap <silent> <leader>cr :source ~/.config/nvim/init.vim<CR>
+nnoremap <silent> <leader>ce :e ~/.config/nvim/init.vim<cr>
+
+" FILES
 nnoremap <silent> <leader><leader> :GitFiles<cr>
 nnoremap <silent> <leader>fo :Files<cr>
 nnoremap <silent> <leader>fs :w<CR>
 nnoremap <silent> <leader>fe :RangerWorkingDirectory<cr>
 
+" SEARCH
 nnoremap <silent> <leader>sp :Ag<cr>
+"" web search
+nnoremap <silent> <leader>sw :set opfunc=WebSearch<CR>g@
+vnoremap <silent> <leader>sw :<C-u>call WebSearch(visualmode(), 1)<CR>
+"" remove search highlighting with esc
+nnoremap <silent> <esc> :nohlsearch<cr>
 
-" handling buffers
+" BUFFERS
+nnoremap <silent> <leader>u :bprevious<cr>
+nnoremap <silent> <leader>bu :bprevious<cr>
+tnoremap <silent> <leader>u <C-\><C-n>:bprevious<cr>
+tnoremap <silent> <leader>bu <C-\><C-n>:bprevious<cr>
+nnoremap <silent> <leader>i :bnext<cr>
+nnoremap <silent> <leader>bi :bnext<cr>
+tnoremap <silent> <leader>i <C-\><C-n>:bnext<cr>
+tnoremap <silent> <leader>bi <C-\><C-n>:bnext<cr>
 nnoremap <silent> <leader>bk :Bclose<cr>
 nnoremap <silent> <leader>bb :Buffers<cr>
 
-" handling windows
+" TABS
+nnoremap <silent> <leader>tu :tabprevious<cr>
+nnoremap <silent> <leader>ti :tabnext<cr>
+tnoremap <silent> <leader>tu <C-\><C-n>:tabprevious<cr>
+tnoremap <silent> <leader>ti <C-\><C-n>:tabnext<cr>
 nnoremap <silent> <leader>tt :tab split<cr>
+nnoremap <silent> <leader>tk :tabclose<cr>
 
 " navigating code
 nmap gd <Plug>(coc-definition)
 nmap gr <Plug>(coc-rename)
 nmap [e <Plug>(coc-diagnostic-prev)
 nmap ]e <Plug>(coc-diagnostic-next)
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
 
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
@@ -46,29 +109,44 @@ omap ic <Plug>(coc-classobj-i)
 xmap ac <Plug>(coc-classobj-a)
 omap ac <Plug>(coc-classobj-a)
 
-" interactive git status with gg
-nnoremap <silent> <leader>gg :Git<cr>
+" GIT
+nnoremap <silent> <leader>gg :Git<cr>:wincmd T<cr>
+nnoremap <silent> <leader>gs :Git status --short<cr>
+nnoremap <silent> <leader>gcc :Git commit<cr>
+nnoremap <leader>gcb :Git checkout<space>
+nnoremap <silent> <leader>gfb :Git blame<cr>
 
-" internal terminal
+"" fugitive-only
+augroup fugitivemaps
+  autocmd! fugitivemaps
+  autocmd Filetype fugitive nmap <buffer> <silent> <tab> =
+augroup end
+
+
+" OPEN
 nnoremap <silent> <leader>ot :botright 20split +terminal<cr>
 
-" navigation
-nnoremap <silent> <A-h> :wincmd h<cr>
-nnoremap <silent> <A-j> :wincmd j<cr>
-nnoremap <silent> <A-k> :wincmd k<cr>
-nnoremap <silent> <A-l> :wincmd l<cr>
-nnoremap <silent> <A-u> :bprevious<cr>
-nnoremap <silent> <A-U> :tabprevious<cr>
-nnoremap <silent> <A-i> :bnext<cr>
-nnoremap <silent> <A-I> :tabnext<cr>
-tnoremap <silent> <A-h> <C-\><C-n>:wincmd h<cr>
-tnoremap <silent> <A-j> <C-\><C-n>:wincmd j<cr>
-tnoremap <silent> <A-k> <C-\><C-n>:wincmd k<cr>
-tnoremap <silent> <A-l> <C-\><C-n>:wincmd l<cr>
-tnoremap <silent> <A-u> <C-\><C-n>:bprevious<cr>
-tnoremap <silent> <A-U> <C-\><C-n>:tabprevious<cr>
-tnoremap <silent> <A-i> <C-\><C-n>:bnext<cr>
-tnoremap <silent> <A-I> <C-\><C-n>:tabnext<cr>
+" WINDOWS
+nnoremap <silent> <leader>wH :wincmd h<cr>:wincmd p<cr>:<C-u>call SwitchWindows()<cr>
+nnoremap <silent> <leader>wJ :wincmd j<cr>:wincmd p<cr>:<C-u>call SwitchWindows()<cr>
+nnoremap <silent> <leader>wK :wincmd k<cr>:wincmd p<cr>:<C-u>call SwitchWindows()<cr>
+nnoremap <silent> <leader>wL :wincmd l<cr>:wincmd p<cr>:<C-u>call SwitchWindows()<cr>
+nnoremap <silent> <leader>w= :wincmd =<cr>
+nnoremap <silent> <leader>wv :vsplit<cr>
+nnoremap <silent> <leader>ws :split<cr>
+nnoremap <silent> <leader>wq :q<cr>
+nnoremap <silent> <leader>h :wincmd h<cr>
+nnoremap <silent> <leader>j :wincmd j<cr>
+nnoremap <silent> <leader>k :wincmd k<cr>
+nnoremap <silent> <leader>l :wincmd l<cr>
+nnoremap <silent> <leader>wp :wincmd p<cr>
+tnoremap <silent> <leader>wv <C-\><C-n>:vsplit<cr>
+tnoremap <silent> <leader>ws <C-\><C-n>:split<cr>
+tnoremap <silent> <leader>h <C-\><C-n>:wincmd h<cr>
+tnoremap <silent> <leader>j <C-\><C-n>:wincmd j<cr>
+tnoremap <silent> <leader>k <C-\><C-n>:wincmd k<cr>
+tnoremap <silent> <leader>l <C-\><C-n>:wincmd l<cr>
+tnoremap <silent> <leader>wp <C-\><C-n>:wincmd p<cr>
 
 " easily split lines in normal mode
 " taken and modified from drzel/vim-split-line
@@ -80,7 +158,6 @@ inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
-" web search
-nnoremap <silent> <leader>gs :set opfunc=WebSearch<CR>g@
-vnoremap <silent> <leader>gs :<C-u>call WebSearch(visualmode(), 1)<CR>
+" make typing colon easier and less error-prone
+nnoremap <leader>; :
 
