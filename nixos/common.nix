@@ -19,7 +19,7 @@ in
   system.stateVersion = "19.09"; # Did you read the comment?
 
   system.autoUpgrade = {
-    enable = true;
+    # enable = true;
     allowReboot = false;
     channel = https://nixos.org/channels/nixos-20.03;
   };
