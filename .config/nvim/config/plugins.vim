@@ -14,11 +14,17 @@ call plug#begin('$HOME/.config/nvim/jeyj0-plugged')
 " language support for basically everything
 Plug 'sheerun/vim-polyglot'
 
+" direnv loading
+Plug 'direnv/direnv.vim'
+
 " auto-close brackets,...
 Plug 'cohama/lexima.vim'
 
 " awesome git
 Plug 'tpope/vim-fugitive'
+
+" surround with stuff
+Plug 'tpope/vim-surround'
 
 " narrow to region
 Plug 'chrisbra/NrrwRgn'
