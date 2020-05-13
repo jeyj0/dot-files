@@ -206,7 +206,7 @@ in
   };
   environment.systemPackages = with pkgs; [
     # nodejs
-    unstable.nodejs-14_x
+    nodejs-12_x
     nodePackages.eslint
 
     # emacs
