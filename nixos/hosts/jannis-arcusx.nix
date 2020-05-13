@@ -14,7 +14,6 @@ with lib;
 
   hardware.opengl.extraPackages = with pkgs; [ vaapiIntel ];
   hardware.acpilight.enable = true;
-  hardware.brightnessctl.enable = true;
 
   services.illum.enable = true;
 
