@@ -25,6 +25,7 @@ Plug 'chrisbra/NrrwRgn'
 
 " color-scheme
 Plug 'crusoexia/vim-monokai'
+Plug 'morhetz/gruvbox'
 
 " fancy status line
 Plug 'vim-airline/vim-airline'
