@@ -276,6 +276,8 @@ in
     libreoffice
     postman
     openssl
+
+    elmPackages.elm-language-server
   ];
 
   fonts = {
