@@ -1,7 +1,15 @@
 {
-  "coc.preferences.formatOnSaveFiletypes": [
-    "json",
-    "js"
-  ],
-  "diagnostic.warningSign": "!"
+  "coc.preferences.formatOnSaveFiletypes": ["json", "js"],
+  "diagnostic.warningSign": "!",
+  "codeLens.enable": true,
+  "languageserver": {
+    "elmLS": {
+      "command": "elm-language-server",
+      "filetypes": ["elm"],
+      "rootPatterns": ["elm.json"],
+      "initializationOptions": {
+        "elmAnalyzeTrigger": "change"
+      }
+    }
+  }
 }
