@@ -12,7 +12,7 @@ colorscheme gruvbox
 highlight CursorLine ctermbg=black
 
 set noshowmode
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 0
 let g:airline_section_y = 'B:%{bufnr("%")}' " buf.nr. instead of encoding
 let g:airline_section_z = '%l/%L:%c' " minimalistic line indicator
 let g:airline_theme='gruvbox'
