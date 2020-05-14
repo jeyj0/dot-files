@@ -14,6 +14,9 @@ call plug#begin('$HOME/.config/nvim/jeyj0-plugged')
 " language support for basically everything
 Plug 'sheerun/vim-polyglot'
 
+" color highlighting
+Plug 'ap/vim-css-color'
+
 " direnv loading
 Plug 'direnv/direnv.vim'
 
