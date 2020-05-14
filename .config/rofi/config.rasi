@@ -1,0 +1,11 @@
+configuration {
+  modi: "window,run,keys";
+  show-icons: true;
+  font: "Fira Code 19";
+  sort: true;
+  matching: "fuzzy";
+  case-sensitive: false;
+}
+
+@import "gruvbox-dark-hard.rasi"
+

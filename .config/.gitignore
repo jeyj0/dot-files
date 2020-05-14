@@ -2,6 +2,7 @@
 !.gitignore
 
 # select what program's settings are synced
+!rofi/
 !xfce4/
 !autostart/
 !fish/
