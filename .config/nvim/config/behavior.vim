@@ -1,6 +1,9 @@
 " share clipboard with system
 set clipboard=unnamedplus
 
+" allow switching from buffer if buffer is unsaved
+set hidden
+
 " use ranger when opening a directory
 let g:ranger_replace_netrw = 1
 
