@@ -150,10 +150,8 @@ in
         package = pkgs.i3-gaps;
         extraPackages = with pkgs; [
           dmenu
-          i3status
+          rofi
           polybarFull
-          i3lock
-          i3blocks
         ];
       };
     };
