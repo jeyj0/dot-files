@@ -47,6 +47,7 @@ let g:which_key_map.g = { 'name' : '+git' }
     let g:which_key_map.g.b.b = 'checkout'
 let g:which_key_map.o = { 'name' : '+open' }
   let g:which_key_map.o.t = 'terminal'
+  let g:which_key_map.o.s = 'scratch'
 let g:which_key_map.s = { 'name' : '+search' }
   let g:which_key_map.s.w = 'web'
   let g:which_key_map.s.p = 'project'
@@ -147,6 +148,7 @@ augroup end
 
 " OPEN
 nnoremap <silent> <leader>ot :botright 20split +terminal<cr>
+nnoremap <silent> <leader>os :botright 20split /tmp/vim_scratch<cr>:set bufhidden=delete<cr>:set buftype=nofile<cr>:setlocal noswapfile<cr>
 
 " WINDOWS
 nnoremap <silent> <leader>wH :wincmd h<cr>:wincmd p<cr>:<C-u>call SwitchWindows()<cr>
