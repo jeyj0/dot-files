@@ -280,6 +280,9 @@ async function generateXResources(theme, _hostSettings) {
         primary: theme.primary,
         warning: theme.warning,
         error: theme.error,
+
+        'rofi.run-command': 'fish -c {cmd}',
+        'rofi.run-list-command': 'fish -c functions',
     }
 
     const fileContents = Object.entries(xresources)
