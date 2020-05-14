@@ -19,13 +19,33 @@ let g:airline_theme='gruvbox'
 let g:bufferline_echo = 0
 let g:airline_mode_map = {}
 let g:airline_mode_map['ic'] = 'INSERT'
+let g:airline_mode_map = {
+  \ '__'     : '-',
+  \ 'c'      : 'c',
+  \ 'i'      : 'i',
+  \ 'ic'     : 'i',
+  \ 'ix'     : 'i',
+  \ 'n'      : 'n',
+  \ 'multi'  : 'm',
+  \ 'ni'     : 'n',
+  \ 'no'     : 'n',
+  \ 'R'      : 'r',
+  \ 'Rv'     : 'r',
+  \ 's'      : 's',
+  \ 'S'      : 's',
+  \ ''     : 's',
+  \ 't'      : 't',
+  \ 'v'      : 'v',
+  \ 'V'      : 'v',
+  \ ''     : 'v',
+  \ }
 
 " highlight symbol under cursor on CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " highlight current line (in current window)
 augroup CursorLine
-	au!
-	au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
-	au WinLeave * setlocal nocursorline
+  au!
+  au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+  au WinLeave * setlocal nocursorline
 augroup END

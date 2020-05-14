@@ -55,6 +55,8 @@ let g:which_key_map.t = { 'name' : '+tab' }
   let g:which_key_map.t.i = 'next'
   let g:which_key_map.t.k = 'close'
   let g:which_key_map.t.t = 'open in new'
+let g:which_key_map.p = { 'name': '+project' }
+  let g:which_key_map.p.p = 'open project'
 let g:which_key_map.h = 'left (win)'
 let g:which_key_map.j = 'down (win)'
 let g:which_key_map.k = 'up (win)'
@@ -100,11 +102,23 @@ tnoremap <silent> <leader>ti <C-\><C-n>:tabnext<cr>
 nnoremap <silent> <leader>tt :tab split<cr>
 nnoremap <silent> <leader>tk :tabclose<cr>
 
+" PROJECT
+nnoremap <leader>pp :cd ~/projects/
+
 " navigating code
 nmap gd <Plug>(coc-definition)
 nmap gr <Plug>(coc-rename)
 nmap [e <Plug>(coc-diagnostic-prev)
 nmap ]e <Plug>(coc-diagnostic-next)
+
+" taken from coc.nvim readme
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
 
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 

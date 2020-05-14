@@ -44,15 +44,6 @@ function! SwitchWindows() abort
     " wincmd p
 endfunction
 
-" taken from coc.nvim readme
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-
 " Original implementation taken from:
 " https://www.reddit.com/r/vim/comments/ebaoku/function_to_google_any_text_object/
 function! WebSearch(type, ...)
