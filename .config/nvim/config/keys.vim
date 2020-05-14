@@ -1,6 +1,9 @@
 " use space as leader
 let mapleader=" "
 
+" make typing colon easier and less error-prone
+nnoremap <leader>; :
+
 " make remembering leader-mappings easier using which-key
 call which_key#register('<Space>', "g:which_key_map")
 nnoremap <silent> <leader> :<c-u>WhichKey '<Space>'<cr>
@@ -148,16 +151,15 @@ tnoremap <silent> <leader>k <C-\><C-n>:wincmd k<cr>
 tnoremap <silent> <leader>l <C-\><C-n>:wincmd l<cr>
 tnoremap <silent> <leader>wp <C-\><C-n>:wincmd p<cr>
 
-" easily split lines in normal mode
-" taken and modified from drzel/vim-split-line
+" CODE EDITING
+
+"" easily split lines in normal mode
+"" taken and modified from drzel/vim-split-line
 nnoremap <A-CR> :keeppatterns substitute/\s*\%#\s*/\r/e <bar> normal! ==<CR>
 
-" use tab to navigate completion list and Enter to select
-" (only relevant for snippets)
+"" use tab to navigate completion list and Enter to select
+"" (only relevant for snippets)
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-
-" make typing colon easier and less error-prone
-nnoremap <leader>; :
 
