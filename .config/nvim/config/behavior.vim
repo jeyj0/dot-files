@@ -4,6 +4,9 @@ set clipboard=unnamedplus
 " allow switching from buffer if buffer is unsaved
 set hidden
 
+" ask to save buffer when closed unsaved
+set confirm
+
 " use ranger when opening a directory
 let g:ranger_replace_netrw = 1
 
