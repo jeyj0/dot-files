@@ -200,7 +200,7 @@ in
   environment.variables = {
     TERMINAL = "kitty";
     EDITOR = "nvim";
-    VISUAL = "emacsclient";
+    VISUAL = "nvim";
   };
   environment.systemPackages = with pkgs; [
     # nodejs
