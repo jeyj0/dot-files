@@ -107,10 +107,10 @@ nnoremap <silent> <leader>tk :tabclose<cr>
 nnoremap <leader>pp :cd ~/projects/
 
 " navigating code
-nmap gd <Plug>(coc-definition)
-nmap gr <Plug>(coc-rename)
-nmap [e <Plug>(coc-diagnostic-prev)
-nmap ]e <Plug>(coc-diagnostic-next)
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gr <Plug>(coc-rename)
+nmap <silent> [e <Plug>(coc-diagnostic-prev)
+nmap <silent> ]e <Plug>(coc-diagnostic-next)
 
 " taken from coc.nvim readme
 function! s:show_documentation()
