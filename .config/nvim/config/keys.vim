@@ -46,6 +46,7 @@ let g:which_key_map.g = { 'name' : '+git' }
     let g:which_key_map.g.f.b = 'blame'
   let g:which_key_map.g.b = { 'name' : '+branch' }
     let g:which_key_map.g.b.b = 'checkout'
+  let g:which_key_map.g.p = 'push'
 let g:which_key_map.o = { 'name' : '+open' }
   let g:which_key_map.o.t = 'terminal'
   let g:which_key_map.o.s = 'scratch'
@@ -140,6 +141,7 @@ nnoremap <silent> <leader>gs :Git status --short<cr>
 nnoremap <silent> <leader>gcc :Git commit<cr>
 nnoremap <leader>gcb :Git checkout<space>
 nnoremap <silent> <leader>gfb :Git blame<cr>
+nnoremap <leader>gp :Git push<cr>
 
 "" fugitive-only
 augroup fugitivemaps
