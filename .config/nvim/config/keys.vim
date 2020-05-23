@@ -17,6 +17,7 @@ let g:which_key_map.b = { 'name' : '+buffer' }
   let g:which_key_map.b.u = 'prev'
   let g:which_key_map.b.i = 'next'
   let g:which_key_map.b.k = 'kill'
+  let g:which_key_map.b.K = 'kill (force)'
 let g:which_key_map.f = { 'name' : '+file' }
   let g:which_key_map.f.e = 'explorer'
   let g:which_key_map.f.s = 'save'
@@ -93,6 +94,7 @@ nnoremap <silent> <leader>bi :bnext<cr>
 tnoremap <silent> <leader>i <C-\><C-n>:bnext<cr>
 tnoremap <silent> <leader>bi <C-\><C-n>:bnext<cr>
 nnoremap <silent> <leader>bk :Bclose<cr>
+nnoremap <silent> <leader>bK :Bclose!<cr>
 nnoremap <silent> <leader>bb :Buffers<cr>
 
 " TABS
