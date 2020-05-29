@@ -275,6 +275,8 @@ in
     postman
     openssl
 
+    unstable.godot
+
     elmPackages.elm-language-server
   ];
 
