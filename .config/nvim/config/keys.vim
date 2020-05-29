@@ -25,6 +25,9 @@ let g:which_key_map.f = { 'name' : '+file' }
 let g:which_key_map.c = { 'name' : '+config' }
   let g:which_key_map.c.e = 'edit'
   let g:which_key_map.c.r = 'refresh'
+  let g:which_key_map.c.t = { 'name': '+theme' }
+    let g:which_key_map.c.t.d = 'dark'
+    let g:which_key_map.c.t.l = 'light'
 let g:which_key_map.w = { 'name' : '+window' }
   let g:which_key_map.w.q = 'close'
   let g:which_key_map.w.s = 'vsplit'
@@ -70,6 +73,8 @@ let g:which_key_map.i = 'next buffer'
 " CONFIG
 nnoremap <silent> <leader>cr :source ~/.config/nvim/init.vim<CR>
 nnoremap <silent> <leader>ce :e ~/.config/nvim/init.vim<cr>
+nnoremap <silent> <leader>ctd :call DarkTheme()<cr>
+nnoremap <silent> <leader>ctl :call LightTheme()<cr>
 
 " FILES
 nnoremap <silent> <leader><leader> :GitFiles<cr>

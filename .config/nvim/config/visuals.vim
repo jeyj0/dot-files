@@ -4,12 +4,23 @@ set number relativenumber
 set scrolloff=3
 set nowrap
 
-let g:gruvbox_italic = 1
-let g:gruvbox_contrast_dark = 'hard'
-let g:gruvbox_sign_column = 'bg0'
-colorscheme gruvbox
 " customize current-line-color (less extreme)
 highlight CursorLine ctermbg=black
+
+function LightTheme()
+  colorscheme solarized
+  set background=light
+endfunction
+
+function DarkTheme()
+  let g:gruvbox_italic = 1
+  let g:gruvbox_contrast_dark = 'hard'
+  let g:gruvbox_sign_column = 'bg0'
+  set background=dark
+  colorscheme gruvbox
+endfunction
+
+call DarkTheme()
 
 set noshowmode
 let g:airline_powerline_fonts = 0
