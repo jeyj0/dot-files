@@ -10,6 +10,7 @@ highlight CursorLine ctermbg=black
 function LightTheme()
   colorscheme solarized
   set background=light
+  AirlineTheme solarized
 endfunction
 
 function DarkTheme()
@@ -18,6 +19,7 @@ function DarkTheme()
   let g:gruvbox_sign_column = 'bg0'
   set background=dark
   colorscheme gruvbox
+  AirlineTheme gruvbox
 endfunction
 
 call DarkTheme()
