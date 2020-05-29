@@ -1,7 +1,6 @@
 {
   "coc.preferences.formatOnSaveFiletypes": ["json", "js", "elm"],
   "diagnostic.warningSign": "!",
-  "codeLens.enable": true,
   "languageserver": {
     "elmLS": {
       "command": "elm-language-server",
