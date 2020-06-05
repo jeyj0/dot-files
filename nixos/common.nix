@@ -250,6 +250,7 @@ in
     xorg.xmodmap
     networkmanager
     networkmanager_dmenu
+    bat
 
     slack
     unstable.discord
