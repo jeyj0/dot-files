@@ -93,12 +93,8 @@ nnoremap <silent> <esc> :nohlsearch<cr>
 " BUFFERS
 nnoremap <silent> <leader>u :bprevious<cr>
 nnoremap <silent> <leader>bu :bprevious<cr>
-tnoremap <silent> <leader>u <C-\><C-n>:bprevious<cr>
-tnoremap <silent> <leader>bu <C-\><C-n>:bprevious<cr>
 nnoremap <silent> <leader>i :bnext<cr>
 nnoremap <silent> <leader>bi :bnext<cr>
-tnoremap <silent> <leader>i <C-\><C-n>:bnext<cr>
-tnoremap <silent> <leader>bi <C-\><C-n>:bnext<cr>
 nnoremap <silent> <leader>bk :Bclose<cr>
 nnoremap <silent> <leader>bK :Bclose!<cr>
 nnoremap <silent> <leader>bb :Buffers<cr>
@@ -106,8 +102,6 @@ nnoremap <silent> <leader>bb :Buffers<cr>
 " TABS
 nnoremap <silent> <leader>tu :tabprevious<cr>
 nnoremap <silent> <leader>ti :tabnext<cr>
-tnoremap <silent> <leader>tu <C-\><C-n>:tabprevious<cr>
-tnoremap <silent> <leader>ti <C-\><C-n>:tabnext<cr>
 nnoremap <silent> <leader>tt :tab split<cr>
 nnoremap <silent> <leader>tk :tabclose<cr>
 
@@ -173,13 +167,6 @@ nnoremap <silent> <leader>j :wincmd j<cr>
 nnoremap <silent> <leader>k :wincmd k<cr>
 nnoremap <silent> <leader>l :wincmd l<cr>
 nnoremap <silent> <leader>wp :wincmd p<cr>
-tnoremap <silent> <leader>wv <C-\><C-n>:vsplit<cr>
-tnoremap <silent> <leader>ws <C-\><C-n>:split<cr>
-tnoremap <silent> <leader>h <C-\><C-n>:wincmd h<cr>
-tnoremap <silent> <leader>j <C-\><C-n>:wincmd j<cr>
-tnoremap <silent> <leader>k <C-\><C-n>:wincmd k<cr>
-tnoremap <silent> <leader>l <C-\><C-n>:wincmd l<cr>
-tnoremap <silent> <leader>wp <C-\><C-n>:wincmd p<cr>
 
 " CODE EDITING
 
