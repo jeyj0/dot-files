@@ -22,6 +22,7 @@ call plug#begin('$HOME/.config/nvim/jeyj0-plugged')
 " Plug 'vim-test/vim-test'
 " Plug 'alvan/vim-closetag'
 " Plug 'tpope/vim-abolish'
+" Plug 'mattn/emmet-vim'
 
 " -----------------------------------------------------------------------------
 
