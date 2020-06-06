@@ -1,5 +1,7 @@
 # general
-alias la='ls -lA'
+alias ls='exa'
+alias la='ls -l --all'
+alias tree='exa --tree'
 
 # git
 alias gs='git status'

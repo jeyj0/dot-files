@@ -252,6 +252,7 @@ in
     networkmanager
     networkmanager_dmenu
     bat
+    exa
 
     slack
     unstable.discord
