@@ -1,6 +1,9 @@
 " share clipboard with system
 set clipboard=unnamedplus
 
+" immediately preview changes in :%s/foo/bar substitutions (or similars)
+:set inccommand=nosplit
+
 " allow switching from buffer if buffer is unsaved
 set hidden
 
