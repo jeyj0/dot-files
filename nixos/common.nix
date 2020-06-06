@@ -221,6 +221,7 @@ in
     curl
     wget
     git
+    gitAndTools.gh # github cli
     xclip
     trash-cli
     silver-searcher # ag (faster ack (faster & better grep))
