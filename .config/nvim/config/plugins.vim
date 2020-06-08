@@ -23,6 +23,7 @@ call plug#begin('$HOME/.config/nvim/jeyj0-plugged')
 " Plug 'alvan/vim-closetag'
 " Plug 'tpope/vim-abolish'
 " Plug 'mattn/emmet-vim'
+" Plug 'AndrewRadev/switch.vim'
 
 " -----------------------------------------------------------------------------
 
