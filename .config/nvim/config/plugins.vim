@@ -15,7 +15,6 @@ call plug#begin('$HOME/.config/nvim/jeyj0-plugged')
 " TODO: try these plugins out - I've found them in other people's configs but
 " haven't evaluated them for myself yet:
 
-" Plug 'wellle/targets.vim'
 " Plug 'Valloric/MatchTagAlways'
 " Plug 'ntpeters/vim-better-whitespace'
 " Plug 'tpope/vim-eunuch'
@@ -26,6 +25,9 @@ call plug#begin('$HOME/.config/nvim/jeyj0-plugged')
 " Plug 'AndrewRadev/switch.vim'
 
 " -----------------------------------------------------------------------------
+
+" more and more flexible text objects
+Plug 'wellle/targets.vim'
 
 " language support for basically everything
 Plug 'sheerun/vim-polyglot'
