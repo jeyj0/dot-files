@@ -22,13 +22,15 @@ function DarkTheme()
   AirlineTheme gruvbox
 endfunction
 
-call DarkTheme()
+augroup load_theme_on_startup
+  autocmd!
+  autocmd VimEnter * :call DarkTheme()
+augroup END
 
 set noshowmode
 let g:airline_powerline_fonts = 0
 let g:airline_section_y = 'B:%{bufnr("%")}' " buf.nr. instead of encoding
 let g:airline_section_z = '%l/%L:%c' " minimalistic line indicator
-let g:airline_theme='gruvbox'
 let g:bufferline_echo = 0
 let g:airline_mode_map = {}
 let g:airline_mode_map['ic'] = 'INSERT'
