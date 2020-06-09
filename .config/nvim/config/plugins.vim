@@ -21,7 +21,6 @@ call plug#begin('$HOME/.config/nvim/jeyj0-plugged')
 " Plug 'vim-test/vim-test'
 " Plug 'alvan/vim-closetag'
 " Plug 'tpope/vim-abolish'
-" Plug 'mattn/emmet-vim'
 " Plug 'AndrewRadev/switch.vim'
 
 " -----------------------------------------------------------------------------
@@ -46,6 +45,9 @@ Plug 'tpope/vim-fugitive'
 
 " surround with stuff
 Plug 'tpope/vim-surround'
+
+" easy html (or xml) tag creation
+Plug 'mattn/emmet-vim'
 
 " narrow to region
 Plug 'chrisbra/NrrwRgn'
