@@ -86,3 +86,17 @@ function! WebSearch(type, ...)
     let &selection = sel_save
     let @@ = reg_save
 endfunction
+
+" taken from coc.nvim readme and modified
+function! ShowDocumentation()
+  try
+    if (index(['vim','help'], &filetype) >= 0)
+      execute 'h '.expand('<cword>')
+    else
+      call CocAction('doHover')
+    endif
+  catch
+    echo "Sorry, no documentation or help found"
+  endtry
+endfunction
+
