@@ -139,10 +139,8 @@ function! ToggleCodeComment() range
 
         if l:should_comment
             execute "silent " . a:firstline . "," . a:lastline . "s/\\(^\\s*\\)\/\\1" . l:comment_symbol . " /"
-            echo "should comment"
         else
             execute "silent " . a:firstline . "," . a:lastline . "s/\\(^\\s*\\)" . l:comment_symbol . "\\s*/\\1/"
-            echo "should uncomment"
         endif
 
         call winrestview(l:win_view)
