@@ -22,6 +22,19 @@ let g:which_key_map.f = { 'name' : '+file' }
   let g:which_key_map.f.e = 'explorer'
   let g:which_key_map.f.s = 'save'
   let g:which_key_map.f.o = 'open'
+
+" SESSION (z)
+let g:which_key_map.z = { 'name' : '+session'}
+
+nnoremap <silent> <leader>zs :SSave<cr>
+  let g:which_key_map.z.s = 'save'
+nnoremap <silent> <leader>zo :SLoad<cr>
+  let g:which_key_map.z.o = 'open'
+nnoremap <silent> <leader>zc :SClose<cr>
+  let g:which_key_map.z.c = 'close'
+nnoremap <silent> <leader>zd :SDelete<cr>
+  let g:which_key_map.z.d = 'delete'
+
 let g:which_key_map.c = { 'name' : '+config' }
   let g:which_key_map.c.e = 'edit'
   let g:which_key_map.c.r = 'refresh'

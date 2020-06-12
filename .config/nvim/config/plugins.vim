@@ -25,6 +25,10 @@ call plug#begin('$HOME/.config/nvim/jeyj0-plugged')
 
 " -----------------------------------------------------------------------------
 
+" nice dashboard, with useful file lists
+" also includes session management
+Plug 'mhinz/vim-startify'
+
 " move inside camelCase and snake_case words and alike
 Plug 'chaoren/vim-wordmotion'
 
@@ -109,3 +113,36 @@ call plug#end()
 let g:bclose_no_plugin_maps = 1
 let g:ranger_map_keys = 0
 let g:gitgutter_map_keys = 0
+
+" do not allow saving the startify view as a file
+autocmd User Startified setlocal buftype=nofile
+
+" center startify header
+let g:startify_custom_header =
+    \ 'startify#center(startify#fortune#cowsay())'
+
+" autosave startify sessions once opened
+let g:startify_session_persistence = 1
+
+" limit listed files
+let g:startify_files_number = 5
+
+" function to list modified and untracked files from git
+function! s:gitModifiedAndUntracked()
+    let files = systemlist('git ls-files -m 2>/dev/null && git ls-files -o --exclude-standard 2>/dev/null')
+    return map(files, "{'line': v:val, 'path': v:val}")
+endfunction
+
+" define startify lists and their order
+let g:startify_lists = [
+        \ { 'type': 'dir', 'header': ['   Recently used in '. getcwd()] },
+        \ { 'type': function('s:gitModifiedAndUntracked'),  'header': ['   git (modified and untracked)']},
+        \ { 'type': 'files', 'header': ['   Recently used'] },
+        \ { 'type': 'sessions', 'header': ['   Sessions'] },
+        \ { 'type': 'bookmarks', 'header': ['   Bookmarks'] },
+        \ { 'type': 'commands', 'header': ['   Commands'] },
+        \ ]
+        " \ { 'type': function('s:gitModified'),  'header': ['   git modified']},
+        " \ { 'type': function('s:gitUntracked'), 'header': ['   git untracked']},
+
+
