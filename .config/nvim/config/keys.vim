@@ -98,6 +98,15 @@ nnoremap <silent> <leader>bi :bnext<cr>
 nnoremap <silent> <leader>bk :Bclose<cr>
 nnoremap <silent> <leader>bK :Bclose!<cr>
 nnoremap <silent> <leader>bb :Buffers<cr>
+nnoremap <silent> <leader>bo :<C-u>call CloseAllBuffersButCurrent()<cr>
+
+function! CloseAllBuffersButCurrent()
+  let curr = bufnr("%")
+  let last = bufnr("$")
+
+  if curr > 1    | silent! execute "1,".(curr-1)."bd"     | endif
+  if curr < last | silent! execute (curr+1).",".last."bd" | endif
+endfunction
 
 " TABS
 nnoremap <silent> <leader>tu :tabprevious<cr>
