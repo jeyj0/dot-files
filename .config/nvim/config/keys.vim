@@ -31,6 +31,19 @@ nnoremap <silent> <leader>vr :source ~/.config/nvim/init.vim<CR>
 nnoremap <silent> <leader>ve :e ~/.config/nvim/init.vim<cr>
   let g:which_key_map.v.e = 'config edit'
 
+"" plugins
+  let g:which_key_map.v.p = { 'name': '+plugins' }
+nnoremap <silent> <leader>vpi :PlugInstall<cr>
+    let g:which_key_map.v.p.i = 'install'
+nnoremap <silent> <leader>vpc :PlugClean<cr>
+    let g:which_key_map.v.p.c = 'clean'
+nnoremap <silent> <leader>vps :PlugStatus<cr>
+    let g:which_key_map.v.p.s = 'status'
+nnoremap <silent> <leader>vpu :PlugUpdate<cr>
+    let g:which_key_map.v.p.u = 'update'
+nnoremap <silent> <leader>vpU :PlugUpgrade<cr>
+    let g:which_key_map.v.p.U = 'upgrade'
+
 "" theme
   let g:which_key_map.v.t = { 'name': '+theme' }
 nnoremap <silent> <leader>vtd :call DarkTheme()<cr>
