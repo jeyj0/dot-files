@@ -1,9 +1,12 @@
 " code for all versions of nvim goes here...
 " install plug.vim if it isn't already
 if empty(glob('$HOME/.config/nvim/plug.vim'))
-silent !curl -fLo $HOME/.config/nvim/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+    silent !curl -fLo $HOME/.config/nvim/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    augroup autoinstallPlugVim
+        autocmd!
+        autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+    augroup end
 endif
 
 " load plug.vim
