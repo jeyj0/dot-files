@@ -110,7 +110,7 @@ nnoremap <leader>pp :cd ~/projects/
 
 " navigating code
 nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gr <Plug>(coc-rename)
+nmap <silent> gr <Plug>(coc-references)
 nmap <silent> [e <Plug>(coc-diagnostic-prev)
 nmap <silent> ]e <Plug>(coc-diagnostic-next)
 
