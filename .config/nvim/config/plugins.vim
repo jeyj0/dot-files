@@ -56,6 +56,10 @@ Plug 'tpope/vim-fugitive'
 " surround with stuff
 Plug 'tpope/vim-surround'
 
+" comment text object
+Plug 'https://github.com/glts/vim-textobj-comment'
+    Plug 'https://github.com/kana/vim-textobj-user'
+
 " easy html (or xml) tag creation
 Plug 'mattn/emmet-vim'
 
