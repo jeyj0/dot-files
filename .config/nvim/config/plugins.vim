@@ -25,6 +25,9 @@ call plug#begin('$HOME/.config/nvim/jeyj0-plugged')
 
 " -----------------------------------------------------------------------------
 
+" move inside camelCase and snake_case words and alike
+Plug 'chaoren/vim-wordmotion'
+
 " more and more flexible text objects
 Plug 'wellle/targets.vim'
 
