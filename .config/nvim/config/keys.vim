@@ -23,7 +23,7 @@ nnoremap <silent> <leader>zc :SClose<cr>
 nnoremap <silent> <leader>zd :SDelete<cr>
   let g:which_key_map.z.d = 'delete'
 
-" CONFIG
+" VIM / CONFIG
 let g:which_key_map.v = { 'name' : '+vim' }
 
 nnoremap <silent> <leader>vr :source ~/.config/nvim/init.vim<CR>
