@@ -24,19 +24,19 @@ nnoremap <silent> <leader>zd :SDelete<cr>
   let g:which_key_map.z.d = 'delete'
 
 " CONFIG
-let g:which_key_map.c = { 'name' : '+config' }
+let g:which_key_map.v = { 'name' : '+vim' }
 
-nnoremap <silent> <leader>cr :source ~/.config/nvim/init.vim<CR>
-  let g:which_key_map.c.r = 'refresh'
-nnoremap <silent> <leader>ce :e ~/.config/nvim/init.vim<cr>
-  let g:which_key_map.c.e = 'edit'
+nnoremap <silent> <leader>vr :source ~/.config/nvim/init.vim<CR>
+  let g:which_key_map.v.r = 'config refresh'
+nnoremap <silent> <leader>ve :e ~/.config/nvim/init.vim<cr>
+  let g:which_key_map.v.e = 'config edit'
 
 "" theme
-  let g:which_key_map.c.t = { 'name': '+theme' }
-nnoremap <silent> <leader>ctd :call DarkTheme()<cr>
-    let g:which_key_map.c.t.d = 'dark'
-nnoremap <silent> <leader>ctl :call LightTheme()<cr>
-    let g:which_key_map.c.t.l = 'light'
+  let g:which_key_map.v.t = { 'name': '+theme' }
+nnoremap <silent> <leader>vtd :call DarkTheme()<cr>
+    let g:which_key_map.v.t.d = 'dark'
+nnoremap <silent> <leader>vtl :call LightTheme()<cr>
+    let g:which_key_map.v.t.l = 'light'
 
 " FILES
 let g:which_key_map.f = { 'name' : '+file' }
