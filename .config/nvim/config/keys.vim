@@ -114,10 +114,25 @@ let g:which_key_map.p = { 'name': '+project' }
 nnoremap <leader>pp :cd ~/projects/
   let g:which_key_map.p.p = 'open project'
 
+" CODE
+let g:which_key_map.c = { 'name': '+code' }
+
+nnoremap <silent> <leader>cr <Plug>(coc-rename)
+  let g:which_key_map.c.r = 'rename symbol'
+
 "" comment toggle
 nnoremap <leader>cc :ToggleCodeComment<cr>
 vnoremap <leader>cc :ToggleCodeComment<cr>
   let g:which_key_map.c.c = 'comment (toggle)'
+
+"" change symbol case
+  let g:which_key_map.c.v = { 'name': '+casing' }
+nnoremap <silent> <leader>cvc :<C-u>NameConvert lowerCamelCase<cr>
+    let g:which_key_map.c.v.c = 'camelCase'
+nnoremap <silent> <leader>cvp :<C-u>NameConvert UpperCamelCase<cr>
+    let g:which_key_map.c.v.p = 'PascalCase'
+nnoremap <silent> <leader>cvs :<C-u>NameConvert underscore<cr>
+    let g:which_key_map.c.v.s = 'snake_case'
 
 " navigating code
 nmap <silent> gd <Plug>(coc-definition)
