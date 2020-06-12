@@ -10,6 +10,11 @@ let
   unstableTarball =
     fetchTarball
       https://github.com/NixOS/nixpkgs-channels/archive/nixos-unstable.tar.gz;
+
+  pythonPackages = pypkgs: with pypkgs; [
+    pynvim
+  ];
+  pythonWithPackages = pkgs.python3.withPackages pythonPackages;
 in
 {
   # This value determines the NixOS release with which your system is to be
@@ -243,6 +248,7 @@ in
     unstable.neovim-unwrapped
       watchman # watchman for coc.nvim
       neovim-remote # enable the use of only one neovim instance
+      pythonWithPackages
     ranger
       highlight # highlight enables syntax highlighting in previews
     fzf

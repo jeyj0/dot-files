@@ -64,6 +64,9 @@ Plug 'vim-airline/vim-airline-themes'
 " autocompletion
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
+" snippets (used by coc-snippets)
+Plug 'honza/vim-snippets'
+
 " better terminal integration (f.e. mouse support)
 Plug 'wincent/terminus'
 
