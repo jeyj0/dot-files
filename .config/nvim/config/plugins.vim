@@ -82,7 +82,7 @@ Plug 'honza/vim-snippets'
 Plug 'wincent/terminus'
 
 " use ranger
-Plug 'francoiscabrol/ranger.vim' " this sets <leader>f to open ranger
+Plug 'francoiscabrol/ranger.vim'
 
 " buffer closing
 Plug 'rbgrouleff/bclose.vim' " required by ranger
