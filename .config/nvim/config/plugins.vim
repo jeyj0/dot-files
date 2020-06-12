@@ -81,9 +81,6 @@ Plug 'honza/vim-snippets'
 " better terminal integration (f.e. mouse support)
 Plug 'wincent/terminus'
 
-" easy git staging
-Plug 'airblade/vim-gitgutter'
-
 " use ranger
 Plug 'francoiscabrol/ranger.vim' " this sets <leader>f to open ranger
 
