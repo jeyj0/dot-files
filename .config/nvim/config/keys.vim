@@ -101,6 +101,11 @@ let g:which_key_map.p = { 'name': '+project' }
 nnoremap <leader>pp :cd ~/projects/
   let g:which_key_map.p.p = 'open project'
 
+"" comment toggle
+nnoremap <leader>cc :ToggleCodeComment<cr>
+vnoremap <leader>cc :ToggleCodeComment<cr>
+  let g:which_key_map.c.c = 'comment (toggle)'
+
 " navigating code
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gr <Plug>(coc-references)

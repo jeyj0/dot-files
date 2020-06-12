@@ -100,3 +100,56 @@ function! ShowDocumentation()
   endtry
 endfunction
 
+" code comment toggling
+" inspired by https://stackoverflow.com/a/24046914/4554254
+
+let s:comment_map = {
+    \   "c": '\/\/',
+    \   "cpp": '\/\/',
+    \   "go": '\/\/',
+    \   "java": '\/\/',
+    \   "javascript": '\/\/',
+    \   "lua": '--',
+    \   "scala": '\/\/',
+    \   "php": '\/\/',
+    \   "python": '#',
+    \   "ruby": '#',
+    \   "rust": '\/\/',
+    \   "sh": '#',
+    \   "desktop": '#',
+    \   "fstab": '#',
+    \   "conf": '#',
+    \   "profile": '#',
+    \   "bashrc": '#',
+    \   "bash_profile": '#',
+    \   "mail": '>',
+    \   "eml": '>',
+    \   "bat": 'REM',
+    \   "ahk": ';',
+    \   "vim": '"',
+    \   "tex": '%',
+    \ }
+
+function! ToggleCodeComment() range
+    if has_key(s:comment_map, &filetype)
+        let l:win_view = winsaveview()
+        let l:comment_symbol = s:comment_map[&filetype]
+
+        let l:should_comment = match(getline(a:firstline), '^\s*' . l:comment_symbol . ' ') == -1
+
+        if l:should_comment
+            execute "silent " . a:firstline . "," . a:lastline . "s/\\(^\\s*\\)\/\\1" . l:comment_symbol . " /"
+            echo "should comment"
+        else
+            execute "silent " . a:firstline . "," . a:lastline . "s/\\(^\\s*\\)" . l:comment_symbol . "\\s*/\\1/"
+            echo "should uncomment"
+        endif
+
+        call winrestview(l:win_view)
+    else
+        echo "No comment symbol found for filetype"
+    endif
+endfunction
+
+command! -range ToggleCodeComment <line1>,<line2>call ToggleCodeComment()
+
