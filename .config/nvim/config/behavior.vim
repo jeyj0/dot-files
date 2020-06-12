@@ -53,6 +53,16 @@ function! SwitchWindows() abort
     " wincmd p
 endfunction
 
+" taken from
+" https://stackoverflow.com/a/37866336/4554254
+function! CloseAllBuffersButCurrent()
+  let curr = bufnr("%")
+  let last = bufnr("$")
+
+  if curr > 1    | silent! execute "1,".(curr-1)."bd"     | endif
+  if curr < last | silent! execute (curr+1).",".last."bd" | endif
+endfunction
+
 " Original implementation taken from:
 " https://www.reddit.com/r/vim/comments/ebaoku/function_to_google_any_text_object/
 function! WebSearch(type, ...)
