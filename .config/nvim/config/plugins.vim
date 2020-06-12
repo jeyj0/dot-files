@@ -150,7 +150,5 @@ let g:startify_lists = [
         \ { 'type': 'bookmarks', 'header': ['   Bookmarks'] },
         \ { 'type': 'commands', 'header': ['   Commands'] },
         \ ]
-        " \ { 'type': function('s:gitModified'),  'header': ['   git modified']},
-        " \ { 'type': function('s:gitUntracked'), 'header': ['   git untracked']},
 
 
