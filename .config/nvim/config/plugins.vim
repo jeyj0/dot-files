@@ -49,9 +49,6 @@ Plug 'tpope/vim-surround'
 " easy html (or xml) tag creation
 Plug 'mattn/emmet-vim'
 
-" narrow to region
-Plug 'chrisbra/NrrwRgn'
-
 " color-scheme
 Plug 'crusoexia/vim-monokai'
 Plug 'morhetz/gruvbox'
