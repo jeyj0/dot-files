@@ -259,6 +259,7 @@ in
     networkmanager_dmenu
     bat
     exa
+    unstable.tuir
 
     slack
     unstable.discord
