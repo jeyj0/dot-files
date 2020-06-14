@@ -128,6 +128,8 @@ let s:comment_map = {
     \   "ahk": ';',
     \   "vim": '"',
     \   "tex": '%',
+    \   "Dockerfile": '#',
+    \   "nix": '#',
     \ }
 
 function! ToggleCodeComment() range
