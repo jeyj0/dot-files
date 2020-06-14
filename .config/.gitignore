@@ -14,5 +14,4 @@
 !polybar/
 !VSCodium/
 !configtemplates/
-!starship.toml
 !compton.conf
