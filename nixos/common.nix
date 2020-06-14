@@ -87,6 +87,7 @@ in
     home = "/home/jeyj0";
     description = "Jannis Jorre";
   };
+  nix.trustedUsers = [ "root" "jeyj0" ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -260,6 +261,7 @@ in
     bat
     exa
     unstable.tuir
+    cachix
 
     slack
     unstable.discord
