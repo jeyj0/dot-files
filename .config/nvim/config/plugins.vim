@@ -151,4 +151,10 @@ let g:startify_lists = [
         \ { 'type': 'commands', 'header': ['   Commands'] },
         \ ]
 
-
+let g:startify_bookmarks = [
+        \ {'vk': '~/.config/nvim/config/keys.vim'},
+        \ {'vb': '~/.config/nvim/config/behavior.vim'},
+        \ {'vp': '~/.config/nvim/config/plugins.vim'},
+        \ {'vv': '~/.config/nvim/config/visuals.vim'},
+        \ {'n': '~/nixos/common.nix'}
+        \ ]
