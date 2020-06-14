@@ -135,6 +135,9 @@ let g:startify_session_persistence = 1
 " limit listed files
 let g:startify_files_number = 5
 
+" cd to vcs root after opening a file
+let g:startify_change_to_vcs_root = 1
+
 " function to list modified and untracked files from git
 function! s:gitModifiedAndUntracked()
     let files = systemlist('git ls-files -m 2>/dev/null && git ls-files -o --exclude-standard 2>/dev/null')
