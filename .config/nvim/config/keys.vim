@@ -57,7 +57,8 @@ nnoremap <silent> <leader>vtl :call LightTheme()<cr>
 " FILES
 let g:which_key_map.f = { 'name' : '+file' }
 
-nnoremap <silent> <leader><leader> :GitFiles<cr>
+nnoremap <silent> <leader><leader> :Files<cr>
+  let g:which_key_map[' '] = 'search file'
 nnoremap <silent> <leader>fo :Files<cr>
   let g:which_key_map.f.o = 'open'
 nnoremap <silent> <leader>fs :w<CR>
@@ -70,6 +71,8 @@ let g:which_key_map.s = { 'name' : '+search' }
 
 nnoremap <silent> <leader>sp :Ag<cr>
   let g:which_key_map.s.p = 'project'
+nnoremap <silent> <leader>sg :GitFiles<cr>
+  let g:which_key_map.s.g = 'git files'
 
 "" web search
 nnoremap <silent> <leader>sw :set opfunc=WebSearch<CR>g@
