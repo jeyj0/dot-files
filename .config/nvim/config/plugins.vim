@@ -30,7 +30,7 @@ call plug#begin('$HOME/.config/nvim/jeyj0-plugged')
 
 " nice dashboard, with useful file lists
 " also includes session management
-Plug 'mhinz/vim-startify'
+Plug 'mhinz/vim-startify', { 'branch': 'center' }
 
 " move inside camelCase and snake_case words and alike
 Plug 'chaoren/vim-wordmotion'
@@ -134,6 +134,9 @@ let g:startify_session_persistence = 1
 
 " limit listed files
 let g:startify_files_number = 5
+
+" center startify entries
+let g:startify_center = 80
 
 " cd to vcs root after opening a file
 let g:startify_change_to_vcs_root = 1
