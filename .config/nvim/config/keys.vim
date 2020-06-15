@@ -211,6 +211,8 @@ nnoremap <silent> <leader>ws :split<cr>
   let g:which_key_map.w.s = 'split'
 nnoremap <silent> <leader>wq :q<cr>
   let g:which_key_map.w.q = 'close'
+nnoremap <silent> <leader>wQ :qa<cr>
+  let g:which_key_map.w.Q = 'close all'
 
 "" window navigation
 nnoremap <silent> <leader>h :wincmd h<cr>
