@@ -157,10 +157,11 @@ let g:startify_lists = [
         \ { 'type': 'commands', 'header': ['   Commands'] },
         \ ]
 
+" remember to avoid mappings starting with q,e,i,b,s,v,t,<cr>
 let g:startify_bookmarks = [
-        \ {'vk': '~/.config/nvim/config/keys.vim'},
-        \ {'vb': '~/.config/nvim/config/behavior.vim'},
-        \ {'vp': '~/.config/nvim/config/plugins.vim'},
-        \ {'vv': '~/.config/nvim/config/visuals.vim'},
+        \ {'ck': '~/.config/nvim/config/keys.vim'},
+        \ {'cb': '~/.config/nvim/config/behavior.vim'},
+        \ {'cp': '~/.config/nvim/config/plugins.vim'},
+        \ {'cv': '~/.config/nvim/config/visuals.vim'},
         \ {'n': '~/nixos/common.nix'}
         \ ]
