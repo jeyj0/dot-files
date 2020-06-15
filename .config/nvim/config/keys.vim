@@ -26,6 +26,9 @@ nnoremap <silent> <leader>zd :SDelete<cr>
 " VIM / CONFIG
 let g:which_key_map.v = { 'name' : '+vim' }
 
+nnoremap <silent> <leader>vc :let @+ = @:<cr>
+  let g:which_key_map.v.c = 'ex cmd to clipboard'
+
 nnoremap <silent> <leader>vr :source ~/.config/nvim/init.vim<CR>
   let g:which_key_map.v.r = 'config refresh'
 nnoremap <silent> <leader>ve :e ~/.config/nvim/init.vim<cr>
