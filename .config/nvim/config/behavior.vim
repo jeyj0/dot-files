@@ -131,6 +131,7 @@ let s:comment_map = {
     \   "Dockerfile": '#',
     \   "nix": '#',
     \   "fish": '#',
+    \   "haskell": "--",
     \ }
 
 function! ToggleCodeComment() range
