@@ -72,6 +72,7 @@ Plug 'mattn/emmet-vim'
 Plug 'crusoexia/vim-monokai'
 Plug 'morhetz/gruvbox'
 Plug 'altercation/vim-colors-solarized'
+Plug 'cideM/yui'
 
 " fancy status line
 Plug 'vim-airline/vim-airline'
