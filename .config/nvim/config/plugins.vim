@@ -52,6 +52,7 @@ Plug 'cohama/lexima.vim'
 
 " awesome git
 Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 
 " surround with stuff
 Plug 'tpope/vim-surround'
