@@ -40,7 +40,6 @@ let g:airline_section_y = 'B:%{bufnr("%")}' " buf.nr. instead of encoding
 let g:airline_section_z = '%l/%L:%c' " minimalistic line indicator
 let g:bufferline_echo = 0
 let g:airline_mode_map = {}
-let g:airline_mode_map['ic'] = 'INSERT'
 let g:airline_mode_map = {
   \ '__'     : '-',
   \ 'c'      : 'c',
