@@ -53,6 +53,8 @@ nnoremap <silent> <leader>vtd :call DarkTheme()<cr>
     let g:which_key_map.v.t.d = 'dark'
 nnoremap <silent> <leader>vtl :call LightTheme()<cr>
     let g:which_key_map.v.t.l = 'light'
+nnoremap <silent> <leader>vty :call YuiTheme()<cr>
+    let g:which_key_map.v.t.y = 'yui (light)'
 
 " FILES
 let g:which_key_map.f = { 'name' : '+file' }

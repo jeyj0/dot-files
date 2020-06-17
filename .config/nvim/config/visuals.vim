@@ -7,13 +7,20 @@ set nowrap
 " customize current-line-color (less extreme)
 highlight CursorLine ctermbg=black
 
-function LightTheme()
+function! LightTheme()
   colorscheme solarized
   set background=light
   AirlineTheme solarized
 endfunction
 
-function DarkTheme()
+function! YuiTheme()
+  set background=light
+  let g:yui_comments = "emphasize"
+  colorscheme yui
+  AirlineTheme silver
+endfunction
+
+function! DarkTheme()
   let g:gruvbox_italic = 1
   let g:gruvbox_contrast_dark = 'hard'
   let g:gruvbox_sign_column = 'bg0'
