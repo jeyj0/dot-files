@@ -25,6 +25,7 @@ call plug#begin('$HOME/.config/nvim/jeyj0-plugged')
 " Plug 'alvan/vim-closetag'
 " Plug 'tpope/vim-abolish'
 " Plug 'AndrewRadev/switch.vim'
+" Plug 'antoinemadec/coc-fzf'
 
 " -----------------------------------------------------------------------------
 
