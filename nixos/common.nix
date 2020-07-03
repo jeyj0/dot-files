@@ -267,6 +267,7 @@ in
 
     slack
     unstable.discord
+    matterhorn
 
     # minecraft # while this should work, the package is currently broken
     multimc
