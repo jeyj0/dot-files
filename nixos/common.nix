@@ -2,14 +2,18 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, lib, pkgs, ... }:
+{ fetchFromGitHub, config, lib, pkgs, ... }:
 
 with lib;
 
 let
-  unstableTarball =
-    fetchTarball
-      https://github.com/NixOS/nixpkgs-channels/archive/nixos-unstable.tar.gz;
+  unstablePkgs =
+    pkgs.fetchFromGitHub {
+      owner = "NixOS";
+      repo = "nixpkgs-channels";
+      rev = "55668eb671b915b49bcaaeec4518cc49d8de0a99";
+      sha256 = "0b2mrrjsdpxpyvnv98dph5av3xjps1mbd87x8510mnc4pfa2zc8z";
+    };
 
   pythonPackages = pypkgs: with pypkgs; [
     pynvim
@@ -199,7 +203,7 @@ in
     allowUnfree = true;
     pulseaudio = true;
     packageOverrides = pkgs: {
-      unstable = import unstableTarball {
+      unstable = import unstablePkgs {
         config = config.nixpkgs.config;
       };
     };
