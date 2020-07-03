@@ -230,6 +230,7 @@ in
     wget
     git
     gitAndTools.gh # github cli
+    lazygit
     xclip
     trash-cli
     silver-searcher # ag (faster ack (faster & better grep))
