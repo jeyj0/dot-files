@@ -7,3 +7,8 @@ runtime config/visuals.vim
 if exists('g:vscode')
     runtime config/clients/vscode.vim
 endif
+
+" make sure that any further configs cannot do unsafe stuff
+" this is important if exrc is set (`set exrc`)
+" THIS SHOULD BE THE LAST EXECUTED LINE OF THE CONFIG
+set secure

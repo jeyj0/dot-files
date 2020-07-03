@@ -1,3 +1,6 @@
+" enable project-specific vim settings
+set exrc
+
 " share clipboard with system
 set clipboard=unnamedplus
 
