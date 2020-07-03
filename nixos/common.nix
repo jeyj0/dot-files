@@ -295,6 +295,9 @@ in
     elmPackages.elm-language-server
 
     jpkgs.responsively
+
+    ## Games
+    brogue
   ];
 
   fonts = {
