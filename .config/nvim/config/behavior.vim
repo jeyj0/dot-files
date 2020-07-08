@@ -136,6 +136,7 @@ let s:comment_map = {
     \   "fish": '#',
     \   "haskell": '--',
     \   "typescript": '\/\/',
+    \   "yaml.docker-compose": '#',
     \ }
 
 function! ToggleCodeComment() range
