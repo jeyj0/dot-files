@@ -23,7 +23,8 @@ alias rm='trash'
 alias e='$VISUAL'
 
 # (neo)vim
-alias vim='if test -n "(nvr --serverlist)"; ensure_node; end; zsh $HOME/scripts/neovim-remote.sh'
+alias vim='nvim'
+alias vi='vim'
 alias v='vim'
 
 # vscodium = vscode

@@ -1,2 +1,0 @@
-#!/usr/bin/env zsh
-zsh $HOME/scripts/neovim-remote.sh
