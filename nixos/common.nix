@@ -233,6 +233,7 @@ in
     curl
     wget
     git
+    gitAndTools.diff-so-fancy # pretty diffs
     gitAndTools.gh # github cli
     lazygit
     xclip
