@@ -125,8 +125,15 @@ let g:bclose_no_plugin_maps = 1
 let g:ranger_map_keys = 0
 let g:gitgutter_map_keys = 0
 
-" do not allow saving the startify view as a file
-autocmd User Startified setlocal buftype=nofile
+augroup startify
+    autocmd!
+
+    " do not allow saving the startify view as a file
+    autocmd User Startified setlocal buftype=nofile
+
+    " automatically open startify when closing all other buffers
+    autocmd BufDelete * if empty(filter(tabpagebuflist(), '!buflisted(v:val)')) | Startify | endif
+augroup end
 
 " center startify header
 let g:startify_custom_header =
