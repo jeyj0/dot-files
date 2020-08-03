@@ -130,9 +130,6 @@ augroup startify
 
     " do not allow saving the startify view as a file
     autocmd User Startified setlocal buftype=nofile
-
-    " automatically open startify when closing all other buffers
-    autocmd BufDelete * if empty(filter(tabpagebuflist(), '!buflisted(v:val)')) | Startify | endif
 augroup end
 
 " center startify header
