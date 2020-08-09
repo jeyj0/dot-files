@@ -45,6 +45,8 @@ floating_modifier $alt
 bindsym $mod+t exec fish -c 'start_terminal' #i3-sensible-terminal
 # start a new editor
 bindsym $mod+e exec fish -c 'open_editor'
+# start browser (firefox)
+bindsym $mod+o exec fish -c 'firefox'
 
 # kill focused window
 bindsym $alt+F4 kill
