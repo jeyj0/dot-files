@@ -6,6 +6,7 @@ if not functions -q fundle
 end
 
 fundle plugin 'edc/bass'
+fundle plugin 'jeyj0/fzf-fish-integration'
 
 fundle init
 
