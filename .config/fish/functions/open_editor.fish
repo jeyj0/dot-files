@@ -1,5 +1,5 @@
 #!/usr/bin/env fish
 
 function open_editor
-    emacsclient -c
+    kitty sh -c "nvim"
 end
