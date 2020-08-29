@@ -29,6 +29,7 @@
 (package! focus) ; dim non-active paragraphs/functions/...
 (package! direnv)
 (package! format-all)
+(package! visual-fill-column)
 
 ;; To install a package directly from a particular repo, you'll need to specify
 ;; a `:recipe'. You'll find documentation on what `:recipe' accepts here:
