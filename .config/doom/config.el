@@ -71,14 +71,14 @@
       company-minimum-prefix-length 1)
 
 ;; map SPC [stuff] to jupyter stuff
-(map! :leader "j" 'ein:worksheet-goto-next-input)
-(map! :leader "k" 'ein:worksheet-goto-prev-input)
-(map! :leader "J" 'ein:worksheet-insert-cell-below)
-(map! :leader "K" 'ein:worksheet-insert-cell-above)
-(map! :leader "W" 'ein:notebook-save-notebook-command)
+;; (map! :leader "j" 'ein:worksheet-goto-next-input)
+;; (map! :leader "k" 'ein:worksheet-goto-prev-input)
+;; (map! :leader "J" 'ein:worksheet-insert-cell-below)
+;; (map! :leader "K" 'ein:worksheet-insert-cell-above)
+;; (map! :leader "W" 'ein:notebook-save-notebook-command)
 
 ;; inline jupyter image results
-(setq ein:output-area-inlined-images nil)
+;; (setq ein:output-area-inlined-images nil)
 
 ;; start emacs in fullscreen
 (add-hook 'window-setup-hook #'toggle-frame-maximized)
