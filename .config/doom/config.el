@@ -53,18 +53,18 @@
 ;; they are implemented.
 
 ;; Easier moving through windows (Alt+[h,j,k,l])
-; (map! "M-h" 'evil-window-left
-;       "M-j" 'evil-window-down
-;       "M-k" 'evil-window-up
-;       "M-l" 'evil-window-right)
+(map! :leader "h" 'evil-window-left
+      :leader "j" 'evil-window-down
+      :leader "k" 'evil-window-up
+      :leader "l" 'evil-window-right)
 
 ;; Easier moving through buffers (Alt+[U,I])
-(map! "M-u" 'evil-prev-buffer
-      "M-i" 'evil-next-buffer)
+(map! :leader "u" 'evil-prev-buffer
+      :leader "i" 'evil-next-buffer)
 
 ;; Easier switching tabs (Alt+[u,i])
-(map! "M-U" '+workspace:switch-previous
-      "M-I" '+workspace:switch-next)
+(map! :leader "U" '+workspace:switch-previous
+      :leader "I" '+workspace:switch-next)
 
 ;; open autocompletion more aggressively
 (setq company-idle-delay 0.05
