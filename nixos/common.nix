@@ -246,6 +246,7 @@ in
     nitrogen # to set wallpapers
     compton # making windows fancy
     zip unzip
+    tldr # tl;dr man page alternative
     docker-compose
 
     now-cli
