@@ -113,3 +113,12 @@
 
 ;; enable narrow-to-region
 (put 'narrow-to-region 'disabled nil)
+
+;; autocomplete id links in org-mode
+(defun org-id-complete-link (&optional arg)
+  "Create an id: link using completion"
+  (concat "id:"
+          (org-id-get-with-outline-path-completion)))
+
+(org-link-set-parameters "id"
+                         :complete 'org-id-complete-link)
