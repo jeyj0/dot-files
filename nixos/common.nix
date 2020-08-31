@@ -273,7 +273,7 @@ in
     cachix
 
     slack
-    unstable.discord
+    discord
     matterhorn
 
     # minecraft # while this should work, the package is currently broken
