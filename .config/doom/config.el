@@ -144,3 +144,13 @@
 
 (org-link-set-parameters "id"
                          :complete 'org-id-complete-link)
+
+;; hide encoding when it's the default 'LF UTF-8'
+(defun doom-modeline-conditional-buffer-encoding ()
+  "We expect the encoding to be LF UTF-8, so only show the modeline when this is not the case"
+  (setq-local doom-modeline-buffer-encoding
+              (unless (or (eq buffer-file-coding-system 'utf-8-unix)
+                      (eq buffer-file-coding-system 'utf-8)
+                      (eq buffer-file-coding-system 'prefer-utf-8-unix)))))
+
+(add-hook 'after-change-major-mode-hook #'doom-modeline-conditional-buffer-encoding)
