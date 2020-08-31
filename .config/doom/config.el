@@ -140,3 +140,7 @@
   (deft-use-filter-string-for-filename t)
   (deft-default-extension "org")
   (deft-directory "~/org/"))
+
+;; properly enable org-id
+(require 'org-id)
+(setq org-id-link-to-org-use-id t)
