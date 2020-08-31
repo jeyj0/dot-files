@@ -223,6 +223,7 @@ in
       ripgrep
       fd
       clang
+      sqlite # for org-roam
 
     unstable.vscodium
 

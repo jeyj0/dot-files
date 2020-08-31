@@ -122,3 +122,21 @@
 
 (org-link-set-parameters "id"
                          :complete 'org-id-complete-link)
+
+;; configure org-roam
+(setq org-roam-directory "~/org/roam")
+
+;; start visual-fill-column-mode when entering org-mode
+(add-hook 'visual-line-mode-hook #'visual-fill-column-mode)
+(add-hook 'org-mode-hook #'visual-line-mode)
+
+;; configure deft for org
+(use-package deft
+  :after org
+  :bind
+  ("C-c n d" . deft)
+  :custom
+  (deft-recursive t)
+  (deft-use-filter-string-for-filename t)
+  (deft-default-extension "org")
+  (deft-directory "~/org/"))
