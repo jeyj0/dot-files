@@ -114,15 +114,6 @@
 ;; enable narrow-to-region
 (put 'narrow-to-region 'disabled nil)
 
-;; autocomplete id links in org-mode
-(defun org-id-complete-link (&optional arg)
-  "Create an id: link using completion"
-  (concat "id:"
-          (org-id-get-with-outline-path-completion)))
-
-(org-link-set-parameters "id"
-                         :complete 'org-id-complete-link)
-
 ;; configure org-roam
 (setq org-roam-directory "~/org/roam")
 
@@ -144,3 +135,12 @@
 ;; properly enable org-id
 (require 'org-id)
 (setq org-id-link-to-org-use-id t)
+
+;; autocomplete id links in org-mode
+(defun org-id-complete-link (&optional _arg)
+  "Create an id: link using completion"
+  (concat "id:"
+          (org-id-get-with-outline-path-completion)))
+
+(org-link-set-parameters "id"
+                         :complete 'org-id-complete-link)
