@@ -181,12 +181,12 @@
         org-agenda-start-on-weekday 1))
 
 ;; some org-agenda related settings
-(after! org-agenda
-  (map! :map org-agenda-mode-map
-        ;; open day view
-        :n "d" #'org-agenda-day-view
-        ;; open week view
-        :n "w" #'org-agenda-week-view))
+(map! :after evil-org-agenda
+      :map evil-org-agenda-mode-map
+      ;; open day view
+      :m "d" #'org-agenda-day-view
+      ;; open week view
+      :m "w" #'org-agenda-week-view)
 
 ;; prettify priorities in org-mode
 (use-package! org-fancy-priorities
