@@ -117,6 +117,21 @@
 ;; configure org-roam
 (setq org-roam-directory "~/org/roam")
 
+;; configure org-roam capture templates
+;; this is for now not for more than just to separate DnD notes
+;; and normal notes from each other via sub-directories
+(setq org-roam-capture-templates
+      '(("n" "note" plain (function org-roam--capture-get-point)
+         "%?"
+         :file-name "notes/%<%Y%m%d%H%M%S>-${slug}"
+         :head "#+TITLE: ${title}\n"
+         :unnarrowed t)
+        ("d" "dnd" plain (function org-roam--capture-get-point)
+         "%?"
+         :file-name "dnd/%<%Y%m%d%H%M%S>-${slug}"
+         :head "#+TITLE: ${title}\n"
+         :unnarrowed t)))
+
 ;; start visual-fill-column-mode when entering org-mode
 (add-hook 'visual-line-mode-hook #'visual-fill-column-mode)
 (add-hook 'org-mode-hook #'visual-line-mode)
