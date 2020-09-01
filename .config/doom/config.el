@@ -150,7 +150,55 @@
   "We expect the encoding to be LF UTF-8, so only show the modeline when this is not the case"
   (setq-local doom-modeline-buffer-encoding
               (unless (or (eq buffer-file-coding-system 'utf-8-unix)
-                      (eq buffer-file-coding-system 'utf-8)
-                      (eq buffer-file-coding-system 'prefer-utf-8-unix)))))
+                          (eq buffer-file-coding-system 'utf-8)
+                          (eq buffer-file-coding-system 'prefer-utf-8-unix)))))
 
 (add-hook 'after-change-major-mode-hook #'doom-modeline-conditional-buffer-encoding)
+
+;; configure some org-mode related settings
+(after! org
+  (map! :map org-mode-map
+        ;; map inserting quotes, comments, etc. to `SPC m i`
+        :n "SPC m i" #'org-insert-structure-template
+        ;; start/stop org-roam-server
+        :n "SPC n r s" #'org-roam-server-mode)
+  (setq ;; prettify org priorities
+        org-priority-faces '((?A :foreground "#fb4934")
+                             (?B :foreground "#fe8019")
+                             (?C :foreground "#fabd2f"))
+        ;; customize todo steps
+        org-todo-keywords '((sequence "REFILE(r)" "TODO(t)" "INPROGRESS(i)" "WAITING(w)" "|" "DONE(d)" "CANCELLED(c)"))
+        ;; prettify todo steps (gruvbox theme)
+        org-todo-keyword-faces
+        '(("REFILE" :foreground "#fabd2f" :weight bold)
+          ("TODO" :foreground "#fabd2f" :weight bold)
+          ("INPROGRESS" :foreground "#d3869b" :weight bold)
+          ("WAITING" :foreground "#83a598" :weight bold)
+          ("DONE" :foreground "#b8bb26" :weight bold)
+          ("CANCELLED" :foreground "#928374" :weight bold))
+        ;; set the start of the week to Monday
+        calendar-week-start-day 1
+        org-agenda-start-on-weekday 1))
+
+;; some org-agenda related settings
+(after! org-agenda
+  (map! :map org-agenda-mode-map
+        ;; open day view
+        :n "d" #'org-agenda-day-view
+        ;; open week view
+        :n "w" #'org-agenda-week-view))
+
+;; prettify priorities in org-mode
+(use-package! org-fancy-priorities
+  :hook (org-mode . org-fancy-priorities-mode)
+  :hook (org-agenda-mode . org-fancy-priorities-mode)
+  :config
+  (setq org-fancy-priorities-list '("⬤" "⬤" "⬤")))
+
+;; setup org-roam-server
+(use-package! org-roam-server
+  :config
+  (setq org-roam-server-host "localhost"
+        org-roam-server-port 8089
+        org-roam-server-authenticate nil
+        org-roam-server-network-arrows 'from))

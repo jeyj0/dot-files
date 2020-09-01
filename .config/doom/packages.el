@@ -30,6 +30,8 @@
 (package! direnv)
 (package! format-all)
 (package! visual-fill-column)
+(package! org-fancy-priorities) ;; replace [#A] [#B] ... with something nicer
+(package! org-roam-server)
 
 ;; To install a package directly from a particular repo, you'll need to specify
 ;; a `:recipe'. You'll find documentation on what `:recipe' accepts here:
