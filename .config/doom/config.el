@@ -202,6 +202,7 @@
       :m "d" #'org-agenda-day-view
       ;; open week view
       :m "w" #'org-agenda-week-view)
+(setq org-agenda-files '("~/org/" "~/org/roam/dnd/20200901190541-marotoja.org"))
 
 ;; prettify priorities in org-mode
 (use-package! org-fancy-priorities
