@@ -60,7 +60,8 @@
 
 ;; Easier moving through buffers (Alt+[U,I])
 (map! :leader "u" 'evil-prev-buffer
-      :leader "i" 'evil-next-buffer)
+      :leader "i" 'evil-next-buffer
+      :leader "bq" 'doom/save-and-kill-buffer)
 
 ;; Easier switching tabs (Alt+[u,i])
 (map! :leader "U" '+workspace:switch-previous
