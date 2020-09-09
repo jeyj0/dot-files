@@ -198,13 +198,14 @@
                              (?B :foreground "#fe8019")
                              (?C :foreground "#fabd2f"))
         ;; customize todo steps
-        org-todo-keywords '((sequence "TODO(t)" "REFILE(r)" "INPROGRESS(i)" "WAITING(w)" "|" "DONE(d)" "CANCELLED(c)"))
+        org-todo-keywords '((sequence "TODO(t)" "REFILE(r)" "INPROGRESS(i)" "WAITING(w)" "HOLD(h)" "|" "DONE(d)" "CANCELLED(c)"))
         ;; prettify todo steps (gruvbox theme)
         org-todo-keyword-faces
         '(("TODO" :foreground "#fabd2f" :weight bold)
           ("REFILE" :foreground "#fabd2f" :weight bold)
           ("INPROGRESS" :foreground "#d3869b" :weight bold)
           ("WAITING" :foreground "#83a598" :weight bold)
+          ("HOLD" :foreground "#fe8019" :weight bold)
           ("DONE" :foreground "#b8bb26" :weight bold)
           ("CANCELLED" :foreground "#928374" :weight bold))
         ;; set the start of the week to Monday
