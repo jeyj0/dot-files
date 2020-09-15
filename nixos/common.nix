@@ -272,6 +272,7 @@ in
     exa
     unstable.tuir
     cachix
+    speedtest-cli
 
     slack
     discord
