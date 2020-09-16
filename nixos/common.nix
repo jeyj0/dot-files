@@ -104,8 +104,8 @@ in
 
   networking.firewall.enable = true;
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 80 443 4443 8000 3000 8080 8001 8081 8082 8083 8084 8085 5000 ];
-  networking.firewall.allowedUDPPorts = [ 10000 ];
+  networking.firewall.allowedTCPPorts = [ 80 443 4443 8000 3000 8080 8001 8081 8082 8083 8084 8085 5000 9993 10000 ];
+  networking.firewall.allowedUDPPorts = [ 10000 9993 ];
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
@@ -117,6 +117,7 @@ in
 
   location.provider = "geoclue2";
   services = {
+    zerotierone.enable = true;
     printing.enable = true;
     emacs = {
       enable = true;
@@ -303,6 +304,8 @@ in
     elmPackages.elm-language-server
 
     jpkgs.responsively
+
+    zerotierone
 
     ## Games
     brogue
