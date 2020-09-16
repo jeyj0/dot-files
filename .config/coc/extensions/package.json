@@ -1,10 +1,10 @@
 {
   "dependencies": {
-    "coc-css": ">=1.2.4",
+    "coc-css": ">=1.2.5",
     "coc-elixir": ">=0.5.0",
     "coc-html": ">=1.2.4",
-    "coc-java": ">=1.4.11",
-    "coc-jest": ">=1.0.3",
+    "coc-java": ">=1.4.12",
+    "coc-jest": ">=1.0.4",
     "coc-json": ">=1.2.6",
     "coc-markdownlint": ">=1.5.0",
     "coc-marketplace": ">=1.7.0",
