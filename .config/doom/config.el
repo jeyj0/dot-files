@@ -235,3 +235,5 @@
         org-roam-server-port 8089
         org-roam-server-authenticate nil
         org-roam-server-network-arrows 'from))
+
+(load! "./togetherly.el")
