@@ -236,4 +236,5 @@
         org-roam-server-authenticate nil
         org-roam-server-network-arrows 'from))
 
+;; load togetherly, a way to have multiple-cursor-collaboration in an emacs buffer
 (load! "./togetherly.el")
