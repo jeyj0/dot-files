@@ -11,8 +11,8 @@ let
     pkgs.fetchFromGitHub {
       owner = "NixOS";
       repo = "nixpkgs-channels";
-      rev = "55668eb671b915b49bcaaeec4518cc49d8de0a99";
-      sha256 = "0b2mrrjsdpxpyvnv98dph5av3xjps1mbd87x8510mnc4pfa2zc8z";
+      rev = "e0759a49733dfc3aa225b8a7423c00da6e1ecb67";
+      sha256 = "1lnaifrbdmvbmz25404z7xpfwaagscs1i80805fyrrs1g27h21qb";
     };
 
   pythonPackages = pypkgs: with pypkgs; [
@@ -276,7 +276,8 @@ in
     speedtest-cli
 
     slack
-    discord
+    unstable.discord
+    spotify
     matterhorn
 
     # minecraft # while this should work, the package is currently broken
