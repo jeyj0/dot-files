@@ -238,3 +238,34 @@
 
 ;; load togetherly, a way to have multiple-cursor-collaboration in an emacs buffer
 (load! "./togetherly.el")
+
+;; export org-roam with backlings
+;; from https://github.com/jethrokuan/dots/blob/0064ea2aab667f115a14ce48292731db46302c53/.doom.d/config.el#L487
+(after! (org org-roam)
+  (defun jeyj0/org-roam-export-all ()
+    "Re-exports all Org-roam files to HTML."
+    (interactive)
+    (dolist (f (org-roam--list-all-files))
+      (with-current-buffer (find-file f)
+        ;;(when (s-contains? "SETUPFILE" (buffer-string))
+          (org-html-export-to-html))));;)
+  (defun jeyj0/org-roam--backlinks-list (file)
+    (when (org-roam--org-roam-file-p file)
+      (mapcar #'car (org-roam-db-query [:select :distinct [from]
+                                        :from links
+                                        :where (= to $s1)
+                                        :and from :not :like $s2] file "%private%"))))
+  (defun jeyj0/org-export-preprocessor (_backend)
+    (when-let ((links (jeyj0/org-roam--backlinks-list (buffer-file-name))))
+      (goto-char (point-max))
+      (insert "\n* Backlinks :backlinks:\n")
+      (dolist (link links)
+        (insert (format "- [[file:%s][%s]]\n"
+                        (file-relative-name link org-roam-directory)
+                        (org-roam--get-title-or-slug link))))))
+  (add-hook 'org-export-before-processing-hook #'jeyj0/org-export-preprocessor))
+
+(setq org-export-with-toc nil
+      org-export-with-broken-links t
+      org-export-with-author nil
+      org-export-with-timestamps nil)
