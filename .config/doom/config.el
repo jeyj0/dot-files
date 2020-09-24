@@ -127,6 +127,11 @@
          :file-name "notes/%<%Y%m%d%H%M%S>-${slug}"
          :head "#+TITLE: ${title}\n"
          :unnarrowed t)
+        ("a" "article" plain (function org-roam--capture-get-point)
+         "%?"
+         :file-name "articles/%<%Y%m%d%H%M%S>-${slug}"
+         :head "#+TITLE: ${title}\n#+roam_tags: article\n"
+         :unnarrowed t)
         ("d" "dnd" plain (function org-roam--capture-get-point)
          "%?"
          :file-name "dnd/%<%Y%m%d%H%M%S>-${slug}"
