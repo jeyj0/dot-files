@@ -274,6 +274,7 @@ in
     unstable.tuir
     cachix
     speedtest-cli
+    unstable.fontpreview
 
     slack
     unstable.discord
