@@ -297,6 +297,7 @@ in
     apvlv
     evince
 
+    obs-studio
     nextcloud-client
     libreoffice
     postman
