@@ -302,6 +302,7 @@ in
     obs-studio
     obs-v4l2sink
     ffmpeg
+    vlc
     nextcloud-client
     libreoffice
     postman
