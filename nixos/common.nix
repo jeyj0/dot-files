@@ -300,6 +300,7 @@ in
     evince
 
     obs-studio
+    obs-v4l2sink
     nextcloud-client
     libreoffice
     postman
