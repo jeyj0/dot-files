@@ -35,6 +35,8 @@ in
     channel = https://nixos.org/channels/nixos-20.03;
   };
 
+  boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
+
   # imports =
     # [ # Include the results of the hardware scan.
       # /etc/nixos/hardware-configuration.nix
