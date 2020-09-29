@@ -16,3 +16,4 @@
 !configtemplates/
 !compton.conf
 !nixpkgs/
+!coc/
