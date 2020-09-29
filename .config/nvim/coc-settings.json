@@ -1,5 +1,12 @@
 {
-  "coc.preferences.formatOnSaveFiletypes": ["json", "js", "elm"],
+  "coc.preferences.formatOnSaveFiletypes": [
+    "json",
+    "js",
+    "elm",
+    "ts",
+    "tsx",
+    "css"
+  ],
   "diagnostic.warningSign": "!",
   "languageserver": {
     "elmLS": {
