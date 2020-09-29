@@ -11,8 +11,8 @@ let
     pkgs.fetchFromGitHub {
       owner = "NixOS";
       repo = "nixpkgs-channels";
-      rev = "e0759a49733dfc3aa225b8a7423c00da6e1ecb67";
-      sha256 = "1lnaifrbdmvbmz25404z7xpfwaagscs1i80805fyrrs1g27h21qb";
+      rev = "daaa0e33505082716beb52efefe3064f0332b521";
+      sha256 = "15vprzpbllp9hy5md36ch1llzhxhd44d291kawcslgrzibw51f95";
     };
 
   pythonPackages = pypkgs: with pypkgs; [
