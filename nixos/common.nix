@@ -303,6 +303,9 @@ in
     obs-v4l2sink
     ffmpeg
     vlc
+
+    zoom-us
+
     nextcloud-client
     libreoffice
     postman
