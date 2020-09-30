@@ -196,6 +196,8 @@ nnoremap <silent> <leader>ot :botright 20split +terminal<cr>
   let g:which_key_map.o.t = 'terminal'
 nnoremap <silent> <leader>os :botright 20split /tmp/vim_scratch<cr>:set bufhidden=delete<cr>:set buftype=nofile<cr>:setlocal noswapfile<cr>
   let g:which_key_map.o.s = 'scratch'
+nnoremap <leader>op :<C-u>call SwitchToProject()<cr>
+  let g:which_key_map.o.p = 'project'
 
 " WINDOWS
 let g:which_key_map.w = { 'name' : '+window' }
