@@ -27,6 +27,33 @@ function! SwitchToProject() abort
     call fzf#run(fzf#wrap('fzf_cd_project', { 'source': 'ls ~/projects/', 'sink': funcref('CdToProject') }, 0))
 endfunction
 
+" floaterm
+
+"" close floaterm when process exits with 0
+let g:floaterm_autoclose = 1
+
+"" open git commit in a split if invoked from floaterm
+let g:floaterm_gitcommit = 'floaterm'
+
+"" always open floaterm at the current working directory
+let g:floaterm_rootmarkers = []
+
+"" set floaterm title
+let g:floaterm_title = "Terminal $1/$2"
+
+"" open files in a split when opened from floating terminal
+let g:floaterm_open_command = 'vsplit'
+
+" function to close terminals (special handling for floaterm)
+function! CloseTerminal() abort
+  let l:ft = &filetype
+  if l:ft == "floaterm"
+    execute "normal! :FloatermHide\<cr>"
+  else
+    execute "normal! :q\<cr>"
+  endif
+endfunction
+
 " configure neovim-remote to work properly with git
 autocmd FileType gitcommit,gitrebase,gitconfig,diff set bufhidden=delete
 

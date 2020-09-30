@@ -101,6 +101,9 @@ Plug 'liuchengxu/vim-which-key'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 
+" floating, persistant (toggleable) terminals
+Plug 'voldikss/vim-floaterm'
+
 " better indentation
 Plug 'vim-scripts/yaifa.vim'
 

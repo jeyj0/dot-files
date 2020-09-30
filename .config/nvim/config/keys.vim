@@ -11,6 +11,9 @@ let g:which_key_map = {}
 nnoremap <leader>; :
 let g:which_key_map[';'] = ':'
 
+" close terminals with escape
+tnoremap <silent> <esc> <C-\><C-n>:<C-u>call CloseTerminal()<cr>
+
 " SESSION (z)
 let g:which_key_map.z = { 'name' : '+session'}
 
@@ -192,12 +195,18 @@ augroup end
 " OPEN
 let g:which_key_map.o = { 'name' : '+open' }
 
-nnoremap <silent> <leader>ot :botright 20split +terminal<cr>
+nnoremap <silent> <leader>ot :FloatermToggle<cr>
   let g:which_key_map.o.t = 'terminal'
 nnoremap <silent> <leader>os :botright 20split /tmp/vim_scratch<cr>:set bufhidden=delete<cr>:set buftype=nofile<cr>:setlocal noswapfile<cr>
   let g:which_key_map.o.s = 'scratch'
 nnoremap <leader>op :<C-u>call SwitchToProject()<cr>
   let g:which_key_map.o.p = 'project'
+
+"" OPEN NEW
+let g:which_key_map.o.n = { 'name': '+new' }
+
+nnoremap <silent> <leader>ont :FloatermNew<cr>
+  let g:which_key_map.o.n.t = 'terminal'
 
 " WINDOWS
 let g:which_key_map.w = { 'name' : '+window' }
