@@ -26,6 +26,7 @@ alias e='$VISUAL'
 alias vim='nvim'
 alias vi='vim'
 alias v='vim'
+alias f='./.config/nvim/jeyj0-plugged/vim-floaterm/bin/floaterm'
 
 # vscodium = vscode
 alias code='codium'
