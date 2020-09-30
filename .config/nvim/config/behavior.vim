@@ -84,7 +84,7 @@ function! WebSearch(type, ...)
     endif
 
     let search = substitute(trim(@@), ' \+', '+', 'g')
-    silent exe "!open 'https://duckduckgo.com/?q=" . search . "'"
+    silent exe "!open 'https://search.jorre.dev/?q=" . search . "'"
 
     let &selection = sel_save
     let @@ = reg_save
