@@ -11,8 +11,17 @@ let g:which_key_map = {}
 nnoremap <leader>; :
 let g:which_key_map[';'] = ':'
 
+" TERMINAL MAPPINGS
+
+" show terminal with C-t to mimic C- mappings that I use for terminals
+nnoremap <silent> <C-t> :FloatermShow<cr>
+
 " close terminals with escape
 tnoremap <silent> <esc> <C-\><C-n>:<C-u>call CloseTerminal()<cr>
+
+" go to next/prev floaterm using C-[j/k]
+tnoremap <silent> <C-j> <C-\><C-n>:FloatermPrev<cr>
+tnoremap <silent> <C-k> <C-\><C-n>:FloatermNext<cr>
 
 " SESSION (z)
 let g:which_key_map.z = { 'name' : '+session'}
