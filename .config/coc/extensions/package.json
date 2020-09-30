@@ -6,7 +6,7 @@
     "coc-java": ">=1.4.12",
     "coc-jest": ">=1.1.1",
     "coc-json": ">=1.2.6",
-    "coc-markdownlint": ">=1.5.0",
+    "coc-markdownlint": ">=1.6.0",
     "coc-marketplace": ">=1.7.0",
     "coc-prettier": ">=1.1.17",
     "coc-rls": ">=1.1.6",
