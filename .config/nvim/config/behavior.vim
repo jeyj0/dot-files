@@ -19,6 +19,14 @@ let g:ranger_replace_netrw = 1
 " fzf commands / shortcuts
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
+" fzf function to switch to project
+function! CdToProject(project) abort
+    execute 'cd' fnameescape("~/projects/" . a:project)
+endfunction
+function! SwitchToProject() abort
+    call fzf#run(fzf#wrap('fzf_cd_project', { 'source': 'ls ~/projects/', 'sink': funcref('CdToProject') }, 0))
+endfunction
+
 " configure neovim-remote to work properly with git
 autocmd FileType gitcommit,gitrebase,gitconfig,diff set bufhidden=delete
 
