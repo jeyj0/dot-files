@@ -8,7 +8,7 @@ if exists('g:vscode')
     runtime config/clients/vscode.vim
 endif
 
-if exists('nvim')
+if has('nvim')
     runtime config/clients/neovim.vim
 endif
 
