@@ -54,6 +54,55 @@ function! CloseTerminal() abort
   endif
 endfunction
 
+" STARTIFY
+
+augroup startify
+    autocmd!
+
+    " do not allow saving the startify view as a file
+    autocmd User Startified setlocal buftype=nofile
+augroup end
+
+" center startify header
+let g:startify_custom_header =
+    \ 'startify#center(startify#fortune#cowsay())'
+
+" autosave startify sessions once opened
+let g:startify_session_persistence = 1
+
+" limit listed files
+let g:startify_files_number = 5
+
+" cd to vcs root after opening a file
+let g:startify_change_to_vcs_root = 1
+
+" function to list modified and untracked files from git
+function! s:gitModifiedAndUntracked()
+    let files = systemlist('git ls-files -m 2>/dev/null && git ls-files -o --exclude-standard 2>/dev/null')
+    return map(files, "{'line': v:val, 'path': v:val}")
+endfunction
+
+" define startify lists and their order
+let g:startify_lists = [
+        \ { 'type': 'dir', 'header': ['   Recently used in '. getcwd()] },
+        \ { 'type': function('s:gitModifiedAndUntracked'),  'header': ['   git (modified and untracked)']},
+        \ { 'type': 'files', 'header': ['   Recently used'] },
+        \ { 'type': 'sessions', 'header': ['   Sessions'] },
+        \ { 'type': 'bookmarks', 'header': ['   Bookmarks'] },
+        \ { 'type': 'commands', 'header': ['   Commands'] },
+        \ ]
+
+" remember to avoid mappings starting with q,e,i,b,s,v,t,<cr>
+let g:startify_bookmarks = [
+        \ {'ck': '~/.config/nvim/config/keys.vim'},
+        \ {'cb': '~/.config/nvim/config/behavior.vim'},
+        \ {'cp': '~/.config/nvim/config/plugins.vim'},
+        \ {'cv': '~/.config/nvim/config/visuals.vim'},
+        \ {'n': '~/nixos/common.nix'}
+        \ ]
+
+" STARTIFY END
+
 " configure neovim-remote to work properly with git
 autocmd FileType gitcommit,gitrebase,gitconfig,diff set bufhidden=delete
 
