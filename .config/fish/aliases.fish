@@ -2,6 +2,7 @@
 alias ls='exa'
 alias la='ls -l --all'
 alias tree='exa --tree'
+alias op='cd ~/projects/(ls ~/projects/ | fzf)'
 
 # git
 alias gs='git status'
