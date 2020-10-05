@@ -101,6 +101,9 @@ Plug 'liuchengxu/vim-which-key'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 
+" hoogle integration
+Plug 'monkoose/fzf-hoogle.vim'
+
 " floating, persistant (toggleable) terminals
 Plug 'voldikss/vim-floaterm'
 

@@ -277,6 +277,8 @@ in
     cachix
     speedtest-cli
     unstable.fontpreview
+    haskellPackages.hoogle
+    jq
 
     slack
     unstable.discord
