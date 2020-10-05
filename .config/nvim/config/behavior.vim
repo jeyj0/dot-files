@@ -121,26 +121,6 @@ autocmd TermOpen * setlocal nonumber norelativenumber " no line numbers in termi
 autocmd TermOpen * startinsert " start terminal in terminal-mode
 
 " taken from
-" https://vi.stackexchange.com/questions/3725/swap-the-position-of-two-windows
-function! SwitchWindows() abort
-    let thiswin = winnr()
-    let thisbuf = bufnr("%")
-    let lastwin = winnr("#")
-    let lastbuf = winbufnr(lastwin)
-
-    exec  lastwin . " wincmd w" ."|".
-        \ "buffer ". thisbuf ."|".
-        \ thiswin ." wincmd w" ."|".
-        \ "buffer ". lastbuf
-
-    " let l:current_buf = winbufnr(0)
-    " exe "buffer" . winbufnr(a:count)
-    " exe a:count . "wincmd p"
-    " exe "buffer" . l:current_buf
-    " wincmd p
-endfunction
-
-" taken from
 " https://stackoverflow.com/a/37866336/4554254
 function! CloseAllBuffersButCurrent()
   let curr = bufnr("%")

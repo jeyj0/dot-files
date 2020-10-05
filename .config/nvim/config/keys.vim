@@ -221,18 +221,20 @@ nnoremap <silent> <leader>ont :FloatermNew<cr>
 let g:which_key_map.w = { 'name' : '+window' }
 
 "" window moving
-nnoremap <silent> <leader>wH :wincmd h<cr>:wincmd p<cr>:<C-u>call SwitchWindows()<cr>
+nnoremap <silent> <leader>wH <Plug>(MoveJumpLeft)
   let g:which_key_map.w.H = 'switch left'
-nnoremap <silent> <leader>wJ :wincmd j<cr>:wincmd p<cr>:<C-u>call SwitchWindows()<cr>
+nnoremap <silent> <leader>wJ <Plug>(MoveJumpDown)
   let g:which_key_map.w.J = 'switch down'
-nnoremap <silent> <leader>wK :wincmd k<cr>:wincmd p<cr>:<C-u>call SwitchWindows()<cr>
+nnoremap <silent> <leader>wK <Plug>(MoveJumpUp)
   let g:which_key_map.w.K = 'switch up'
-nnoremap <silent> <leader>wL :wincmd l<cr>:wincmd p<cr>:<C-u>call SwitchWindows()<cr>
+nnoremap <silent> <leader>wL <Plug>(MoveJumpRight)
   let g:which_key_map.w.L = 'switch right'
 
 "" split handling
 nnoremap <silent> <leader>w= :wincmd =<cr>
   let g:which_key_map.w['='] = 'autoresize'
+nnoremap <silent> <leader>ww <Plug>(MaximizeWin)
+  let g:which_key_map.w.w = 'toggle maximized'
 nnoremap <silent> <leader>wv :vsplit<cr>
   let g:which_key_map.w.v = 'vsplit'
 nnoremap <silent> <leader>ws :split<cr>

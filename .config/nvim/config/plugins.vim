@@ -27,6 +27,8 @@ call plug#begin('$HOME/.config/nvim/jeyj0-plugged')
 " Plug 'AndrewRadev/switch.vim'
 " Plug 'antoinemadec/coc-fzf'
 
+Plug 'yaronkh/vim-winmanip'
+
 " -----------------------------------------------------------------------------
 
 " nice dashboard, with useful file lists
@@ -130,4 +132,4 @@ call plug#end()
 let g:bclose_no_plugin_maps = 1
 let g:ranger_map_keys = 0
 let g:gitgutter_map_keys = 0
-
+let g:winmanip_disable_key_mapping = 1
