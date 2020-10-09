@@ -63,6 +63,10 @@ augroup startify
     autocmd User Startified setlocal buftype=nofile
 augroup end
 
+" auto-open startify when closing last buffer
+" (and having only one window open)
+autocmd BufEnter * if line2byte('.') == -1 && len(tabpagebuflist()) == 1 | Startify | endif
+
 " center startify header
 let g:startify_custom_header =
     \ 'startify#center(startify#fortune#cowsay())'
