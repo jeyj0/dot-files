@@ -323,6 +323,8 @@ in
 
     ## Games
     brogue
+
+    cloudflared
   ];
 
   fonts = {
