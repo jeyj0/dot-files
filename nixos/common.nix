@@ -327,14 +327,19 @@ in
     cloudflared
   ];
 
-  fonts = {
-    fonts = with pkgs; [
-      fira-code
-      hack-font
-      font-awesome
-      open-sans
-    ];
-  };
+  fonts.fonts = with pkgs; [
+    fira-code
+    hack-font
+    font-awesome
+    open-sans
+    (nerdfonts.override {
+      fonts = [
+        "FiraCode"
+        "Hack"
+        "OpenDyslexic"
+      ];
+    })
+  ];
 
   # Enable touchpad support.
   # services.xserver.libinput.enable = true;
