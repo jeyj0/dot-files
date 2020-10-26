@@ -137,7 +137,7 @@ nnoremap <leader>pp :cd ~/projects/
 " CODE
 let g:which_key_map.c = { 'name': '+code' }
 
-nnoremap <silent> <leader>cr <Plug>(coc-rename)
+nmap <silent> <leader>cr <Plug>(coc-rename)
   let g:which_key_map.c.r = 'rename symbol'
 
 "" comment toggle
@@ -221,19 +221,19 @@ nnoremap <silent> <leader>ont :FloatermNew<cr>
 let g:which_key_map.w = { 'name' : '+window' }
 
 "" window moving
-nnoremap <silent> <leader>wH <Plug>(MoveJumpLeft)
+nmap <silent> <leader>wH <Plug>(MoveJumpBufLeft)
   let g:which_key_map.w.H = 'switch left'
-nnoremap <silent> <leader>wJ <Plug>(MoveJumpDown)
+nmap <silent> <leader>wJ <Plug>(MoveJumpBufDown)
   let g:which_key_map.w.J = 'switch down'
-nnoremap <silent> <leader>wK <Plug>(MoveJumpUp)
+nmap <silent> <leader>wK <Plug>(MoveJumpBufUp)
   let g:which_key_map.w.K = 'switch up'
-nnoremap <silent> <leader>wL <Plug>(MoveJumpRight)
+nmap <silent> <leader>wL <Plug>(MoveJumpBufRight)
   let g:which_key_map.w.L = 'switch right'
 
 "" split handling
 nnoremap <silent> <leader>w= :wincmd =<cr>
   let g:which_key_map.w['='] = 'autoresize'
-nnoremap <silent> <leader>ww <Plug>(MaximizeWin)
+nmap <silent> <leader>ww <Plug>(MaximizeWin)
   let g:which_key_map.w.w = 'toggle maximized'
 nnoremap <silent> <leader>wv :vsplit<cr>
   let g:which_key_map.w.v = 'vsplit'
@@ -245,14 +245,18 @@ nnoremap <silent> <leader>wQ :qa<cr>
   let g:which_key_map.w.Q = 'close all'
 
 "" window navigation
-nnoremap <silent> <leader>h :wincmd h<cr>
-let g:which_key_map.h = 'left (win)'
-nnoremap <silent> <leader>j :wincmd j<cr>
-let g:which_key_map.j = 'down (win)'
-nnoremap <silent> <leader>k :wincmd k<cr>
-let g:which_key_map.k = 'up (win)'
-nnoremap <silent> <leader>l :wincmd l<cr>
-let g:which_key_map.l = 'right (win)'
+" nnoremap <silent> <leader>h :wincmd h<cr>
+nmap <silent> <leader>h <Plug>(JumpLeft)
+  let g:which_key_map.h = 'left (win)'
+" nnoremap <silent> <leader>j :wincmd j<cr>
+nmap <silent> <leader>j <Plug>(JumpDown)
+  let g:which_key_map.j = 'down (win)'
+" nnoremap <silent> <leader>k :wincmd k<cr>
+nmap <silent> <leader>k <Plug>(JumpUp)
+  let g:which_key_map.k = 'up (win)'
+" nnoremap <silent> <leader>l :wincmd l<cr>
+nmap <silent> <leader>l <Plug>(JumpRight)
+  let g:which_key_map.l = 'right (win)'
 
 nnoremap <silent> <leader>wp :wincmd p<cr>
   let g:which_key_map.w.p = 'prev'
