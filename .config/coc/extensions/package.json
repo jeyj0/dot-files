@@ -13,7 +13,7 @@
     "coc-rls": ">=1.1.6",
     "coc-snippets": ">=2.2.1",
     "coc-tabnine": ">=1.2.2",
-    "coc-tailwindcss": ">=0.6.0",
+    "coc-tailwindcss": ">=0.7.0",
     "coc-tsserver": ">=1.5.8",
     "coc-webpack": ">=1.4.0"
   }
