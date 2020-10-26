@@ -1,9 +1,9 @@
 {
   "dependencies": {
     "coc-css": ">=1.2.5",
-    "coc-elixir": ">=0.5.2",
+    "coc-elixir": ">=0.6.0",
     "coc-html": ">=1.2.4",
-    "coc-java": ">=1.4.12",
+    "coc-java": ">=1.5.0",
     "coc-jest": ">=1.1.1",
     "coc-json": ">=1.2.6",
     "coc-markdownlint": ">=1.6.0",
@@ -13,7 +13,7 @@
     "coc-snippets": ">=2.2.1",
     "coc-tabnine": ">=1.2.2",
     "coc-tailwindcss": ">=0.6.0",
-    "coc-tsserver": ">=1.5.7",
+    "coc-tsserver": ">=1.5.8",
     "coc-webpack": ">=1.4.0"
   }
 }
