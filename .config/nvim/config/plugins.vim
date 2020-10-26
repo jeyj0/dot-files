@@ -81,6 +81,11 @@ Plug 'cideM/yui'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
+" nice tabline at the top (incl. dependencies)
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'romgrk/lib.kom'
+Plug 'romgrk/barbar.nvim'
+
 " autocompletion
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
