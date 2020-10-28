@@ -1,4 +1,6 @@
 # general
+alias cp='cp -i'
+alias mv='mv -i'
 alias ls='exa'
 alias la='ls -l --all'
 alias tree='exa --tree'
