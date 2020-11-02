@@ -283,7 +283,6 @@ in
     slack
     unstable.discord
     spotify
-    matterhorn
 
     # minecraft # while this should work, the package is currently broken
     multimc
