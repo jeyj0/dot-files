@@ -7,13 +7,15 @@
 with lib;
 
 let
-  unstablePkgs =
-    pkgs.fetchFromGitHub {
-      owner = "NixOS";
-      repo = "nixpkgs-channels";
-      rev = "daaa0e33505082716beb52efefe3064f0332b521";
-      sha256 = "15vprzpbllp9hy5md36ch1llzhxhd44d291kawcslgrzibw51f95";
-    };
+  packages = import ./nix/packages.nix {};
+
+  # unstablePkgs =
+  #   pkgs.fetchFromGitHub {
+  #     owner = "NixOS";
+  #     repo = "nixpkgs-channels";
+  #     rev = "daaa0e33505082716beb52efefe3064f0332b521";
+  #     sha256 = "15vprzpbllp9hy5md36ch1llzhxhd44d291kawcslgrzibw51f95";
+  #   };
 
   pythonPackages = pypkgs: with pypkgs; [
     pynvim
@@ -201,15 +203,10 @@ in
 
   # globally installed packages
 
-  # add unstable derivative, so I can install unstable packages
   nixpkgs.config = {
     allowUnfree = true;
     pulseaudio = true;
-    packageOverrides = pkgs: {
-      unstable = import unstablePkgs {
-        config = config.nixpkgs.config;
-      };
-    };
+    packageOverrides = pkgs: {};
   };
 
   environment.variables = {
@@ -217,7 +214,7 @@ in
     EDITOR = "nvim";
     VISUAL = "nvim";
   };
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = with packages; [
     # nodejs
     nodejs-12_x
     nodePackages.eslint
@@ -228,7 +225,7 @@ in
       clang
       sqlite # for org-roam
 
-    unstable.vscodium
+    vscodium
 
     rustup
     wasm-pack
@@ -259,7 +256,7 @@ in
 
     # programs
     ## command line
-    unstable.neovim-unwrapped
+    neovim-unwrapped
       watchman # watchman for coc.nvim
       neovim-remote # enable the use of only one neovim instance
       pythonWithPackages
@@ -273,15 +270,15 @@ in
     networkmanager_dmenu
     bat
     exa
-    unstable.tuir
+    tuir
     cachix
     speedtest-cli
-    unstable.fontpreview
+    fontpreview
     haskellPackages.hoogle
     jq
 
     slack
-    unstable.discord
+    discord
     spotify
 
     # minecraft # while this should work, the package is currently broken
@@ -293,7 +290,7 @@ in
     ## other
     firefox
     chromium
-    unstable.qutebrowser
+    qutebrowser
     sxiv
     gimp
 
@@ -312,7 +309,7 @@ in
     postman
     openssl
 
-    unstable.godot
+    godot
 
     elmPackages.elm-language-server
 
@@ -326,7 +323,7 @@ in
     cloudflared
   ];
 
-  fonts.fonts = with pkgs; [
+  fonts.fonts = with packages; [
     fira-code
     hack-font
     font-awesome

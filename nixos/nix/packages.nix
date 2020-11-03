@@ -8,5 +8,7 @@ in
     overlays = [
       overlay
     ];
-    config = {};
+    config = {
+      allowUnfree = true;
+    };
   }
