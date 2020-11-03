@@ -13,8 +13,6 @@ let
     pynvim
   ];
   pythonWithPackages = pkgs.python3.withPackages pythonPackages;
-
-  jpkgs = import ./pkgs/default.nix;
 in
 {
   # This value determines the NixOS release with which your system is to be
@@ -305,7 +303,7 @@ in
 
     elmPackages.elm-language-server
 
-    jpkgs.responsively
+    responsively
 
     zerotierone
 
