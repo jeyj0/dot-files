@@ -27,6 +27,10 @@ call plug#begin('$HOME/.config/nvim/jeyj0-plugged')
 " Plug 'AndrewRadev/switch.vim'
 " Plug 'antoinemadec/coc-fzf'
 
+" nice tabline at the top (incl. dependencies)
+"Plug 'romgrk/barbar.nvim'
+    "Plug 'kyazdani42/nvim-web-devicons'
+
 " -----------------------------------------------------------------------------
 
 " vim window manipulation
@@ -81,11 +85,6 @@ Plug 'cideM/yui'
 " fancy status line
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-
-" nice tabline at the top (incl. dependencies)
-Plug 'kyazdani42/nvim-web-devicons'
-Plug 'romgrk/lib.kom'
-Plug 'romgrk/barbar.nvim'
 
 " autocompletion
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
