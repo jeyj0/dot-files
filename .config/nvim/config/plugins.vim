@@ -27,9 +27,10 @@ call plug#begin('$HOME/.config/nvim/jeyj0-plugged')
 " Plug 'AndrewRadev/switch.vim'
 " Plug 'antoinemadec/coc-fzf'
 
-Plug 'yaronkh/vim-winmanip'
-
 " -----------------------------------------------------------------------------
+
+" vim window manipulation
+Plug 'yaronkh/vim-winmanip'
 
 " nice dashboard, with useful file lists
 " also includes session management
