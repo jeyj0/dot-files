@@ -9,7 +9,7 @@ alias op='cd ~/projects/(ls ~/projects/ | fzf)'
 # git
 alias gs='git status'
 alias gss='git status -s'
-alias gpush='zsh $HOME/scripts/git-push.sh'
+alias gpush='git push'
 alias gpull='git pull'
 alias gc='git commit'
 alias gco='git_checkout_fzf'
