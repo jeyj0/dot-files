@@ -9,14 +9,6 @@ with lib;
 let
   packages = import ./nix/packages.nix {};
 
-  # unstablePkgs =
-  #   pkgs.fetchFromGitHub {
-  #     owner = "NixOS";
-  #     repo = "nixpkgs-channels";
-  #     rev = "daaa0e33505082716beb52efefe3064f0332b521";
-  #     sha256 = "15vprzpbllp9hy5md36ch1llzhxhd44d291kawcslgrzibw51f95";
-  #   };
-
   pythonPackages = pypkgs: with pypkgs; [
     pynvim
   ];
