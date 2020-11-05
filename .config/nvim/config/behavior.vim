@@ -13,6 +13,9 @@ set hidden
 " ask to save buffer when closed unsaved
 set confirm
 
+" nnn.vim
+let g:nnn#layout = { 'window': { 'width': 0.6, 'height': 0.6 } }
+
 " use ranger when opening a directory
 let g:ranger_replace_netrw = 1
 
