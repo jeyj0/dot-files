@@ -250,6 +250,7 @@ in
       watchman # watchman for coc.nvim
       neovim-remote # enable the use of only one neovim instance
       pythonWithPackages
+    nnn
     ranger
       highlight # highlight enables syntax highlighting in previews
     fzf
