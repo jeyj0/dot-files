@@ -98,6 +98,9 @@ Plug 'wincent/terminus'
 " use ranger
 Plug 'francoiscabrol/ranger.vim'
 
+" use nnn.vim for file picking
+Plug 'mcchrish/nnn.vim'
+
 " buffer closing
 Plug 'rbgrouleff/bclose.vim' " required by ranger
 
