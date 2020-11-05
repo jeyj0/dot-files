@@ -6,6 +6,10 @@ alias la='ls -l --all'
 alias tree='exa --tree'
 alias op='cd ~/projects/(ls ~/projects/ | fzf)'
 
+# nnn
+alias nnn='nnn -H'
+alias fm='nnn'
+
 # git
 alias gs='git status'
 alias gss='git status -s'
