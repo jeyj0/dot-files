@@ -1,4 +1,4 @@
-{ stdenv, fetchFromGitHub, pkgconfig, ncurses, readline, conf ? null }:
+{ stdenv, fetchFromGitHub, pkgconfig, ncurses, readline }:
 
 with stdenv.lib;
 
@@ -14,13 +14,13 @@ stdenv.mkDerivation rec {
   };
 
   conf = builtins.readFile ./nnn/nnn.h;
-  configFile = optionalString (conf != null) (builtins.toFile "nnn.h" conf);
-  preBuild = optionalString (conf != null) "cp ${configFile} src/nnn.h";
+  configFile = builtins.toFile "nnn.h" conf;
+  preBuild = '' cp ${configFile} src/nnn.h '';
 
   nativeBuildInputs = [ pkgconfig ];
   buildInputs = [ readline ncurses ];
 
-  makeFlags = [ "DESTDIR=${placeholder "out"}" "O_NERD=1" "PREFIX=" ];
+  makeFlags = [ "O_NERD=1" "DESTDIR=${placeholder "out"}" "PREFIX=" ];
 
   # shell completions
   postInstall = ''
