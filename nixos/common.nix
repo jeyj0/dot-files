@@ -79,13 +79,20 @@ in
   time.timeZone = "Europe/Berlin";
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.jeyj0 = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" "docker" "audio" "video" ]; # Enable ‘sudo’ for the user.
-    shell = pkgs.fish;
-    createHome = true;
-    home = "/home/jeyj0";
-    description = "Jannis Jorre";
+  users = {
+    groups = {
+      jeyj0 = {
+        members = [ "jeyj0" ];
+      };
+    };
+    users.jeyj0 = {
+      isNormalUser = true;
+      extraGroups = [ "jeyj0" "wheel" "docker" "audio" "video" ]; # Enable ‘sudo’ for the user.
+      shell = pkgs.fish;
+      createHome = true;
+      home = "/home/jeyj0";
+      description = "Jannis Jorre";
+    };
   };
   nix.trustedUsers = [ "root" "jeyj0" ];
 
@@ -112,6 +119,14 @@ in
   location.provider = "geoclue2";
   services = {
     zerotierone.enable = true;
+    syncthing = {
+      enable = true;
+      openDefaultPorts = true;
+      user = "jeyj0";
+      group = "jeyj0";
+      dataDir = "/home/jeyj0/Sync";
+      configDir = "/home/jeyj0/.config/syncthing/";
+    };
     printing.enable = true;
     emacs = {
       enable = true;
