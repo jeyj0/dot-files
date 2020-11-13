@@ -17,7 +17,7 @@ Config { font    = "xft:Hack Nerd Font:weight=regular:pixelsize=16:antialias=tru
        , iconRoot = "/home/jeyj0/.xmonad/xpm/"  -- default: "."
        , commands = [
                       -- Time and date
-                      Run Date "<icon=calendar-clock-icon_20.xpm/> %d %b. %Y (%H:%M)" "date" 50
+                      Run Date "<fn=2> </fn> %d %b. %Y (%H:%M)" "date" 50
                       -- Network up and down
                     , Run Network "wlp3s0" ["-t", "<icon=net_down_20.xpm/> <rx>kb  <icon=net_up_20.xpm/> <tx>kb"] 20
                       -- Cpu usage in percent
