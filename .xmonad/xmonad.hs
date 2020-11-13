@@ -570,25 +570,29 @@ ebay     = S.searchEngine "ebay" "https://www.ebay.com/sch/i.html?_nkw="
 news     = S.searchEngine "news" "https://news.google.com/search?q="
 reddit   = S.searchEngine "reddit" "https://www.reddit.com/search/?q="
 urban    = S.searchEngine "urban" "https://www.urbandictionary.com/define.php?term="
+nixpkgs  = S.searchEngine "nixpkgs" "https://search.nixos.org/options?channel=unstable&from=0&size=30&sort=relevance&query="
+nixopts  = S.searchEngine "nixopts" "https://search.nixos.org/packages?channel=unstable&from=0&size=30&sort=relevance&query="
 
 -- This is the list of search engines that I want to use. Some are from
 -- XMonad.Actions.Search, and some are the ones that I added above.
 searchList :: [(String, S.SearchEngine)]
-searchList = [ ("a", archwiki)
-             , ("d", S.duckduckgo)
-             , ("e", ebay)
-             , ("g", S.google)
+searchList = [ ("d", S.duckduckgo)
+             , ("p", nixpkgs)
+             , ("o", nixopts)
              , ("h", S.hoogle)
+             , ("y", S.youtube)
+             , ("w", S.wikipedia)
+             , ("r", reddit)
+             , ("g", S.google)
+             , ("a", archwiki)
+             , ("e", ebay)
              , ("i", S.images)
              , ("n", news)
-             , ("r", reddit)
              , ("s", S.stackage)
              , ("t", S.thesaurus)
              , ("v", S.vocabulary)
              , ("b", S.wayback)
              , ("u", urban)
-             , ("w", S.wikipedia)
-             , ("y", S.youtube)
              , ("z", S.amazon)
              ]
 
@@ -626,18 +630,18 @@ mySpacing' i = spacingRaw True (Border i i i i) True (Border i i i i) True
 tall     = renamed [Replace "tall"]
            $ windowNavigation
            $ addTabs shrinkText myTabTheme
-           $ subLayout [] (smartBorders Simplest)
+           -- $ subLayout [] (smartBorders Simplest)
            $ limitWindows 12
            $ mySpacing 8
            $ ResizableTall 1 (3/100) (1/2) []
-magnify  = renamed [Replace "magnify"]
-           $ windowNavigation
-           $ addTabs shrinkText myTabTheme
-           $ subLayout [] (smartBorders Simplest)
-           $ magnifier
-           $ limitWindows 12
-           $ mySpacing 8
-           $ ResizableTall 1 (3/100) (1/2) []
+-- magnify  = renamed [Replace "magnify"]
+--            $ windowNavigation
+--            $ addTabs shrinkText myTabTheme
+--            $ subLayout [] (smartBorders Simplest)
+--            $ magnifier
+--            $ limitWindows 12
+--            $ mySpacing 8
+--            $ ResizableTall 1 (3/100) (1/2) []
 -- monocle  = renamed [Replace "monocle"]
 --            $ windowNavigation
 --            $ addTabs shrinkText myTabTheme
@@ -685,12 +689,12 @@ tabs     = renamed [Replace "tabs"]
            $ tabbed shrinkText myTabTheme
 
 myTabTheme = def { fontName            = myFont
-                 , activeColor         = "#46d9ff"
-                 , inactiveColor       = "#313846"
-                 , activeBorderColor   = "#46d9ff"
-                 , inactiveBorderColor = "#282c34"
-                 , activeTextColor     = "#282c34"
-                 , inactiveTextColor   = "#d0d0d0"
+                 , activeColor         = "#3c3836"
+                 , inactiveColor       = "#282828"
+                 , activeBorderColor   = "#3c3836"
+                 , inactiveBorderColor = "#1c1c1c"
+                 , activeTextColor     = "#ebdbb2"
+                 , inactiveTextColor   = "#928374"
                  }
 
 -- Theme for showWName which prints current workspace when you change workspaces.
@@ -708,7 +712,7 @@ myLayoutHook = avoidStruts $ mouseResize $ windowArrange $ T.toggleLayouts float
              where
                -- I've commented out the layouts I don't use.
                myDefaultLayout =     tall
-                                 ||| magnify
+                                 -- ||| magnify
                                  -- ||| noBorders monocle
                                  -- ||| floats
                                  ||| noBorders tabs
@@ -765,8 +769,9 @@ myKeys =
         , ("M-d", shellPrompt dtXPConfig) -- Shell Prompt
 
     -- Useful programs to have a keybinding for launch
-        , ("M-t", spawn (myTerminal ++ " -e fish"))
+        , ("M-t", spawn (myTerminal))
         , ("M-b", spawn (myBrowser))
+        , ("M-e", spawn "emacsclient -c -a 'emacs'")                            -- start emacs
         -- , ("M-M1-h", spawn (myTerminal ++ " -e htop"))
 
     -- Kill windows
@@ -776,6 +781,8 @@ myKeys =
     -- Workspaces
         , ("M-.", nextScreen)  -- Switch focus to next monitor
         , ("M-,", prevScreen)  -- Switch focus to prev monitor
+        , ("M-u", moveTo Prev nonNSP)
+        , ("M-i", moveTo Next nonNSP)
         , ("M-S-<KP_Add>", shiftTo Next nonNSP >> moveTo Next nonNSP)       -- Shifts focused window to next ws
         , ("M-S-<KP_Subtract>", shiftTo Prev nonNSP >> moveTo Prev nonNSP)  -- Shifts focused window to prev ws
 
@@ -846,23 +853,23 @@ myKeys =
         , ("M-C-c", namedScratchpadAction myScratchPads "mocp")
 
     -- Controls for mocp music player (SUPER-u followed by a key)
-        , ("M-u p", spawn "mocp --play")
-        , ("M-u l", spawn "mocp --next")
-        , ("M-u h", spawn "mocp --previous")
-        , ("M-u <Space>", spawn "mocp --toggle-pause")
+        -- , ("M-u p", spawn "mocp --play")
+        -- , ("M-u l", spawn "mocp --next")
+        -- , ("M-u h", spawn "mocp --previous")
+        -- , ("M-u <Space>", spawn "mocp --toggle-pause")
 
     -- Emacs (CTRL-e followed by a key)
-        , ("C-e e", spawn "emacsclient -c -a 'emacs'")                            -- start emacs
-        , ("C-e b", spawn "emacsclient -c -a 'emacs' --eval '(ibuffer)'")         -- list emacs buffers
-        , ("C-e d", spawn "emacsclient -c -a 'emacs' --eval '(dired nil)'")       -- dired emacs file manager
-        , ("C-e i", spawn "emacsclient -c -a 'emacs' --eval '(erc)'")             -- erc emacs irc client
-        , ("C-e m", spawn "emacsclient -c -a 'emacs' --eval '(mu4e)'")            -- mu4e emacs email client
-        , ("C-e n", spawn "emacsclient -c -a 'emacs' --eval '(elfeed)'")          -- elfeed emacs rss client
-        , ("C-e s", spawn "emacsclient -c -a 'emacs' --eval '(eshell)'")          -- eshell within emacs
-        , ("C-e t", spawn "emacsclient -c -a 'emacs' --eval '(mastodon)'")        -- mastodon within emacs
-        , ("C-e v", spawn "emacsclient -c -a 'emacs' --eval '(+vterm/here nil)'") -- vterm within emacs
-        -- emms is an emacs audio player. I set it to auto start playing in a specific directory.
-        , ("C-e a", spawn "emacsclient -c -a 'emacs' --eval '(emms)' --eval '(emms-play-directory-tree \"~/Music/Non-Classical/70s-80s/\")'")
+        -- , ("C-e e", spawn "emacsclient -c -a 'emacs'")                            -- start emacs
+        -- , ("C-e b", spawn "emacsclient -c -a 'emacs' --eval '(ibuffer)'")         -- list emacs buffers
+        -- , ("C-e d", spawn "emacsclient -c -a 'emacs' --eval '(dired nil)'")       -- dired emacs file manager
+        -- , ("C-e i", spawn "emacsclient -c -a 'emacs' --eval '(erc)'")             -- erc emacs irc client
+        -- , ("C-e m", spawn "emacsclient -c -a 'emacs' --eval '(mu4e)'")            -- mu4e emacs email client
+        -- , ("C-e n", spawn "emacsclient -c -a 'emacs' --eval '(elfeed)'")          -- elfeed emacs rss client
+        -- , ("C-e s", spawn "emacsclient -c -a 'emacs' --eval '(eshell)'")          -- eshell within emacs
+        -- , ("C-e t", spawn "emacsclient -c -a 'emacs' --eval '(mastodon)'")        -- mastodon within emacs
+        -- , ("C-e v", spawn "emacsclient -c -a 'emacs' --eval '(+vterm/here nil)'") -- vterm within emacs
+        -- -- emms is an emacs audio player. I set it to auto start playing in a specific directory.
+        -- , ("C-e a", spawn "emacsclient -c -a 'emacs' --eval '(emms)' --eval '(emms-play-directory-tree \"~/Music/Non-Classical/70s-80s/\")'")
 
     -- Multimedia Keys
         , ("<XF86AudioPlay>", spawn (myTerminal ++ "mocp --play"))
@@ -917,13 +924,13 @@ main = do
         , focusedBorderColor = myFocusColor
         , logHook = workspaceHistoryHook <+> myLogHook <+> dynamicLogWithPP xmobarPP
                         { ppOutput = \x -> hPutStrLn xmproc0 x  -- >> hPutStrLn xmproc1 x  >> hPutStrLn xmproc2 x
-                        , ppCurrent = xmobarColor "#98be65" "" . wrap "[" "]" -- Current workspace in xmobar
-                        , ppVisible = xmobarColor "#98be65" ""                -- Visible but not current workspace
-                        , ppHidden = xmobarColor "#82AAFF" "" . wrap "*" ""   -- Hidden workspaces in xmobar
-                        , ppHiddenNoWindows = xmobarColor "#c792ea" ""        -- Hidden workspaces (no windows)
-                        , ppTitle = xmobarColor "#b3afc2" "" . shorten 60     -- Title of active window in xmobar
+                        , ppCurrent = xmobarColor "#8ec07c" "" . wrap "[" "]" -- Current workspace in xmobar
+                        , ppVisible = xmobarColor "#8ec07c" ""                -- Visible but not current workspace
+                        , ppHidden = xmobarColor "#458588" "" . wrap "*" ""   -- Hidden workspaces in xmobar
+                        , ppHiddenNoWindows = xmobarColor "#928374" ""        -- Hidden workspaces (no windows)
+                        , ppTitle = xmobarColor "#ebdbb2" "" . shorten 60     -- Title of active window in xmobar
                         , ppSep =  "<fc=#928374> <fn=2>|</fn> </fc>"          -- Separators in xmobar
-                        , ppUrgent = xmobarColor "#C45500" "" . wrap "!" "!"  -- Urgent workspace
+                        , ppUrgent = xmobarColor "#cc241d" "" . wrap "!" "!"  -- Urgent workspace
                         , ppExtras  = [windowCount]                           -- # of windows current workspace
                         , ppOrder  = \(ws:l:t:ex) -> [ws,l]++ex++[t]
                         }
