@@ -176,6 +176,16 @@ in
           polybarFull
         ];
       };
+      xmonad = {
+        enable = true;
+        enableContribAndExtras = true;
+        config = ../.xmonad/xmonad.hs;
+        extraPackages = hpkgs: with hpkgs; [
+          xmonad
+          xmonad-contrib
+          xmonad-extras
+        ];
+      };
     };
   };
 
@@ -220,6 +230,9 @@ in
     VISUAL = "nvim";
   };
   environment.systemPackages = with packages; [
+    # xmonad
+    xmobar
+
     # nodejs
     nodejs-12_x
     nodePackages.eslint
