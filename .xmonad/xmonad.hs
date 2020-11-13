@@ -82,15 +82,15 @@ myModMask :: KeyMask
 myModMask = mod4Mask       -- Sets modkey to super/windows key
 
 myTerminal :: String
-myTerminal = "alacritty"   -- Sets default terminal
+myTerminal = "kitty"   -- Sets default terminal
 
 myBrowser :: String
-myBrowser = "qutebrowser "               -- Sets qutebrowser as browser for tree select
+myBrowser = "firefox "               -- Sets qutebrowser as browser for tree select
 -- myBrowser = myTerminal ++ " -e lynx " -- Sets lynx as browser for tree select
 
 myEditor :: String
-myEditor = "emacsclient -c -a emacs "  -- Sets emacs as editor for tree select
--- myEditor = myTerminal ++ " -e vim "    -- Sets vim as editor for tree select
+-- myEditor = "emacsclient -c -a emacs "  -- Sets emacs as editor for tree select
+myEditor = myTerminal ++ " -e nvim "    -- Sets vim as editor for tree select
 
 myBorderWidth :: Dimension
 myBorderWidth = 2          -- Sets border width for windows
