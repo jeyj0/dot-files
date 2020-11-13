@@ -155,7 +155,7 @@ in
 
     # videoDrivers = [ "nvidia" ];
 
-    displayManager.defaultSession = "xfce+i3";
+    displayManager.defaultSession = "xfce+xmonad";
 
     desktopManager = {
       xterm.enable = false;
