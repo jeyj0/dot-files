@@ -721,7 +721,7 @@ myLayoutHook = avoidStruts $ mouseResize $ windowArrange $ T.toggleLayouts float
                                  -- ||| threeCol
                                  -- ||| threeRow
 
-myWorkspaces = ["dev", "www", "chat" ]
+myWorkspaces = ["dev", "www", "chat", "bgRun" ]
 -- myWorkspaces = [" 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 "]
 
 xmobarEscape :: String -> String
