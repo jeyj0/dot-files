@@ -721,7 +721,7 @@ myLayoutHook = avoidStruts $ mouseResize $ windowArrange $ T.toggleLayouts float
                                  -- ||| threeCol
                                  -- ||| threeRow
 
-myWorkspaces = [" dev ", " www " ]
+myWorkspaces = [" dev ", " www ", " chat " ]
 -- myWorkspaces = [" 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 "]
 
 xmobarEscape :: String -> String
@@ -926,8 +926,8 @@ main = do
                         { ppOutput = \x -> hPutStrLn xmproc0 x  -- >> hPutStrLn xmproc1 x  >> hPutStrLn xmproc2 x
                         , ppCurrent = xmobarColor "#8ec07c" "" . wrap "[" "]" -- Current workspace in xmobar
                         , ppVisible = xmobarColor "#8ec07c" ""                -- Visible but not current workspace
-                        , ppHidden = xmobarColor "#458588" "" . wrap "*" ""   -- Hidden workspaces in xmobar
-                        , ppHiddenNoWindows = xmobarColor "#928374" ""        -- Hidden workspaces (no windows)
+                        , ppHidden = xmobarColor "#458588" "" . wrap "*" " "   -- Hidden workspaces in xmobar
+                        , ppHiddenNoWindows = xmobarColor "#928374" "" . wrap " " " "        -- Hidden workspaces (no windows)
                         , ppTitle = xmobarColor "#ebdbb2" "" . shorten 60     -- Title of active window in xmobar
                         , ppSep =  "<fc=#928374> <fn=2>|</fn> </fc>"          -- Separators in xmobar
                         , ppUrgent = xmobarColor "#cc241d" "" . wrap "!" "!"  -- Urgent workspace
