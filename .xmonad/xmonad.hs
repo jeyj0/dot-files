@@ -696,10 +696,10 @@ myTabTheme = def { fontName            = myFont
 -- Theme for showWName which prints current workspace when you change workspaces.
 myShowWNameTheme :: SWNConfig
 myShowWNameTheme = def
-    { swn_font              = "xft:Ubuntu:bold:size=60"
-    , swn_fade              = 1.0
-    , swn_bgcolor           = "#1c1f24"
-    , swn_color             = "#ffffff"
+    { swn_font              = "xft:Hack Nerd Font:bold:size=24"
+    , swn_fade              = 0.8
+    , swn_bgcolor           = "#1c1c1c"
+    , swn_color             = "#ebdbb2"
     }
 
 -- The layout hook
@@ -762,16 +762,16 @@ myKeys =
         , ("M-S-q", io exitSuccess)             -- Quits xmonad
 
     -- Run Prompt
-        , ("M-S-<Return>", shellPrompt dtXPConfig) -- Shell Prompt
+        , ("M-d", shellPrompt dtXPConfig) -- Shell Prompt
 
     -- Useful programs to have a keybinding for launch
-        , ("M-<Return>", spawn (myTerminal ++ " -e fish"))
-        , ("M-b", spawn (myBrowser ++ " www.youtube.com/c/DistroTube/"))
-        , ("M-M1-h", spawn (myTerminal ++ " -e htop"))
+        , ("M-t", spawn (myTerminal ++ " -e fish"))
+        , ("M-b", spawn (myBrowser))
+        -- , ("M-M1-h", spawn (myTerminal ++ " -e htop"))
 
     -- Kill windows
-        , ("M-S-c", kill1)                         -- Kill the currently focused client
-        , ("M-S-a", killAll)                       -- Kill all windows on current workspace
+        , ("M-c", kill1)                         -- Kill the currently focused client
+        , ("M-M1-c", killAll)                       -- Kill all windows on current workspace
 
     -- Workspaces
         , ("M-.", nextScreen)  -- Switch focus to next monitor
@@ -780,13 +780,13 @@ myKeys =
         , ("M-S-<KP_Subtract>", shiftTo Prev nonNSP >> moveTo Prev nonNSP)  -- Shifts focused window to prev ws
 
     -- Floating windows
-        , ("M-f", sendMessage (T.Toggle "floats")) -- Toggles my 'floats' layout
-        , ("M-t", withFocused $ windows . W.sink)  -- Push floating window back to tile
-        , ("M-S-t", sinkAll)                       -- Push ALL floating windows to tile
+        -- , ("M-f", sendMessage (T.Toggle "floats")) -- Toggles my 'floats' layout
+        , ("M-f", withFocused $ windows . W.sink)  -- Push floating window back to tile
+        -- , ("M-S-t", sinkAll)                       -- Push ALL floating windows to tile
 
     -- Increase/decrease spacing (gaps)
-        , ("M-d", decWindowSpacing 4)           -- Decrease window spacing
-        , ("M-i", incWindowSpacing 4)           -- Increase window spacing
+        , ("M-M1-h", decWindowSpacing 4)           -- Decrease window spacing
+        , ("M-M1-l", incWindowSpacing 4)           -- Increase window spacing
         , ("M-S-d", decScreenSpacing 4)         -- Decrease screen spacing
         , ("M-S-i", incScreenSpacing 4)         -- Increase screen spacing
 
