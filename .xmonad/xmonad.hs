@@ -76,7 +76,10 @@ import XMonad.Util.Run (runProcessWithInput, safeSpawn, spawnPipe)
 import XMonad.Util.SpawnOnce
 
 myFont :: String
-myFont = "xft:Mononoki Nerd Font:bold:size=9:antialias=true:hinting=true"
+myFont = "xft:Hack Nerd Font:bold:size=9:antialias=true:hinting=true"
+
+myPromptFont :: String
+myPromptFont = "xft:Hack Nerd Font:bold:size=24:anialias=true:hinting=true"
 
 myModMask :: KeyMask
 myModMask = mod4Mask       -- Sets modkey to super/windows key
@@ -465,17 +468,17 @@ myTreeNavigation = M.fromList
 
 dtXPConfig :: XPConfig
 dtXPConfig = def
-      { font                = myFont
-      , bgColor             = "#282c34"
-      , fgColor             = "#bbc2cf"
+      { font                = myPromptFont
+      , bgColor             = "#282828"
+      , fgColor             = "#ebdbb2"
       , bgHLight            = "#c792ea"
       , fgHLight            = "#000000"
-      , borderColor         = "#535974"
+      , borderColor         = "#8ec07c"
       , promptBorderWidth   = 0
       , promptKeymap        = dtXPKeymap
-      , position            = Top
-     -- , position            = CenteredAt { xpCenterY = 0.3, xpWidth = 0.3 }
-      , height              = 20
+      -- , position            = Top
+      , position            = CenteredAt { xpCenterY = 0.1, xpWidth = 0.7 }
+      , height              = 64
       , historySize         = 256
       , historyFilter       = id
       , defaultText         = []
@@ -487,7 +490,8 @@ dtXPConfig = def
       -- , defaultPrompter     = unwords . map reverse . words  -- reverse the prompt
       -- , defaultPrompter     = drop 5 .id (++ "XXXX: ")  -- drop first 5 chars of prompt and add XXXX:
       , alwaysHighlight     = True
-      , maxComplRows        = Nothing      -- set to 'Just 5' for 5 rows
+      -- , maxComplRows        = Nothing      -- set to 'Just 5' for 5 rows
+      , maxComplRows        = Just 10      -- set to 'Just 5' for 5 rows
       }
 
 -- The same config above minus the autocomplete feature which is annoying
