@@ -701,7 +701,7 @@ myTabTheme = def { fontName            = myFont
 myShowWNameTheme :: SWNConfig
 myShowWNameTheme = def
     { swn_font              = "xft:Hack Nerd Font:bold:size=24"
-    , swn_fade              = 0.8
+    , swn_fade              = 0.3
     , swn_bgcolor           = "#1c1c1c"
     , swn_color             = "#ebdbb2"
     }
@@ -721,7 +721,7 @@ myLayoutHook = avoidStruts $ mouseResize $ windowArrange $ T.toggleLayouts float
                                  -- ||| threeCol
                                  -- ||| threeRow
 
-myWorkspaces = [" dev ", " www ", " chat " ]
+myWorkspaces = ["dev", "www", "chat" ]
 -- myWorkspaces = [" 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 "]
 
 xmobarEscape :: String -> String
@@ -803,7 +803,7 @@ myKeys =
         , ("C-g b", bringSelected $ mygridConfig myColorizer) -- bring selected window
 
     -- Tree Select
-        , ("C-t t", treeselectAction tsDefaultConfig)
+        -- , ("C-t t", treeselectAction tsDefaultConfig)
 
     -- Windows navigation
         , ("M-m", windows W.focusMaster)  -- Move focus to the master window
@@ -917,17 +917,18 @@ main = do
         , modMask            = myModMask
         , terminal           = myTerminal
         , startupHook        = myStartupHook
-        , layoutHook         = showWName' myShowWNameTheme $ myLayoutHook
+        -- , layoutHook         = showWName' myShowWNameTheme $ myLayoutHook
+        , layoutHook         = myLayoutHook
         , workspaces         = myClickableWorkspaces
         , borderWidth        = myBorderWidth
         , normalBorderColor  = myNormColor
         , focusedBorderColor = myFocusColor
         , logHook = workspaceHistoryHook <+> myLogHook <+> dynamicLogWithPP xmobarPP
                         { ppOutput = \x -> hPutStrLn xmproc0 x  -- >> hPutStrLn xmproc1 x  >> hPutStrLn xmproc2 x
-                        , ppCurrent = xmobarColor "#8ec07c" "" . wrap "[" "]" -- Current workspace in xmobar
-                        , ppVisible = xmobarColor "#8ec07c" ""                -- Visible but not current workspace
-                        , ppHidden = xmobarColor "#458588" "" . wrap "*" " "   -- Hidden workspaces in xmobar
-                        , ppHiddenNoWindows = xmobarColor "#928374" "" . wrap " " " "        -- Hidden workspaces (no windows)
+                        , ppCurrent = xmobarColor "#8ec07c" "" . wrap "[ " " ]" -- Current workspace in xmobar
+                        , ppVisible = xmobarColor "#8ec07c" "" . wrap "  " "  "                -- Visible but not current workspace
+                        , ppHidden = xmobarColor "#458588" "" . wrap "( " " )"   -- Hidden workspaces in xmobar
+                        , ppHiddenNoWindows = xmobarColor "#928374" "" . wrap "  " "  "        -- Hidden workspaces (no windows)
                         , ppTitle = xmobarColor "#ebdbb2" "" . shorten 60     -- Title of active window in xmobar
                         , ppSep =  "<fc=#928374> <fn=2>|</fn> </fc>"          -- Separators in xmobar
                         , ppUrgent = xmobarColor "#cc241d" "" . wrap "!" "!"  -- Urgent workspace
