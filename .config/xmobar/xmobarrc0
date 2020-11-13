@@ -21,12 +21,12 @@ Config { font    = "xft:Hack Nerd Font:weight=regular:pixelsize=16:antialias=tru
                       -- Network up and down
                     , Run Network "wlp3s0" ["-t", "<icon=net_down_20.xpm/> <rx>kb  <icon=net_up_20.xpm/> <tx>kb"] 20
                       -- Cpu usage in percent
-                    , Run Cpu ["-t", "<fn=1>\xf108 </fn> cpu: (<total>%)","-H","50","--high","red"] 20
+                    , Run Cpu ["-t", "<fn=2> </fn> <total>%","-H","50","--high","red"] 20
                     -- , Run Cpu ["-t", "<icon=cpu_20.xpm/> cpu: (<total>%)","-H","50","--high","red"] 20
                       -- Ram used number and percent
-                    , Run Memory ["-t", "<icon=memory-icon_20.xpm/> mem: <used>M (<usedratio>%)"] 20
+                    , Run Memory ["-t", "<fn=2> </fn> <used>M (<usedratio>%)"] 20
                       -- Disk space free
-                    , Run DiskU [("/", "<icon=harddisk-icon_20.xpm/> hdd: <free> free")] [] 60
+                    , Run DiskU [("/", "<fn=2> </fn> <free> free")] [] 60
                       -- Runs custom script to check for pacman updates.
                       -- This script is in my dotfiles repo in .local/bin.
                     -- , Run Com "/home/dt/.local/bin/pacupdate" [] "pacupdate" 36000
