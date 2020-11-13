@@ -232,6 +232,7 @@ in
   environment.systemPackages = with packages; [
     # xmonad
     xmobar
+    xdotool
 
     # nodejs
     nodejs-12_x
