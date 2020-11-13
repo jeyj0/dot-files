@@ -372,10 +372,10 @@ treeselectAction a = TS.treeselectAction a
        , Node (TS.TSNode "polybar" "easy-to-use status bar" (spawn (myEditor ++ "/home/jeyj0/.config/polybar/config"))) []
        , Node (TS.TSNode "qtile config.py" "qtile window manager" (spawn (myEditor ++ "/home/jeyj0/.config/qtile/config.py"))) []
        , Node (TS.TSNode "qutebrowser config.py" "qutebrowser web browser" (spawn (myEditor ++ "/home/jeyj0/.config/qutebrowser/config.py"))) []
-       , Node (TS.TSNode "st config.h" "suckless simple terminal" (spawn (myEditor ++ "home/dt/st-distrotube/config.h"))) []
+       , Node (TS.TSNode "st config.h" "suckless simple terminal" (spawn (myEditor ++ "home/jeyj0/st-distrotube/config.h"))) []
        , Node (TS.TSNode "sxhkdrc" "simple X hotkey daemon" (spawn (myEditor ++ "/home/jeyj0/.config/sxhkd/sxhkdrc"))) []
        , Node (TS.TSNode "surf config.h" "surf web browser" (spawn (myEditor ++ "/home/jeyj0/surf-distrotube/config.h"))) []
-       , Node (TS.TSNode "tabbed config.h" "generic tabbed interface" (spawn (myEditor ++ "home/dt/tabbed-distrotube/config.h"))) []
+       , Node (TS.TSNode "tabbed config.h" "generic tabbed interface" (spawn (myEditor ++ "home/jeyj0/tabbed-distrotube/config.h"))) []
        , Node (TS.TSNode "xresources" "xresources file" (spawn (myEditor ++ "/home/jeyj0/.Xresources"))) []
        , Node (TS.TSNode "zshrc" "Config for the z shell" (spawn (myEditor ++ "/home/jeyj0/.zshrc"))) []
        ]
@@ -466,8 +466,8 @@ myTreeNavigation = M.fromList
     , ((mod4Mask .|. altMask, xK_w), TS.moveTo ["+ Bookmarks", "+ Linux", "+ Window Managers"])
     ]
 
-dtXPConfig :: XPConfig
-dtXPConfig = def
+jeyj0XPConfig :: XPConfig
+jeyj0XPConfig = def
       { font                = myPromptFont
       , bgColor             = "#282828"
       , fgColor             = "#ebdbb2"
@@ -496,8 +496,8 @@ dtXPConfig = def
 
 -- The same config above minus the autocomplete feature which is annoying
 -- on certain Xprompts, like the search engine prompts.
-dtXPConfig' :: XPConfig
-dtXPConfig' = dtXPConfig
+jeyj0XPConfig' :: XPConfig
+jeyj0XPConfig' = jeyj0XPConfig
       { autoComplete        = Nothing
       }
 
@@ -766,7 +766,7 @@ myKeys =
         , ("M-S-q", io exitSuccess)             -- Quits xmonad
 
     -- Run Prompt
-        , ("M-d", shellPrompt dtXPConfig) -- Shell Prompt
+        , ("M-d", shellPrompt jeyj0XPConfig) -- Shell Prompt
 
     -- Useful programs to have a keybinding for launch
         , ("M-t", spawn (myTerminal))
@@ -809,12 +809,12 @@ myKeys =
         , ("M-m", windows W.focusMaster)  -- Move focus to the master window
         , ("M-j", windows W.focusDown)    -- Move focus to the next window
         , ("M-k", windows W.focusUp)      -- Move focus to the prev window
-        , ("M-S-m", windows W.swapMaster) -- Swap the focused window and the master window
-        , ("M-S-j", windows W.swapDown)   -- Swap focused window with next window
-        , ("M-S-k", windows W.swapUp)     -- Swap focused window with prev window
+        , ("M-M1-m", windows W.swapMaster) -- Swap the focused window and the master window
+        , ("M-M1-j", windows W.swapDown)   -- Swap focused window with next window
+        , ("M-M1-k", windows W.swapUp)     -- Swap focused window with prev window
         , ("M-<Backspace>", promote)      -- Moves focused window to master, others maintain order
-        , ("M-S-<Tab>", rotSlavesDown)    -- Rotate all windows except master and keep focus in place
-        , ("M-C-<Tab>", rotAllDown)       -- Rotate all the windows in the current stack
+        , ("M-C-<Tab>", rotSlavesDown)    -- Rotate all windows except master and keep focus in place
+        , ("M-M1-<Tab>", rotAllDown)       -- Rotate all the windows in the current stack
 
     -- Layouts
         , ("M-<Tab>", sendMessage NextLayout)           -- Switch to next layout
@@ -834,7 +834,7 @@ myKeys =
         , ("M-h", sendMessage Shrink)                   -- Shrink horiz window width
         , ("M-l", sendMessage Expand)                   -- Expand horiz window width
         , ("M-M1-j", sendMessage MirrorShrink)          -- Shrink vert window width
-        , ("M-M1-k", sendMessage MirrorExpand)          -- Exoand vert window width
+        , ("M-M1-k", sendMessage MirrorExpand)          -- Expand vert window width
 
     -- Sublayouts
     -- This is used to push windows to tabbed sublayouts, or pull them out of it.
@@ -887,12 +887,12 @@ myKeys =
         ]
     -- Appending search engine prompts to keybindings list.
     -- Look at "search engines" section of this config for values for "k".
-        ++ [("M-s " ++ k, S.promptSearch dtXPConfig' f) | (k,f) <- searchList ]
+        ++ [("M-s " ++ k, S.promptSearch jeyj0XPConfig' f) | (k,f) <- searchList ]
         ++ [("M-S-s " ++ k, S.selectSearch f) | (k,f) <- searchList ]
     -- Appending some extra xprompts to keybindings list.
     -- Look at "xprompt settings" section this of config for values for "k".
-        ++ [("M-p " ++ k, f dtXPConfig') | (k,f) <- promptList ]
-        ++ [("M-p " ++ k, f dtXPConfig' g) | (k,f,g) <- promptList' ]
+        ++ [("M-p " ++ k, f jeyj0XPConfig') | (k,f) <- promptList ]
+        ++ [("M-p " ++ k, f jeyj0XPConfig' g) | (k,f,g) <- promptList' ]
     -- The following lines are needed for named scratchpads.
           where nonNSP          = WSIs (return (\ws -> W.tag ws /= "nsp"))
                 nonEmptyNonNSP  = WSIs (return (\ws -> isJust (W.stack ws) && W.tag ws /= "nsp"))
