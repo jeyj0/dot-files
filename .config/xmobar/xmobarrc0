@@ -20,7 +20,7 @@ Config { font    = "xft:Hack Nerd Font:weight=regular:pixelsize=16:antialias=tru
                       -- Battery status
                     , Run Com "battery-status" [] "" 20
                       -- Network up and down
-                    , Run Network "wlp3s0" ["-t", "<fn=2> </fn><rx>kb  <fn=2> </fn><tx>kb"] 20
+                    , Run Network "wlp3s0" ["-t", "<fn=2> </fn><rx>kb  <fn=2> </fn><tx>kb"] 20
                       -- Cpu usage in percent
                     , Run Cpu ["-t", "<fn=2> </fn><total>%","-H","50","--high","red"] 20
                       -- Ram used number and percent
