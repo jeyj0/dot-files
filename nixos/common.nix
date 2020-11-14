@@ -233,6 +233,7 @@ in
     # xmonad
     xmobar
     xdotool
+    battery-status
 
     # nodejs
     nodejs-12_x
