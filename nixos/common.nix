@@ -225,7 +225,7 @@ in
   };
 
   environment.variables = {
-    TERMINAL = "kitty";
+    TERMINAL = "alacritty";
     EDITOR = "nvim";
     VISUAL = "nvim";
   };
@@ -306,6 +306,7 @@ in
     multimc
 
     # terminal emulators
+    alacritty
     kitty
 
     ## other
