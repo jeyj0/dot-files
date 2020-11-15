@@ -776,6 +776,7 @@ myKeys =
         , ("M-t", spawn (myTerminal))
         , ("M-b", spawn (myBrowser))
         , ("M-e", spawn "emacsclient -c -a 'emacs'")                            -- start emacs
+        , ("M-v", spawn (myEditor))
         -- , ("M-M1-h", spawn (myTerminal ++ " -e htop"))
 
     -- Kill windows
