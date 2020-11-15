@@ -32,12 +32,14 @@ Config { font    = "xft:Hack Nerd Font:weight=regular:pixelsize=16:antialias=tru
                     -- , Run Com "/home/dt/.local/bin/pacupdate" [] "pacupdate" 36000
                       -- Runs a standard shell command 'uname -r' to get kernel version
                     , Run Com "uname" ["-r"] "" 3600
+                    , Run Com "fish" ["-c", "my_pwd"] "" 5
                       -- Prints out the left side items such as workspaces, layout, etc.
                       -- The workspaces are 'clickable' in my configs.
                     , Run UnsafeStdinReader
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = " <action=`xdotool key control+alt+g`><fn=3> </fn></action><fc=#928374> |</fc> %UnsafeStdinReader% }{ <fc=#928374><fn=2>|</fn> </fc><fc=#b3afc2><fn=1> </fn>%uname% </fc><fc=#928374> <fn=2>|</fn></fc> <fc=#ecbe7b> %cpu% </fc><fc=#928374> <fn=2>|</fn></fc> <fc=#ff6c6b> %memory% </fc><fc=#928374> <fn=2>|</fn></fc> <fc=#51afef> %disku% </fc><fc=#928374> <fn=2>|</fn></fc> <fc=#98be65> %wlp3s0% </fc><fc=#928374> <fn=2>|</fn></fc> <fc=#c678dd><fn=1> </fn>  </fc><fc=#928374> <fn=2>|</fn> <fn=2></fn> %battery-status% <fn=2>|</fn></fc> <fc=#46d9ff> %date%  </fc>"
+       -- <fc=#928374><fn=2>|</fn> </fc><fc=#b3afc2><fn=1> </fn>%uname% </fc>
+       , template = " <action=`xdotool key control+alt+g`><fn=3> </fn></action><fc=#928374> |</fc> %UnsafeStdinReader% }{ %fish% <fc=#928374> <fn=2>|</fn></fc> <fc=#ecbe7b> %cpu% </fc><fc=#928374> <fn=2>|</fn></fc> <fc=#ff6c6b> %memory% </fc><fc=#928374> <fn=2>|</fn></fc> <fc=#51afef> %disku% </fc><fc=#928374> <fn=2>|</fn></fc> <fc=#98be65> %wlp3s0% </fc><fc=#928374> <fn=2>|</fn></fc> <fc=#c678dd><fn=1> </fn>  </fc><fc=#928374> <fn=2>|</fn> <fn=2></fn> %battery-status% <fn=2>|</fn></fc> <fc=#46d9ff> %date%  </fc>"
        }
 
