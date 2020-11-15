@@ -36,5 +36,3 @@ source $FISH_PATH/nnn.fish
 
 source $FISH_PATH/functions/on_pwd_change.fish
 
-cd (cat ~/pwd)
-
