@@ -603,14 +603,14 @@ myScratchPads = [ NS "terminal" spawnTerm findTerm manageTerm
                 , NS "mocp" spawnMocp findMocp manageMocp
                 ]
   where
-    spawnTerm  = myTerminal ++ " -n scratchpad"
-    findTerm   = resource =? "scratchpad"
+    spawnTerm  = myTerminal ++ " -t term-scratchpad --class Alacritty-scratchpad,Alacritty"
+    findTerm   = title =? "term-scratchpad"
     manageTerm = customFloating $ W.RationalRect l t w h
                where
-                 h = 0.9
-                 w = 0.9
-                 t = 0.95 -h
-                 l = 0.95 -w
+                 h = 0.5
+                 w = 0.8
+                 t = 0 + (1-h) / 2
+                 l = 0 + (1-w) / 2
     spawnMocp  = myTerminal ++ " -n mocp 'mocp'"
     findMocp   = resource =? "mocp"
     manageMocp = customFloating $ W.RationalRect l t w h
@@ -632,7 +632,7 @@ mySpacing' i = spacingRaw True (Border i i i i) True (Border i i i i) True
 tall     = renamed [Replace "tall"]
            $ windowNavigation
            $ addTabs shrinkText myTabTheme
-           -- $ subLayout [] (smartBorders Simplest)
+           $ subLayout [] Simplest
            $ limitWindows 12
            $ mySpacing 8
            $ ResizableTall 1 (3/100) (1/2) []
@@ -652,12 +652,12 @@ tall     = renamed [Replace "tall"]
 floats   = renamed [Replace "floats"]
            $ windowNavigation
            $ addTabs shrinkText myTabTheme
-           $ subLayout [] (smartBorders Simplest)
+           $ subLayout [] Simplest -- (smartBorders Simplest)
            $ limitWindows 20 simplestFloat
 grid     = renamed [Replace "grid"]
            $ windowNavigation
            $ addTabs shrinkText myTabTheme
-           $ subLayout [] (smartBorders Simplest)
+           $ subLayout [] Simplest -- (smartBorders Simplest)
            $ limitWindows 12
            $ mySpacing 8
            $ mkToggle (single MIRROR)
@@ -665,8 +665,8 @@ grid     = renamed [Replace "grid"]
 spirals  = renamed [Replace "spirals"]
            $ windowNavigation
            $ addTabs shrinkText myTabTheme
-           $ subLayout [] (smartBorders Simplest)
-           $ mySpacing' 8
+           $ subLayout [] Simplest -- (smartBorders Simplest)
+           $ mySpacing 8
            $ spiral (6/7)
 -- threeCol = renamed [Replace "threeCol"]
 --            $ windowNavigation
@@ -856,8 +856,8 @@ myKeys =
         , ("M-C-,", onGroup W.focusDown')  -- Switch focus to prev tab
 
     -- Scratchpads
-        , ("M-C-<Return>", namedScratchpadAction myScratchPads "terminal")
-        , ("M-C-c", namedScratchpadAction myScratchPads "mocp")
+        , ("M-o t", namedScratchpadAction myScratchPads "terminal")
+        -- , ("M-o c", namedScratchpadAction myScratchPads "mocp")
 
     -- Controls for mocp music player (SUPER-u followed by a key)
         -- , ("M-u p", spawn "mocp --play")
