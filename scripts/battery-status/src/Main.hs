@@ -32,7 +32,7 @@ main = do
 
   TIO.putStrLn
     $  T.pack (show average)
-    <> " ("
+    <> "% ("
     <> ( T.intercalate ", "
        $ map (\percent -> T.pack $ show percent <> "%") percentages
        )
