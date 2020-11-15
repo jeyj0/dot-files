@@ -31,10 +31,14 @@ main = do
   let average = sum percentages / (int2Float $ length percentages)
 
   TIO.putStrLn
-    $  T.pack (show average)
+    $  (case asPercentage average of
+         Nothing  -> "ERROR"
+         Just avg -> avg
+       )
     <> "% ("
-    <> ( T.intercalate ", "
-       $ map (\percent -> T.pack $ show percent <> "%") percentages
+    <> (T.intercalate ", " $ map (\percent -> percent <> "%") $ catMaybes $ map
+         asPercentage
+         percentages
        )
     <> ")"
 
@@ -54,4 +58,10 @@ run = do
 
 extractNumber :: T.Text -> Maybe T.Text
 extractNumber t = t =~~ ("[0-9]+(\\.[0-9]+)?" :: T.Text)
+
+asPercentage :: Float -> Maybe T.Text
+asPercentage percent =
+  case (T.pack $ show percent) =~~ ("[0-9]+\\." :: T.Text) of
+    Nothing      -> Nothing
+    Just withDot -> Just $ T.init withDot
 
