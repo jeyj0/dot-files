@@ -1,6 +1,6 @@
     -- Base
 import XMonad
-import System.IO (hPutStrLn)
+import System.IO (hPutStrLn, writeFile)
 import System.Exit (exitSuccess)
 import qualified XMonad.StackSet as W
 
@@ -67,6 +67,7 @@ import XMonad.Prompt.Pass
 import XMonad.Prompt.Shell
 import XMonad.Prompt.Ssh
 import XMonad.Prompt.XMonad
+import XMonad.Prompt.Directory
 import Control.Arrow (first)
 
    -- Utilities
@@ -505,11 +506,12 @@ jeyj0XPConfig' = jeyj0XPConfig
 -- These are used in conjunction with keybinding I set later in the config.
 promptList :: [(String, XPConfig -> X ())]
 promptList = [ ("m", manPrompt)          -- manpages prompt
-             , ("p", passPrompt)         -- get passwords (requires 'pass')
-             , ("g", passGeneratePrompt) -- generate passwords (requires 'pass')
-             , ("r", passRemovePrompt)   -- remove passwords (requires 'pass')
+             -- , ("p", passPrompt)         -- get passwords (requires 'pass')
+             -- , ("g", passGeneratePrompt) -- generate passwords (requires 'pass')
+             -- , ("r", passRemovePrompt)   -- remove passwords (requires 'pass')
              , ("s", sshPrompt)          -- ssh prompt
              , ("x", xmonadPrompt)       -- xmonad prompt
+             , ("p", \c -> directoryPrompt c "DIR: " (\path -> liftIO $ writeFile "/home/jeyj0/pwd" $ "/home/jeyj0/" ++ path))
              ]
 
 -- Same as the above list except this is for my custom prompts.

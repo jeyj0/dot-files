@@ -34,5 +34,3 @@ eval (direnv hook fish)
 # source nnn config
 source $FISH_PATH/nnn.fish
 
-source $FISH_PATH/functions/on_pwd_change.fish
-
