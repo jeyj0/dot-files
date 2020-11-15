@@ -570,8 +570,8 @@ ebay     = S.searchEngine "ebay" "https://www.ebay.com/sch/i.html?_nkw="
 news     = S.searchEngine "news" "https://news.google.com/search?q="
 reddit   = S.searchEngine "reddit" "https://www.reddit.com/search/?q="
 urban    = S.searchEngine "urban" "https://www.urbandictionary.com/define.php?term="
-nixpkgs  = S.searchEngine "nixpkgs" "https://search.nixos.org/options?channel=unstable&from=0&size=30&sort=relevance&query="
-nixopts  = S.searchEngine "nixopts" "https://search.nixos.org/packages?channel=unstable&from=0&size=30&sort=relevance&query="
+nixpkgs  = S.searchEngine "nixpkgs" "https://search.nixos.org/packages?channel=unstable&from=0&size=30&sort=relevance&query="
+nixopts  = S.searchEngine "nixopts" "https://search.nixos.org/options?channel=unstable&from=0&size=30&sort=relevance&query="
 
 -- This is the list of search engines that I want to use. Some are from
 -- XMonad.Actions.Search, and some are the ones that I added above.
