@@ -726,7 +726,7 @@ myLayoutHook = avoidStruts $ mouseResize $ windowArrange $ T.toggleLayouts float
                                  -- ||| threeCol
                                  -- ||| threeRow
 
-myWorkspaces = ["dev", "www", "chat", "music", "bgRun" ]
+myWorkspaces = ["dev", "web"]
 -- myWorkspaces = [" 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 "]
 
 xmobarEscape :: String -> String
@@ -749,12 +749,12 @@ myManageHook = composeAll
      -- using 'doShift ( myWorkspaces !! 7)' sends program to workspace 8!
      -- I'm doing it this way because otherwise I would have to write out the full
      -- name of my workspaces, and the names would very long if using clickable workspaces.
-     [ title =? "Mozilla Firefox"     --> doShift ( myWorkspaces !! 1 )
+     [ title =? "Mozilla Firefox"     --> doShift "web" -- ( myWorkspaces !! 1 )
      , (className =? "firefox" <&&> resource =? "Dialog") --> doFloat  -- Float Firefox Dialog
      -- , title =? "Spotify" --> doShift ( myWorkspaces !! 3 )
-     , title =? "Slack" --> doShift ( myWorkspaces !! 2 )
-     , title =? "Zoom" --> doShift ( myWorkspaces !! 2 )
-     , className =? "discord" --> doShift ( myWorkspaces !! 2 )
+     , title =? "Slack" --> doShift "chat" -- ( myWorkspaces !! 2 )
+     , title =? "Zoom" --> doShift "chat" -- ( myWorkspaces !! 2 )
+     , className =? "discord" --> doShift "chat" -- ( myWorkspaces !! 2 )
      -- , className =? "mpv"     --> doShift ( myWorkspaces !! 7 )
      -- , className =? "vlc"     --> doShift ( myWorkspaces !! 7 )
      -- , className =? "Gimp"    --> doShift ( myWorkspaces !! 8 )
@@ -909,7 +909,29 @@ myKeys =
 
 projects :: [Project]
 projects =
-    [ Project { projectName = "done"
+    [ Project { projectName = "dev"
+              , projectDirectory = "~/"
+              , projectStartHook = Nothing
+              }
+    , Project { projectName = "web"
+              , projectDirectory = "~/"
+              , projectStartHook = Just $ do
+                  spawn myBrowser
+              }
+    , Project { projectName = "chat"
+              , projectDirectory = "~/"
+              , projectStartHook = Nothing
+              }
+    , Project { projectName = "music"
+              , projectDirectory = "~/"
+              , projectStartHook = Just $ do
+                  spawn "spotify"
+              }
+    , Project { projectName = "bgRun"
+              , projectDirectory = "~/"
+              , projectStartHook = Nothing
+              }
+    , Project { projectName = "done"
               , projectDirectory = "~/projects/done/"
               , projectStartHook = Just $ do
                   spawn myEditor
