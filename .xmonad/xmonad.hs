@@ -15,6 +15,7 @@ import qualified XMonad.Actions.TreeSelect as TS
 import XMonad.Actions.WindowGo (runOrRaise)
 import XMonad.Actions.WithAll (sinkAll, killAll)
 import qualified XMonad.Actions.Search as S
+import XMonad.Actions.DynamicProjects
 
     -- Data
 import Data.Char (isSpace, toUpper)
@@ -86,7 +87,8 @@ myModMask :: KeyMask
 myModMask = mod4Mask       -- Sets modkey to super/windows key
 
 myTerminal :: String
-myTerminal = "alacritty --working-directory $(cat ~/pwd) "   -- Sets default terminal
+myTerminal = "alacritty "   -- Sets default terminal
+-- myTerminal = "alacritty --working-directory $(cat ~/pwd) "   -- Sets default terminal
 
 myBrowser :: String
 myBrowser = "firefox "               -- Sets qutebrowser as browser for tree select
@@ -511,7 +513,8 @@ promptList = [ ("m", manPrompt)          -- manpages prompt
              -- , ("r", passRemovePrompt)   -- remove passwords (requires 'pass')
              , ("s", sshPrompt)          -- ssh prompt
              , ("x", xmonadPrompt)       -- xmonad prompt
-             , ("p", \c -> directoryPrompt c "DIR: " (\path -> liftIO $ writeFile "/home/jeyj0/pwd" $ "/home/jeyj0/" ++ path))
+             , ("p", switchProjectPrompt)
+             , ("d", \c -> directoryPrompt c "DIR: " (\path -> liftIO $ writeFile "/home/jeyj0/pwd" $ "/home/jeyj0/" ++ path))
              ]
 
 -- Same as the above list except this is for my custom prompts.
@@ -746,12 +749,12 @@ myManageHook = composeAll
      -- using 'doShift ( myWorkspaces !! 7)' sends program to workspace 8!
      -- I'm doing it this way because otherwise I would have to write out the full
      -- name of my workspaces, and the names would very long if using clickable workspaces.
-     [ title =? "Mozilla Firefox"     --> doShift ( myClickableWorkspaces !! 1 )
+     [ title =? "Mozilla Firefox"     --> doShift ( myWorkspaces !! 1 )
      , (className =? "firefox" <&&> resource =? "Dialog") --> doFloat  -- Float Firefox Dialog
-     -- , title =? "Spotify" --> doShift ( myClickableWorkspaces !! 3 )
-     , title =? "Slack" --> doShift ( myClickableWorkspaces !! 2 )
-     , title =? "Zoom" --> doShift ( myClickableWorkspaces !! 2 )
-     , className =? "discord" --> doShift ( myClickableWorkspaces !! 2 )
+     -- , title =? "Spotify" --> doShift ( myWorkspaces !! 3 )
+     , title =? "Slack" --> doShift ( myWorkspaces !! 2 )
+     , title =? "Zoom" --> doShift ( myWorkspaces !! 2 )
+     , className =? "discord" --> doShift ( myWorkspaces !! 2 )
      -- , className =? "mpv"     --> doShift ( myWorkspaces !! 7 )
      -- , className =? "vlc"     --> doShift ( myWorkspaces !! 7 )
      -- , className =? "Gimp"    --> doShift ( myWorkspaces !! 8 )
@@ -904,6 +907,20 @@ myKeys =
           where nonNSP          = WSIs (return (\ws -> W.tag ws /= "nsp"))
                 nonEmptyNonNSP  = WSIs (return (\ws -> isJust (W.stack ws) && W.tag ws /= "nsp"))
 
+projects :: [Project]
+projects =
+    [ Project { projectName = "done"
+              , projectDirectory = "~/projects/done/"
+              , projectStartHook = Just $ do
+                  spawn myEditor
+              }
+    , Project { projectName = "easyforms"
+              , projectDirectory = "~/projects/easyforms"
+              , projectStartHook = Just $ do
+                  spawn myEditor
+              }
+    ]
+
 main :: IO ()
 main = do
     -- Launching three instances of xmobar on their monitors.
@@ -911,7 +928,7 @@ main = do
     --xmproc1 <- spawnPipe "xmobar -x 1 /home/jeyj0/.config/xmobar/xmobarrc2"
     --xmproc2 <- spawnPipe "xmobar -x 2 /home/jeyj0/.config/xmobar/xmobarrc1"
     -- the xmonad, ya know...what the WM is named after!
-    xmonad $ ewmh def
+    xmonad $ ewmh $ dynamicProjects projects def
         { manageHook = ( isFullscreen --> doFullFloat ) <+> myManageHook <+> manageDocks
         -- Run xmonad commands from command line with "xmonadctl command". Commands include:
         -- shrink, expand, next-layout, default-layout, restart-wm, xterm, kill, refresh, run,
@@ -926,7 +943,7 @@ main = do
         , startupHook        = myStartupHook
         -- , layoutHook         = showWName' myShowWNameTheme $ myLayoutHook
         , layoutHook         = myLayoutHook
-        , workspaces         = myClickableWorkspaces
+        , workspaces         = myWorkspaces
         , borderWidth        = myBorderWidth
         , normalBorderColor  = myNormColor
         , focusedBorderColor = myFocusColor
