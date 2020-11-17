@@ -10,13 +10,12 @@ import XMonad.Actions.CycleWS (moveTo, shiftTo, WSType(..), nextScreen, prevScre
 import XMonad.Actions.MouseResize
 import XMonad.Actions.Promote
 import XMonad.Actions.RotSlaves (rotSlavesDown, rotAllDown)
-import qualified XMonad.Actions.TreeSelect as TS
 import XMonad.Actions.WindowGo (runOrRaise)
 import XMonad.Actions.WithAll (sinkAll, killAll)
 import qualified XMonad.Actions.Search as S
-import XMonad.Actions.DynamicProjects
-import XMonad.Actions.DynamicWorkspaces
-import qualified XMonad.Actions.DynamicWorkspaceOrder as DO
+import XMonad.Actions.DynamicProjects (Project(Project), projectName, projectDirectory, projectStartHook, switchProjectPrompt, dynamicProjects)
+import qualified XMonad.Actions.DynamicWorkspaces as DynWs
+import qualified XMonad.Actions.DynamicWorkspaceOrder as DynWsOrd
 
     -- Data
 import Data.Char (isSpace, toUpper)
@@ -369,9 +368,9 @@ myKeys =
         , ("M-i", moveTo Next nonNSP)
         , ("M-S-<KP_Add>", shiftTo Next nonNSP >> moveTo Next nonNSP)       -- Shifts focused window to next ws
         , ("M-S-<KP_Subtract>", shiftTo Prev nonNSP >> moveTo Prev nonNSP)  -- Shifts focused window to prev ws
-        , ("M-w c", removeEmptyWorkspace)
-        , ("M-C-i", DO.swapWith Next NonEmptyWS)
-        , ("M-C-u", DO.swapWith Prev NonEmptyWS)
+        , ("M-w c", DynWs.removeEmptyWorkspace)
+        , ("M-C-i", DynWsOrd.swapWith Next NonEmptyWS)
+        , ("M-C-u", DynWsOrd.swapWith Prev NonEmptyWS)
 
     -- Floating windows
         -- , ("M-f", sendMessage (T.Toggle "floats")) -- Toggles my 'floats' layout
