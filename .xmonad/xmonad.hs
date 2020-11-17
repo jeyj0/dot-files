@@ -104,7 +104,6 @@ import XMonad.Hooks.WorkspaceHistory (workspaceHistoryHook)
 
     -- Layouts
 import XMonad.Layout.GridVariants (Grid(Grid))
-import XMonad.Layout.SimplestFloat (simplestFloat)
 import XMonad.Layout.Spiral (spiral)
 import XMonad.Layout.ResizableTile
   ( ResizableTall(ResizableTall)
@@ -323,12 +322,6 @@ searchList = [ ("d", S.duckduckgo)
 mySpacing :: Integer -> l a -> XMonad.Layout.LayoutModifier.ModifiedLayout Spacing l a
 mySpacing i = spacingRaw False (Border i i i i) True (Border i i i i) True
 
--- Below is a variation of the above except no borders are applied
--- if fewer than two windows. So a single window has no gaps.
-mySpacing' :: Integer -> l a -> XMonad.Layout.LayoutModifier.ModifiedLayout Spacing l a
-mySpacing' i = spacingRaw True (Border i i i i) True (Border i i i i) True
-
--- Defining a bunch of layouts, many that I don't use.
 tall     = renamed [Replace "tall"]
            $ windowNavigation
            $ addTabs shrinkText myTabTheme
@@ -336,11 +329,6 @@ tall     = renamed [Replace "tall"]
            $ limitWindows 12
            $ mySpacing 8
            $ ResizableTall 1 (3/100) (1/2) []
-floats   = renamed [Replace "floats"]
-           $ windowNavigation
-           $ addTabs shrinkText myTabTheme
-           $ subLayout [] Simplest -- (smartBorders Simplest)
-           $ limitWindows 20 simplestFloat
 grid     = renamed [Replace "grid"]
            $ windowNavigation
            $ addTabs shrinkText myTabTheme
@@ -369,16 +357,13 @@ myTabTheme = def { fontName            = myFont
                  , inactiveTextColor   = "#928374"
                  }
 
--- The layout hook
-myLayoutHook = avoidStruts $ mouseResize $ windowArrange $ T.toggleLayouts floats
+myLayoutHook = avoidStruts $ mouseResize $ windowArrange
                $ mkToggle (NBFULL ?? EOT) myDefaultLayout
              where
                myDefaultLayout =     tall
                                  ||| noBorders tabs
                                  ||| grid
                                  ||| spirals
-
-myWorkspaces = ["dev", "web"]
 
 xmobarEscape :: String -> String
 xmobarEscape = concatMap doubleLts
@@ -406,11 +391,6 @@ myManageHook = composeAll
      , title =? "Zoom" --> doShift "chat" -- ( myWorkspaces !! 2 )
      , className =? "discord" --> doShift "chat" -- ( myWorkspaces !! 2 )
      ]
-
-myLogHook :: X ()
-myLogHook = fadeInactiveLogHook fadeAmount
-    where fadeAmount = 1.0
-
 
 -- M (GUI)  : Do something with xmonad
 --             Common actions should only require this key to be held. Everything in this config should require it to be held though.
@@ -453,7 +433,6 @@ myKeys =
         , ("M-C-u", DynWsOrd.swapWith Prev NonEmptyWS)
 
     -- Floating windows
-        -- , ("M-f", sendMessage (T.Toggle "floats")) -- Toggles my 'floats' layout
         , ("M-f", withFocused $ windows . W.sink)  -- Push floating window back to tile
         -- , ("M-S-t", sinkAll)                       -- Push ALL floating windows to tile
 
@@ -497,9 +476,9 @@ myKeys =
     -- Sublayouts
     -- This is used to push windows to tabbed sublayouts, or pull them out of it.
         , ("M-C-h", sendMessage $ pullGroup L)
-        , ("M-C-l", sendMessage $ pullGroup R)
-        , ("M-C-k", sendMessage $ pullGroup U)
         , ("M-C-j", sendMessage $ pullGroup D)
+        , ("M-C-k", sendMessage $ pullGroup U)
+        , ("M-C-l", sendMessage $ pullGroup R)
         , ("M-C-m", withFocused (sendMessage . MergeAll))
         , ("M-C-u", withFocused (sendMessage . UnMerge))
         , ("M-C-/", withFocused (sendMessage . UnMergeAll))
@@ -507,16 +486,10 @@ myKeys =
         , ("M-C-,", onGroup W.focusDown')  -- Switch focus to prev tab
 
     -- Multimedia Keys
-        , ("<XF86AudioPlay>", spawn (myTerminal ++ "mocp --play"))
-        , ("<XF86AudioPrev>", spawn (myTerminal ++ "mocp --previous"))
-        , ("<XF86AudioNext>", spawn (myTerminal ++ "mocp --next"))
-        -- , ("<XF86AudioMute>",   spawn "amixer set Master toggle")  -- Bug prevents it from toggling correctly in 12.04.
         , ("<XF86AudioLowerVolume>", spawn "amixer set Master 5%- unmute")
         , ("<XF86AudioRaiseVolume>", spawn "amixer set Master 5%+ unmute")
         , ("<XF86HomePage>", spawn "firefox")
         , ("<XF86Search>", safeSpawn "firefox" ["https://www.duckduckgo.com/"])
-        , ("<XF86Mail>", runOrRaise "geary" (resource =? "thunderbird"))
-        , ("<XF86Calculator>", runOrRaise "gcalctool" (resource =? "gcalctool"))
         , ("<XF86Eject>", spawn "toggleeject")
         , ("<Print>", spawn "scrotd 0")
         ]
@@ -530,6 +503,11 @@ myKeys =
     -- The following lines are needed for named scratchpads.
           where nonNSP          = WSIs (return (\ws -> W.tag ws /= "nsp"))
                 nonEmptyNonNSP  = WSIs (return (\ws -> isJust (W.stack ws) && W.tag ws /= "nsp"))
+
+-- these are the open-by-default workspaces
+-- they have to be defined in the project list as well
+myWorkspaces :: [String]
+myWorkspaces = ["dev", "web"]
 
 projects :: [Project]
 projects =
@@ -593,7 +571,7 @@ main = do
         , normalBorderColor  = myNormColor
         , focusedBorderColor = myFocusColor
         , focusFollowsMouse  = False
-        , logHook = workspaceHistoryHook <+> myLogHook <+> dynamicLogWithPP xmobarPP
+        , logHook = workspaceHistoryHook <+> dynamicLogWithPP xmobarPP
                         { ppOutput = \x -> hPutStrLn xmproc0 x  -- >> hPutStrLn xmproc1 x  >> hPutStrLn xmproc2 x
                         , ppCurrent = xmobarColor "#8ec07c" "" . wrap "[ " " ]" -- Current workspace in xmobar
                         , ppVisible = xmobarColor "#8ec07c" "" . wrap "  " "  "                -- Visible but not current workspace
