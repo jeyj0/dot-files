@@ -873,7 +873,7 @@ myKeys =
         , ("M-C-,", onGroup W.focusDown')  -- Switch focus to prev tab
 
     -- Scratchpads
-        , ("M-o t", namedScratchpadAction myScratchPads "terminal")
+        -- , ("M-o t", namedScratchpadAction myScratchPads "terminal")
         -- , ("M-o c", namedScratchpadAction myScratchPads "mocp")
 
     -- Controls for mocp music player (SUPER-u followed by a key)
