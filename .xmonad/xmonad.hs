@@ -249,44 +249,22 @@ jeyj0XPConfig = def
       , historySize         = 256
       , historyFilter       = id
       , defaultText         = []
-      , autoComplete        = Just 100000  -- set Just 100000 for .1 sec
+      , autoComplete        = Nothing
       , showCompletionOnTab = False
       , searchPredicate     = fuzzyMatch
       , defaultPrompter     = id $ map toUpper
       , alwaysHighlight     = False
-      , maxComplRows        = Just 10      -- set to 'Just 5' for 5 rows
-      }
-
--- The same config above minus the autocomplete feature which is annoying
--- on certain Xprompts, like the search engine prompts.
-jeyj0XPConfig' :: XPConfig
-jeyj0XPConfig' = jeyj0XPConfig
-      { autoComplete        = Nothing
+      , maxComplRows        = Just 10
       }
 
 -- A list of all of the standard Xmonad prompts and a key press assigned to them.
 -- These are used in conjunction with keybinding I set later in the config.
 promptList :: [(String, XPConfig -> X ())]
 promptList = [ ("m", manPrompt)          -- manpages prompt
-             -- , ("p", passPrompt)         -- get passwords (requires 'pass')
-             -- , ("g", passGeneratePrompt) -- generate passwords (requires 'pass')
-             -- , ("r", passRemovePrompt)   -- remove passwords (requires 'pass')
              , ("s", sshPrompt)          -- ssh prompt
              , ("x", xmonadPrompt)       -- xmonad prompt
              , ("p", switchProjectPrompt)
              ]
-
--- Same as the above list except this is for my custom prompts.
-promptList' :: [(String, XPConfig -> String -> X (), String)]
-promptList' = [ ("c", calcPrompt, "qalc")         -- requires qalculate-gtk
-              ]
-
-calcPrompt c ans =
-    inputPrompt c (trim ans) ?+ \input ->
-        liftIO(runProcessWithInput "qalc" [input] "") >>= calcPrompt c
-    where
-        trim  = f . f
-            where f = reverse . dropWhile isSpace
 
 jeyj0XPKeymap :: M.Map (KeyMask,KeySym) (XP ())
 jeyj0XPKeymap = M.fromList $
@@ -544,12 +522,11 @@ myKeys =
         ]
     -- Appending search engine prompts to keybindings list.
     -- Look at "search engines" section of this config for values for "k".
-        ++ [("M-s " ++ k, S.promptSearch jeyj0XPConfig' f) | (k,f) <- searchList ]
+        ++ [("M-s " ++ k, S.promptSearch jeyj0XPConfig f) | (k,f) <- searchList ]
         ++ [("M-S-s " ++ k, S.selectSearch f) | (k,f) <- searchList ]
     -- Appending some extra xprompts to keybindings list.
     -- Look at "xprompt settings" section this of config for values for "k".
-        ++ [("M-p " ++ k, f jeyj0XPConfig') | (k,f) <- promptList ]
-        ++ [("M-p " ++ k, f jeyj0XPConfig' g) | (k,f,g) <- promptList' ]
+        ++ [("M-p " ++ k, f jeyj0XPConfig) | (k,f) <- promptList ]
     -- The following lines are needed for named scratchpads.
           where nonNSP          = WSIs (return (\ws -> W.tag ws /= "nsp"))
                 nonEmptyNonNSP  = WSIs (return (\ws -> isJust (W.stack ws) && W.tag ws /= "nsp"))
