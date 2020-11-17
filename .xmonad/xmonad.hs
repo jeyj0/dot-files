@@ -1,6 +1,6 @@
     -- Base
 import XMonad
-import System.IO (hPutStrLn, writeFile)
+import System.IO (hPutStrLn)
 import System.Exit (exitSuccess)
 import qualified XMonad.StackSet as W
 
@@ -195,7 +195,6 @@ promptList = [ ("m", manPrompt)          -- manpages prompt
              , ("s", sshPrompt)          -- ssh prompt
              , ("x", xmonadPrompt)       -- xmonad prompt
              , ("p", switchProjectPrompt)
-             , ("d", \c -> directoryPrompt c "DIR: " (\path -> liftIO $ writeFile "/home/jeyj0/pwd" $ "/home/jeyj0/" ++ path))
              ]
 
 -- Same as the above list except this is for my custom prompts.
