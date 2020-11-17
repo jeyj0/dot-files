@@ -88,63 +88,110 @@ import qualified XMonad.Actions.DynamicWorkspaceOrder as DynWsOrd
 
     -- Data
 import Data.Char (isSpace, toUpper)
-import Data.Monoid
+import qualified Data.Monoid
 import Data.Maybe (isJust)
-import Data.Tree
 import qualified Data.Map as M
 
     -- Hooks
 import XMonad.Hooks.DynamicLog (dynamicLogWithPP, wrap, xmobarPP, xmobarColor, shorten, PP(..))
-import XMonad.Hooks.EwmhDesktops  -- for some fullscreen events, also for xcomposite in obs.
-import XMonad.Hooks.FadeInactive
+import XMonad.Hooks.EwmhDesktops (ewmh) -- for some fullscreen events, also for xcomposite in obs.
+import XMonad.Hooks.FadeInactive (fadeInactiveLogHook)
 import XMonad.Hooks.ManageDocks (avoidStruts, docksEventHook, manageDocks, ToggleStruts(..))
 import XMonad.Hooks.ManageHelpers (isFullscreen, doFullFloat)
-import XMonad.Hooks.ServerMode
-import XMonad.Hooks.SetWMName
-import XMonad.Hooks.WorkspaceHistory
+import XMonad.Hooks.ServerMode (serverModeEventHook, serverModeEventHookF, serverModeEventHookCmd)
+import XMonad.Hooks.SetWMName (setWMName)
+import XMonad.Hooks.WorkspaceHistory (workspaceHistoryHook)
 
     -- Layouts
 import XMonad.Layout.GridVariants (Grid(Grid))
-import XMonad.Layout.SimplestFloat
-import XMonad.Layout.Spiral
+import XMonad.Layout.SimplestFloat (simplestFloat)
+import XMonad.Layout.Spiral (spiral)
 import XMonad.Layout.ResizableTile
+  ( ResizableTall(ResizableTall)
+  , MirrorResize(MirrorShrink, MirrorExpand)
+  )
 import XMonad.Layout.Tabbed
-import XMonad.Layout.ThreeColumns
+  ( tabbed
+  , fontName
+  , activeColor
+  , inactiveColor
+  , activeBorderColor
+  , inactiveBorderColor
+  , activeTextColor
+  , inactiveTextColor
+  , shrinkText
+  , addTabs
+  )
 
     -- Layouts modifiers
-import XMonad.Layout.LayoutModifier
+import qualified XMonad.Layout.LayoutModifier
 import XMonad.Layout.LimitWindows (limitWindows, increaseLimit, decreaseLimit)
-import XMonad.Layout.Magnifier
 import XMonad.Layout.MultiToggle (mkToggle, single, EOT(EOT), (??))
 import XMonad.Layout.MultiToggle.Instances (StdTransformers(NBFULL, MIRROR, NOBORDERS))
-import XMonad.Layout.NoBorders
-import XMonad.Layout.Renamed
-import XMonad.Layout.ShowWName
-import XMonad.Layout.Simplest
-import XMonad.Layout.Spacing
-import XMonad.Layout.SubLayouts
-import XMonad.Layout.WindowNavigation
-import XMonad.Layout.WindowArranger (windowArrange, WindowArrangerMsg(..))
+import XMonad.Layout.NoBorders (noBorders)
+import XMonad.Layout.Renamed (renamed, Rename(Replace))
+import XMonad.Layout.Simplest (Simplest(Simplest))
+import XMonad.Layout.Spacing (Spacing, spacingRaw, Border(Border), incWindowSpacing, decWindowSpacing, incScreenSpacing, decScreenSpacing)
+import XMonad.Layout.SubLayouts (subLayout, pullGroup, GroupMsg(UnMerge, MergeAll, UnMergeAll), onGroup)
+import XMonad.Layout.WindowNavigation (windowNavigation, Direction2D(L, R, U, D))
+import XMonad.Layout.WindowArranger (windowArrange, WindowArrangerMsg(Arrange, DeArrange))
 import qualified XMonad.Layout.ToggleLayouts as T (toggleLayouts, ToggleLayout(Toggle))
-import qualified XMonad.Layout.MultiToggle as MT (Toggle(..))
+import qualified XMonad.Layout.MultiToggle as MT (Toggle(Toggle))
 
     -- Prompt
 import XMonad.Prompt
-import XMonad.Prompt.Input
-import XMonad.Prompt.FuzzyMatch
-import XMonad.Prompt.Man
-import XMonad.Prompt.Pass
-import XMonad.Prompt.Shell
-import XMonad.Prompt.Ssh
-import XMonad.Prompt.XMonad
-import XMonad.Prompt.Directory
+  ( XPConfig
+  , font
+  , bgColor
+  , fgColor
+  , bgHLight
+  , fgHLight
+  , borderColor
+  , promptBorderWidth
+  , promptKeymap
+  , position
+  , XPPosition(CenteredAt)
+  , xpCenterY
+  , xpWidth
+  , height
+  , historySize
+  , historyFilter
+  , defaultText
+  , autoComplete
+  , showCompletionOnTab
+  , searchPredicate
+  , defaultPrompter
+  , alwaysHighlight
+  , maxComplRows
+  , XP
+  , def
+  , killBefore
+  , killAfter
+  , startOfLine
+  , endOfLine
+  , deleteString
+  , Direction1D(Next, Prev)
+  , moveCursor
+  , killWord
+  , pasteString
+  , quit
+  , moveWord
+  , moveHistory
+  , setSuccess
+  , setDone
+  )
+import XMonad.Prompt.Input (inputPrompt, (?+))
+import XMonad.Prompt.FuzzyMatch (fuzzyMatch)
+import XMonad.Prompt.Man (manPrompt)
+import XMonad.Prompt.Shell (shellPrompt)
+import XMonad.Prompt.Ssh (sshPrompt)
+import XMonad.Prompt.XMonad (xmonadPrompt)
 import Control.Arrow (first)
 
    -- Utilities
 import XMonad.Util.EZConfig (additionalKeysP)
-import XMonad.Util.NamedScratchpad
 import XMonad.Util.Run (runProcessWithInput, safeSpawn, spawnPipe)
-import XMonad.Util.SpawnOnce
+import XMonad.Util.SpawnOnce (spawnOnce)
 
 myFont :: String
 myFont = "xft:Hack Nerd Font:bold:size=9:antialias=true:hinting=true"
@@ -348,15 +395,6 @@ myTabTheme = def { fontName            = myFont
                  , activeTextColor     = "#ebdbb2"
                  , inactiveTextColor   = "#928374"
                  }
-
--- Theme for showWName which prints current workspace when you change workspaces.
-myShowWNameTheme :: SWNConfig
-myShowWNameTheme = def
-    { swn_font              = "xft:Hack Nerd Font:bold:size=24"
-    , swn_fade              = 0.3
-    , swn_bgcolor           = "#1c1c1c"
-    , swn_color             = "#ebdbb2"
-    }
 
 -- The layout hook
 myLayoutHook = avoidStruts $ mouseResize $ windowArrange $ T.toggleLayouts floats
@@ -577,7 +615,6 @@ main = do
         , modMask            = myModMask
         , terminal           = myTerminal
         , startupHook        = myStartupHook
-        -- , layoutHook         = showWName' myShowWNameTheme $ myLayoutHook
         , layoutHook         = myLayoutHook
         , workspaces         = myWorkspaces
         , borderWidth        = myBorderWidth
