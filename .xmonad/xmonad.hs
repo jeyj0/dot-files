@@ -434,7 +434,7 @@ myKeys =
 
     -- Floating windows
         , ("M-f", withFocused $ windows . W.sink)  -- Push floating window back to tile
-        -- , ("M-S-t", sinkAll)                       -- Push ALL floating windows to tile
+        , ("M-S-f", sinkAll)                       -- Push ALL floating windows to tile
 
     -- Increase/decrease spacing (gaps)
         , ("M-M1-h", decWindowSpacing 4)           -- Decrease window spacing
