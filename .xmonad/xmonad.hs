@@ -244,7 +244,6 @@ jeyj0XPConfig = def
       , borderColor         = "#8ec07c"
       , promptBorderWidth   = 0
       , promptKeymap        = jeyj0XPKeymap
-      -- , position            = Top
       , position            = CenteredAt { xpCenterY = 0.1, xpWidth = 0.7 }
       , height              = 64
       , historySize         = 256
@@ -252,13 +251,9 @@ jeyj0XPConfig = def
       , defaultText         = []
       , autoComplete        = Just 100000  -- set Just 100000 for .1 sec
       , showCompletionOnTab = False
-      -- , searchPredicate     = isPrefixOf
       , searchPredicate     = fuzzyMatch
-      , defaultPrompter     = id $ map toUpper  -- change prompt to UPPER
-      -- , defaultPrompter     = unwords . map reverse . words  -- reverse the prompt
-      -- , defaultPrompter     = drop 5 .id (++ "XXXX: ")  -- drop first 5 chars of prompt and add XXXX:
-      , alwaysHighlight     = True
-      -- , maxComplRows        = Nothing      -- set to 'Just 5' for 5 rows
+      , defaultPrompter     = id $ map toUpper
+      , alwaysHighlight     = False
       , maxComplRows        = Just 10      -- set to 'Just 5' for 5 rows
       }
 
