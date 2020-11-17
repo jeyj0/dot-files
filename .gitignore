@@ -17,3 +17,6 @@
 
 # do not ignore scripts in .local/
 !.local/
+
+# do not ignore xmonad config
+!.xmonad/xmonad.hs
