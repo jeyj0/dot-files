@@ -7,7 +7,7 @@ import qualified XMonad.StackSet as W
     -- Actions
 import XMonad.Actions.CopyWindow (kill1, killAllOtherCopies)
 import XMonad.Actions.CycleWS (moveTo, shiftTo, WSType(..), nextScreen, prevScreen)
-import XMonad.Actions.MouseResize
+import XMonad.Actions.MouseResize (mouseResize)
 import XMonad.Actions.Promote (promote)
 import XMonad.Actions.RotSlaves (rotSlavesDown, rotAllDown)
 import XMonad.Actions.WindowGo (runOrRaise)
