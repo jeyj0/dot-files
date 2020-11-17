@@ -16,6 +16,8 @@ import XMonad.Actions.WindowGo (runOrRaise)
 import XMonad.Actions.WithAll (sinkAll, killAll)
 import qualified XMonad.Actions.Search as S
 import XMonad.Actions.DynamicProjects
+import XMonad.Actions.DynamicWorkspaces
+import qualified XMonad.Actions.DynamicWorkspaceOrder as DO
 
     -- Data
 import Data.Char (isSpace, toUpper)
@@ -767,20 +769,29 @@ myLogHook :: X ()
 myLogHook = fadeInactiveLogHook fadeAmount
     where fadeAmount = 1.0
 
+
+-- M (GUI)  : Do something with xmonad
+--             Common actions should only require this key to be held. Everything in this config should require it to be held though.
+-- M1 (Alt) : Windows
+--             Manipulating windows should be done with Alt, as it's generally a fairly frequent action, but not always fully frequent
+-- C (Ctrl) : Workspaces/Projects and screens
+--             Workspaces are less common to manipulate than windows, so they should be accessed with ctrl (which is not as nice to access for me)
+-- S (Shift): Unusual actions
+--             This is really not nice to access. Don't put normal stuff here.
 myKeys :: [(String, X ())]
 myKeys =
     -- Xmonad
-        [ ("M-C-r", spawn "xmonad --recompile") -- Recompiles xmonad
+        [ ("M-S-c", spawn "xmonad --recompile") -- Recompiles xmonad
         , ("M-S-r", spawn "xmonad --restart")   -- Restarts xmonad
         , ("M-S-q", io exitSuccess)             -- Quits xmonad
 
     -- Run Prompt
-        , ("M-d", shellPrompt jeyj0XPConfig) -- Shell Prompt
+        , ("M-o", shellPrompt jeyj0XPConfig) -- Shell Prompt
 
     -- Useful programs to have a keybinding for launch
         , ("M-t", spawn (myTerminal))
         , ("M-b", spawn (myBrowser))
-        , ("M-e", spawn "emacsclient -c -a 'emacs'")                            -- start emacs
+        , ("M-e", spawn "emacsclient -c -a 'emacs'")
         , ("M-v", spawn (myEditor))
         -- , ("M-M1-h", spawn (myTerminal ++ " -e htop"))
 
@@ -795,6 +806,9 @@ myKeys =
         , ("M-i", moveTo Next nonNSP)
         , ("M-S-<KP_Add>", shiftTo Next nonNSP >> moveTo Next nonNSP)       -- Shifts focused window to next ws
         , ("M-S-<KP_Subtract>", shiftTo Prev nonNSP >> moveTo Prev nonNSP)  -- Shifts focused window to prev ws
+        , ("M-w c", removeEmptyWorkspace)
+        , ("M-C-i", DO.swapWith Next NonEmptyWS)
+        , ("M-C-u", DO.swapWith Prev NonEmptyWS)
 
     -- Floating windows
         -- , ("M-f", sendMessage (T.Toggle "floats")) -- Toggles my 'floats' layout
