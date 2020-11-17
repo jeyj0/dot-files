@@ -200,31 +200,31 @@ myPromptFont :: String
 myPromptFont = "xft:Hack Nerd Font:bold:size=24:anialias=true:hinting=true"
 
 myModMask :: KeyMask
-myModMask = mod4Mask       -- Sets modkey to super/windows key
+myModMask = mod4Mask
 
 myTerminal :: String
-myTerminal = "alacritty "   -- Sets default terminal
--- myTerminal = "alacritty --working-directory $(cat ~/pwd) "   -- Sets default terminal
+myTerminal = "alacritty "
 
 myBrowser :: String
-myBrowser = "firefox "               -- Sets qutebrowser as browser for tree select
--- myBrowser = myTerminal ++ " -e lynx " -- Sets lynx as browser for tree select
+myBrowser = "firefox "
 
 myEditor :: String
--- myEditor = "emacsclient -c -a emacs "  -- Sets emacs as editor for tree select
-myEditor = myTerminal ++ " -e nvim "    -- Sets vim as editor for tree select
+myEditor = myTerminal ++ " -e nvim "
 
 myBorderWidth :: Dimension
-myBorderWidth = 5          -- Sets border width for windows
+myBorderWidth = 5
 
+-- Border color of normal windows
 myNormColor :: String
-myNormColor   = "#282828"  -- Border color of normal windows
+myNormColor   = "#282828"
 
+-- Border color of focused windows
 myFocusColor :: String
-myFocusColor  = "#8ec07c"  -- Border color of focused windows
+myFocusColor  = "#8ec07c"
 
+-- Setting this for use in xprompts
 altMask :: KeyMask
-altMask = mod1Mask         -- Setting this for use in xprompts
+altMask = mod1Mask
 
 windowCount :: X (Maybe String)
 windowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace . W.current . windowset
@@ -243,7 +243,7 @@ jeyj0XPConfig = def
       , fgHLight            = "#000000"
       , borderColor         = "#8ec07c"
       , promptBorderWidth   = 0
-      , promptKeymap        = dtXPKeymap
+      , promptKeymap        = jeyj0XPKeymap
       -- , position            = Top
       , position            = CenteredAt { xpCenterY = 0.1, xpWidth = 0.7 }
       , height              = 64
@@ -293,8 +293,8 @@ calcPrompt c ans =
         trim  = f . f
             where f = reverse . dropWhile isSpace
 
-dtXPKeymap :: M.Map (KeyMask,KeySym) (XP ())
-dtXPKeymap = M.fromList $
+jeyj0XPKeymap :: M.Map (KeyMask,KeySym) (XP ())
+jeyj0XPKeymap = M.fromList $
      map (first $ (,) controlMask)   -- control + <key>
      [ (xK_z, killBefore)            -- kill line backwards
      , (xK_k, killAfter)             -- kill line forwards
