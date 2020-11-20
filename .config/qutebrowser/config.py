@@ -1,3 +1,3 @@
 c.scrolling.smooth = True
-config.bind('J', 'tab-prev')
-config.bind('K', 'tab-next')
+c.auto_save.session = True
+c.zoom.default = 150
