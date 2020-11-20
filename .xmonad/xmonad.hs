@@ -328,7 +328,7 @@ tall     = renamed [Replace "tall"]
            $ subLayout [] Simplest
            $ limitWindows 12
            $ mySpacing 8
-           $ ResizableTall 1 (3/100) (1/2) []
+           $ ResizableTall 1 (3/100) (5/8) []
 grid     = renamed [Replace "grid"]
            $ windowNavigation
            $ addTabs shrinkText myTabTheme
