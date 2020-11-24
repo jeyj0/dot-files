@@ -191,6 +191,8 @@ import Control.Arrow (first)
 import XMonad.Util.EZConfig (additionalKeysP)
 import XMonad.Util.Run (runProcessWithInput, safeSpawn, spawnPipe)
 import XMonad.Util.SpawnOnce (spawnOnce)
+import XMonad.Util.ExclusiveScratchpads (customFloating)
+import Data.Ratio ((%))
 
 myFont :: String
 myFont = "xft:Hack Nerd Font:bold:size=9:antialias=true:hinting=true"
@@ -389,6 +391,7 @@ myManageHook = composeAll
      -- , title =? "Spotify" --> doShift ( myWorkspaces !! 3 )
      , title =? "Slack" --> doShift "chat" -- ( myWorkspaces !! 2 )
      , title =? "Zoom" --> doShift "chat" -- ( myWorkspaces !! 2 )
+     , title =? "note-taker" --> (customFloating $ W.RationalRect (1%4) 0 (1%2) (1%3))
      , className =? "discord" --> doShift "chat" -- ( myWorkspaces !! 2 )
      ]
 
@@ -415,6 +418,7 @@ myKeys =
         , ("M-b", spawn (myBrowser))
         , ("M-e", spawn "emacsclient -c -a 'emacs'")
         , ("M-v", spawn (myEditor))
+        , ("M-n", spawn (myTerminal ++ " --title note-taker -e fish -c 'cat >> ~/tmp.txt'"))
         -- , ("M-M1-h", spawn (myTerminal ++ " -e htop"))
 
     -- Kill windows
