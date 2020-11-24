@@ -357,6 +357,7 @@ in
         "OpenDyslexic"
       ];
     })
+    dnd-fonts
   ];
 
   # Enable touchpad support.
