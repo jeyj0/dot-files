@@ -103,8 +103,6 @@ import XMonad.Hooks.SetWMName (setWMName)
 import XMonad.Hooks.WorkspaceHistory (workspaceHistoryHook)
 
     -- Layouts
-import XMonad.Layout.GridVariants (Grid(Grid))
-import XMonad.Layout.Spiral (spiral)
 import XMonad.Layout.ResizableTile
   ( ResizableTall(ResizableTall)
   , MirrorResize(MirrorShrink, MirrorExpand)
@@ -331,20 +329,6 @@ tall     = renamed [Replace "tall"]
            $ limitWindows 12
            $ mySpacing 8
            $ ResizableTall 1 (3/100) (5/8) []
-grid     = renamed [Replace "grid"]
-           $ windowNavigation
-           $ addTabs shrinkText myTabTheme
-           $ subLayout [] Simplest -- (smartBorders Simplest)
-           $ limitWindows 12
-           $ mySpacing 8
-           $ mkToggle (single MIRROR)
-           $ Grid (16/10)
-spirals  = renamed [Replace "spirals"]
-           $ windowNavigation
-           $ addTabs shrinkText myTabTheme
-           $ subLayout [] Simplest -- (smartBorders Simplest)
-           $ mySpacing 8
-           $ spiral (6/7)
 tabs     = renamed [Replace "tabs"]
            -- I cannot add spacing to this layout because it will
            -- add spacing between window and tabs which looks bad.
@@ -364,22 +348,12 @@ myLayoutHook = avoidStruts $ mouseResize $ windowArrange
              where
                myDefaultLayout =     tall
                                  ||| noBorders tabs
-                                 ||| grid
-                                 ||| spirals
 
 xmobarEscape :: String -> String
 xmobarEscape = concatMap doubleLts
   where
         doubleLts '<' = "<<"
         doubleLts x   = [x]
-
-myClickableWorkspaces :: [String]
-myClickableWorkspaces = clickable . (map xmobarEscape)
-               $ myWorkspaces
-  where
-        clickable l = [ "<action=xdotool key super+" ++ show (n) ++ ">" ++ ws ++ "</action>" |
-                      (i,ws) <- zip [1..9] l,
-                      let n = i ]
 
 myManageHook :: XMonad.Query (Data.Monoid.Endo WindowSet)
 myManageHook = composeAll
