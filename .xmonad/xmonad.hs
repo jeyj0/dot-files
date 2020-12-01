@@ -526,9 +526,9 @@ projects =
 main :: IO ()
 main = do
     -- Launching three instances of xmobar on their monitors.
-    xmproc0 <- spawnPipe "xmobar -x 0 /home/jeyj0/.config/xmobar/xmobarrc0"
-    --xmproc1 <- spawnPipe "xmobar -x 1 /home/jeyj0/.config/xmobar/xmobarrc2"
-    --xmproc2 <- spawnPipe "xmobar -x 2 /home/jeyj0/.config/xmobar/xmobarrc1"
+    --xmproc0 <- spawnPipe "xmobar -x 0 /home/jeyj0/.config/xmobar/xmobarrc0"
+    xmproc1 <- spawnPipe "xmobar -x 0 /home/jeyj0/.config/xmobar/xmobarrc1"
+    xmproc2 <- spawnPipe "xmobar -x 1 /home/jeyj0/.config/xmobar/xmobarrc2"
     -- the xmonad, ya know...what the WM is named after!
     xmonad $ ewmh $ dynamicProjects projects def
         { manageHook = ( isFullscreen --> doFullFloat ) <+> myManageHook <+> manageDocks
@@ -550,7 +550,7 @@ main = do
         , focusedBorderColor = myFocusColor
         , focusFollowsMouse  = False
         , logHook = workspaceHistoryHook <+> dynamicLogWithPP xmobarPP
-                        { ppOutput = \x -> hPutStrLn xmproc0 x  -- >> hPutStrLn xmproc1 x  >> hPutStrLn xmproc2 x
+                        { ppOutput = \x -> hPutStrLn xmproc1 x  >> hPutStrLn xmproc2 x -- >> hPutStrLn xmproc2 x
                         , ppCurrent = xmobarColor "#8ec07c" "" . wrap "[ " " ]" -- Current workspace in xmobar
                         , ppVisible = xmobarColor "#8ec07c" "" . wrap "  " "  "                -- Visible but not current workspace
                         , ppHidden = xmobarColor "#458588" "" . wrap "( " " )"   -- Hidden workspaces in xmobar
