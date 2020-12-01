@@ -297,6 +297,8 @@ in
     fontpreview
     haskellPackages.hoogle
     jq
+    plantuml
+    texlive.combined.scheme-full
 
     slack
     discord
