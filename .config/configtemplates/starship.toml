@@ -9,3 +9,6 @@ disabled = true
 [haskell]
 disabled = true
 
+[gcloud]
+disabled = true
+
