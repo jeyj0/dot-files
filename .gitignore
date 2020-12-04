@@ -9,6 +9,9 @@
 # do not ignore NixOS configs
 !nixos/
 
+# do not ignore custom home-manager checkout
+!home-manager/
+
 # do not ignore my scripts
 !scripts/
 
