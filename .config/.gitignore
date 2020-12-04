@@ -2,6 +2,7 @@
 !.gitignore
 
 # select what program's settings are synced
+!home-manager/
 !rofi/
 !xfce4/
 !autostart/
