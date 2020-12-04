@@ -15,6 +15,7 @@ in
       pkgs = packages;
       userName = userName;
     })
+    (import ./parts/kakoune { pkgs = packages; })
   ];
 
   home.packages = with packages; [
