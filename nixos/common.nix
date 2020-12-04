@@ -198,7 +198,7 @@ in
       xmonad = {
         enable = true;
         enableContribAndExtras = true;
-        config = ../.xmonad/xmonad.hs;
+        config = ../.config/xmonad/xmonad.hs;
         extraPackages = hpkgs: with hpkgs; [
           xmonad
           xmonad-contrib

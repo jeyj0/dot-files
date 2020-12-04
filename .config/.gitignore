@@ -17,4 +17,5 @@
 !compton.conf
 !nixpkgs/
 !coc/
+!xmonad/
 !xmobar/
