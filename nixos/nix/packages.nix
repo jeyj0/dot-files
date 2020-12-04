@@ -10,6 +10,8 @@ let
       inherit pkgs;
     };
 
+    firefox-addons = pkgs.callPackage (import ./pkgs/firefox-addons) {};
+
     responsively = pkgs.callPackage (import ./pkgs/responsively.nix) {};
     nnn = pkgs.callPackage (import ./pkgs/nnn.nix) {};
     battery-status = import ../../scripts/battery-status;
