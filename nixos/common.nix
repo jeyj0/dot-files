@@ -94,7 +94,14 @@ in
       description = "Jannis Jorre";
     };
   };
-  nix.trustedUsers = [ "root" "jeyj0" ];
+
+  nix = {
+    trustedUsers = [ "root" "jeyj0" ];
+    package = pkgs.nixFlakes;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
