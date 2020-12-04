@@ -13,6 +13,8 @@ let
     pynvim
   ];
   pythonWithPackages = pkgs.python3.withPackages pythonPackages;
+
+  home-manager = import ./nix/pkgs/home-manager.nix;
 in
 {
   # This value determines the NixOS release with which your system is to be
@@ -92,6 +94,16 @@ in
       createHome = true;
       home = "/home/jeyj0";
       description = "Jannis Jorre";
+
+      packages = [
+        (home-manager { pkgs = packages; } {
+          user = "jeyj0";
+          userHome = "/home/jeyj0";
+          hostName = "jeyj0-nixos";
+          home-manager-path = "/home/jeyj0/home-manager";
+          config-path = builtins.toString ../.config/home-manager + "/jeyj0-nixos.nix";
+        })
+      ];
     };
   };
 
