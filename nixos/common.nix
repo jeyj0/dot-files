@@ -85,7 +85,7 @@ in
     users.jeyj0 = {
       isNormalUser = true;
       extraGroups = [ "jeyj0" "wheel" "docker" "audio" "video" ]; # Enable ‘sudo’ for the user.
-      shell = pkgs.fish;
+      shell = packages.fish;
       createHome = true;
       home = "/home/jeyj0";
       description = "Jannis Jorre";
@@ -204,9 +204,6 @@ in
   # system-wide program settings
   programs = {
     command-not-found.enable = true;
-    fish = {
-      enable = true;
-    };
     zsh = {
       enable = true;
       autosuggestions.enable = true;
