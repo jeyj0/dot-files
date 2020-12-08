@@ -204,6 +204,9 @@ myModMask = mod4Mask
 myTerminal :: String
 myTerminal = "alacritty "
 
+terminalRunning :: String -> String
+terminalRunning cmd = myTerminal ++ " -e '" ++ cmd ++ "'"
+
 myBrowser :: String
 myBrowser = "firefox "
 
@@ -518,10 +521,20 @@ projects =
               , projectStartHook = Just $ do
                   spawn myEditor
               }
-    , Project { projectName = "easyforms"
-              , projectDirectory = "~/projects/easyforms"
+    , Project { projectName = "ihp"
+              , projectDirectory = "~/projects/ihp"
               , projectStartHook = Just $ do
-                  spawn myEditor
+                  spawn $ terminalRunning "./start"
+              }
+    , Project { projectName = "ihp-cloud"
+              , projectDirectory = "~/projects/ihp-cloud"
+              , projectStartHook = Just $ do
+                  spawn $ terminalRunning "./start"
+              }
+    , Project { projectName = "ihp-casts"
+              , projectDirectory = "~/projects/ihp-casts"
+              , projectStartHook = Just $ do
+                  spawn $ terminalRunning "./start"
               }
     ]
 
