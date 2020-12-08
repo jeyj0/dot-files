@@ -11,7 +11,6 @@ in
 
   imports = [
     (import ./parts/home-manager.nix)
-    (import ./parts/kakoune { pkgs = packages; })
     (import ./parts/common.nix { pkgs = packages; })
   ];
 

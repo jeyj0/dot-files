@@ -9,6 +9,10 @@ with lib;
 let
   packages = import ./nix/packages.nix {};
 
+  userName = "jeyj0";
+  userHome = "/home/${userName}";
+  hostName = "jeyj0-nixos";
+
   home-manager = import ./nix/pkgs/home-manager.nix;
 in
 {
@@ -78,32 +82,34 @@ in
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users = {
     groups = {
-      jeyj0 = {
-        members = [ "jeyj0" ];
+      "${userName}" = {
+        members = [ "${userName}" ];
       };
     };
-    users.jeyj0 = {
+    users."${userName}" = {
       isNormalUser = true;
-      extraGroups = [ "jeyj0" "wheel" "docker" "audio" "video" ]; # Enable ‘sudo’ for the user.
+      extraGroups = [ userName "wheel" "docker" "audio" "video" ]; # Enable ‘sudo’ for the user.
       shell = packages.fish;
       createHome = true;
-      home = "/home/jeyj0";
+      home = userHome;
       description = "Jannis Jorre";
 
       packages = [
-        (home-manager { pkgs = packages; } {
-          user = "jeyj0";
-          userHome = "/home/jeyj0";
-          hostName = "jeyj0-nixos";
-          home-manager-path = "/home/jeyj0/home-manager";
-          config-path = builtins.toString ../.config/home-manager + "/jeyj0-nixos.nix";
-        })
+        (home-manager
+          { pkgs = packages; }
+          {
+            user = userName;
+            userHome = userHome;
+            hostName = hostName;
+            home-manager-path = "${userHome}/home-manager";
+            config-path = "${userHome}/.config/home-manager/${hostName}.nix";
+          })
       ];
     };
   };
 
   nix = {
-    trustedUsers = [ "root" "jeyj0" ];
+    trustedUsers = [ "root" "${userName}" ];
     # package = pkgs.nixFlakes;
     # extraOptions = ''
     #   experimental-features = nix-command flakes

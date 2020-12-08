@@ -17,10 +17,10 @@
         assistant = "none";
       };
       wrapLines = {
-        # enable = true;
+        enable = true;
         indent = true;
         word = true;
-        # maxWidth = 80;
+        maxWidth = 80;
       };
     };
   };
