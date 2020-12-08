@@ -384,6 +384,7 @@ myKeys =
         [ ("M-S-c", spawn "xmonad --recompile") -- Recompiles xmonad
         , ("M-S-r", spawn "xmonad --restart")   -- Restarts xmonad
         , ("M-S-q", io exitSuccess)             -- Quits xmonad
+        , ("M-S-l", spawn "xfce4-session-logout &")
 
     -- Run Prompt
         , ("M-o", shellPrompt jeyj0XPConfig) -- Shell Prompt
