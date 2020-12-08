@@ -524,7 +524,7 @@ projects =
     , Project { projectName = "ihp"
               , projectDirectory = "~/projects/ihp"
               , projectStartHook = Just $ do
-                  spawn $ terminalRunning "./start"
+                  spawn myTerminal
               }
     , Project { projectName = "ihp-cloud"
               , projectDirectory = "~/projects/ihp-cloud"
