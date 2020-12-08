@@ -1,1 +1,46 @@
-{"version":4,"lastUserContextId":5,"identities":[{"userContextId":1,"public":true,"icon":"fingerprint","color":"blue","telemetryId":1,"name":"Personal"},{"userContextId":2,"public":true,"icon":"briefcase","color":"turquoise","telemetryId":2,"name":"digitallyinduced"},{"userContextId":3,"public":true,"icon":"circle","color":"toolbar","telemetryId":3,"name":"CODE"},{"userContextId":4,"public":true,"icon":"circle","color":"red","telemetryId":4,"name":"DnD"},{"userContextId":5,"public":false,"icon":"","color":"","name":"userContextIdInternal.thumbnail","accessKey":""},{"userContextId":4294967295,"public":false,"icon":"","color":"","name":"userContextIdInternal.webextStorageLocal","accessKey":""}]}
+{
+  "version": 4,
+  "lastUserContextId": 5,
+  "identities": [
+    {
+      "userContextId": 1,
+      "public": true,
+      "icon": "fingerprint",
+      "color": "blue",
+      "telemetryId": 1,
+      "name": "Personal"
+    },
+    {
+      "userContextId": 2,
+      "public": true,
+      "icon": "briefcase",
+      "color": "turquoise",
+      "telemetryId": 2,
+      "name": "digitallyinduced"
+    },
+    {
+      "userContextId": 3,
+      "public": true,
+      "icon": "circle",
+      "color": "toolbar",
+      "telemetryId": 3,
+      "name": "CODE"
+    },
+    {
+      "userContextId": 4,
+      "public": false,
+      "icon": "",
+      "color": "",
+      "name": "userContextIdInternal.thumbnail",
+      "accessKey": ""
+    },
+    {
+      "userContextId": 4294967295,
+      "public": false,
+      "icon": "",
+      "color": "",
+      "name": "userContextIdInternal.webextStorageLocal",
+      "accessKey": ""
+    }
+  ]
+}
