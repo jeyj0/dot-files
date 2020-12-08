@@ -21,6 +21,11 @@
 
           # enable/change stuff I do want
           "browser.startup.homepage" = "https://search.jorre.dev/";
+          "browser.startup.page" = 3;
+          "browser.sessionstore.enabled" = true;
+          "browser.sessionstore.restore_hidden_tabs" = true;
+          "browser.sessionstore.restore_pinned_tabs_on_demand" = true;
+          "browser.sessionstore.resume_after_os_start" = true;
 
           ## use duckduckgo as default search engine
           "browser.urlbar.placeholderName" = "DuckDuckGo";
@@ -47,9 +52,6 @@
 
           ## do not ask to set as default browser, I do that myself when I want
           "browser.shell.checkDefaultBrowser" = false;
-
-          ## reopen last pages on browser startup
-          "browser.startup.page" = 2;
 
           ## use blank page for new tabs
           "browser.newtabpage.enabled" = false;
