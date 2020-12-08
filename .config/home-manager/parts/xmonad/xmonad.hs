@@ -522,9 +522,14 @@ projects =
                   spawn myEditor
               }
     , Project { projectName = "ihp"
-              , projectDirectory = "~/projects/ihp"
+              , projectDirectory = "~/projects/ihp-boilerplate/IHP/"
               , projectStartHook = Just $ do
                   spawn myTerminal
+              }
+    , Project { projectName = "ihp-boilerplate"
+              , projectDirectory = "~/projects/ihp-boilerplate"
+              , projectStartHook = Just $ do
+                  spawn $ terminalRunning "./start"
               }
     , Project { projectName = "ihp-cloud"
               , projectDirectory = "~/projects/ihp-cloud"
