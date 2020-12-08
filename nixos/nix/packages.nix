@@ -16,6 +16,7 @@ let
     nnn = pkgs.callPackage (import ./pkgs/nnn.nix) {};
     battery-status = import ../../scripts/battery-status;
     dnd-fonts = pkgs.callPackage (import ./pkgs/dnd-fonts.nix) {};
+    picom = pkgs.callPackage (import ./pkgs/picom) {};
   };
 in
   import sources.nixpkgs {

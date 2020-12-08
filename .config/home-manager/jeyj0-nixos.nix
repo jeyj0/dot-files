@@ -16,7 +16,7 @@ in
     (import ./parts/latex { pkgs = packages; })
   ];
 
-  home.packages = with pkgs; [
+  home.packages = with packages; [
     # communication
     slack
     discord

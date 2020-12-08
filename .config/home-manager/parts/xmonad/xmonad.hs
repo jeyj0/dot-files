@@ -230,8 +230,9 @@ windowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace
 
 myStartupHook :: X ()
 myStartupHook = do
-          spawnOnce "nitrogen --restore &"
           setWMName "LG3D"
+          spawnOnce "sleep 2 && nitrogen --restore &"
+          spawnOnce "sleep 2 && picom &"
 
 jeyj0XPConfig :: XPConfig
 jeyj0XPConfig = def

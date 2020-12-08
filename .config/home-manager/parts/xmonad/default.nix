@@ -6,5 +6,6 @@
     battery-status
 
     nitrogen # to set wallpapers
+    picom # for animations and other fancy stuff
   ];
 }
