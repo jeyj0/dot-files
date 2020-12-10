@@ -23,7 +23,6 @@ call plug#begin('$HOME/.config/nvim/jeyj0-plugged')
 " Plug 'tpope/vim-eunuch'
 " Plug 'vim-test/vim-test'
 " Plug 'alvan/vim-closetag'
-" Plug 'tpope/vim-abolish'
 " Plug 'AndrewRadev/switch.vim'
 " Plug 'antoinemadec/coc-fzf'
 
@@ -64,6 +63,9 @@ Plug 'airblade/vim-gitgutter'
 
 " surround with stuff
 Plug 'tpope/vim-surround'
+
+" case-keeping replace (+stuff I don't use)
+Plug 'tpope/vim-abolish'
 
 " switch between various naming styles (camelCase, snake_case, ...)
 Plug 'LucHermitte/lh-style'
