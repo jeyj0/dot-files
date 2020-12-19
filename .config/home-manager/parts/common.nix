@@ -10,8 +10,11 @@
   ];
 
   home.packages = with pkgs; [
-    cachix
     openssl
+
+    cachix
+    lxc
+
     alacritty
     # zerotierone
   ];
