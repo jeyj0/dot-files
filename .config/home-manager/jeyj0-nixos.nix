@@ -14,6 +14,7 @@ in
     })
     (import ./parts/xmonad { pkgs = packages; })
     (import ./parts/latex { pkgs = packages; })
+    (import ./parts/games { pkgs = packages; })
   ];
 
   home.packages = with packages; [
