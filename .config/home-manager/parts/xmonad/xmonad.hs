@@ -541,6 +541,11 @@ projects =
               , projectStartHook = Just $ do
                   spawn $ terminalRunning "./start"
               }
+    , Project { projectName = "ihp-blog-example-app"
+              , projectDirectory = "~/projects/ihp-blog-example-app"
+              , projectStartHook = Just $ do
+                  spawn $ terminalRunning "./start"
+              }
     ]
 
 main :: IO ()
