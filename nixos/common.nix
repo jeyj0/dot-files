@@ -88,7 +88,7 @@ in
     };
     users."${userName}" = {
       isNormalUser = true;
-      extraGroups = [ userName "wheel" "docker" "audio" "video" ]; # Enable ‘sudo’ for the user.
+      extraGroups = [ userName "wheel" "docker" "lxd" "lxc" "audio" "video" ]; # Enable ‘sudo’ for the user.
       shell = packages.fish;
       createHome = true;
       home = userHome;
@@ -202,9 +202,13 @@ in
 
   # services.clipmenu.enable = true;
 
-  virtualisation.docker = {
-    enable = true;
-    # enableNvidia = true;
+  virtualisation = {
+    lxc.enable = true;
+    lxd.enable = true;
+    docker = {
+      enable = true;
+      # enableNvidia = true;
+    };
   };
 
   # system-wide program settings
