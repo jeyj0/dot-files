@@ -1,9 +1,5 @@
-{ pkgs }:
+{ pkgs, installEmacs ? true }:
 {
-  imports = [
-    (import ../latex { pkgs = pkgs; })
-  ];
-
   home.packages = with pkgs; [
     ripgrep
     fd
@@ -11,5 +7,5 @@
     sqlite # for org-roam
 
     plantuml
-  ];
+  ] ++ (if installEmacs then [ pkgs.emacs ] else []);
 }

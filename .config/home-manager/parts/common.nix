@@ -1,4 +1,4 @@
-{ pkgs }:
+{ pkgs, installEmacs ? true }:
 {
   imports = [
     (import ./fish {
@@ -11,8 +11,12 @@
     })
     (import ./cli-tools { pkgs = pkgs; })
     (import ./neovim { pkgs = pkgs; })
-    (import ./emacs { pkgs = pkgs; })
+    (import ./emacs {
+      pkgs = pkgs;
+      installEmacs = installEmacs;
+    })
     (import ./kakoune { pkgs = pkgs; })
+    (import ./latex { pkgs = pkgs; })
     (import ./docker { pkgs = pkgs; })
     (import ./webdev { pkgs = pkgs; })
   ];

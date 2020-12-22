@@ -7,7 +7,10 @@ in
 {
   imports = [
     (import ./parts/linux.nix { pkgs = packages; })
-    (import ./parts/common.nix { pkgs = packages; })
+    (import ./parts/common.nix {
+      pkgs = packages;
+      installEmacs = false;
+    })
     (import ./parts/firefox {
       pkgs = packages;
       userName = userName;
