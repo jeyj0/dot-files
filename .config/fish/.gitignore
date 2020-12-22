@@ -1,3 +1,4 @@
 functions/fundle.fish
 fundle/
 fish_variables
+config.fish
