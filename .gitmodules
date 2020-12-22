@@ -1,5 +1,5 @@
-[submodule "/home/jeyj0/.emacs.d"]
-	path = /home/jeyj0/.emacs.d
+[submodule ".emacs.d"]
+	path = .emacs.d
 	url = https://github.com/hlissner/doom-emacs
 [submodule "home-manager"]
 	path = home-manager
