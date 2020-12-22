@@ -21,7 +21,6 @@
     openssl
 
     cachix
-    lxc
 
     alacritty
     # zerotierone

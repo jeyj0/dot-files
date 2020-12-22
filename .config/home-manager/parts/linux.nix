@@ -18,5 +18,7 @@
 
     networkmanager
     networkmanager_dmenu
+
+    lxc
   ];
 }
