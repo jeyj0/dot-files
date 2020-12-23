@@ -2,7 +2,8 @@
 {
   programs.fish = {
     enable = true;
-    loginShellInit = extraConfigPre + ''
+
+    interactiveShellInit = extraConfigPre + ''
       set FISH_PATH $HOME/.config/fish
 
       # install fundle if not present (package manager for fish)
