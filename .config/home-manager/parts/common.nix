@@ -18,6 +18,7 @@
     (import ./kakoune { pkgs = pkgs; })
     (import ./latex { pkgs = pkgs; })
     (import ./docker { pkgs = pkgs; })
+    (import ./communication { pkgs = pkgs; })
     (import ./webdev { pkgs = pkgs; })
   ];
 
@@ -30,3 +31,4 @@
     # zerotierone
   ];
 }
+
