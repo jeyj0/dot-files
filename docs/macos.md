@@ -4,6 +4,14 @@ In addition to nix and home-manager, which can be used to install any
 nix-supported software on MacOS, a few other things are required to be
 installed manually/through different means.
 
+## Shell
+
+Add nix-installed fish to valid shells:
+
+Add `/Users/jeyj0/.nix-profile/bin/fish` to `/etc/shells`.
+
+Run `$ chsh -s /Users/jeyj0/.nix-profile/bin/fish`.
+
 ## Homebrew
 
 Homebrew is a MacOS package manager that is inferior to nix overall, however it
