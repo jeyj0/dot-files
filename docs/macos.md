@@ -25,6 +25,14 @@ I use the following packages, which can be installed via `$ brew install
 PACKAGENAME`:
 
 - syncthing
-	+ `$ brew services start syncthing` (to start the syncthing service
-	  immediately and on login)
+  + `$ brew services start syncthing` (to start the syncthing service
+    immediately and on login)
 - lxc
+
+## Other programs
+
+### Karabiner-Elements
+
+https://karabiner-elements.pqrs.org/
+
+For remapping the keyboard in advanced ways.
