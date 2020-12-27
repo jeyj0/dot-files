@@ -1,3 +1,133 @@
-;;{:main [{:des "caps_lock to escape"
-;;         :rules [[:a [:a :a]]]}]}
-{}
+{:simlayers
+  { :syml { :key :s }
+    :num { :key :d }
+    :nav { :key :f }
+    ; :thb { :key :r }
+    :thb { :key :u }
+    :symr { :key :j }
+  }
+ :main
+  [
+   ; general nicety-stuff
+   {:des "caps_lock to escape"
+    :rules
+      [ [:caps_lock :escape]
+      ]}
+
+   {:des "spacebar is shift when held"
+    :rules
+      [ [:spacebar :left_shift nil { :alone :spacebar }]
+      ]}
+
+   ; general layer maps (without colemak)
+   {:des "layer maps"
+    :rules
+      [
+        ; syml layer
+        [:u :open_bracket :syml]
+        [:i :close_bracket :syml]
+        [:o :grave_accent_and_tilde :syml]
+
+        [:h :!S6 :syml]
+        [:j :!S9 :syml]
+          [:!Sj :!Sopen_bracket :syml]
+        [:k :!S0 :syml]
+          [:!Sk :!Sclose_bracket :syml]
+        [:l :quote :syml]
+          [:!Sl :!Squote :syml]
+        [:semicolon :!S4 :syml]
+          [:!Ssemicolon :!OS2 :syml]
+
+        [:m :!Scomma :syml]
+        [:comma :!Speriod :syml]
+        [:period :!Sgrave_accent_and_tilde :syml]
+        [:slash :backslash :syml]
+          [:!Sslash :!Sbackslash :syml]
+
+        ; num layer
+        [:u :7 :num]
+        [:i :8 :num]
+        [:o :9 :num]
+        [:p :equal_sign :num]
+
+        [:h :!Sequal_sign :num]
+          [:!Sh :!S8 :num]
+        [:j :4 :num]
+        [:k :5 :num]
+        [:l :6 :num]
+        [:semicolon :hyphen :num]
+
+        [:m :1 :num]
+        [:comma :2 :num]
+        [:period :3 :num]
+        [:slash :!S5 :num]
+
+        [:spacebar :0 :num]
+
+        ; nav layer
+        [:u :delete_or_backspace :nav]
+        [:i :up_arrow :nav]
+        [:o :delete_forward :nav]
+
+        [:a :tab :nav]
+        [:h :home :nav]
+        [:j :left_arrow :nav]
+        [:k :down_arrow :nav]
+        [:l :right_arrow :nav]
+        [:semicolon :end :nav]
+
+        [:m :page_up :nav]
+        [:comma :page_down :nav]
+
+        ; thb layer
+        [:c :escape :thb]
+        [:v :escape :thb]
+        [:b :return_or_enter :thb]
+        [:n :return_or_enter :thb]
+        [:m :return_or_enter :thb]
+
+        ; symr layer
+        [:s :!S7 :symr]
+        [:d :!S3 :symr]
+        [:f :!S2 :symr]
+        [:k :semicolon :symr]
+      ]}
+
+   ; letter remappings for colemak-dh
+   ; {:des "ColemakDH"
+   ;  :rules
+   ;    [ ;; [:q :q]
+   ;      ;; [:w :w]
+   ;      [:e :f] [:!Se :!Sf]
+   ;      [:r :p] [:!Sr :!Sp]
+   ;      [:t :b] [:!St :!Sb]
+
+   ;      [:y :j] [:!Sy :!Sj]
+   ;      [:u :l] [:!Su :!Sl]
+   ;      [:i :u] [:!Si :!Su]
+   ;      [:o :y] [:!So :!Sy]
+   ;      [:p :semicolon] [:!Sp :!Ssemicolon]
+
+   ;      ;; [:a :a]
+   ;      [:s :r] [:!Ss :!Sr]
+   ;      [:d :s] [:!Sd :!Ss]
+   ;      [:f :t] [:!Sf :!St]
+   ;      ;; [:g :g]
+
+   ;      [:h :k] [:!Sh :!Sk]
+   ;      [:j :n] [:!Sj :!Sn]
+   ;      [:k :e] [:!Sk :!Se]
+   ;      [:l :i] [:!Sl :!Si]
+   ;      [:semicolon :o] [:!Ssemicolon :!So]
+
+   ;      ;; [:z :z]
+   ;      ;; [:x :x]
+   ;      ;; [:c :c]
+   ;      [:v :d] [:!Sv :!Sd]
+   ;      [:b :v] [:!Sb :!Sv]
+
+   ;      [:n :m] [:!Sn :!Sm]
+   ;      [:m :h] [:!Sm :!Sh]
+   ;    ]}
+  ]}
+
