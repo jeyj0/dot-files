@@ -12,6 +12,7 @@ in
   imports = [
     (import ./parts/home-manager.nix)
     (import ./parts/common.nix { pkgs = packages; })
+    (import ./parts/karabiner-elements { pkgs = packages; })
   ];
 
   # This value determines the Home Manager release that your
