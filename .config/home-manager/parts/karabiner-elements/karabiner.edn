@@ -1,0 +1,3 @@
+;;{:main [{:des "caps_lock to escape"
+;;         :rules [[:a [:a :a]]]}]}
+{}

@@ -36,3 +36,6 @@ PACKAGENAME`:
 https://karabiner-elements.pqrs.org/
 
 For remapping the keyboard in advanced ways.
+
+I also have a home-manager part for goku, a configuration language for
+karabiner. Add a "Goku" profile in the karabiner GUI for that to work.
