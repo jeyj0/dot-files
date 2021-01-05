@@ -11,7 +11,15 @@ in
 
   imports = [
     (import ./parts/home-manager.nix)
-    (import ./parts/common.nix { pkgs = packages; })
+    (import ./parts/common.nix {
+      pkgs = packages;
+      extraFishConfigPre = ''
+        set -x NIX_PROFILES "/nix/var/nix/profiles/default $HOME/.nix-profile"
+        set -x NIX_SSL_CERT_FILE "$HOME/.nix-profile/etc/ssl/certs/ca-bundle.crt"
+        set -x NIX_PATH /nix $HOME/.nix-defexpr/channels
+        set -x PATH $HOME/.nix-profile/bin $PATH
+      '';
+    })
     (import ./parts/karabiner-elements { pkgs = packages; })
   ];
 
