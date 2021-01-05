@@ -28,21 +28,13 @@ stdenv.mkDerivation {
   ];
 
   buildInputs = [
-    # libX11.so.6
     xorg.libX11
-    # libXcursor.so.1
     xorg.libXcursor
-    # libXinerama.so.1
     xorg.libXinerama
-    # libXrandr.so.2
     xorg.libXrandr
-    # libXi.so.6
     xorg.libXi
-    # libasound.so.2
     alsaLib
-    # libpulse.so.0
     libpulseaudio
-    # libGL.so.1
     libGL
   ];
 
