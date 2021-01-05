@@ -17,6 +17,7 @@ let
     battery-status = import ../../scripts/battery-status;
     dnd-fonts = pkgs.callPackage (import ./pkgs/dnd-fonts.nix) {};
     picom = pkgs.callPackage (import ./pkgs/picom) {};
+    wonderdraft = pkgs.callPackage (import ./pkgs/wonderdraft) {};
   };
 in
   import sources.nixpkgs {

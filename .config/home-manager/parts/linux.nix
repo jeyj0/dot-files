@@ -20,5 +20,7 @@
     networkmanager_dmenu
 
     lxc
+
+    wonderdraft
   ];
 }
