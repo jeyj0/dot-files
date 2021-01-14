@@ -97,7 +97,7 @@ import XMonad.Hooks.DynamicLog (dynamicLogWithPP, wrap, xmobarPP, xmobarColor, s
 import XMonad.Hooks.EwmhDesktops (ewmh) -- for some fullscreen events, also for xcomposite in obs.
 import XMonad.Hooks.FadeInactive (fadeInactiveLogHook)
 import XMonad.Hooks.ManageDocks (avoidStruts, docksEventHook, manageDocks, ToggleStruts(..))
-import XMonad.Hooks.ManageHelpers (isFullscreen, doFullFloat)
+import XMonad.Hooks.ManageHelpers (isFullscreen, doFullFloat, doRectFloat)
 import XMonad.Hooks.ServerMode (serverModeEventHook, serverModeEventHookF, serverModeEventHookCmd)
 import XMonad.Hooks.SetWMName (setWMName)
 import XMonad.Hooks.WorkspaceHistory (workspaceHistoryHook)
@@ -366,6 +366,7 @@ myManageHook = composeAll
      -- name of my workspaces, and the names would very long if using clickable workspaces.
      [ title =? "Mozilla Firefox"     --> doShift "web" -- ( myWorkspaces !! 1 )
      , (className =? "firefox" <&&> resource =? "Dialog") --> doFloat  -- Float Firefox Dialog
+     , (className =? "Firefox" <&&> resource =? "Toolkit") --> (doRectFloat $ W.RationalRect (3%4) (3%4) (1%4) (1%4)) -- float and place picture-in-picture videos
      -- , title =? "Spotify" --> doShift ( myWorkspaces !! 3 )
      , title =? "Slack" --> doShift "chat" -- ( myWorkspaces !! 2 )
      , title =? "Zoom" --> doShift "chat" -- ( myWorkspaces !! 2 )
