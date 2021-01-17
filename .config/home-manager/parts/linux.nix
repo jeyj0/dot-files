@@ -9,8 +9,7 @@
 
     sxiv
     fontpreview
-    apvlv
-    evince
+    zathura
 
     xclip
     xorg.xwininfo
