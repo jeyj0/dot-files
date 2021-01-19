@@ -125,8 +125,8 @@ in
 
   networking.firewall.enable = true;
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 80 443 4443 8000 3000 8080 8001 8081 8082 8083 8084 8085 5000 9993 10000 ];
-  networking.firewall.allowedUDPPorts = [ 10000 9993 ];
+  networking.firewall.allowedTCPPorts = [ 80 443 631 4443 8000 3000 8080 8001 8081 8082 8083 8084 8085 5000 9993 10000 ];
+  networking.firewall.allowedUDPPorts = [ 10000 9993 631 ];
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
@@ -138,6 +138,22 @@ in
 
   location.provider = "geoclue2";
   services = {
+    printing = {
+      enable = true;
+      browsing = true;
+      defaultShared = true;
+      drivers = with packages; [
+        hplip
+      ];
+    };
+    avahi = {
+      enable = true;
+      nssmdns = true;
+      publish = {
+        enable = true;
+        userServices = true;
+      };
+    };
     zerotierone.enable = true;
     syncthing = {
       enable = true;
@@ -147,7 +163,6 @@ in
       dataDir = "/home/jeyj0/Sync";
       configDir = "/home/jeyj0/.config/syncthing/";
     };
-    printing.enable = true;
     emacs = {
       enable = true;
       install = true;
