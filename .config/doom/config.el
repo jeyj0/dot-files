@@ -279,3 +279,5 @@
       org-export-with-broken-links t
       org-export-with-author nil
       org-export-with-timestamps nil)
+
+(setq ivy-use-selectable-prompt t)
