@@ -17,6 +17,10 @@ import           Org as O
 (>.>) :: (a -> b) -> (b -> c) -> a -> c
 fun1 >.> fun2 = fun2 . fun1
 
+infixl 0 |>
+(|>) :: a -> (a -> b) -> b
+arg |> fun = fun arg
+
 map' :: (a -> b) -> Maybe a -> Maybe b
 map' fun = \case
   Nothing -> Nothing
