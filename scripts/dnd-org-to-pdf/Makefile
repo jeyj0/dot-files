@@ -2,6 +2,7 @@
 
 GHC_OPTIONS = -threaded -odir out -hidir out -o out/main -isrc
 GHC_OPTIONS+= -Wall
+GHC_OPTIONS+= -Wno-name-shadowing
 GHC_OPTIONS+= -Werror=incomplete-patterns
 
 SRCDIR=src
