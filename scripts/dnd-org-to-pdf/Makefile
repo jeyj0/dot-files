@@ -21,6 +21,9 @@ build-fast:
 run: build
 	./${OUTDIR}/main
 
+run-fast: build-fast
+	./${OUTDIR}/main
+
 spec: build-spec
 	./${OUTDIR}/spec
 

@@ -27,7 +27,7 @@ echo "\\documentclass[bg=$bg,10pt,a4paper,twocolumn,openany,nomultitoc,nodepreca
 \\titleformat{\\chapter}
     {\\DndFontChapter} % format
     {}
-    {}
+    {0pt}
     {\\DndContour} % before-code
 
 \\fancyhf{}

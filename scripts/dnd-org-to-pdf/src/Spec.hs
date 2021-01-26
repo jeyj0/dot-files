@@ -1,124 +1,111 @@
+{-# LANGUAGE OverloadedStrings #-}
 module Spec where
 
-import Test.Hspec
--- import Test.QuickCheck
+import           Test.Hspec
+-- import           Test.QuickCheck
 
-import Main (convert)
+import qualified Data.Text as T
+import           Data.Either.Combinators (fromRight')
+
+import           Main (convert')
 
 main :: IO ()
+-- main = putStrLn "Tests"
 main = hspec $ do
-    describe "convert" $ do
-        it "handles the title" $ do
-            -- when
-            let out = convert ["#+TITLE: My title"]
+  describe "convert'" $ do
+    describe "extracts title" $ do
+      it "UPPERCASE" $ do
+        -- when
+        let latex = fromRight' $ convert' "#+TITLE: My awesome title"
 
-            -- then
-            out `shouldBe` ["\\chapter{My title}"]
+        -- then
+        latex `shouldBe` "\\chapter{My awesome title}"
 
-        it "handles bold text" $ do
-            -- when
-            let out = convert ["This line has *bold text*."]
+      it "lowercase" $ do
+        -- when
+        let latex = fromRight' $ convert' "#+title: Another awesome title"
 
-            -- then
-            out `shouldBe` ["This line has \\textbf{bold text}."]
+        -- then
+        latex `shouldBe` "\\chapter{Another awesome title}"
 
-        it "handles italic text" $ do
-            -- when
-            let out = convert ["This line has /italic text/."]
+      it "miXEd caSE" $ do
+        -- when
+        let latex = fromRight' $ convert' "#+tItLe: Best one"
 
-            -- then
-            out `shouldBe` ["This line has \\textit{bold text}."]
+        -- then
+        latex `shouldBe` "\\chapter{Best one}"
 
-        it "handles monospace text" $ do
-            -- when
-            let out = convert ["This line has ~monospace text~."]
+    it "handles bold text" $ do
+      -- when
+      let latex = fromRight' $ convert' "This has *bold text*."
 
-            -- then
-            out `shouldBe` ["This line has \\texttt{monospace text}."]
+      -- then
+      latex `shouldBe` "This has \\textbf{bold text}."
 
-        it "handles simple table" $ do
-            -- when
-            let out = convert
-                    [ "| header cell 1 | header cell 2 |"
-                    , "|---------------+---------------|"
-                    , "| body cell 1   | body cell 2   |"
-                    ]
+    it "handles italic text" $ do
+      -- when
+      let latex = fromRight' $ convert' "This has /italic text/."
 
-            -- then
-            out `shouldBe`
-                [ "\\begin{DndTable}[]{lX}"
-                , " header cell 1 & header cell 2 \\\\"
-                , "\\hline \\\\"
-                , " body cell 1   & body cell 2   \\\\"
-                , "\\end{DndTable}"
-                ]
+      -- then
+      latex `shouldBe` "This has \\textit{italic text}."
 
-        it "handles links" $ do
-            -- when
-            let out = convert
-                    [ "This line contains a [[basic link]]."
-                    , "This line contains an [[destination][external link]]."
-                    ]
+    it "handles monospace text" $ do
+      -- when
+      let latex = fromRight' $ convert' "This has ~monospace text~."
 
-            -- then
-            out `shouldBe`
-                [ "This line contains a \\emph{\\textcolor{rulered}{basic link}}."
-                , "This line contains a \\emph{\\textcolor{rulered}{external link\\\\ExtLink}}."
-                ]
+      -- then
+      latex `shouldBe` "This has \\texttt{monospace text}."
 
-        describe "handles headers" $ do
-            it "first level as section" $ do
-                -- when
-                let out = convert ["* My section"]
+    describe "handles links" $ do
+      it "with destination and text" $ do
+        -- when
+        let latex = fromRight' $ convert'
+              "This has a [[destination][complex link]]."
 
-                -- then
-                out `shouldBe` ["\\section{My section}"]
+        -- then
+        latex `shouldBe` "This has a \\emph{\\textcolor{rulered}{complex link\\ExtLink}}."
 
-            it "second level as subsection" $ do
-                -- when
-                let out = convert ["** My subsection"]
+      it "without separate destination" $ do
+        -- when
+        let latex = fromRight' $ convert' "This has a [[simple link]]."
 
-                -- then
-                out `shouldBe` ["\\subsection{My subsection}"]
+        -- then
+        latex `shouldBe` "This has a \\emph{\\textcolor{rulered}{simple link}}."
 
-            it "second level tagged area as area" $ do
-                -- when
-                let out = convert ["** My area :area:"]
+    describe "handles tables" $ do
+      it "simple table" $ do
+        -- when
+        let latex = fromRight' $ convert' "| header 1 | header 2 |\n| cell 1 | cell 2 |"
 
-                -- then
-                out `shouldBe` ["\\DndArea{My area}"]
+        -- then
+        latex `shouldBe`
+          "\\begin{DndTable}[]{lX}\nheader 1 & header 2 \\\\\ncell 1 & cell 2 \\\\\n\\end{DndTable}"
 
-            it "third level as subsubsection" $ do
-                -- when
-                let out = convert ["*** My subsubsection"]
+    it "handles headers" $ do
+      -- when
+      let latex = fromRight' $ convert' $
+            "* First-level header\n" <>
+            "** Second-level header\n" <>
+            "*** Third-level header\n" <>
+            "**** Fourth-level header"
 
-                -- then
-                out `shouldBe` ["\\subsubsection{My subsubsection}"]
+      -- then
+      latex `shouldBe`
+          "\\section{First-level header}\n" <>
+          "\\subsection{Second-level header}\n" <>
+          "\\subsubsection{Third-level header}\n" <>
+          "\\subparagraph{Fourth-level header}"
 
-            it "third level tagged subarea as subarea" $ do
-                -- when
-                let out = convert ["*** My subarea :subarea:"]
+      -- it "first level" $ do
+      --   -- when
+      --   let latex = fromRight' $ convert' "* First-Level header"
 
-                -- then
-                out `shouldBe` ["\\DndSubArea{My subarea}"]
+      --   -- then
+      --   latex `shouldBe` "\\section{First-Level header}"
 
-            it "fourth level as sub paragraph" $ do
-                -- when
-                let out = convert ["**** My sub paragraph"]
+      -- it "second level" $ do
+      --   -- when
+      --   let latex = fromRight' $ convert' "* First-level header\n** Second-level header"
 
-                -- then
-                out `shouldBe` ["\\subparagraph{My sub paragraph}"]
-
-        it "handles list definitions" $ do
-            -- when
-            let out = convert ["- Name :: Definition"]
-
-            -- then
-            out `shouldBe` ["\\paragraph{Name} Definition"]
-
-        it "removes unhandled org options" $ do
-            -- when
-            let out = convert ["#+RANDOM_STUFF"]
-
-            -- then
-            out `shouldBe` []
+      --   -- then
+      --   latex `shouldBe` "\\section{First-level header}\n\\subsection{Second-level header}"
