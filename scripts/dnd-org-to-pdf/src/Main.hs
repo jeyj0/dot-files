@@ -68,9 +68,6 @@ latex orgFile =
     title = latexTitle orgFile
 
     sectionsContent = latexSections sections
-      -- case map latexSection sections of
-      --   [] -> Nothing
-      --   sections' -> Just $ T.intercalate "\n" sections'
 
 latexBlocks :: [Block] -> Maybe Text
 latexBlocks [] = Nothing
@@ -87,7 +84,7 @@ latexSections =
       where
         latexSection :: Int -> Section -> Text
         latexSection n section =
-          T.intercalate "\n" $ catMaybes [Just $ latexHeader n header,
+          T.intercalate "\n" $ catMaybes [Just $ latexHeader n tags header,
             latexBlocks $ docBlocks doc,
               latexSections' (n+1) $ docSections doc]
           where
@@ -95,26 +92,100 @@ latexSections =
             tags = sectionTags section
             doc = sectionDoc section
 
-        latexHeader :: Int -> Text -> Text
-        latexHeader 0 h = "\\section{" <> h <> "}"
-        latexHeader 1 h = "\\subsection{" <> h <> "}"
-        latexHeader 2 h = "\\subsubsection{" <> h <> "}"
-        latexHeader 3 h = "\\subparagraph{" <> h <> "}"
-        latexHeader _ h = error "No definition for headers below fourth level"
+        latexHeader :: Int -> [Text] -> Text -> Text
+        latexHeader 0 _ h = "\\section{" <> h <> "}"
+        latexHeader 1 tags h =
+          if "area" `elem` tags
+            then "\\DndArea{" <> h <> "}"
+            else "\\subsection{" <> h <> "}"
+        latexHeader 2 tags h =
+          if "subarea" `elem` tags
+            then "\\DndSubArea{" <> h <> "}"
+            else "\\subsubsection{" <> h <> "}"
+        latexHeader 3 _ h = "\\subparagraph{" <> h <> "}"
+        latexHeader _ _ h = error "No definition for headers below fourth level"
 
 latexBlock :: Block -> Text
 latexBlock = \case
   Paragraph words -> latexWords words
   Table rows ->
     "\\begin{DndTable}[]{lX}\n" <> T.unlines (NE.toList $ NE.map handleRow rows) <> "\\end{DndTable}"
+  List listItems -> latexList listItems
   _ -> error "Unhandled type of block"
+
+latexList :: ListItems -> Text
+latexList (ListItems items) =
+  case list of
+    Itemize items ->
+      "\\begin{itemize}\n" <>
+      items <>
+      "\n\\end{itemize}"
+    NamedParagraphs paragraphs ->
+      paragraphs
+  where
+    list :: LatexList
+    list = items
+      |> NE.map latexItem
+      |> latexList'
+
+    latexList' :: NE.NonEmpty LatexListItem -> LatexList
+    latexList' items =
+      case NE.head items of
+        Itemized {} ->
+          items
+            |> NE.map (\case
+                Itemized t subList -> "\\item{" <> t <> "}" <>
+                  (case subList of
+                    Nothing -> ""
+                    Just subList' -> "\n" <> subList')
+                NamedParagraph n d subList -> "\\item{" <> n <> " :: " <> d <> "}" <>
+                  (case subList of
+                    Nothing -> ""
+                    Just subList' -> "\n" <> subList'))
+            |> NE.toList
+            |> T.intercalate "\n"
+            |> Itemize
+        NamedParagraph {} ->
+          items
+            |> NE.map (\case
+                NamedParagraph n d subList -> "\\paragraph{" <> n <> "} " <> d <>
+                  (case subList of
+                    Nothing -> ""
+                    Just subList' -> "\n" <> subList')
+                Itemized t subList -> "\\paragraph{" <> t <> "}" <>
+                  (case subList of
+                    Nothing -> ""
+                    Just subList' -> "\n" <> subList'))
+            |> NE.toList
+            |> T.intercalate "\n\n"
+            |> NamedParagraphs
+
+data LatexList
+  = Itemize Text
+  | NamedParagraphs Text
+
+data LatexListItem
+  = Itemized Text (Maybe Text)
+  | NamedParagraph Text Text (Maybe Text)
+
+latexItem :: Item -> LatexListItem
+latexItem (Item words subItems) =
+  case T.splitOn ":: " content of
+    [content'] -> Itemized content' subList
+    [name, definition] -> NamedParagraph name definition subList
+    _ -> error "Can't have multiple :: in a list item."
+  where
+    content = latexWords words
+
+    subList :: Maybe Text
+    subList = fmap latexList subItems
 
 handleRow :: Row -> Text
 handleRow Break = " \\hline{} \\\\"
 handleRow (O.Row column) = T.intercalate " & " (NE.toList $ NE.map handleColumn column) <> " \\\\"
 
 handleColumn :: Column -> Text
-handleColumn Empty = error "Empty table column"
+handleColumn Empty = ""
 handleColumn (Column words) = latexWords words
 
 data LatexWord
@@ -149,6 +220,7 @@ latexWord = \case
         t = case description of
               Nothing -> url
               Just t -> t <> "\\ExtLink"
+  Tags tags -> NoSpace ""
   _ -> error "Unhandled word type"
 
 latexTitle :: OrgFile -> Maybe Text

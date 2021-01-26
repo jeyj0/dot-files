@@ -4,13 +4,11 @@ module Spec where
 import           Test.Hspec
 -- import           Test.QuickCheck
 
-import qualified Data.Text as T
 import           Data.Either.Combinators (fromRight')
 
 import           Main (convert')
 
 main :: IO ()
--- main = putStrLn "Tests"
 main = hspec $ do
   describe "convert'" $ do
     describe "extracts title" $ do
@@ -81,31 +79,65 @@ main = hspec $ do
         latex `shouldBe`
           "\\begin{DndTable}[]{lX}\nheader 1 & header 2 \\\\\ncell 1 & cell 2 \\\\\n\\end{DndTable}"
 
+      it "with empty row" $ do
+        -- when
+        let latex = fromRight' $ convert' "| header 1 |  | header 3 |"
+
+        -- then
+        latex `shouldBe` "\\begin{DndTable}[]{lX}\nheader 1 &  & header 3 \\\\\n\\end{DndTable}"
+
     it "handles headers" $ do
       -- when
       let latex = fromRight' $ convert' $
             "* First-level header\n" <>
             "** Second-level header\n" <>
+            "** Second-level area :area:\n" <>
             "*** Third-level header\n" <>
+            "*** Third-level area :subarea:\n" <>
             "**** Fourth-level header"
 
       -- then
       latex `shouldBe`
           "\\section{First-level header}\n" <>
           "\\subsection{Second-level header}\n" <>
+          "\\DndArea{Second-level area}\n" <>
           "\\subsubsection{Third-level header}\n" <>
+          "\\DndSubArea{Third-level area}\n" <>
           "\\subparagraph{Fourth-level header}"
 
-      -- it "first level" $ do
-      --   -- when
-      --   let latex = fromRight' $ convert' "* First-Level header"
+    describe "handles lists" $ do
+      it "basic" $ do
+        -- when
+        let latex = fromRight' $ convert' $ "- item 1\n- item 2"
 
-      --   -- then
-      --   latex `shouldBe` "\\section{First-Level header}"
+        -- then
+        latex `shouldBe` "\\begin{itemize}\n\\item{item 1}\n\\item{item 2}\n\\end{itemize}"
 
-      -- it "second level" $ do
-      --   -- when
-      --   let latex = fromRight' $ convert' "* First-level header\n** Second-level header"
+      it "nested" $ do
+        -- when
+        let latex = fromRight' $ convert' $ "- item 1\n  - subitem 1\n  - subitem 2\n- item 2"
 
-      --   -- then
-      --   latex `shouldBe` "\\section{First-level header}\n\\subsection{Second-level header}"
+        -- then
+        latex `shouldBe` "\\begin{itemize}\n" <>
+          "\\item{item 1}\n" <>
+            "\\begin{itemize}\n" <>
+              "\\item{subitem 1}\n" <>
+              "\\item{subitem 2}\n" <>
+            "\\end{itemize}\n" <>
+            "\\item{item 2}\n" <>
+          "\\end{itemize}"
+
+      it "definition" $ do
+        -- when
+        let latex = fromRight' $ convert' "- Name :: definition"
+
+        -- then
+        latex `shouldBe` "\\paragraph{Name} definition"
+
+      it "definition with sublist" $ do
+        -- when
+        let latex = fromRight' $ convert' "- Name :: definition\n  - subList item"
+
+        -- then
+        latex `shouldBe` "\\paragraph{Name} definition\n\\begin{itemize}\n\\item{subList item}\n\\end{itemize}"
+
