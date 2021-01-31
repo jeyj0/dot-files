@@ -280,4 +280,8 @@
       org-export-with-author nil
       org-export-with-timestamps nil)
 
+; make it easier to create a new note if there's a match at the name
 (setq ivy-use-selectable-prompt t)
+
+; hide * and / around text in orgmode, so it just appears italic or bold
+(setq org-hide-emphasis-markers t)
