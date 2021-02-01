@@ -1,4 +1,3 @@
-{-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE ScopedTypeVariables #-}
 {-# LANGUAGE LambdaCase #-}
 {-# LANGUAGE RankNTypes #-}
@@ -10,16 +9,16 @@ import           System.Exit (exitWith)
 import           Data.Functor as F ((<&>))
 import qualified Data.Map.Internal as M
 import qualified Data.List.NonEmpty as NE
+import           Data.List
+import           Data.List.Split (splitOn)
 import           Data.Maybe (catMaybes)
+import           Data.List.Extra as E (lower)
 
+import           Util
 import           Org as O
 
 (>.>) :: (a -> b) -> (b -> c) -> a -> c
 fun1 >.> fun2 = fun2 . fun1
-
-infixl 0 |>
-(|>) :: a -> (a -> b) -> b
-arg |> fun = fun arg
 
 map' :: (a -> b) -> Maybe a -> Maybe b
 map' fun = \case
@@ -30,9 +29,9 @@ main :: IO ()
 main =
   getInputStream >>= convert >.> \case
     Left err -> do
-      putStrLn $ T.unpack err
+      putStrLn err
       exitWith $ ExitFailure 1
-    Right out -> putStrLn $ T.unpack out
+    Right out -> putStrLn out
 
 getInputStream :: IO [Line]
 getInputStream = collectInput []
@@ -48,18 +47,18 @@ collectInput inputLines =
         Nothing -> pure inputLines'
         Just line' -> collectInput' $ line' : inputLines'
 
-convert :: [Line] -> Either Text Text
-convert = convert' . T.unlines . map lineToText
+convert :: [Line] -> Either String String
+convert = convert' . unlines . map (T.unpack . lineToText)
 
-convert' :: Text -> Either Text Text
-convert' orgText =
-  case org orgText of
+convert' :: String -> Either String String
+convert' orgString =
+  case org orgString of
     Nothing -> Left "Couldn't parse org"
     Just orgFile -> Right $ latex orgFile
 
-latex :: OrgFile -> Text
+latex :: OrgFile -> String
 latex orgFile =
-  T.intercalate "\n" $ catMaybes [title, latexBlocks blocks, sectionsContent]
+  intercalate "\n" $ catMaybes [title, latexBlocks blocks, sectionsContent]
   where
     doc = orgDoc orgFile
     blocks = docBlocks doc
@@ -69,22 +68,22 @@ latex orgFile =
 
     sectionsContent = latexSections sections
 
-latexBlocks :: [Block] -> Maybe Text
+latexBlocks :: [Block] -> Maybe String
 latexBlocks [] = Nothing
 latexBlocks blocks =
-  Just $ T.intercalate "\n\n" $ map latexBlock blocks
+  Just $ intercalate "\n\n" $ map latexBlock blocks
 
-latexSections :: [Section] -> Maybe Text
+latexSections :: [Section] -> Maybe String
 latexSections =
   latexSections' 0
   where
     latexSections' _ [] = Nothing
     latexSections' n sections =
-      Just $ T.intercalate "\n" $ map (latexSection n) sections
+      Just $ intercalate "\n" $ map (latexSection n) sections
       where
-        latexSection :: Int -> Section -> Text
+        latexSection :: Int -> Section -> String
         latexSection n section =
-          T.intercalate "\n" $ catMaybes [Just $ latexHeader n tags header,
+          intercalate "\n" $ catMaybes [Just $ latexHeader n tags header,
             latexBlocks $ docBlocks doc,
               latexSections' (n+1) $ docSections doc]
           where
@@ -92,7 +91,7 @@ latexSections =
             tags = sectionTags section
             doc = sectionDoc section
 
-        latexHeader :: Int -> [Text] -> Text -> Text
+        latexHeader :: Int -> [String] -> String -> String
         latexHeader 0 _ h = "\\section{" <> h <> "}"
         latexHeader 1 tags h =
           if "area" `elem` tags
@@ -103,17 +102,17 @@ latexSections =
             then "\\DndSubArea{" <> h <> "}"
             else "\\subsubsection{" <> h <> "}"
         latexHeader 3 _ h = "\\subparagraph{" <> h <> "}"
-        latexHeader _ _ h = error "No definition for headers below fourth level"
+        latexHeader _ _ _ = error "No definition for headers below fourth level"
 
-latexBlock :: Block -> Text
+latexBlock :: Block -> String
 latexBlock = \case
   Paragraph words -> latexWords words
   Table rows ->
-    "\\begin{DndTable}[]{lX}\n" <> T.unlines (NE.toList $ NE.map handleRow rows) <> "\\end{DndTable}"
+    "\\begin{DndTable}[]{lX}\n" <> unlines (NE.toList $ NE.map handleRow rows) <> "\\end{DndTable}"
   List listItems -> latexList listItems
-  _ -> error "Unhandled type of block"
+  -- _ -> error "Unhandled type of block"
 
-latexList :: ListItems -> Text
+latexList :: ListItems -> String
 latexList (ListItems items) =
   case list of
     Itemize items ->
@@ -143,7 +142,7 @@ latexList (ListItems items) =
                     Nothing -> ""
                     Just subList' -> "\n" <> subList'))
             |> NE.toList
-            |> T.intercalate "\n"
+            |> intercalate "\n"
             |> Itemize
         NamedParagraph {} ->
           items
@@ -157,49 +156,49 @@ latexList (ListItems items) =
                     Nothing -> ""
                     Just subList' -> "\n" <> subList'))
             |> NE.toList
-            |> T.intercalate "\n\n"
+            |> intercalate "\n\n"
             |> NamedParagraphs
 
 data LatexList
-  = Itemize Text
-  | NamedParagraphs Text
+  = Itemize String
+  | NamedParagraphs String
 
 data LatexListItem
-  = Itemized Text (Maybe Text)
-  | NamedParagraph Text Text (Maybe Text)
+  = Itemized String (Maybe String)
+  | NamedParagraph String String (Maybe String)
 
 latexItem :: Item -> LatexListItem
 latexItem (Item words subItems) =
-  case T.splitOn ":: " content of
+  case splitOn ":: " content of
     [content'] -> Itemized content' subList
     [name, definition] -> NamedParagraph name definition subList
     _ -> error "Can't have multiple :: in a list item."
   where
     content = latexWords words
 
-    subList :: Maybe Text
+    subList :: Maybe String
     subList = fmap latexList subItems
 
-handleRow :: Row -> Text
+handleRow :: Row -> String
 handleRow Break = " \\hline{} \\\\"
-handleRow (O.Row column) = T.intercalate " & " (NE.toList $ NE.map handleColumn column) <> " \\\\"
+handleRow (O.Row column) = intercalate " & " (NE.toList $ NE.map handleColumn column) <> " \\\\"
 
-handleColumn :: Column -> Text
+handleColumn :: Column -> String
 handleColumn Empty = ""
 handleColumn (Column words) = latexWords words
 
 data LatexWord
-  = WithSpace Text
-  | NoSpace Text
+  = WithSpace String
+  | NoSpace String
 
-latexWords :: NE.NonEmpty Words -> Text
+latexWords :: NE.NonEmpty Words -> String
 latexWords = reduceLatexWords . NE.map latexWord
 
-reduceLatexWords :: NE.NonEmpty LatexWord -> Text
+reduceLatexWords :: NE.NonEmpty LatexWord -> String
 reduceLatexWords words =
   go (NE.toList words) ""
   where
-    go :: [LatexWord] -> Text -> Text
+    go :: [LatexWord] -> String -> String
     go [] t = t
     go ((WithSpace w):ws) "" = go ws w
     go ((NoSpace w):ws) "" = go ws w
@@ -209,24 +208,24 @@ reduceLatexWords words =
 latexWord :: Words -> LatexWord
 latexWord = \case
   Plain t -> WithSpace t
-  Punct c -> NoSpace $ c `T.cons` ""
+  -- Punct c -> NoSpace $ c `cons` ""
   Bold t -> WithSpace $ "\\textbf{" <> t <> "}"
   Italic t -> WithSpace $ "\\textit{" <> t <> "}"
-  Highlight t -> WithSpace $ "\\texttt{" <> t <> "}"
+  Monospace t -> WithSpace $ "\\texttt{" <> t <> "}"
   Link (URL url) description ->
     WithSpace $ "\\emph{\\textcolor{rulered}{" <> t <> "}}"
       where
-        t :: Text
+        t :: String
         t = case description of
               Nothing -> url
               Just t -> t <> "\\ExtLink"
-  Tags tags -> NoSpace ""
-  _ -> error "Unhandled word type"
+  -- Tags tags -> NoSpace ""
+  -- _ -> error "Unhandled word type"
 
-latexTitle :: OrgFile -> Maybe Text
+latexTitle :: OrgFile -> Maybe String
 latexTitle orgFile =
   let
-    meta = M.mapKeys T.toLower $ orgMeta orgFile
+    meta = M.mapKeys E.lower $ orgMeta orgFile
   in
   (\t -> "\\chapter{" <> t <> "}") <$> meta M.!? "title"
 

@@ -1,6 +1,10 @@
 hpkgs: with hpkgs; [
   turtle
   # basic-prelude
+  split
+  extra
+
+  parsec
 
   # org-mode
   containers
@@ -15,5 +19,6 @@ hpkgs: with hpkgs; [
   hspec
   QuickCheck
   either
+  neat-interpolation
 ]
 

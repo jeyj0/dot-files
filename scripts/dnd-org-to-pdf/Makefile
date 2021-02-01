@@ -3,6 +3,7 @@
 GHC_OPTIONS = -threaded -odir out -hidir out -o out/main -isrc
 GHC_OPTIONS+= -Wall
 GHC_OPTIONS+= -Wno-name-shadowing
+GHC_OPTIONS+= -Wno-unused-do-bind
 GHC_OPTIONS+= -Werror=incomplete-patterns
 
 SRCDIR=src
@@ -31,6 +32,13 @@ spec: build-spec
 build-spec:
 	mkdir -p ${OUTDIR}
 	ghc ${GHC_OPTIONS} -o ${OUTDIR}/spec -odir ${OUTDIR} -hidir ${OUTDIR} --make ${SRCDIR}/Spec.hs -i${SRCDIR} -main-is Spec.main
+
+org-spec: build-org-spec
+	./${OUTDIR}/orgspec
+
+build-org-spec:
+	mkdir -p ${OUTDIR}
+	ghc ${GHC_OPTIONS} -o ${OUTDIR}/orgspec -odir ${OUTDIR} -hidir ${OUTDIR} --make ${SRCDIR}/OrgSpec.hs -i${SRCDIR} -main-is OrgSpec.main
 
 clean:
 	rm -rf ./out

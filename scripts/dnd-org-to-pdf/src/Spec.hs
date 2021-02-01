@@ -1,9 +1,12 @@
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE QuasiQuotes #-}
 module Spec where
 
 import           Test.Hspec
 -- import           Test.QuickCheck
 
+import qualified Data.Text as T
+import           NeatInterpolation
 import           Data.Either.Combinators (fromRight')
 
 import           Main (convert')
@@ -108,14 +111,14 @@ main = hspec $ do
     describe "handles lists" $ do
       it "basic" $ do
         -- when
-        let latex = fromRight' $ convert' $ "- item 1\n- item 2"
+        let latex = fromRight' $ convert' "- item 1\n- item 2"
 
         -- then
         latex `shouldBe` "\\begin{itemize}\n\\item{item 1}\n\\item{item 2}\n\\end{itemize}"
 
       it "nested" $ do
         -- when
-        let latex = fromRight' $ convert' $ "- item 1\n  - subitem 1\n  - subitem 2\n- item 2"
+        let latex = fromRight' $ convert' "- item 1\n  - subitem 1\n  - subitem 2\n- item 2"
 
         -- then
         latex `shouldBe` "\\begin{itemize}\n" <>
@@ -141,3 +144,30 @@ main = hspec $ do
         -- then
         latex `shouldBe` "\\paragraph{Name} definition\n\\begin{itemize}\n\\item{subList item}\n\\end{itemize}"
 
+    it "handles a simple document" $ do
+      -- when
+      let latex = fromRight' $ convert' $ T.unpack [text|
+          #+TITLE: My awesome NPC
+
+          - Gender :: Male
+          - Race :: Elf
+          - Location :: Somewhere in the world
+
+          * Some important headline
+          With text inside
+
+          ** And a second-level headline
+        |]
+
+      -- then
+      latex `shouldBe` T.unpack [text|
+          \chapter{My awesome NPC}
+          \paragraph{Gender} Male
+
+          \paragraph{Race} Elf
+
+          \paragraph{Location} Somewhere in the world
+          \section{Some important headline}
+          With text inside
+          \subsection{And a second-level headline}
+        |]
