@@ -21,5 +21,9 @@
     lxc
 
     wonderdraft
+
+    chromium
+    qutebrowser
+    responsively
   ];
 }
