@@ -65,11 +65,13 @@
         [:spacebar :0 :num]
 
         ; nav layer
+        [:e :tab :nav]
         [:u :delete_or_backspace :nav]
         [:i :up_arrow :nav]
         [:o :delete_forward :nav]
 
         [:a :tab :nav]
+        [:d :escape :nav]
         [:h :home :nav]
         [:j :left_arrow :nav]
         [:k :down_arrow :nav]
@@ -85,6 +87,7 @@
         [:b :return_or_enter :thb]
         [:n :return_or_enter :thb]
         [:m :return_or_enter :thb]
+        [:spacebar :return_or_enter :thb]
 
         ; symr layer
         [:s :!S7 :symr]
