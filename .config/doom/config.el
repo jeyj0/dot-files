@@ -118,6 +118,9 @@
 ;; configure org-roam
 (setq org-roam-directory "~/org/roam")
 
+;; org-roam links completion-at-point
+(setq org-roam-completion-everywhere t)
+
 ;; configure org-roam capture templates
 ;; this is for now not for more than just to separate DnD notes
 ;; and normal notes from each other via sub-directories
