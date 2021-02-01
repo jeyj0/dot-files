@@ -125,6 +125,9 @@ Plug 'vim-scripts/yaifa.vim'
 " auto-formatting
 " Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 
+" easy ftFT navigation by highlighting best letters
+Plug 'unblevable/quick-scope'
+
 " nice todo-list management
 Plug 'jeyj0/vim-todo-lists'
 
