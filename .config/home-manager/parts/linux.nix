@@ -25,5 +25,7 @@
     chromium
     qutebrowser
     responsively
+
+    signal-desktop
   ];
 }
