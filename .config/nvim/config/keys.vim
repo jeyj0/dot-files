@@ -12,7 +12,7 @@ nnoremap <leader>; :
 let g:which_key_map[';'] = ':'
 
 " NOTES (vimwiki / vim-zettel)
-nnoremap <leader>nrf :Files ~/vimwiki<cr>
+nnoremap <leader>nf :Files ~/vimwiki<cr>
 
 " TERMINAL MAPPINGS
 
