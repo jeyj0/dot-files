@@ -150,3 +150,4 @@ let g:ranger_map_keys = 0
 let g:gitgutter_map_keys = 0
 let g:winmanip_disable_key_mapping = 1
 let g:zettel_default_mappings = 0
+let g:nnn#set_default_mappings = 0
