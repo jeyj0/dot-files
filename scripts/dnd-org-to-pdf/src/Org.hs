@@ -2,7 +2,7 @@
 {-# LANGUAGE KindSignatures #-}
 module Org where
 
-import Data.Functor ((<&>))
+import           Data.Functor ((<&>))
 import qualified Data.Map.Strict as M
 import qualified Data.List.NonEmpty as NE
 import           Text.ParserCombinators.Parsec
@@ -27,7 +27,7 @@ data OrgDoc = OrgDoc
   } deriving (Eq, Show)
 
 data Block
-  = Paragraph (NE.NonEmpty Words)
+  = Paragraph (NE.NonEmpty TextElement)
   | Table (NE.NonEmpty Row)
   | List ListItems
   deriving (Eq, Show)
@@ -35,21 +35,21 @@ data Block
 data Row = Break | Row (NE.NonEmpty Org.Column)
   deriving (Eq, Show)
 
-data Column = Empty | Column (NE.NonEmpty Words)
+data Column = Empty | Column (NE.NonEmpty TextElement)
   deriving (Eq, Show)
 
-data Words
-  = Bold (NE.NonEmpty Words)
-  | Italic (NE.NonEmpty Words)
-  | Monospace (NE.NonEmpty Words)
-  | Link URL (Maybe (NE.NonEmpty Words))
+data TextElement
+  = Bold (NE.NonEmpty TextElement)
+  | Italic (NE.NonEmpty TextElement)
+  | Monospace (NE.NonEmpty TextElement)
+  | Link URL (Maybe (NE.NonEmpty TextElement))
   | Plain String
   | Punct String
   | Whitespace
   deriving (Eq, Show)
 
 data Section = Section
-  { sectionHeading :: NE.NonEmpty Words
+  { sectionHeading :: NE.NonEmpty TextElement
   , sectionTags :: [String]
   , sectionDoc :: OrgDoc
   } deriving (Eq, Show)
@@ -57,7 +57,7 @@ data Section = Section
 newtype ListItems = ListItems (NE.NonEmpty Item)
   deriving (Eq, Show)
 
-data Item = Item (NE.NonEmpty Words) (Maybe ListItems)
+data Item = Item (NE.NonEmpty TextElement) (Maybe ListItems)
   deriving (Eq, Show)
 
 newtype URL = URL String
@@ -71,6 +71,12 @@ atLeastOne
   .  Stream s m t
   => ParsecT s u m a -> ParsecT s u m [a]
 atLeastOne = many1
+
+followedBy
+  :: forall s (m :: * -> *) t u a
+  .  Stream s m t
+  => ParsecT s u m a -> ParsecT s u m a
+followedBy = lookAhead
 
 orgFileParser :: OrgParser s OrgFile
 orgFileParser = do
@@ -108,53 +114,64 @@ doc = do
 
 block :: OrgParser s Block
 block = do
-  words <- atLeastOne word <&> concat <&> NE.fromList
+  words <- atLeastOne textElement <&> concat <&> NE.fromList
   optional (newline >> newline)
 
   pure $ Paragraph words
 
-word :: OrgParser s [Words]
-word = do
+textElement :: OrgParser s [TextElement]
+textElement = do
   w <- choice $ map try
     [ bold
-    , italic
+    -- , italic
     , plain
-    , punctuation
-    , whitespace
+    -- , punctuation
+    -- , whitespace
     ]
   pure [w]
   where
     bold = do
       char '*'
-      words <- atLeastOne word <&> concat <&> NE.fromList
-      validStopper '*'
-      pure $ Bold words
+      -- atLeastOne textElement
+      textElement <- plain -- <|> punctuation
+      stoppingChar '*'
 
-    italic = do
-      char '/'
-      words <- atLeastOne word <&> concat <&> NE.fromList
-      validStopper '/'
-      notFollowedBy alphaNum
-      pure $ Italic words
+      pure $ Bold $ NE.fromList [textElement]
+
+      -- char '*'
+      -- words <- atLeastOne word <&> concat <&> NE.fromList
+      -- validStopper '*'
+      -- pure $ Bold words
+
+    -- italic = do
+    --   char '/'
+    --   words <- atLeastOne word <&> concat <&> NE.fromList
+    --   validStopper '/'
+    --   notFollowedBy alphaNum
+    --   pure $ Italic words
 
     plain = do
-      let outerChar = alphaNum
-      let innerChar = try outerChar <|> char '*'
+      characters <- atLeastOne $ alphaNum <|> notStoppingChar '*' -- char '*'
 
-      let wordEnd = do
-            inner <- many innerChar
-            last <- outerChar
-            pure $ inner ++ [last]
+      pure $ Plain characters
 
-      start <- atLeastOne outerChar
-      end <- optionMaybe $ try wordEnd
-      pure $ case end of
-        Nothing -> Plain start
-        Just end -> Plain $ start ++ end
+      -- let outerChar = alphaNum
+      -- let innerChar = try outerChar <|> char '*'
 
-    punctuation = do
-      punct <- atLeastOne $ oneOf ".,:;!?'\"[]{}()"
-      pure $ Punct punct
+      -- let wordEnd = do
+      --       inner <- many innerChar
+      --       last <- outerChar
+      --       pure $ inner ++ [last]
+
+      -- start <- atLeastOne outerChar
+      -- end <- optionMaybe $ try wordEnd
+      -- pure $ case end of
+      --   Nothing -> Plain start
+      --   Just end -> Plain $ start ++ end
+
+    -- punctuation = do
+    --   punct <- atLeastOne $ oneOf ".,:;!?'\"[]{}()"
+    --   pure $ Punct punct
 
     whitespace = do
       atLeastOne whitespaceNotNewline
@@ -165,16 +182,19 @@ word = do
           satisfy $ \c ->
             isSpace c && c /= '\n'
 
-    validStopper :: Char -> OrgParser s ()
-    validStopper c = try $ do
+    stoppingChar :: Char -> OrgParser s Char
+    stoppingChar c = try $ do
       char c
-      lookAhead $
-        void punctuation <|> void whitespace <|> eof
-
-    notValidStopper :: Char -> OrgParser s Char
-    notValidStopper c = do
-      char c
-      notFollowedBy $
-        void punctuation <|> void whitespace <|> eof
+      followedBy eof
+        -- void punctuation <|> void whitespace <|> eof
       pure c
+
+    notStoppingChar :: Char -> OrgParser s Char
+    notStoppingChar c = try $ do
+      char c
+
+      hasReachedEof <- optionMaybe $ followedBy eof
+      case hasReachedEof of
+        Nothing -> pure c
+        Just _ -> unexpected "is a valid stopper"
 

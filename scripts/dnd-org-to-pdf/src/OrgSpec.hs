@@ -13,9 +13,9 @@ import qualified Data.List.NonEmpty as NE
 
 import           Org
 
-parse'
-  :: Text.Parsec.Prim.Stream s Data.Functor.Identity.Identity t
-  => Text.Parsec.Prim.Parsec s () a -> s -> Either ParseError a
+-- parse'
+--   :: Text.Parsec.Prim.Stream s Data.Functor.Identity.Identity t
+--   => Text.Parsec.Prim.Parsec s () a -> s -> Either ParseError a
 parse' p = parse p ""
 
 main :: IO ()
@@ -171,40 +171,40 @@ main = hspec $ do
         res `shouldBe` Paragraph (NE.fromList
           [Plain "*not", Whitespace, Plain "*bold"])
 
-    describe "words" $ do
+    describe "textElement" $ do
       it "plain" $ do
         -- when
-        let res = fromRight' $ parse' word "Hello"
+        let res = fromRight' $ parse' textElement "Hello"
         -- then
         head res `shouldBe` Plain "Hello"
 
       it "plain - single asterisk in middle" $ do
         -- when
-        let res = fromRight' $ parse' word "ast*erisk"
+        let res = fromRight' $ parse' textElement "ast*erisk"
         -- then
         head res `shouldBe` Plain "ast*erisk"
 
       it "plain - single asterisk at start" $ do
         -- when
-        let res = fromRight' $ parse' word "*asterisk"
+        let res = fromRight' $ parse' textElement "*asterisk"
         -- then
         head res `shouldBe` Plain "*asterisk"
 
       it "plain - end asterisk in word" $ do
         -- when
-        let res = fromRight' $ parse' word "*aster*isk"
+        let res = fromRight' $ parse' textElement "*aster*isk"
         -- then
         head res `shouldBe` Plain "*aster*isk"
 
       it "bold" $ do
         -- when
-        let res = fromRight' $ parse' word "*Hello*"
+        let res = fromRight' $ parse' textElement "*Hello*"
         -- then
         head res `shouldBe` Bold (NE.fromList [Plain "Hello"])
 
       it "bold - pretended nesting" $ do
         -- when
-        let res = fromRight' $ parse' word
+        let res = fromRight' $ parse' textElement
               "*This *is* nested*"
         -- then
         head res `shouldBe` Bold (NE.fromList
@@ -216,7 +216,7 @@ main = hspec $ do
 
       it "bold - over punctuation" $ do
         -- when
-        let res = fromRight' $ parse' word
+        let res = fromRight' $ parse' textElement
               "*This. is. bold.*"
         -- then
         head res `shouldBe` Bold (NE.fromList
@@ -232,13 +232,13 @@ main = hspec $ do
 
       it "bold - including asterisk" $ do
         -- when
-        let res = fromRight' $ parse' word "*Th*is*"
+        let res = fromRight' $ parse' textElement "*Th*is*"
         -- then
         head res `shouldBe` Bold (NE.fromList [Plain "Th*is"])
 
       it "italic" $ do
         -- when
-        let res = fromRight' $ parse' word "/italic/"
+        let res = fromRight' $ parse' textElement "/italic/"
         -- then
         head res `shouldBe` Italic (NE.fromList [Plain "italic"])
 
