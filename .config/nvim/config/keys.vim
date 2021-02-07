@@ -11,6 +11,9 @@ let g:which_key_map = {}
 nnoremap <leader>; :
 let g:which_key_map[';'] = ':'
 
+" NOTES (vimwiki / vim-zettel)
+nnoremap <leader>nrf :Files ~/vimwiki<cr>
+
 " FILE PICKER (NNN)
 nnoremap <silent> <leader>n :NnnPicker<cr>
   let g:which_key_map.n = 'File Picker'

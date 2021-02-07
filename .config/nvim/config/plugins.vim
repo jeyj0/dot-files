@@ -30,6 +30,9 @@ call plug#begin('$HOME/.config/nvim/jeyj0-plugged')
 "Plug 'romgrk/barbar.nvim'
     "Plug 'kyazdani42/nvim-web-devicons'
 
+Plug 'vimwiki/vimwiki'
+Plug 'michal-h21/vim-zettel'
+
 " -----------------------------------------------------------------------------
 
 " vim window manipulation
@@ -146,3 +149,4 @@ let g:bclose_no_plugin_maps = 1
 let g:ranger_map_keys = 0
 let g:gitgutter_map_keys = 0
 let g:winmanip_disable_key_mapping = 1
+let g:zettel_default_mappings = 0
