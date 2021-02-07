@@ -3,18 +3,20 @@
 module Org where
 
 import           Data.Functor ((<&>))
+import           Data.Functor.Identity (Identity(Identity))
 import qualified Data.Map.Strict as M
 import qualified Data.List.NonEmpty as NE
 import           Text.ParserCombinators.Parsec
-import           Text.Parsec.Prim (ParsecT, Stream)
+import           Text.Parsec (runParserT, Parsec, ParsecT, Stream, modifyState)
 import           Data.Char (isSpace)
 import           Control.Monad (void)
 
 org :: String -> Maybe OrgFile
 org input =
-  case parse orgFileParser "" input of
-    Left _ -> Nothing
-    Right o -> Just o
+  case runParserT orgFileParser defaultParserState "" input of
+    Identity m -> case m of
+      Left _ -> Nothing
+      Right o -> Just o
 
 data OrgFile = OrgFile
   { orgMeta :: M.Map String String
@@ -65,7 +67,31 @@ newtype URL = URL String
 
 -----------------------------------------------------------------------
 
-type OrgParser s t = GenParser Char s t
+data ParserState = ParserState
+  { isInBold :: Bool
+  , isInItalic :: Bool
+  }
+
+defaultParserState :: ParserState
+defaultParserState = ParserState
+  { isInBold = False
+  , isInItalic = False
+  }
+
+setIsInBold :: Bool -> ParserState -> ParserState
+setIsInBold isInBold' state = ParserState
+  { isInBold = isInBold'
+  , isInItalic = isInItalic state
+  }
+
+setIsInItalic :: Bool -> ParserState -> ParserState
+setIsInItalic isInItalic' state = ParserState
+  { isInItalic = isInItalic'
+  , isInBold = isInBold state
+  }
+
+type OrgParser t = ParsecT String ParserState Identity t
+
 atLeastOne
   :: forall s (m :: * -> *) t u a
   .  Stream s m t
@@ -78,7 +104,7 @@ followedBy
   => ParsecT s u m a -> ParsecT s u m a
 followedBy = lookAhead
 
-orgFileParser :: OrgParser s OrgFile
+orgFileParser :: OrgParser OrgFile
 orgFileParser = do
   properties' <- properties
   skipMany newline
@@ -89,10 +115,10 @@ orgFileParser = do
     , orgDoc = doc'
     }
 
-properties :: OrgParser s (M.Map String String)
+properties :: OrgParser (M.Map String String)
 properties = many property <&> M.fromList
 
-property :: OrgParser s (String, String)
+property :: OrgParser (String, String)
 property = do
   string "#+"
   key <- atLeastOne $ noneOf ":"
@@ -103,7 +129,7 @@ property = do
 
   pure (key, value)
 
-doc :: OrgParser s OrgDoc
+doc :: OrgParser OrgDoc
 doc = do
   blocks <- atLeastOne block
 
@@ -112,89 +138,93 @@ doc = do
     , docSections = []
     }
 
-block :: OrgParser s Block
+block :: OrgParser Block
 block = do
   words <- atLeastOne textElement <&> concat <&> NE.fromList
   optional (newline >> newline)
 
   pure $ Paragraph words
 
-textElement :: OrgParser s [TextElement]
+textElement :: OrgParser [TextElement]
 textElement = do
   w <- choice $ map try
     [ bold
-    -- , italic
+    , italic
     , plain
-    -- , punctuation
-    -- , whitespace
+    , punctuation
+    , whitespace
     ]
   pure [w]
   where
     bold = do
-      char '*'
-      -- atLeastOne textElement
-      textElement <- plain -- <|> punctuation
-      stoppingChar '*'
+      state <- getState
 
-      pure $ Bold $ NE.fromList [textElement]
+      if isInBold state
+        then unexpected "cannot nest bold text"
+        else do
+          char '*'
 
-      -- char '*'
-      -- words <- atLeastOne word <&> concat <&> NE.fromList
-      -- validStopper '*'
-      -- pure $ Bold words
+          modifyState $ setIsInBold True
 
-    -- italic = do
-    --   char '/'
-    --   words <- atLeastOne word <&> concat <&> NE.fromList
-    --   validStopper '/'
-    --   notFollowedBy alphaNum
-    --   pure $ Italic words
+          firstTextElement <- plain <|> punctuation
+          textElements <- many textElement <&> concat
+          stoppingChar '*'
+
+          modifyState $ setIsInBold False
+
+          pure $ Bold $ firstTextElement NE.:| textElements
+
+    italic = do
+      state <- getState
+
+      if isInItalic state
+        then unexpected "cannot nest italic text"
+        else do
+          char '/'
+
+          modifyState $ setIsInItalic True
+
+          firstTextElement <- plain <|> punctuation
+          textElements <- many textElement <&> concat
+          stoppingChar '/'
+
+          modifyState $ setIsInItalic False
+
+          pure $ Italic $ firstTextElement NE.:| textElements
 
     plain = do
-      characters <- atLeastOne $ alphaNum <|> notStoppingChar '*' -- char '*'
+      state <- getState
+
+      characters <- if isInBold state
+        then atLeastOne $ alphaNum <|> notStoppingChar '*'
+        else atLeastOne $ alphaNum <|> char '*'
 
       pure $ Plain characters
 
-      -- let outerChar = alphaNum
-      -- let innerChar = try outerChar <|> char '*'
-
-      -- let wordEnd = do
-      --       inner <- many innerChar
-      --       last <- outerChar
-      --       pure $ inner ++ [last]
-
-      -- start <- atLeastOne outerChar
-      -- end <- optionMaybe $ try wordEnd
-      -- pure $ case end of
-      --   Nothing -> Plain start
-      --   Just end -> Plain $ start ++ end
-
-    -- punctuation = do
-    --   punct <- atLeastOne $ oneOf ".,:;!?'\"[]{}()"
-    --   pure $ Punct punct
+    punctuation = do
+      punct <- atLeastOne $ oneOf ".,:;!?'\"[]{}()"
+      pure $ Punct punct
 
     whitespace = do
       atLeastOne whitespaceNotNewline
       pure Whitespace
       where
-        whitespaceNotNewline :: OrgParser s Char
+        whitespaceNotNewline :: OrgParser Char
         whitespaceNotNewline =
           satisfy $ \c ->
             isSpace c && c /= '\n'
 
-    stoppingChar :: Char -> OrgParser s Char
+    stoppingChar :: Char -> OrgParser Char
     stoppingChar c = try $ do
       char c
-      followedBy eof
+      followedBy $ eof <|> void whitespace
         -- void punctuation <|> void whitespace <|> eof
       pure c
 
-    notStoppingChar :: Char -> OrgParser s Char
+    notStoppingChar :: Char -> OrgParser Char
     notStoppingChar c = try $ do
-      char c
-
-      hasReachedEof <- optionMaybe $ followedBy eof
-      case hasReachedEof of
-        Nothing -> pure c
+      isStoppingNext <- optionMaybe $ followedBy $ stoppingChar c
+      case isStoppingNext of
         Just _ -> unexpected "is a valid stopper"
+        Nothing -> char c
 

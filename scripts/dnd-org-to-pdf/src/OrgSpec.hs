@@ -4,8 +4,9 @@ module OrgSpec where
 import           Test.Hspec
 -- import           Test.QuickCheck
 
-import           Text.ParserCombinators.Parsec
-import           Text.Parsec.Prim (Parsec, Stream)
+import           Data.Functor.Identity (Identity(Identity))
+import           Text.Parsec (runParserT, ParsecT, Stream)
+import           Text.Parsec.Error (ParseError)
 import           Data.Functor.Identity (Identity)
 import           Data.Either.Combinators (fromRight')
 import qualified Data.Map.Strict as M
@@ -13,10 +14,15 @@ import qualified Data.List.NonEmpty as NE
 
 import           Org
 
--- parse'
---   :: Text.Parsec.Prim.Stream s Data.Functor.Identity.Identity t
---   => Text.Parsec.Prim.Parsec s () a -> s -> Either ParseError a
-parse' p = parse p ""
+parse'' :: Stream s Identity t =>
+  u -> ParsecT s u Identity a -> s -> Either ParseError a
+parse'' st p i =
+  case runParserT p st "" i of
+    Identity i -> i
+
+parse' :: ParsecT String ParserState Identity a
+  -> String -> Either ParseError a
+parse' = parse'' defaultParserState
 
 main :: IO ()
 main = hspec $ do
@@ -171,6 +177,21 @@ main = hspec $ do
         res `shouldBe` Paragraph (NE.fromList
           [Plain "*not", Whitespace, Plain "*bold"])
 
+      it "bold - pretended nesting" $ do
+        -- when
+        let res = fromRight' $ parse' block
+              "*This *is* nested*"
+        -- then
+        res `shouldBe` Paragraph (NE.fromList
+          [ Bold (NE.fromList
+              [ Plain "This"
+              , Whitespace
+              , Plain "*is"
+              ])
+          , Whitespace
+          , Plain "nested*"
+          ])
+
     describe "textElement" $ do
       it "plain" $ do
         -- when
@@ -201,18 +222,6 @@ main = hspec $ do
         let res = fromRight' $ parse' textElement "*Hello*"
         -- then
         head res `shouldBe` Bold (NE.fromList [Plain "Hello"])
-
-      it "bold - pretended nesting" $ do
-        -- when
-        let res = fromRight' $ parse' textElement
-              "*This *is* nested*"
-        -- then
-        head res `shouldBe` Bold (NE.fromList
-          [ Plain "This"
-          , Whitespace
-          , Punct "*"
-          , Plain "is"
-          ])
 
       it "bold - over punctuation" $ do
         -- when
