@@ -7,7 +7,7 @@ import           Data.Functor.Identity (Identity(Identity))
 import qualified Data.Map.Strict as M
 import qualified Data.List.NonEmpty as NE
 import           Text.ParserCombinators.Parsec
-import           Text.Parsec (runParserT, Parsec, ParsecT, Stream, modifyState)
+import           Text.Parsec (runParserT, ParsecT, Stream, modifyState)
 import           Data.Char (isSpace)
 import           Control.Monad (void)
 
