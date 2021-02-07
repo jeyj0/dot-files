@@ -14,12 +14,6 @@ let g:which_key_map[';'] = ':'
 " NOTES (vimwiki / vim-zettel)
 nnoremap <leader>nrf :Files ~/vimwiki<cr>
 
-" FILE PICKER (NNN)
-nnoremap <silent> <leader>n :NnnPicker<cr>
-  let g:which_key_map.n = 'File Picker'
-nnoremap <silent> <leader>N :NnnPicker %:p:h<cr>
-  let g:which_key_map.N = 'File Picker at point'
-
 " TERMINAL MAPPINGS
 
 " show terminal with C-t to mimic C- mappings that I use for terminals
@@ -88,6 +82,10 @@ nnoremap <silent> <leader>fs :w<CR>
   let g:which_key_map.f.s = 'save'
 nnoremap <silent> <leader>fe :NnnPicker<cr>
   let g:which_key_map.f.e = 'explorer'
+nnoremap <silent> <leader>ff :NnnPicker<cr>
+  let g:which_key_map.f.f = 'File Picker'
+nnoremap <silent> <leader>fF :NnnPicker %:p:h<cr>
+  let g:which_key_map.f.F = 'File Picker at point'
 
 " SEARCH
 let g:which_key_map.s = { 'name' : '+search' }
