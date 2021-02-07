@@ -231,3 +231,14 @@ endfunction
 
 command! -range ToggleCodeComment <line1>,<line2>call ToggleCodeComment()
 
+" quick-scope
+let g:qs_buftype_blacklist = ['terminal', 'vimwiki', 'startify']
+
+augroup quick-scope
+    autocmd!
+
+    " do not allow saving the startify view as a file
+    autocmd FileType terminal let b:qs_local_disable=1
+    autocmd FileType vimwiki let b:qs_local_disable=1
+    autocmd FileType startify let b:qs_local_disable=1
+augroup end
