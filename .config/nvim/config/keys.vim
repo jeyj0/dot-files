@@ -252,18 +252,18 @@ nnoremap <silent> <leader>wQ :qa<cr>
   let g:which_key_map.w.Q = 'close all'
 
 "" window navigation
-" nnoremap <silent> <leader>h :wincmd h<cr>
 nmap <silent> <leader>h <Plug>(JumpLeft)
   let g:which_key_map.h = 'left (win)'
-" nnoremap <silent> <leader>j :wincmd j<cr>
 nmap <silent> <leader>j <Plug>(JumpDown)
   let g:which_key_map.j = 'down (win)'
-" nnoremap <silent> <leader>k :wincmd k<cr>
 nmap <silent> <leader>k <Plug>(JumpUp)
   let g:which_key_map.k = 'up (win)'
-" nnoremap <silent> <leader>l :wincmd l<cr>
 nmap <silent> <leader>l <Plug>(JumpRight)
   let g:which_key_map.l = 'right (win)'
+nmap <silent> <leader><left> <Plug>(JumpLeft)
+nmap <silent> <leader><down> <Plug>(JumpDown)
+nmap <silent> <leader><up> <Plug>(JumpUp)
+nmap <silent> <leader><right> <Plug>(JumpRight)
 
 nnoremap <silent> <leader>wp :wincmd p<cr>
   let g:which_key_map.w.p = 'prev'
