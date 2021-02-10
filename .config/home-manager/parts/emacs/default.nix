@@ -5,12 +5,14 @@
     package = pkgs.emacs;
     extraPackages = emacsPkgs: with emacsPkgs; [
       evil
+      evil-surround
+      ivy
+
       org # can't simply 
       org-roam
-      ivy
       visual-fill-column
 
-      gruvbox-theme
+      doom-themes
 
       #lsp-mode
       #tree-sitter

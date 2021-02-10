@@ -18,6 +18,81 @@
 (setq evil-move-cursor-back nil) ; this fixes vim's weird behavior
 (require 'evil)
 (evil-mode 1)
+;;; enable evil-surround, the equivalent of Tim Pope's surround.vim
+(require 'evil-surround)
+(global-evil-surround-mode)
+
+;; enable visual-fill-column-mode in org-mode
+(require 'visual-fill-column)
+(add-hook 'visual-line-mode-hook #'visual-fill-column-mode)
+(add-hook 'org-mode-hook #'visual-line-mode)
+
+;; configure org-mode
+;;; set directory containing org files
+(setq org-directory "~/org/")
+;;; hide asterisks, slashes,... that mark text as italic/bold/...
+(setq org-hide-emphasis-markers t)
+
+;;; configure org-roam
+(setq org-roam-directory "~/org/roam")
+;;;; org-roam links completion-at-point
+(setq org-roam-completion-everywhere t)
+
+;; use ivy for completion
+;;; is recommended for beginners
+(setq ivy-use-virtual-buffers t)
+;;; enable fuzzy matching
+(setq ivy-re-builders-alist '((t . ivy--regex-fuzzy)))
+;;; make the input a valid selection
+(setq ivy-use-selectable-prompt t)
+(require 'ivy)
+(ivy-mode 1)
+
+;; color theme to gruvbox
+;(require 'gruvbox-theme)
+;(load-theme 'gruvbox t)
+(require 'doom-themes)
+(setq doom-themes-enable-bold 5
+      doom-themes-enable-italic t)
+(load-theme 'doom-gruvbox t)
+(doom-themes-org-config)
+
+;; set font
+(add-to-list 'default-frame-alist '(font . "Hack-12"))
+
+;;; KEYMAPS
+;;;; I don't use evil's leader functionality, as it isn't as flexible as emacs prefix bindings
+(define-prefix-command 'jeyj0-leader-map)
+
+(defun map-leader (keys cmd)
+  "Map keys to command after leader key"
+  (define-key jeyj0-leader-map (kbd keys) cmd))
+
+;;;;; setting SPC as main leader key
+(define-key evil-normal-state-map (kbd "SPC") jeyj0-leader-map)
+
+;;;;;; various useful leader mappings
+(map-leader "x" 'execute-extended-command)
+
+;;;;;; file manipulation
+(map-leader "SPC" 'find-file-at-point)
+(map-leader "fs" 'save-buffer)
+
+;;;;;; buffer manipulation
+(map-leader "bk" 'kill-current-buffer)
+(map-leader "bj" 'evil-next-buffer)
+(map-leader "bk" 'evil-prev-buffer)
+
+;;;;;; notes
+(map-leader "nf" 'org-roam-find-file)
+
+;;;;;; window manipulation
+(map-leader "wh" 'evil-window-left)
+(map-leader "wj" 'evil-window-down)
+(map-leader "wk" 'evil-window-up)
+(map-leader "wl" 'evil-window-right)
+(map-leader "ws" 'evil-window-split)
+(map-leader "wv" 'evil-window-vsplit)
 
 ;;; esc quits everything, as expected from using vim
 (defun minibuffer-keyboard-quit ()
@@ -37,34 +112,3 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (define-key minibuffer-local-must-match-map [escape] 'minibuffer-keyboard-quit)
 (define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
 ;;;; taken from https://stackoverflow.com/questions/8483182/evil-mode-best-practice
-
-;; enable visual-fill-column-mode in org-mode
-(require 'visual-fill-column)
-(add-hook 'visual-line-mode-hook #'visual-fill-column-mode)
-(add-hook 'org-mode-hook #'visual-line-mode)
-
-;; configure org-mode
-;;; set directory containing org files
-(setq org-directory "~/org/")
-;;; hide asterisks, slashes,... that mark text as italic/bold/...
-(setq org-hide-emphasis-markers t)
-
-;;; configure org-roam
-(setq org-roam-directory "~/org/roam")
-;;;; org-roam links completion-at-point
-(setq org-roam-completion-everywhere t)
-
-;; use ivy for completion
-;;; is recommended for beginners ?
-(setq ivy-use-virtual-buffers t)
-;;; enable fuzzy matching
-(setq ivy-re-builders-alist '((t . ivy--regex-fuzzy)))
-(require 'ivy)
-(ivy-mode 1)
-
-;; color theme to gruvbox
-(require 'gruvbox-theme)
-(load-theme 'gruvbox t)
-
-;; set font
-(add-to-list 'default-frame-alist '(font . "Hack-12"))
