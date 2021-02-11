@@ -5,6 +5,7 @@
 (menu-bar-mode 0)
 (tool-bar-mode 0)
 (toggle-scroll-bar 0)
+(blink-cursor-mode 0)
 
 ;; enable some included things
 (show-paren-mode 1) ; highlight matching parenthesis
