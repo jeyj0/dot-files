@@ -29,8 +29,11 @@
 (add-hook 'org-mode-hook #'visual-line-mode)
 
 ;; configure org-mode
+(require 'org)
 ;;; set directory containing org files
 (setq org-directory "~/org/")
+;;; do not open a new split when opening org links
+(add-to-list 'org-link-frame-setup '(file . find-file))
 ;;; hide asterisks, slashes,... that mark text as italic/bold/...
 (setq org-hide-emphasis-markers t)
 
@@ -50,8 +53,6 @@
 (ivy-mode 1)
 
 ;; color theme to gruvbox
-;(require 'gruvbox-theme)
-;(load-theme 'gruvbox t)
 (require 'doom-themes)
 (setq doom-themes-enable-bold 5
       doom-themes-enable-italic t)
@@ -94,6 +95,9 @@
 (map-leader "wl" 'evil-window-right)
 (map-leader "ws" 'evil-window-split)
 (map-leader "wv" 'evil-window-vsplit)
+
+;;;;;; org-mode-mappings
+(evil-define-key 'normal org-mode-map (kbd "RET") 'org-open-at-point)
 
 ;;; esc quits everything, as expected from using vim
 (defun minibuffer-keyboard-quit ()
