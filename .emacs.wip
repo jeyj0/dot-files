@@ -28,6 +28,27 @@
 (add-hook 'visual-line-mode-hook #'visual-fill-column-mode)
 (add-hook 'org-mode-hook #'visual-line-mode)
 
+;; enable autocompletion using company-mode
+(require 'company)
+(setq company-idle-delay 0)
+(setq company-minimum-prefix-length 1)
+
+;;; don't open company completion popup in unsupported evil states
+;;;; vgl. https://github.com/emacs-evil/evil-collection/blob/master/modes/company/evil-collection-company.el
+(defcustom evil-company-supported-states '(insert replace emacs)
+  "The `evil-state's which `company' function can be requrested."
+  :type '(repeat symbol))
+(defun company-supported-p (command &rest _)
+  "Return non-nil if `evil-state' is in supported states."
+  (cond
+   ((not (bound-and-true-p evil-mode)) t)
+   ((eq command 'prefix)
+    (memq evil-state evil-company-supported-states))
+   (t t)))
+(advice-add 'company-call-backend :before-while 'company-supported-p)
+
+(add-hook 'after-init-hook 'global-company-mode)
+
 ;; configure org-mode
 (require 'org)
 ;;; set directory containing org files
@@ -38,6 +59,7 @@
 (setq org-hide-emphasis-markers t)
 
 ;;; configure org-roam
+(require 'org-roam)
 (setq org-roam-directory "~/org/roam")
 ;;;; org-roam links completion-at-point
 (setq org-roam-completion-everywhere t)
