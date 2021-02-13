@@ -86,7 +86,8 @@
     ;;; hide asterisks, slashes,... that mark text as italic/bold/...
     (setq org-hide-emphasis-markers t))
 
-;; use ivy for completion
+;; use ivy for minibuffer-completion
+(use-package flx)
 (use-package ivy
   :init
     ;;; is recommended for beginners
