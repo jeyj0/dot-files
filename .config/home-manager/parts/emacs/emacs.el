@@ -57,10 +57,6 @@
     (setq org-roam-completion-everywhere t))
 
 ;; enable autocompletion using company-mode
-(use-package company
-  :init
-    (setq company-idle-delay 0)
-    (setq company-minimum-prefix-length 1))
 
 ;;; don't open company completion popup in unsupported evil states
 ;;;; vgl. https://github.com/emacs-evil/evil-collection/blob/master/modes/company/evil-collection-company.el
@@ -76,7 +72,13 @@
    (t t)))
 (advice-add 'company-call-backend :before-while 'company-supported-p)
 
-(add-hook 'after-init-hook 'global-company-mode)
+(use-package company
+  :init
+    (setq company-idle-delay 0)
+    (setq company-minimum-prefix-length 1)
+  :config
+    (add-hook 'after-init-hook 'global-company-mode)
+    (advice-add 'company-call-backend :before-while 'company-supported-p))
 
 ;; configure org-mode
 (use-package org
