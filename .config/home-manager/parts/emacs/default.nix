@@ -7,9 +7,10 @@
       evil
       evil-surround
       ivy
+      company
 
-      org # can't simply 
       org-roam
+      org
       visual-fill-column
 
       doom-themes
