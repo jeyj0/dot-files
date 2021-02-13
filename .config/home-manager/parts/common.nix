@@ -1,4 +1,4 @@
-{ pkgs, installEmacs ? true, extraFishConfigPre ? "" }:
+{ pkgs, extraFishConfigPre ? "" }:
 {
   imports = [
     (import ./fish {
@@ -6,10 +6,7 @@
     })
     (import ./cli-tools { pkgs = pkgs; })
     (import ./neovim { pkgs = pkgs; })
-    (import ./emacs {
-      pkgs = pkgs;
-      installEmacs = installEmacs;
-    })
+    (import ./emacs { pkgs = pkgs; })
     (import ./kakoune { pkgs = pkgs; })
     (import ./latex { pkgs = pkgs; })
     (import ./docker { pkgs = pkgs; })
