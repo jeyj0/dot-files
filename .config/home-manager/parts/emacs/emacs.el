@@ -31,11 +31,20 @@
 ;; enable evil-mode globally
 (use-package evil
   :init
+    (setq evil-want-integration t)
+    (setq evil-want-keybinding nil)
     (setq evil-respect-visual-line-mode t)
     (setq evil-shift-width 2) ; I prefer 2-space indentation
     (setq evil-move-cursor-back nil) ; this fixes vim's weird behavior
   :config
     (evil-mode 1))
+
+;;; evil-collection for better evil support in other modes
+(use-package evil-collection
+  :after evil
+  :config
+  (evil-collection-init))
+
 ;;; enable evil-surround, the equivalent of Tim Pope's surround.vim
 (use-package evil-surround
   :config
@@ -110,6 +119,9 @@
           doom-themes-enable-italic t)
     (load-theme 'doom-gruvbox t)
     (doom-themes-org-config))
+
+;; magit
+(use-package magit)
 
 ;; set font
 (add-to-list 'default-frame-alist '(font . "Hack-12"))
