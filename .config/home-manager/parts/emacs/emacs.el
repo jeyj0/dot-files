@@ -18,6 +18,13 @@
 ;; make nix-installed packages available
 (package-initialize)
 
+;; set up backup files (in a reasonable way)
+(setq version-control t
+      backup-by-copying t
+      delete-old-versions t
+      vc-make-backup-files t
+      backup-directory-alist '(("." . "~/.emacsbackups/")))
+
 ;; enable evil-mode globally
 (use-package evil
   :init
