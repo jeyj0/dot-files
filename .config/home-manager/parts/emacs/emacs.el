@@ -1,6 +1,9 @@
 ;; -*- lexical-binding: t; -*-
 ;;; ^ that's for performance reasons
 
+;; do not show splash screen
+(setq inhibit-startup-screen t)
+
 ;; use use-package
 (setq use-package-always-ensure t)
 (eval-when-compile
