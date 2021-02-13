@@ -1,4 +1,4 @@
-{ unzip, stdenv, autoPatchelfHook
+{ lib, unzip, stdenv, autoPatchelfHook
 , xorg, libpulseaudio, alsaLib, libGL
 }:
 let
@@ -38,7 +38,7 @@ stdenv.mkDerivation {
     libGL
   ];
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     platforms = [ "x86_64-linux" ];
   };
 }

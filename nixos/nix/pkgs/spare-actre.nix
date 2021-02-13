@@ -1,4 +1,4 @@
-{ stdenv, pkgs }:
+{ stdenv, lib, pkgs }:
 
 let
   repo = fetchGit {
@@ -24,7 +24,7 @@ stdenv.mkDerivation rec {
     cp ./results/bin/spare-actre $out/bin/spare-actre
   '';
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     description = "SPAced REpitition, ACTive REcall command-line app, ideally used with org-mode";
     homepage = "https://codeberg.org/jeyj0/spare-actre";
   };
