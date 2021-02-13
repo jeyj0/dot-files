@@ -50,7 +50,9 @@
 ;;; configure org-roam
 (use-package org-roam
   :init
-    (setq org-roam-directory (file-truename "~/org/roam"))
+    (setq my-org-roam-directory (file-truename "~/org/roam"))
+    (make-directory my-org-roam-directory t)
+    (setq org-roam-directory my-org-roam-directory)
     ;;;; org-roam links completion-at-point
     (setq org-roam-completion-everywhere t))
 
