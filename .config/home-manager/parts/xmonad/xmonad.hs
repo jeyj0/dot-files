@@ -333,6 +333,13 @@ tall     = renamed [Replace "tall"]
            $ limitWindows 12
            $ mySpacing 8
            $ ResizableTall 1 (3/100) (5/8) []
+equal    = renamed [Replace "equal"]
+           $ windowNavigation
+           $ addTabs shrinkText myTabTheme
+           $ subLayout [] Simplest
+           $ limitWindows 12
+           $ mySpacing 8
+           $ ResizableTall 1 (3/100) (1/2) []
 tabs     = renamed [Replace "tabs"]
            -- I cannot add spacing to this layout because it will
            -- add spacing between window and tabs which looks bad.
@@ -352,6 +359,7 @@ myLayoutHook = avoidStruts $ mouseResize $ windowArrange
              where
                myDefaultLayout =     tall
                                  ||| noBorders tabs
+				 ||| equal
 
 xmobarEscape :: String -> String
 xmobarEscape = concatMap doubleLts
