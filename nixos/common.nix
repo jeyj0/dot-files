@@ -163,10 +163,6 @@ in
       dataDir = "/home/jeyj0/Sync";
       configDir = "/home/jeyj0/.config/syncthing/";
     };
-    emacs = {
-      enable = true;
-      install = true;
-    };
     unclutter = {
       enable = true;
       keystroke = true;
