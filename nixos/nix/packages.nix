@@ -23,6 +23,9 @@ in
   import sources.nixpkgs {
     overlays = [
       overlay
+      (import (builtins.fetchTarball {
+        url = https://github.com/nix-community/emacs-overlay/archive/master.tar.gz;
+      }))
     ];
     config = {
       allowUnfree = true;
