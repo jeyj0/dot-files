@@ -28,6 +28,12 @@
 (add-hook 'visual-line-mode-hook #'visual-fill-column-mode)
 (add-hook 'org-mode-hook #'visual-line-mode)
 
+;;; configure org-roam
+(require 'org-roam)
+(setq org-roam-directory (file-truename "~/org/roam"))
+;;;; org-roam links completion-at-point
+(setq org-roam-completion-everywhere t)
+
 ;; enable autocompletion using company-mode
 (require 'company)
 (setq company-idle-delay 0)
@@ -57,12 +63,6 @@
 (add-to-list 'org-link-frame-setup '(file . find-file))
 ;;; hide asterisks, slashes,... that mark text as italic/bold/...
 (setq org-hide-emphasis-markers t)
-
-;;; configure org-roam
-(require 'org-roam)
-(setq org-roam-directory "~/org/roam")
-;;;; org-roam links completion-at-point
-(setq org-roam-completion-everywhere t)
 
 ;; use ivy for completion
 ;;; is recommended for beginners
@@ -94,6 +94,7 @@
 
 ;;;;; setting SPC as main leader key
 (define-key evil-normal-state-map (kbd "SPC") jeyj0-leader-map)
+(define-key evil-visual-state-map (kbd "SPC") jeyj0-leader-map)
 
 ;;;;;; various useful leader mappings
 (map-leader "x" 'execute-extended-command)
@@ -109,6 +110,7 @@
 
 ;;;;;; notes
 (map-leader "nf" 'org-roam-find-file)
+(map-leader "ni" 'org-roam-insert-immediate)
 
 ;;;;;; window manipulation
 (map-leader "wh" 'evil-window-left)
