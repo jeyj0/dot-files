@@ -26,10 +26,6 @@ call plug#begin('$HOME/.config/nvim/jeyj0-plugged')
 " Plug 'AndrewRadev/switch.vim'
 " Plug 'antoinemadec/coc-fzf'
 
-" nice tabline at the top (incl. dependencies)
-"Plug 'romgrk/barbar.nvim'
-    "Plug 'kyazdani42/nvim-web-devicons'
-
 Plug 'vimwiki/vimwiki'
 Plug 'michal-h21/vim-zettel'
 
@@ -140,7 +136,14 @@ if exists('g:vscode')
     Plug 'asvetliakov/vscode-neovim', { 'dir': './vim' }
 endif
 
-" This is just a test of the narrow-to-region plugin
+if has('nvim-0.5')
+    " nice tabline at the top (incl. dependencies)
+    Plug 'romgrk/barbar.nvim'
+        Plug 'kyazdani42/nvim-web-devicons'
+
+    " treesitter support! :D
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+endif
 
 call plug#end()
 
