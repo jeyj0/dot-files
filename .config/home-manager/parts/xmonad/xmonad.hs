@@ -85,6 +85,7 @@ import qualified XMonad.Actions.Search as S
 import XMonad.Actions.DynamicProjects (Project(Project), projectName, projectDirectory, projectStartHook, switchProjectPrompt, dynamicProjects)
 import qualified XMonad.Actions.DynamicWorkspaces as DynWs
 import qualified XMonad.Actions.DynamicWorkspaceOrder as DynWsOrd
+import XMonad.Actions.WorkspaceNames (getCurrentWorkspaceName)
 
     -- Data
 import Data.Char (isSpace, toUpper)
@@ -382,6 +383,16 @@ myManageHook = composeAll
      , className =? "discord" --> doShift "chat" -- ( myWorkspaces !! 2 )
      ]
 
+launchEmacsclientForWorkspace = do
+  mname <- getCurrentWorkspaceName
+
+  let name =
+        case mname of
+          Nothing -> "default"
+          Just n -> n
+
+  spawn $ "emacsclient --alternate-editor=\"\" --create-frame --socket-name=\"" ++ name ++ "\""
+  
 -- M (GUI)  : Do something with xmonad
 --             Common actions should only require this key to be held. Everything in this config should require it to be held though.
 -- M1 (Alt) : Windows
@@ -404,7 +415,7 @@ myKeys =
     -- Useful programs to have a keybinding for launch
         , ("M-t", spawn (myTerminal))
         , ("M-b", spawn (myBrowser))
-        , ("M-e", spawn "emacsclient -c -a 'emacs'")
+        , ("M-e", launchEmacsclientForWorkspace)
         , ("M-v", spawn (myEditor))
         , ("M-n", spawn (myTerminal ++ " --title note-taker -e fish -c 'cat >> ~/tmp.txt'"))
         -- , ("M-M1-h", spawn (myTerminal ++ " -e htop"))
