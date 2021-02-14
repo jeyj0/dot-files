@@ -134,6 +134,14 @@
 ;; magit
 (use-package magit)
 
+;; language modes
+;;; haskell
+(use-package haskell-mode)
+(use-package lsp-haskell
+  :config
+  (add-hook 'haskell-mode-hook #'lsp)
+  (add-hook 'haskell-literate-mode-hook #'lsp))
+
 ;; language server protocol
 (use-package lsp-mode
   :init
