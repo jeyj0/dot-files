@@ -28,6 +28,12 @@
       vc-make-backup-files t
       backup-directory-alist '(("." . "~/.emacsbackups/")))
 
+;; add direnv support
+(use-package direnv
+  :config
+  (setq direnv-always-show-summary nil)
+  (direnv-mode))
+
 ;; enable evil-mode globally
 (use-package evil
   :init
