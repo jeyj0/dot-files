@@ -384,7 +384,7 @@ myManageHook = composeAll
      ]
 
 launchEmacsclient servername = do
-  spawn $ "emacsclient --alternate-editor=\"\" --create-frame --socket-name=\"" ++ name ++ "\""
+  spawn $ "emacsclient --alternate-editor=\"\" --create-frame --socket-name=\"" ++ servername ++ "\""
   
 launchEmacsclientForWorkspace = do
   mname <- getCurrentWorkspaceName
