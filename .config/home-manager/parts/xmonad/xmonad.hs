@@ -383,6 +383,9 @@ myManageHook = composeAll
      , className =? "discord" --> doShift "chat" -- ( myWorkspaces !! 2 )
      ]
 
+launchEmacsclient servername = do
+  spawn $ "emacsclient --alternate-editor=\"\" --create-frame --socket-name=\"" ++ name ++ "\""
+  
 launchEmacsclientForWorkspace = do
   mname <- getCurrentWorkspaceName
 
@@ -391,7 +394,7 @@ launchEmacsclientForWorkspace = do
           Nothing -> "default"
           Just n -> n
 
-  spawn $ "emacsclient --alternate-editor=\"\" --create-frame --socket-name=\"" ++ name ++ "\""
+  launchEmacsclient name
   
 -- M (GUI)  : Do something with xmonad
 --             Common actions should only require this key to be held. Everything in this config should require it to be held though.
