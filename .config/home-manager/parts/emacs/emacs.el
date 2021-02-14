@@ -134,6 +134,18 @@
 ;; magit
 (use-package magit)
 
+;; language server protocol
+(use-package lsp-mode
+  :init
+  (setq lsp-keymap-prefix "C-c l")
+  (setq lsp-completion-provider :capf)
+  (setq gc-cons-threshold 100000000)
+  (setq read-process-output-max (* 1024 1024)) ;; 1mb
+  :hook
+  (haskell-mode . lsp-mode)
+  (lsp-mode . lsp-enable-which-key-integration)
+  :commands lsp)
+
 ;; set font
 (add-to-list 'default-frame-alist '(font . "Hack-12"))
 
