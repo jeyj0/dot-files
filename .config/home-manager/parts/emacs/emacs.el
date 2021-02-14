@@ -155,13 +155,16 @@
   :config
     (ivy-mode 1))
 
-;; color theme to gruvbox
+;; color theme to gruvbox for each new frame (otherwise creates issues)
 (use-package doom-themes
   :init
     (setq doom-themes-enable-bold 5
           doom-themes-enable-italic t)
     (load-theme 'doom-gruvbox t)
     (doom-themes-org-config))
+(defun set-theme-hook-func (frame)
+  (load-theme 'doom-gruvbox t))
+(add-hook 'after-make-frame-functions 'set-theme-hook-func)
 
 ;; magit
 (use-package magit)
