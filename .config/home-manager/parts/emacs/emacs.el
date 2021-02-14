@@ -161,6 +161,9 @@
 (map-leader "bj" 'evil-next-buffer)
 (map-leader "bk" 'evil-prev-buffer)
 
+;;;;;; git (magit)
+(map-leader "g" 'magit)
+
 ;;;;;; notes
 (map-leader "nf" 'org-roam-find-file)
 (map-leader "ni" 'org-roam-insert-immediate)
