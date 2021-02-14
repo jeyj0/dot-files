@@ -110,6 +110,12 @@
     ;;; hide asterisks, slashes,... that mark text as italic/bold/...
     (setq org-hide-emphasis-markers t))
 
+;; setup org-journal for fleeting note-taking and personal organization
+(use-package org-journal
+  :init
+  (setq org-journal-dir "~/org/journal")
+  (setq org-journal-date-format "%A, %d %B %Y"))
+
 ;; use ivy for minibuffer-completion
 (use-package flx)
 (use-package ivy
