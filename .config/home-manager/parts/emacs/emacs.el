@@ -12,7 +12,7 @@
 ;; disable default emacs visuals
 (menu-bar-mode 0)
 (tool-bar-mode 0)
-(toggle-scroll-bar 0)
+(scroll-bar-mode 0)
 (blink-cursor-mode 0)
 
 ;; enable some included things
@@ -163,7 +163,8 @@
     (load-theme 'doom-gruvbox t)
     (doom-themes-org-config))
 (defun set-theme-hook-func (frame)
-  (load-theme 'doom-gruvbox t))
+  (load-theme 'doom-gruvbox t)
+  (scroll-bar-mode 0))
 (add-hook 'after-make-frame-functions 'set-theme-hook-func)
 
 ;; magit
