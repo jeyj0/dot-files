@@ -56,6 +56,11 @@
   :config
     (global-evil-surround-mode))
 
+;; help me learn shortcuts
+(use-package which-key
+  :config
+    (which-key-mode))
+
 ;; enable visual-fill-column-mode in org-mode
 (use-package visual-fill-column
   :config
