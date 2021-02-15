@@ -137,6 +137,7 @@
 (use-package org-journal
   :init
   (setq org-journal-dir "~/org/journal")
+  (setq org-journal-find-file 'find-file)
   (setq org-journal-date-format "%Y-%m-%d (%A)")
   (setq org-journal-file-format "%Y-%m-%d.org")
   (setq org-journal-file-header 'my-org-journal-file-header-func)
