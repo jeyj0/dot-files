@@ -383,8 +383,13 @@ myManageHook = composeAll
      , className =? "discord" --> doShift "chat" -- ( myWorkspaces !! 2 )
      ]
 
-launchEmacsclient servername = do
-  spawn $ "emacsclient --alternate-editor=\"\" --create-frame --socket-name=\"" ++ servername ++ "\""
+launchEmacsclient servername mEval = do
+  let baseCmd = "emacsclient --alternate-editor=\"\" --create-frame --socket-name=\"" ++ servername ++ "\""
+  case mEval of
+    Nothing -> spawn baseCmd
+    Just eval -> spawn $ baseCmd ++ " -e \"" ++ eval ++ "\""
+  
+launchEmacsclient' servername = launchEmacsclient servername Nothing
   
 launchEmacsclientForWorkspace = do
   mname <- getCurrentWorkspaceName
@@ -394,7 +399,7 @@ launchEmacsclientForWorkspace = do
           Nothing -> "default"
           Just n -> n
 
-  launchEmacsclient name
+  launchEmacsclient' name
   
 -- M (GUI)  : Do something with xmonad
 --             Common actions should only require this key to be held. Everything in this config should require it to be held though.
@@ -420,7 +425,7 @@ myKeys =
         , ("M-b", spawn (myBrowser))
         , ("M-e", launchEmacsclientForWorkspace)
         , ("M-v", spawn (myEditor))
-        , ("M-n", spawn (myTerminal ++ " --title note-taker -e fish -c 'cat >> ~/tmp.txt'"))
+        , ("M-n", launchEmacsclient "notes" (Just "(call-interactively 'org-journal-new-entry)"))
         -- , ("M-M1-h", spawn (myTerminal ++ " -e htop"))
 
     -- Kill windows
