@@ -574,6 +574,10 @@ projects =
               , projectStartHook = Just $ do
                   spawn $ terminalRunning "./start"
               }
+    , Project { projectName = "dnd-org-to-tex"
+              , projectDirectory = "~/projects/dnd-org-to-tex"
+              , projectStartHook = Nothing
+              }
     ]
 
 main :: IO ()
