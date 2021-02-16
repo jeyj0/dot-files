@@ -24,3 +24,5 @@
 	reviewone = !nvim -p +\"tabdo Gdiff $REVIEW_BASE\" +\"let g:gitgutter_diff_base = '$REVIEW_BASE'\"
 [pull]
 	ff = only
+[init]
+	defaultBranch = main
