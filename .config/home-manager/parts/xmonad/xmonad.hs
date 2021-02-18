@@ -545,8 +545,8 @@ projects =
               , projectDirectory = "~/"
               , projectStartHook = Nothing
               }
-    , Project { projectName = "done"
-              , projectDirectory = "~/projects/done/"
+    , Project { projectName = "equilibrium"
+              , projectDirectory = "~/projects/equilibrium/"
               , projectStartHook = Nothing
               }
     , Project { projectName = "ihp"
