@@ -184,6 +184,7 @@
   :mode "\\.nix\\'")
 
 ;; language server protocol
+(use-package lsp-ui)
 (use-package lsp-mode
   :init
   (setq lsp-keymap-prefix "C-c l")
