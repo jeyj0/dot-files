@@ -539,8 +539,7 @@ projects =
               }
     , Project { projectName = "music"
               , projectDirectory = "~/"
-              , projectStartHook = Just $ do
-                  spawn "spotify"
+              , projectStartHook = Nothing
               }
     , Project { projectName = "bgRun"
               , projectDirectory = "~/"
@@ -548,33 +547,27 @@ projects =
               }
     , Project { projectName = "done"
               , projectDirectory = "~/projects/done/"
-              , projectStartHook = Just $ do
-                  spawn myEditor
+              , projectStartHook = Nothing
               }
     , Project { projectName = "ihp"
               , projectDirectory = "~/projects/ihp-boilerplate/IHP/"
-              , projectStartHook = Just $ do
-                  spawn myTerminal
+              , projectStartHook = Nothing
               }
     , Project { projectName = "ihp-boilerplate"
               , projectDirectory = "~/projects/ihp-boilerplate"
-              , projectStartHook = Just $ do
-                  spawn $ terminalRunning "./start"
+              , projectStartHook = Nothing
               }
     , Project { projectName = "ihp-cloud"
               , projectDirectory = "~/projects/ihp-cloud"
-              , projectStartHook = Just $ do
-                  spawn $ terminalRunning "./start"
+              , projectStartHook = Nothing
               }
     , Project { projectName = "ihp-casts"
               , projectDirectory = "~/projects/ihp-casts"
-              , projectStartHook = Just $ do
-                  spawn $ terminalRunning "./start"
+              , projectStartHook = Nothing
               }
     , Project { projectName = "ihp-blog-example-app"
               , projectDirectory = "~/projects/ihp-blog-example-app"
-              , projectStartHook = Just $ do
-                  spawn $ terminalRunning "./start"
+              , projectStartHook = Nothing
               }
     , Project { projectName = "dnd-org-to-tex"
               , projectDirectory = "~/projects/dnd-org-to-tex"
