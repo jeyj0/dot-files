@@ -427,6 +427,7 @@ myKeys =
         , ("M-b", spawn (myBrowser))
         , ("M-e", launchEmacsclientForProject)
         , ("M-v", spawn (myEditor))
+        , ("M-S-n", launchEmacsclient' "notes")
         , ("M-n", launchEmacsclient "notes" (Just "emacs-notepad") (Just "(call-interactively 'org-journal-new-entry)"))
         -- , ("M-M1-h", spawn (myTerminal ++ " -e htop"))
 
@@ -472,7 +473,7 @@ myKeys =
         , ("M-C-M1-<Down>", sendMessage DeArrange)
         , ("M-<Space>", sendMessage (MT.Toggle NBFULL) >> sendMessage ToggleStruts) -- Toggles noborder/full
         , ("M-S-<Space>", sendMessage ToggleStruts)     -- Toggles struts
-        , ("M-S-n", sendMessage $ MT.Toggle NOBORDERS)  -- Toggles noborder
+        -- , ("M-S-n", sendMessage $ MT.Toggle NOBORDERS)  -- Toggles noborder
 
     -- Increase/decrease windows in the master pane or the stack
         , ("M-S-<Up>", sendMessage (IncMasterN 1))      -- Increase number of clients in master pane
