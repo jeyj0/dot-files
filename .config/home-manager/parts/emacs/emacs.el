@@ -200,6 +200,53 @@
 (add-to-list 'default-frame-alist '(font . "Hack-12"))
 
 ;;; KEYMAPS
+;;;; custom functions for keymaps
+
+(defun my-next-user-buffer ()
+  "Switch to the next user buffer.
+user buffer is determined by `my-user-buffer-q'.
+URL `http://ergoemacs.org/emacs/elisp_next_prev_user_buffer.html'
+Version 2016-06-19"
+  (interactive)
+  (next-buffer)
+  (let ((i 0))
+    (while (< i 20)
+      (if (not (my-user-buffer-q))
+	  (progn (next-buffer)
+		 (setq i (1+ i)))
+	(progn (setq i 100))))))
+
+(defun my-prev-user-buffer ()
+  "Switch to the previous user buffer.
+user buffer is determined by `my-user-buffer-q'.
+URL `http://ergoemacs.org/emacs/elisp_next_prev_user_buffer.html'
+Version 2016-06-19"
+  (interactive)
+  (previous-buffer)
+  (let ((i 0))
+    (while (< i 20)
+      (if (not (my-user-buffer-q))
+	  (progn (previous-buffer)
+		 (setq i (1+ i)))
+	(progn (setq i 100))))))
+
+(defun my-user-buffer-q ()
+  "Return t if current buffer is a user buffer, else nil.
+Typically, if buffer name starts with *, it's not considered a user buffer.
+This functio is used by buffer switching command and close buffer command, so
+that next buffer shown is a user buffer.
+You can override this function to get your idea of 'user buffer'.
+Version 2016-06-18"
+  (interactive)
+  (if (string-equal "*" (substring (buffer-name) 0 1))
+      nil
+    (if (string-equal major-mode "dired-mode")
+	nil
+      (if (string-equal "magit" (substring (buffer-name) 0 5))
+	  nil
+	t
+      ))))
+
 ;;;; I don't use evil's leader functionality, as it isn't as flexible as emacs prefix bindings
 (define-prefix-command 'jeyj0-leader-map)
 
@@ -220,8 +267,8 @@
 
 ;;;;;; buffer manipulation
 (map-leader "bk" 'kill-current-buffer)
-(map-leader "bj" 'evil-next-buffer)
-(map-leader "bk" 'evil-prev-buffer)
+(map-leader "bj" 'my-next-user-buffer)
+(map-leader "bk" 'my-previous-user-buffer)
 
 ;;;;;; git (magit)
 (map-leader "g" 'magit)
