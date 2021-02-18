@@ -134,7 +134,7 @@
   "Custom function to create journal header."
   (concat
     (pcase org-journal-file-type
-      (`daily (format-time-string "#+TITLE: %A, %d %B %Y (Daily Journal)\n#+STARTUP: folded\n\n" time))
+      (`daily (format-time-string "#+TITLE: %A, %d %B %Y (Daily Journal)\n#+STARTUP: show2levels\n\n" time))
       (`weekly "#+TITLE: Weekly Journal\n#+STARTUP: folded\n\n")
       (`monthly "#+TITLE: Monthly Journal\n#+STARTUP: folded\n\n")
       (`yearly "#+TITLE: Yearly Journal\n#+STARTUP: folded\n\n"))))
