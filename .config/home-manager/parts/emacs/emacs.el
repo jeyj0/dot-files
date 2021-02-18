@@ -179,6 +179,10 @@
   (add-hook 'haskell-mode-hook #'lsp)
   (add-hook 'haskell-literate-mode-hook #'lsp))
 
+;;; nix
+(use-package nix-mode
+  :mode "\\.nix\\'")
+
 ;; language server protocol
 (use-package lsp-mode
   :init
