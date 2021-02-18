@@ -122,6 +122,9 @@
     (setq org-directory "~/org/")
     ;;; do not open a new split when opening org links
     (add-to-list 'org-link-frame-setup '(file . find-file))
+    ;;; set valid TODO states
+    (setq org-todo-keywords
+	  '((sequence "TODO(t)" "WAITING(w)" "DOING(i)" "|" "DONE(d)" "CANCELLED(c)" "CARRIED")))
     ;;; hide asterisks, slashes,... that mark text as italic/bold/...
     (setq org-hide-emphasis-markers t))
 
@@ -146,7 +149,7 @@
 	  (narrow-to-region (car entry) (cadr entry))
 	  (goto-char (point-min))
 	  (org-scan-tags '(lambda ()
-			    (org-set-tags ":carried:"))
+			    (org-todo "CARRIED"))
 			 matcher org--matcher-tags-todo-only))))))
 
 (use-package org-journal
@@ -156,6 +159,7 @@
   (setq org-journal-date-format "%Y-%m-%d (%A)")
   (setq org-journal-file-format "%Y-%m-%d.org")
   (setq org-journal-file-header 'my-org-journal-file-header-func)
+  (setq org-journal-carryover-items "TODO=\"TODO\"|TODO=\"WAITING\"|TODO=\"DOING\"")
   (setq org-journal-handle-old-carryover 'my-org-journal-carryover-item-handler))
 
 ;; use ivy for minibuffer-completion
