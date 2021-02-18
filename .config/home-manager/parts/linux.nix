@@ -10,6 +10,7 @@
     sxiv
     fontpreview
     zathura
+    evince # for printing and pdf forms
 
     xclip
     xorg.xwininfo

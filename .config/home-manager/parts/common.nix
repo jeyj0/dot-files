@@ -21,6 +21,14 @@
 
     alacritty
     # zerotierone
+
+    ngrok
+    curlie
+
+    sc-im
+
+    appimage-run
+    steam-run
   ];
 }
 
