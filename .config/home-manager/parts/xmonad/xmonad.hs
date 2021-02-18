@@ -379,17 +379,25 @@ myManageHook = composeAll
      -- , title =? "Spotify" --> doShift ( myWorkspaces !! 3 )
      , title =? "Slack" --> doShift "chat" -- ( myWorkspaces !! 2 )
      , title =? "Zoom" --> doShift "chat" -- ( myWorkspaces !! 2 )
-     , title =? "note-taker" --> (customFloating $ W.RationalRect (1%4) 0 (1%2) (1%3))
+     , title =? "emacs-notepad" --> (customFloating $ W.RationalRect (1%6) (1%8) (4%6) (2%3))
      , className =? "discord" --> doShift "chat" -- ( myWorkspaces !! 2 )
      ]
 
-launchEmacsclient servername mEval = do
-  let baseCmd = "emacsclient --alternate-editor=\"\" --create-frame --socket-name=\"" ++ servername ++ "\""
+launchEmacsclient servername mFrameName mEval = do
+  let baseCmd = "emacsclient \
+                \--alternate-editor=\"\" \
+                \--socket-name=\"" ++ servername ++ "\" \
+                \--create-frame"
+
+  let baseCmd' = case mFrameName of
+        Nothing -> baseCmd
+        Just name -> baseCmd ++ " --frame-parameters=\"(quote (name . \\\"" ++ name ++ "\\\"))\""
+
   case mEval of
-    Nothing -> spawn baseCmd
-    Just eval -> spawn $ baseCmd ++ " -e \"" ++ eval ++ "\""
+    Nothing -> spawn baseCmd'
+    Just eval -> spawn $ baseCmd' ++ " -e \"" ++ eval ++ "\""
   
-launchEmacsclient' servername = launchEmacsclient servername Nothing
+launchEmacsclient' servername = launchEmacsclient servername Nothing Nothing
 
 launchEmacsclientForProject = do
   project <- currentProject
@@ -419,7 +427,7 @@ myKeys =
         , ("M-b", spawn (myBrowser))
         , ("M-e", launchEmacsclientForProject)
         , ("M-v", spawn (myEditor))
-        , ("M-n", launchEmacsclient "notes" (Just "(call-interactively 'org-journal-new-entry)"))
+        , ("M-n", launchEmacsclient "notes" (Just "emacs-notepad") (Just "(call-interactively 'org-journal-new-entry)"))
         -- , ("M-M1-h", spawn (myTerminal ++ " -e htop"))
 
     -- Kill windows
