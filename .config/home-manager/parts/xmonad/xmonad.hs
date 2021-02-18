@@ -360,7 +360,7 @@ myLayoutHook = avoidStruts $ mouseResize $ windowArrange
              where
                myDefaultLayout =     tall
                                  ||| noBorders tabs
-				 ||| equal
+                                 ||| equal
 
 xmobarEscape :: String -> String
 xmobarEscape = concatMap doubleLts
