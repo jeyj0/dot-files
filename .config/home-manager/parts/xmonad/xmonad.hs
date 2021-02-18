@@ -82,7 +82,7 @@ import XMonad.Actions.RotSlaves (rotSlavesDown, rotAllDown)
 import XMonad.Actions.WindowGo (runOrRaise)
 import XMonad.Actions.WithAll (sinkAll, killAll)
 import qualified XMonad.Actions.Search as S
-import XMonad.Actions.DynamicProjects (Project(Project), projectName, projectDirectory, projectStartHook, switchProjectPrompt, dynamicProjects)
+import XMonad.Actions.DynamicProjects (Project(Project), projectName, projectDirectory, projectStartHook, switchProjectPrompt, dynamicProjects, currentProject)
 import qualified XMonad.Actions.DynamicWorkspaces as DynWs
 import qualified XMonad.Actions.DynamicWorkspaceOrder as DynWsOrd
 import XMonad.Actions.WorkspaceNames (getCurrentWorkspaceName)
@@ -390,16 +390,10 @@ launchEmacsclient servername mEval = do
     Just eval -> spawn $ baseCmd ++ " -e \"" ++ eval ++ "\""
   
 launchEmacsclient' servername = launchEmacsclient servername Nothing
-  
-launchEmacsclientForWorkspace = do
-  mname <- getCurrentWorkspaceName
 
-  let name =
-        case mname of
-          Nothing -> "default"
-          Just n -> n
-
-  launchEmacsclient' name
+launchEmacsclientForProject = do
+  project <- currentProject
+  launchEmacsclient' $ projectName project
   
 -- M (GUI)  : Do something with xmonad
 --             Common actions should only require this key to be held. Everything in this config should require it to be held though.
@@ -423,7 +417,7 @@ myKeys =
     -- Useful programs to have a keybinding for launch
         , ("M-t", spawn (myTerminal))
         , ("M-b", spawn (myBrowser))
-        , ("M-e", launchEmacsclientForWorkspace)
+        , ("M-e", launchEmacsclientForProject)
         , ("M-v", spawn (myEditor))
         , ("M-n", launchEmacsclient "notes" (Just "(call-interactively 'org-journal-new-entry)"))
         -- , ("M-M1-h", spawn (myTerminal ++ " -e htop"))
