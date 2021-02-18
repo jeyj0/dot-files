@@ -142,6 +142,8 @@
   :init
     ;;; set directory containing org files
     (setq org-directory "~/org/")
+    ;;; set up org-agenda
+    (setq org-agenda-files '("~/org/" "~/org/journal/"))
     ;;; do not open a new split when opening org links
     (add-to-list 'org-link-frame-setup '(file . find-file))
     ;;; set valid TODO states
@@ -324,6 +326,7 @@ Version 2016-06-18"
 (map-leader "nf" 'org-roam-find-file)
 (map-leader "ni" 'org-roam-insert)
 (map-leader "nt" 'org-todo)
+(map-leader "na" 'org-agenda)
 
 ;;;;;; window manipulation
 (map-leader "wh" 'evil-window-left)
