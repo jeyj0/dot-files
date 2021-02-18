@@ -383,7 +383,12 @@ myManageHook = composeAll
      , className =? "discord" --> doShift "chat" -- ( myWorkspaces !! 2 )
      ]
 
-launchEmacsclient servername mFrameName mEval = do
+data EmacsOpenAction
+  = Eval String
+  | File String
+  | NoEmacsAction
+
+launchEmacsclient servername mFrameName openAction = do
   let baseCmd = "emacsclient \
                 \--alternate-editor=\"\" \
                 \--socket-name=\"" ++ servername ++ "\" \
@@ -393,11 +398,12 @@ launchEmacsclient servername mFrameName mEval = do
         Nothing -> baseCmd
         Just name -> baseCmd ++ " --frame-parameters=\"(quote (name . \\\"" ++ name ++ "\\\"))\""
 
-  case mEval of
-    Nothing -> spawn baseCmd'
-    Just eval -> spawn $ baseCmd' ++ " -e \"" ++ eval ++ "\""
+  case openAction of
+    NoEmacsAction -> spawn baseCmd'
+    Eval eval -> spawn $ baseCmd' ++ " -e \"" ++ eval ++ "\""
+    File file -> spawn $ baseCmd' ++ " \"" ++ file ++ "\""
   
-launchEmacsclient' servername = launchEmacsclient servername Nothing Nothing
+launchEmacsclient' servername = launchEmacsclient servername Nothing NoEmacsAction
 
 launchEmacsclientForProject = do
   project <- currentProject
@@ -427,8 +433,8 @@ myKeys =
         , ("M-b", spawn (myBrowser))
         , ("M-e", launchEmacsclientForProject)
         , ("M-v", spawn (myEditor))
-        , ("M-S-n", launchEmacsclient' "notes")
-        , ("M-n", launchEmacsclient "notes" (Just "emacs-notepad") (Just "(call-interactively 'org-journal-new-entry)"))
+        , ("M-S-n", launchEmacsclient "notes" Nothing (File "~/org/index.org"))
+        , ("M-n", launchEmacsclient "notes" (Just "emacs-notepad") (Eval "(call-interactively 'org-journal-new-entry)"))
         -- , ("M-M1-h", spawn (myTerminal ++ " -e htop"))
 
     -- Kill windows
