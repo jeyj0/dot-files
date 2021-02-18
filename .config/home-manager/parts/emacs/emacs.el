@@ -301,6 +301,7 @@ Version 2016-06-18"
 ;;;;;; notes
 (map-leader "nf" 'org-roam-find-file)
 (map-leader "ni" 'org-roam-insert-immediate)
+(map-leader "nt" 'org-todo)
 
 ;;;;;; window manipulation
 (map-leader "wh" 'evil-window-left)
