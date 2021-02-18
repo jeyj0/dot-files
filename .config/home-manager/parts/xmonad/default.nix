@@ -12,5 +12,8 @@
   home.file.xmonad-hs = {
     source = ./xmonad.hs;
     target = ".xmonad/xmonad.hs";
+
+    # if config changed, try recompiling and restart on success
+    onChange = "xmonad --recompile && xmonad --restart";
   };
 }
