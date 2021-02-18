@@ -262,6 +262,12 @@ Version 2016-06-18"
 	t
       ))))
 
+(defun my-kill-current-buffer ()
+  "Kill the current buffer and switch to a user buffer."
+  (interactive)
+  (kill-current-buffer)
+  (my-next-user-buffer))
+
 ;;;; I don't use evil's leader functionality, as it isn't as flexible as emacs prefix bindings
 (define-prefix-command 'jeyj0-leader-map)
 
@@ -281,9 +287,9 @@ Version 2016-06-18"
 (map-leader "fs" 'save-buffer)
 
 ;;;;;; buffer manipulation
-(map-leader "bk" 'kill-current-buffer)
-(map-leader "bj" 'my-next-user-buffer)
-(map-leader "bk" 'my-previous-user-buffer)
+(map-leader "bk" 'my-kill-current-buffer)
+(map-leader "bh" 'my-next-user-buffer)
+(map-leader "bl" 'my-prev-user-buffer)
 
 ;;;;;; git (magit)
 (map-leader "g" 'magit)
