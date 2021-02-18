@@ -520,11 +520,11 @@ myKeys =
 -- these are the open-by-default workspaces
 -- they have to be defined in the project list as well
 myWorkspaces :: [String]
-myWorkspaces = ["dev", "web"]
+myWorkspaces = ["home", "web"]
 
 projects :: [Project]
 projects =
-    [ Project { projectName = "dev"
+    [ Project { projectName = "home"
               , projectDirectory = "~/"
               , projectStartHook = Nothing
               }
