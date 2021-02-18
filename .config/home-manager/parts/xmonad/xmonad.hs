@@ -482,10 +482,10 @@ myKeys =
         , ("M-C-<Down>", decreaseLimit)                 -- Decrease number of windows
 
     -- Window resizing
-        , ("M-h", sendMessage Shrink)                   -- Shrink horiz window width
-        , ("M-l", sendMessage Expand)                   -- Expand horiz window width
-        , ("M-M1-j", sendMessage MirrorShrink)          -- Shrink vert window width
-        , ("M-M1-k", sendMessage MirrorExpand)          -- Expand vert window width
+        -- , ("M-h", sendMessage Shrink)                   -- Shrink horiz window width
+        -- , ("M-l", sendMessage Expand)                   -- Expand horiz window width
+        -- , ("M-M1-j", sendMessage MirrorShrink)          -- Shrink vert window width
+        -- , ("M-M1-k", sendMessage MirrorExpand)          -- Expand vert window width
 
     -- Sublayouts
     -- This is used to push windows to tabbed sublayouts, or pull them out of it.
