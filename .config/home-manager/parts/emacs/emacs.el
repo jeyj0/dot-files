@@ -96,35 +96,20 @@
 	    :file-name "notes/%<%Y%m%d%H%M%S>-${slug}"
 	    :head "#+TITLE: ${title}\n"
 	    :unnarrowed t)
-	    ("a" "article" plain (function org-roam--capture-get-point)
+	    ("d" "dnd" plain (function org-roam--capture-get-point)
 	    "%?"
-	    ;:file-name "articles/%<%Y%m%d%H%M%S>-${slug}"
-	    ;:head "#+TITLE: ${title}\n#+roam_tags: article\n"
-	    ;:unnarrowed t)
-	    ;("i" "idea" plain (function org-roam--capture-get-point)
-	    ;"%?"
-	    ;:file-name "ideas/%<%Y%m%d%H%M%S>-${slug}"
-	    ;:head "#+TITLE: ${title}\n#+roam_tags: idea\n"
-	    ;:unnarrowed t)
-	    ;("d" "dnd" plain (function org-roam--capture-get-point)
-	    ;"%?"
 	    :file-name "dnd/%<%Y%m%d%H%M%S>-${slug}"
 	    :head "#+TITLE: ${title}\n#+roam_tags: %^{Roam Tag||store|npc|village}\n"
 	    :unnarrowed t)
+	    ("s" "dnd session" plain (function org-roam--capture-get-point)
+            "%?"
+            :file-name "dnd/%<%Y%m%d%H%M%S>-${slug}"
+            :head "#+TITLE: ${title}\n"
+            :unnarrowed t)
 	    ("c" "dnd npc" plain (function org-roam--capture-get-point)
 	    "%?\n\n* Information\n* Relations"
 	    :file-name "dnd/%<%Y%m%d%H%M%S>-${slug}"
 	    :head "#+TITLE: ${title}\n#+roam_tags: npc\n"
-	    :unnarrowed t)
-	    ("s" "dnd store" plain (function org-roam--capture-get-point)
-	    "%?\n\n- Owner: \n\n%+BEGIN_QUOTE\n%+END_QUOTE\n\n* Inventory"
-	    :file-name "dnd/%<%Y%m%d%H%M%S>-${slug}"
-	    :head "#+TITLE: ${title}\n#+roam_tags: store\n"
-	    :unnarrowed t)
-	    ("v" "dnd village" plain (function org-roam--capture-get-point)
-	    "%?\n\n* Locations\n** Stores\n** Taverns\n** Religious\n** Other\n* Factions\n* History"
-	    :file-name "dnd/%<%Y%m%d%H%M%S>-${slug}"
-	    :head "#+TITLE: ${title}\n#+roam_tags: village\n"
 	    :unnarrowed t))))
 
 
