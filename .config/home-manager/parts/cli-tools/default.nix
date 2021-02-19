@@ -8,6 +8,8 @@
     git
     gitAndTools.diff-so-fancy # pretty diffs
 
+    pijul
+
     direnv # for project-wise environments
     entr
 
