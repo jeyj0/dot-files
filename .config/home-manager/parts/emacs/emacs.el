@@ -340,8 +340,9 @@ Version 2016-06-18"
 ;;;;;; notes
 (map-leader "nf" 'org-roam-find-file)
 (map-leader "ni" 'org-roam-insert)
-(map-leader "nt" 'org-todo)
+(map-leader "ns" 'org-todo)
 (map-leader "na" 'org-agenda)
+(map-leader "nt" 'org-set-tags-command)
 
 ;;;;;; window manipulation
 (map-leader "wh" 'evil-window-left)
