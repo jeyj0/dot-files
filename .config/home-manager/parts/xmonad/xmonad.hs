@@ -449,8 +449,8 @@ myKeys =
         , ("M-S-<KP_Add>", shiftTo Next nonNSP >> moveTo Next nonNSP)       -- Shifts focused window to next ws
         , ("M-S-<KP_Subtract>", shiftTo Prev nonNSP >> moveTo Prev nonNSP)  -- Shifts focused window to prev ws
         , ("M-w c", DynWs.removeEmptyWorkspace)
-        , ("M-C-i", DynWsOrd.swapWith Next NonEmptyWS)
-        , ("M-C-u", DynWsOrd.swapWith Prev NonEmptyWS)
+        -- , ("M-C-i", DynWsOrd.swapWith Next NonEmptyWS)
+        -- , ("M-C-u", DynWsOrd.swapWith Prev NonEmptyWS)
 
     -- Floating windows
         , ("M-f", withFocused $ windows . W.sink)  -- Push floating window back to tile
