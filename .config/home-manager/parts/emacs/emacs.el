@@ -159,6 +159,14 @@
     ;;; hide asterisks, slashes,... that mark text as italic/bold/...
     (setq org-hide-emphasis-markers t))
 
+;; add evil-org-mode package, a package to improve evil and org-mode integration
+(use-package evil-org
+  :after org
+  :hook (org-mode . (lambda () evil-org-mode))
+  :config
+  (require 'evil-org-agenda)
+  (evil-org-agenda-set-keys))
+
 ;; setup org-journal for fleeting note-taking and personal organization
 ;;; function to format the header of a journal file, modified from org-journal's readme
 (defun my-org-journal-file-header-func (time)
