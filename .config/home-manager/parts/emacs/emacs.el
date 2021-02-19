@@ -144,6 +144,9 @@
     (setq org-directory "~/org/")
     ;;; set up org-agenda
     (setq org-agenda-files '("~/org/" "~/org/journal/"))
+    ;;; stop agendas from being built at startup
+    ;;; I only need them when I call them
+    (setq org-agenda-inhibit-startup t)
     ;;; do not open a new split when opening org links
     (add-to-list 'org-link-frame-setup '(file . find-file))
     ;;; set valid TODO states
