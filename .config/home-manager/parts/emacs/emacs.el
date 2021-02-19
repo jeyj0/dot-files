@@ -18,6 +18,10 @@
 ;; enable some included things
 (show-paren-mode 1) ; highlight matching parenthesis
 
+;; try preventing emacs from automatically splitting the window
+;(set-frame-parameter nil 'unsplittable t)
+;(setq pop-up-frames 'graphic-only)
+
 ;; make nix-installed packages available
 (package-initialize)
 
