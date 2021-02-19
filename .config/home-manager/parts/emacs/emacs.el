@@ -149,6 +149,10 @@
     (setq org-agenda-inhibit-startup t)
     ;;; do not open a new split when opening org links
     (add-to-list 'org-link-frame-setup '(file . find-file))
+    ;;; set tags to be only space-separated after todo headlines
+    (setq org-tags-column 0)
+    ;;; configure tags that are available everywhere
+    (setq org-tag-alist '(("private" . ?p) ("code" . ?c) ("dnd" . ?d) ("work" . ?w)))
     ;;; set valid TODO states
     (setq org-todo-keywords
 	  '((sequence "TODO(t)" "WAITING(w)" "DOING(i)" "|" "DONE(d)" "CANCELLED(c)" "CARRIED")))
