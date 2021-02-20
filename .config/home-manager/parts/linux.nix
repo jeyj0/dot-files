@@ -28,5 +28,8 @@
     responsively
 
     signal-desktop
+
+    appimage-run
+    steam-run
   ];
 }
