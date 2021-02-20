@@ -18,6 +18,9 @@
 ;; enable some included things
 (show-paren-mode 1) ; highlight matching parenthesis
 
+;; enable narrow-to-region
+(put 'narrow-to-region 'disabled nil)
+
 ;; try preventing emacs from automatically splitting the window
 ;(set-frame-parameter nil 'unsplittable t)
 ;(setq pop-up-frames 'graphic-only)
