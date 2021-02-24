@@ -353,6 +353,7 @@ Version 2016-06-18"
 (map-leader "ns" 'org-todo)
 (map-leader "na" 'org-agenda)
 (map-leader "nt" 'org-set-tags-command)
+(map-leader "nr" 'org-roam)
 
 ;;;;;; window manipulation
 (map-leader "wh" 'evil-window-left)
