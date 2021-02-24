@@ -435,7 +435,7 @@ myKeys =
         , ("M-v", spawn (myEditor))
         , ("M-S-n", launchEmacsclient "notes" Nothing (File "~/org/index.org"))
         , ("M-n", launchEmacsclient "notes" (Just "emacs-notepad") (Eval "(call-interactively 'org-journal-new-entry)"))
-        , ("M-a", launchEmacsclient "notes" (Just "emacs-notepad") (Eval "(progn (org-agenda-list) (delete-other-windows))"))
+        , ("M-a", launchEmacsclient "agenda" (Just "emacs-notepad") (Eval "(progn (org-agenda-list) (org-agenda-redo) (delete-other-windows))"))
 
     -- Kill windows
         , ("M-c", kill1)                         -- Kill the currently focused client
