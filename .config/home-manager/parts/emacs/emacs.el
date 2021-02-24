@@ -157,6 +157,8 @@
     (setq org-agenda-inhibit-startup t)
     ;;; do not open a new split when opening org links
     (add-to-list 'org-link-frame-setup '(file . find-file))
+    ;;; allow image size to be configured in org via ATTR_ORG
+    (setq org-image-actual-width nil)
     ;;; set tags to be only space-separated after todo headlines
     (setq org-tags-column 0)
     ;;; configure tags that are available everywhere
