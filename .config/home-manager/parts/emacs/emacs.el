@@ -334,6 +334,7 @@ Version 2016-06-18"
 
 ;;;;;; various useful leader mappings
 (map-leader "x" 'execute-extended-command)
+(map-leader ":" 'eval-expression)
 
 ;;;;;; file manipulation
 (map-leader "SPC" 'project-find-file)
