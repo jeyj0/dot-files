@@ -354,7 +354,7 @@ Version 2016-06-18"
 (map-leader "nf" 'org-roam-find-file)
 (map-leader "ni" 'org-roam-insert)
 (map-leader "ns" 'org-todo)
-(map-leader "na" 'org-agenda)
+(map-leader "na" 'org-attach)
 (map-leader "nt" 'org-set-tags-command)
 (map-leader "nr" 'org-roam)
 ;;;;;;; display settings
