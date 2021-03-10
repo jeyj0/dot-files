@@ -580,6 +580,18 @@ projects =
               , projectDirectory = "~/projects/dnd-org-to-tex"
               , projectStartHook = Nothing
               }
+    , Project { projectName = "mkcollage"
+              , projectDirectory = "~/projects/mkcollage"
+              , projectStartHook = Nothing
+              }
+    , Project { projectName = "ecs-prototype"
+              , projectDirectory = "~/projects/ecs-prototype"
+              , projectStartHook = Nothing
+              }
+    , Project { projectName = "ihp-website"
+              , projectDirectory = "~/projects/ihp-website"
+              , projectStartHook = Nothing
+              }
     ]
 
 main :: IO ()
