@@ -18,6 +18,7 @@ let
     dnd-fonts = pkgs.callPackage (import ./pkgs/dnd-fonts.nix) {};
     picom = pkgs.callPackage (import ./pkgs/picom) {};
     wonderdraft = pkgs.callPackage (import ./pkgs/wonderdraft) {};
+    lychee-slicer = pkgs.callPackage (import ./pkgs/lychee-slicer) {};
   };
 in
   import sources.nixpkgs {
