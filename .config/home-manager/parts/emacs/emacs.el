@@ -91,6 +91,47 @@
     (add-hook 'org-mode-hook #'visual-line-mode))
 
 ;;; configure org-roam
+(defvar dnd-races
+      '("Human"
+	"Elf"
+	"Hobgoblin"
+	"Orc"
+	"Half-Orc"
+	"Half-Elf"
+	"Tiefling"
+	"Halfling"
+	"Dwarf"
+	"Gnome"
+	"Firbolg"
+	"Dragonborn"
+	"Earth Genasi"
+	"Water Genasi"
+	"Fire Genasi"
+	"Air Genasi"
+	"Tortle"
+	"Kenku"
+	"Minotaur"
+	"Tabaxi"
+	"Kobold"
+	"Ratfolk"))
+
+(defvar dnd-alignments
+      '("Lawful Good" "Lawful Neutral" "Lawful Evil"
+	"Neutral Good" "True Neutral" "Neutral Evil"
+	"Chaotic Good" "Chaotic Neutral" "Chaotic Evil"))
+
+(defun npc-capture-template ()
+  "A capture templates for NPCs in my DnD notes."
+  (concat "\n"
+	  "- Gender :: %^{Gender||Male|Female}\n"
+	  "- Race :: %^{Race||" (mapconcat 'identity dnd-races "|") "}\n"
+	  "- Age :: %^{Age}\n"
+	  "- Alignment :: %^{Alignment||" (mapconcat 'identity dnd-alignments "|") "}\n"
+	  "- Occupation :: %^{Occupation}\n"
+	  "%?\n"
+	  "* Information\n"
+	  "* Relations"))
+
 (use-package org-roam
   :init
     (setq my-org-roam-directory (file-truename "~/org/roam"))
@@ -100,25 +141,59 @@
     (setq org-roam-completion-everywhere t)
     (setq org-roam-capture-templates
 	  '(("n" "note" plain (function org-roam--capture-get-point)
-	    "%?"
-	    :file-name "notes/%<%Y%m%d%H%M%S>-${slug}"
-	    :head "#+TITLE: ${title}\n"
-	    :unnarrowed t)
-	    ("d" "dnd" plain (function org-roam--capture-get-point)
-	    "%?"
-	    :file-name "dnd/%<%Y%m%d%H%M%S>-${slug}"
-	    :head "#+TITLE: ${title}\n#+roam_tags: %^{Roam Tag||store|npc|village}\n"
-	    :unnarrowed t)
-	    ("s" "dnd session" plain (function org-roam--capture-get-point)
-            "%?"
-            :file-name "dnd/%<%Y%m%d%H%M%S>-${slug}"
-            :head "#+TITLE: ${title}\n"
-            :unnarrowed t)
-	    ("c" "dnd npc" plain (function org-roam--capture-get-point)
-	    "%?\n\n* Information\n* Relations"
-	    :file-name "dnd/%<%Y%m%d%H%M%S>-${slug}"
-	    :head "#+TITLE: ${title}\n#+roam_tags: npc\n"
-	    :unnarrowed t))))
+	     "%?"
+	     :file-name "notes/%<%Y%m%d%H%M%S>-${slug}"
+	     :head "#+TITLE: ${title}\n#+roam_tags:\n"
+	     :unnarrowed t)
+	    ("d" "DnD Note")
+	    ("dd" "Generic Note" plain (function org-roam--capture-get-point)
+	     "%?"
+	     :file-name "dnd/%<%Y%m%d%H%M%S>-${slug}"
+	     :head "#+TITLE: ${title}\n#+roam_tags:\n"
+	     :unnarrowed t)
+	    ("dr" "Resource" plain (function org-roam--capture-get-point)
+	     "%?\n* References\n- %^{Source}"
+	     :file-name "dnd/%<%Y%m%d%H%M%S>-${slug}"
+	     :head "#+TITLE: ${title}\n#+roam_tags: resource\n"
+	     :unnarrowed t)
+	    ("ds" "Session" plain (function org-roam--capture-get-point)
+             "%?"
+             :file-name "dnd/%<%Y%m%d%H%M%S>-${slug}"
+             :head "#+TITLE: ${title}\n#+roam_tags: session\n"
+             :unnarrowed t)
+	    ("df" "Faction" plain (function org-roam--capture-get-point)
+	     "%?"
+	     :file-name "dnd/%<%Y%m%d%H%M%S>-${slug}"
+	     :head "#+TITLE: ${title}\n#+roam_tags: faction\n"
+	     :unnarrowed t)
+	    ("dc" "NPC" plain (function org-roam--capture-get-point)
+	     (function npc-capture-template)
+	     ;"%?" ;dnd-npc-template
+	     :file-name "dnd/%<%Y%m%d%H%M%S>-${slug}"
+	     :head "#+TITLE: ${title}\n#+roam_tags: npc\n"
+	     :unnarrowed t)
+	    ("dl" "Location")
+	    ("dlc" "City" plain (function org-roam--capture-get-point)
+	     "%?\n\n* Districts\n* Locations"
+	     :file-name "dnd/%<%Y%m%d%H%M%S>-${slug}"
+	     :head "#+TITLE: ${title}\n#+roam_tags: location city\n"
+	     :unnarrowed t)
+	    ("dlt" "Town" plain (function org-roam--capture-get-point)
+	     "%?\n\n* Districts\n* Locations"
+	     :file-name "dnd/%<%Y%m%d%H%M%S>-${slug}"
+	     :head "#+TITLE: ${title}\n#+roam_tags: location town\n"
+	     :unnarrowed t)
+	    ("dlv" "Village" plain (function org-roam--capture-get-point)
+	     "%?\n\n* Locations"
+	     :file-name "dnd/%<%Y%m%d%H%M%S>-${slug}"
+	     :head "#+TITLE: ${title}\n#+roam_tags: location village\n"
+	     :unnarrowed t)
+	    ("dls" "Store" plain (function org-roam--capture-get-point)
+	     "- Owner :: %?"
+	     :file-name "dnd/%<%Y%m%d%H%M%S>-${slug}"
+	     :head "#+TITLE: ${title}\n#+roam_tags: location store\n"
+	     :unnarrowed t)
+	    )))
 
 
 ;; enable autocompletion using company-mode
