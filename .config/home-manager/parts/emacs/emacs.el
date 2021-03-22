@@ -206,6 +206,11 @@
 	     :file-name "dnd/%<%Y%m%d%H%M%S>-${slug}"
 	     :head "#+TITLE: ${title}\n#+roam_tags: location store\n"
 	     :unnarrowed t)
+	    ("dlo" "Other" plain (function org-roam--capture-get-point)
+	     "\n- Location :: %^{Location}\n%?"
+	     :file-name "dnd/%<%Y%m%d%H%M%S>-${slug}"
+	     :head "#+TITLE: ${title}\n#+roam_tags: location store\n"
+	     :unnarrowed t)
 	    )))
 
 
