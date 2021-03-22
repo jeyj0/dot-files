@@ -176,7 +176,6 @@
 	     :unnarrowed t)
 	    ("dc" "NPC" plain (function org-roam--capture-get-point)
 	     (function npc-capture-template)
-	     ;"%?" ;dnd-npc-template
 	     :file-name "dnd/%<%Y%m%d%H%M%S>-${slug}"
 	     :head "#+TITLE: ${title}\n#+roam_tags: npc\n"
 	     :unnarrowed t)
