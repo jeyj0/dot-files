@@ -132,6 +132,14 @@
 	  "* Information\n"
 	  "* Relations"))
 
+(defun dnd-faction-capture-template ()
+  (concat "\n"
+	  "- Goals ::\n"
+	  "\n"
+	  "* Members\n"
+	  "** Leaders\n"
+	  "* Relations"))
+
 (use-package org-roam
   :init
     (setq my-org-roam-directory (file-truename "~/org/roam"))
@@ -162,7 +170,7 @@
              :head "#+TITLE: ${title}\n#+roam_tags: session\n"
              :unnarrowed t)
 	    ("df" "Faction" plain (function org-roam--capture-get-point)
-	     "%?"
+	     (function dnd-faction-capture-template)
 	     :file-name "dnd/%<%Y%m%d%H%M%S>-${slug}"
 	     :head "#+TITLE: ${title}\n#+roam_tags: faction\n"
 	     :unnarrowed t)
@@ -173,6 +181,11 @@
 	     :head "#+TITLE: ${title}\n#+roam_tags: npc\n"
 	     :unnarrowed t)
 	    ("dl" "Location")
+	    ("dll" "Land (Country, Empire,...)" plain (function org-roam--capture-get-point)
+	     "%?\n\n* Cities\n* Locations\n* Factions"
+	     :file-name "dnd/%<%Y%m%d%H%M%S>-${slug}"
+	     :head "#+TITLE: ${title}\n#+roam_tags: location country\n"
+	     :unnarrowed t)
 	    ("dlc" "City" plain (function org-roam--capture-get-point)
 	     "%?\n\n* Districts\n* Locations"
 	     :file-name "dnd/%<%Y%m%d%H%M%S>-${slug}"
