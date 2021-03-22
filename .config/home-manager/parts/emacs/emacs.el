@@ -202,7 +202,7 @@
 	     :head "#+TITLE: ${title}\n#+roam_tags: location village\n"
 	     :unnarrowed t)
 	    ("dls" "Store" plain (function org-roam--capture-get-point)
-	     "- Owner :: %?"
+	     "\n- Owner :: %?"
 	     :file-name "dnd/%<%Y%m%d%H%M%S>-${slug}"
 	     :head "#+TITLE: ${title}\n#+roam_tags: location store\n"
 	     :unnarrowed t)
