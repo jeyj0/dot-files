@@ -115,18 +115,24 @@
 	"Kobold"
 	"Ratfolk"))
 
+(defvar dnd-race-prompt
+  (concat "%^{Race||" (mapconcat 'identity dnd-races "|") "}"))
+
 (defvar dnd-alignments
       '("Lawful Good" "Lawful Neutral" "Lawful Evil"
 	"Neutral Good" "True Neutral" "Neutral Evil"
 	"Chaotic Good" "Chaotic Neutral" "Chaotic Evil"))
 
+(defvar dnd-alignments-prompt
+  (concat "%^{Alignment||" (mapconcat 'identity dnd-alignments "|") "}"))
+
 (defun npc-capture-template ()
   "A capture templates for NPCs in my DnD notes."
   (concat "\n"
 	  "- Gender :: %^{Gender||Male|Female}\n"
-	  "- Race :: %^{Race||" (mapconcat 'identity dnd-races "|") "}\n"
+	  "- Race :: " dnd-race-prompt "\n"
 	  "- Age :: %^{Age}\n"
-	  "- Alignment :: %^{Alignment||" (mapconcat 'identity dnd-alignments "|") "}\n"
+	  "- Alignment :: " dnd-alignments-prompt "\n"
 	  "- Occupation :: %^{Occupation}\n"
 	  "%?\n"
 	  "* Information\n"
@@ -134,11 +140,20 @@
 
 (defun dnd-faction-capture-template ()
   (concat "\n"
-	  "- Goals ::\n"
+	  "- Alignment :: " dnd-alignments-prompt "\n"
+	  "- Stats\n"
+	  "  - Cunning :: %^{Cunning}"
+	  "  - Force :: %^{Force}"
+	  "  - Wealth :: %^{Wealth}"
+	  "  - Magic :: %^{Magic}"
+	  "  - Treasure :: %^{Treasure}"
+	  "  - Hit points :: %^{Hit points}"
 	  "\n"
-	  "* Members\n"
-	  "** Leaders\n"
-	  "* Relations"))
+	  "* Goals\n"
+	  "* Values\n"
+	  "* Assets\n"
+	  "** Members\n"
+	  "* Background"))
 
 (use-package org-roam
   :init
