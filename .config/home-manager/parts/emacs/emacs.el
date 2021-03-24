@@ -198,7 +198,7 @@
 	     :unnarrowed t)
 	    ("dl" "Location")
 	    ("dll" "Land (Country, Empire,...)" plain (function org-roam--capture-get-point)
-	     "%?\n\n* Cities\n* Locations\n* Factions"
+	     "%?\n\n* Cities\n* Locations\n* Factions\n* History"
 	     :file-name "dnd/%<%Y%m%d%H%M%S>-${slug}"
 	     :head "#+TITLE: ${title}\n#+roam_tags: location country\n"
 	     :unnarrowed t)
