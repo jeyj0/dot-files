@@ -301,7 +301,10 @@
     (setq org-todo-keywords
 	  '((sequence "TODO(t)" "WAITING(w)" "DOING(i)" "|" "DONE(d)" "CANCELLED(c)" "CARRIED")))
     ;;; hide asterisks, slashes,... that mark text as italic/bold/...
-    (setq org-hide-emphasis-markers t))
+    (setq org-hide-emphasis-markers t)
+  :config
+    (add-hook 'org-mode-hook (lambda () (load-file "~/.emacs.d/org-transclusion/org-transclusion.el"))))
+
 
 ;; add evil-org-mode package, a package to improve evil and org-mode integration
 (use-package evil-org
@@ -493,6 +496,7 @@ Version 2016-06-18"
 (map-leader "ndi" 'org-toggle-inline-images)
 (map-leader "ndl" 'org-toggle-link-display)
 (map-leader "ndc" 'org-column)
+(map-leader "ndt" 'org-transclusion-mode)
 
 ;;;;;; window manipulation
 (map-leader "wh" 'evil-window-left)
