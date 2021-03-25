@@ -138,21 +138,44 @@
 	  "* Information\n"
 	  "* Relations"))
 
+(defvar dnd-faction-tags
+  '("Antimagical"
+    "Concealed"
+    "Imperialist"
+    "Innovative"
+    "Machiavellian"
+    "Martial"
+    "Massive"
+    "Mobile"
+    "Populist"
+    "Rich"
+    "Rooted"
+    "Scavenger"
+    "Supported"
+    "Tenacious"
+    "Zealot"))
+
+(defvar dnd-faction-tag-prompt
+  (concat "%^{Faction Tags (WWN)||" (string-join dnd-faction-tags "|") "}"))
+
 (defun dnd-faction-capture-template ()
   (concat
     "\n"
     "- Alignment :: " dnd-alignments-prompt "\n"
     "- Area of Influence :: %^{Area of Influence}\n"
     "- Stats\n"
+    "  - Size :: %^{Size|Small|Medium|Large}\n"
     "  - Cunning :: %^{Cunning}\n"
     "  - Force :: %^{Force}\n"
     "  - Wealth :: %^{Wealth}\n"
     "  - Magic :: %^{Magic}\n"
     "  - Treasure :: %^{Treasure}\n"
     "  - Hit points :: %^{Hit points}\n"
+    "  - Tags :: " dnd-faction-tag-prompt "\n"
     "\n"
     "* Goals\n"
     "* Values\n"
+    "* Bases of Influence\n"
     "* Assets\n"
     "** Members\n"
     "* Background\n"))
