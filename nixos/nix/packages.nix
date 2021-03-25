@@ -25,7 +25,7 @@ in
     overlays = [
       overlay
       (import (builtins.fetchTarball {
-        url = https://github.com/nix-community/emacs-overlay/archive/master.tar.gz;
+        url = https://github.com/nix-community/emacs-overlay/archive/6005779173365a3bdf793b37c3bd57446372eb70.tar.gz;
       }))
     ];
     config = {
