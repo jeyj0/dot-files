@@ -5,7 +5,7 @@
 appimageTools.wrapType2 {
   name = "lycheeslicer";
 
-  src = ./LycheeSlicer-3.3.1.AppImage;
+  src = ./LycheeSlicer-3.3.2.AppImage;
 
   profile = ''
     export LC_ALL=C.UTF-8
