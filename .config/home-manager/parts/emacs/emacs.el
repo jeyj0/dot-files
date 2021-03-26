@@ -57,14 +57,21 @@
   (setq direnv-always-show-summary nil)
   (direnv-mode))
 
+;; add undo-tree for undo/redo on steroids
+(use-package undo-tree
+  :config
+  (global-undo-tree-mode))
+
 ;; enable evil-mode globally
 (use-package evil
+  :after undo-tree
   :init
     (setq evil-want-integration t)
     (setq evil-want-keybinding nil)
     (setq evil-respect-visual-line-mode t)
     (setq evil-shift-width 2) ; I prefer 2-space indentation
     (setq evil-move-cursor-back nil) ; this fixes vim's weird behavior
+    (setq evil-undo-system 'undo-tree)
   :config
     (evil-mode 1))
 
