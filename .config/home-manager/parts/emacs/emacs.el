@@ -463,7 +463,7 @@ Version 2016-06-18"
   "Kill the current buffer and switch to a user buffer."
   (interactive)
   (kill-current-buffer)
-  (my-next-user-buffer))
+  (my-prev-user-buffer))
 
 ;;;; I don't use evil's leader functionality, as it isn't as flexible as emacs prefix bindings
 (define-prefix-command 'jeyj0-leader-map)
