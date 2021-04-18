@@ -2,6 +2,7 @@
 {
   imports = [
     (import ./gui-and-media { pkgs = pkgs; })
+    (import ./zathura { pkgs = pkgs; })
   ];
 
   home.packages = with pkgs; [
@@ -9,7 +10,6 @@
 
     sxiv
     fontpreview
-    zathura
     evince # for printing and pdf forms
 
     xclip
@@ -18,6 +18,7 @@
 
     networkmanager
     networkmanager_dmenu
+    wireshark
 
     lxc
 
