@@ -247,15 +247,25 @@
 	     :file-name "dnd/%<%Y%m%d%H%M%S>-${slug}"
 	     :head "#+TITLE: ${title}\n#+roam_tags: location village\n"
 	     :unnarrowed t)
+	    ("dld" "District" plain (function org-roam--capture-get-point)
+	     "\n- Location :: %^{Location}\n%?\n\n* Places of Interest"
+	     :file-name "dnd/%<%Y%m%d%H%M%S>-${slug}"
+	     :head "#+TITLE: ${title}\n#+roam_tags: location village\n"
+	     :unnarrowed t)
 	    ("dls" "Store" plain (function org-roam--capture-get-point)
 	     "\n- Owner :: %?\n- Location :: %^{Location}\n\n* Inventory"
 	     :file-name "dnd/%<%Y%m%d%H%M%S>-${slug}"
 	     :head "#+TITLE: ${title}\n#+roam_tags: location store\n"
 	     :unnarrowed t)
+	    ("dli" "inn/tavern" plain (function org-roam--capture-get-point)
+	     "\n- Owner :: %?\n- Location :: %^{Location}\n- Lifestyle :: %^{Lifestyle|Poor|Poor|Modest|Comfortable|Wealthy|Aristocratic}\n\n* Menu"
+	     :file-name "dnd/%<%Y%m%d%H%M%S>-${slug}"
+	     :head "#+TITLE: ${title}\n#+roam_tags: location tavern\n"
+	     :unnarrowed t)
 	    ("dlo" "Other" plain (function org-roam--capture-get-point)
 	     "\n- Location :: %^{Location}\n%?"
 	     :file-name "dnd/%<%Y%m%d%H%M%S>-${slug}"
-	     :head "#+TITLE: ${title}\n#+roam_tags: location store\n"
+	     :head "#+TITLE: ${title}\n#+roam_tags: location\n"
 	     :unnarrowed t)
 	    )))
 
