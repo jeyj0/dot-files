@@ -1,5 +1,9 @@
 { pkgs }:
 {
+  imports = [
+    (import ../dunst { pkgs = pkgs; })
+  ];
+
   home.packages = with pkgs; [
     xmobar
     xdotool
@@ -8,7 +12,6 @@
     nitrogen # to set wallpapers
     picom # for animations and other fancy stuff
 
-    dunst # notification daemon
     libnotify # to actually send notifications
   ];
 
