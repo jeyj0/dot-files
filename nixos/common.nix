@@ -29,6 +29,7 @@ in
   };
 
   boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ]; # used to build images for RPi
 
   # imports =
     # [ # Include the results of the hardware scan.
