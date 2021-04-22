@@ -19,4 +19,12 @@ with lib;
   services.xserver.videoDrivers = [ "nvidia" ];
 
   virtualisation.docker.enableNvidia = true;
+
+  fileSystems."/home/jeyj0/Documents/06-mass-storage" =
+    { device = "/dev/disk/by-uuid/f63ce1a5-b76e-46a9-a1fc-c7afa558d391";
+      options = [
+        "defaults"
+      ];
+      fsType = "ext4";
+    };
 }
