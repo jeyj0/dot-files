@@ -188,86 +188,100 @@
     "* Background\n"))
 
 (use-package org-roam
+  :ensure nil
+  :load-path "~/.emacs.d/org-roam/"
   :init
-    (setq my-org-roam-directory (file-truename "~/org/roam"))
-    (make-directory my-org-roam-directory t)
-    (setq org-roam-directory my-org-roam-directory)
-    ;;;; org-roam links completion-at-point
-    (setq org-roam-completion-everywhere t)
-    (setq org-roam-capture-templates
-	  '(("n" "note" plain (function org-roam--capture-get-point)
-	     "%?"
-	     :file-name "notes/%<%Y%m%d%H%M%S>-${slug}"
-	     :head "#+TITLE: ${title}\n#+roam_tags:\n"
-	     :unnarrowed t)
-	    ("d" "DnD Note")
-	    ("dd" "Generic Note" plain (function org-roam--capture-get-point)
-	     "%?"
-	     :file-name "dnd/%<%Y%m%d%H%M%S>-${slug}"
-	     :head "#+TITLE: ${title}\n#+roam_tags:\n"
-	     :unnarrowed t)
-	    ("dr" "Resource" plain (function org-roam--capture-get-point)
-	     "%?\n* References\n- %^{Source}"
-	     :file-name "dnd/%<%Y%m%d%H%M%S>-${slug}"
-	     :head "#+TITLE: ${title}\n#+roam_tags: resource\n"
-	     :unnarrowed t)
-	    ("ds" "Session" plain (function org-roam--capture-get-point)
+  (setq my-org-roam-directory (file-truename "~/org/roam"))
+  (make-directory my-org-roam-directory t)
+  (setq org-roam-directory my-org-roam-directory)
+  (setq org-id-link-to-org-use-id t)
+  (add-to-list 'display-buffer-alist
+  		'(("\\*org-roam\\*"
+  		  (display-buffer-in-direction)
+  		  (direction . right)
+  		  (window-width . 0.33)
+  		  (window-height . fit-window-to-buffer))))
+  (setq org-roam-node-display-template
+	"${title:*}  ${file:30} ${tags:20}")
+  :config
+  ;;;; org-roam links completion-at-point
+  (setq org-roam-completion-everywhere t)
+  (setq org-roam-capture-templates
+  	  '(("n" "note" plain
+  	     "%?"
+	     :if-new (file+head "notes/%<%Y%m%d%H%M%S>-${slug}.org"
+				"#+TITLE: ${title}\n")
+  	     :unnarrowed t)
+  	    ("d" "DnD Note")
+  	    ("dd" "Generic Note" plain
+  	     "%?"
+  	     :if-new (file+head "dnd/%<%Y%m%d%H%M%S>-${slug}.org"
+				"#+TITLE: ${title}\n#+roam_tags:\n")
+  	     :unnarrowed t)
+  	    ("dr" "Resource" plain
+  	     "%?\n* References\n- %^{Source}"
+  	     :if-new (file+head "dnd/%<%Y%m%d%H%M%S>-${slug}.org"
+  	                        "#+TITLE: ${title}\n#+roam_tags: resource\n")
+  	     :unnarrowed t)
+  	    ("ds" "Session" plain
              "%?"
-             :file-name "dnd/%<%Y%m%d%H%M%S>-${slug}"
-             :head "#+TITLE: ${title}\n#+roam_tags: session\n"
+             :if-new (file+head "dnd/%<%Y%m%d%H%M%S>-${slug}.org"
+                                "#+TITLE: ${title}\n#+roam_tags: session\n")
              :unnarrowed t)
-	    ("df" "Faction" plain (function org-roam--capture-get-point)
-	     (function dnd-faction-capture-template)
-	     :file-name "dnd/%<%Y%m%d%H%M%S>-${slug}"
-	     :head "#+TITLE: ${title}\n#+roam_tags: faction\n"
-	     :unnarrowed t)
-	    ("dc" "NPC" plain (function org-roam--capture-get-point)
-	     (function npc-capture-template)
-	     :file-name "dnd/%<%Y%m%d%H%M%S>-${slug}"
-	     :head "#+TITLE: ${title}\n#+roam_tags: npc\n"
-	     :unnarrowed t)
-	    ("dl" "Location")
-	    ("dll" "Land (Country, Empire,...)" plain (function org-roam--capture-get-point)
-	     "%?\n\n* Cities\n* Locations\n* Factions\n* History"
-	     :file-name "dnd/%<%Y%m%d%H%M%S>-${slug}"
-	     :head "#+TITLE: ${title}\n#+roam_tags: location country\n"
-	     :unnarrowed t)
-	    ("dlc" "City" plain (function org-roam--capture-get-point)
-	     "%?\n\n* Districts\n* Locations"
-	     :file-name "dnd/%<%Y%m%d%H%M%S>-${slug}"
-	     :head "#+TITLE: ${title}\n#+roam_tags: location city\n"
-	     :unnarrowed t)
-	    ("dlt" "Town" plain (function org-roam--capture-get-point)
-	     "%?\n\n* Districts\n* Locations"
-	     :file-name "dnd/%<%Y%m%d%H%M%S>-${slug}"
-	     :head "#+TITLE: ${title}\n#+roam_tags: location town\n"
-	     :unnarrowed t)
-	    ("dlv" "Village" plain (function org-roam--capture-get-point)
-	     "%?\n\n* Locations"
-	     :file-name "dnd/%<%Y%m%d%H%M%S>-${slug}"
-	     :head "#+TITLE: ${title}\n#+roam_tags: location village\n"
-	     :unnarrowed t)
-	    ("dld" "District" plain (function org-roam--capture-get-point)
-	     "\n- Location :: %^{Location}\n%?\n\n* Places of Interest"
-	     :file-name "dnd/%<%Y%m%d%H%M%S>-${slug}"
-	     :head "#+TITLE: ${title}\n#+roam_tags: location village\n"
-	     :unnarrowed t)
-	    ("dls" "Store" plain (function org-roam--capture-get-point)
-	     "\n- Owner :: %?\n- Location :: %^{Location}\n\n* Inventory"
-	     :file-name "dnd/%<%Y%m%d%H%M%S>-${slug}"
-	     :head "#+TITLE: ${title}\n#+roam_tags: location store\n"
-	     :unnarrowed t)
-	    ("dli" "inn/tavern" plain (function org-roam--capture-get-point)
-	     "\n- Owner :: %?\n- Location :: %^{Location}\n- Lifestyle :: %^{Lifestyle|Poor|Poor|Modest|Comfortable|Wealthy|Aristocratic}\n\n* Menu"
-	     :file-name "dnd/%<%Y%m%d%H%M%S>-${slug}"
-	     :head "#+TITLE: ${title}\n#+roam_tags: location tavern\n"
-	     :unnarrowed t)
-	    ("dlo" "Other" plain (function org-roam--capture-get-point)
-	     "\n- Location :: %^{Location}\n%?"
-	     :file-name "dnd/%<%Y%m%d%H%M%S>-${slug}"
-	     :head "#+TITLE: ${title}\n#+roam_tags: location\n"
-	     :unnarrowed t)
-	    )))
+  	    ("df" "Faction" plain
+  	     (function dnd-faction-capture-template)
+  	     :if-new (file+head "dnd/%<%Y%m%d%H%M%S>-${slug}.org"
+  	                        "#+TITLE: ${title}\n#+roam_tags: faction\n")
+  	     :unnarrowed t)
+  	    ("dc" "NPC" plain
+  	     (function npc-capture-template)
+  	     :if-new (file+head "dnd/%<%Y%m%d%H%M%S>-${slug}.org"
+  	                        "#+TITLE: ${title}\n#+roam_tags: npc\n")
+  	     :unnarrowed t)
+  	    ("dl" "Location")
+  	    ("dll" "Land (Country, Empire,...)" plain
+  	     "%?\n\n* Cities\n* Locations\n* Factions\n* History"
+  	     :if-new (file+head "dnd/%<%Y%m%d%H%M%S>-${slug}.org"
+  	                        "#+TITLE: ${title}\n#+roam_tags: location country\n")
+  	     :unnarrowed t)
+  	    ("dlc" "City" plain
+  	     "%?\n\n* Districts\n* Locations"
+  	     :if-new (file+head "dnd/%<%Y%m%d%H%M%S>-${slug}.org"
+  	                        "#+TITLE: ${title}\n#+roam_tags: location city\n")
+  	     :unnarrowed t)
+  	    ("dlt" "Town" plain
+  	     "%?\n\n* Districts\n* Locations"
+  	     :if-new (file+head "dnd/%<%Y%m%d%H%M%S>-${slug}.org"
+  	                        "#+TITLE: ${title}\n#+roam_tags: location town\n")
+  	     :unnarrowed t)
+  	    ("dlv" "Village" plain
+  	     "%?\n\n* Locations"
+  	     :if-new (file+head "dnd/%<%Y%m%d%H%M%S>-${slug}.org"
+  	                        "#+TITLE: ${title}\n#+roam_tags: location village\n")
+  	     :unnarrowed t)
+  	    ("dld" "District" plain
+  	     "\n- Location :: %^{Location}\n\n* Places of Interest\n%?"
+  	     :if-new (file+head "dnd/%<%Y%m%d%H%M%S>-${slug}.org"
+  	                        "#+TITLE: ${title}\n#+roam_tags: location district\n")
+  	     :unnarrowed t)
+  	    ("dls" "Store" plain
+  	     "\n- Owner :: %?\n- Location :: %^{Location}\n\n* Inventory"
+  	     :if-new (file+head "dnd/%<%Y%m%d%H%M%S>-${slug}.org"
+  	                        "#+TITLE: ${title}\n#+roam_tags: location store\n")
+  	     :unnarrowed t)
+  	    ("dli" "inn/tavern" plain
+  	     "\n- Owner :: %?\n- Location :: %^{Location}\n- Lifestyle :: %^{Lifestyle|Poor|Poor|Modest|Comfortable|Wealthy|Aristocratic}\n\n* Menu"
+  	     :if-new (file+head "dnd/%<%Y%m%d%H%M%S>-${slug}.org"
+  	                        "#+TITLE: ${title}\n#+roam_tags: location tavern\n")
+  	     :unnarrowed t)
+  	    ("dlo" "Other" plain
+  	     "\n- Location :: %^{Location}\n%?"
+  	     :if-new (file+head "dnd/%<%Y%m%d%H%M%S>-${slug}.org"
+  	                        "#+TITLE: ${title}\n#+roam_tags: location\n")
+  	     :unnarrowed t)
+  	    ))
+  (org-roam-setup)
+  )
 
 
 ;; enable autocompletion using company-mode
@@ -321,7 +335,7 @@
     (setq org-hide-emphasis-markers t)
   :config
     (add-hook 'org-mode-hook (lambda () (load-file "~/.emacs.d/org-transclusion/org-transclusion.el"))))
-
+    ;(add-hook 'org-mode-hook (lambda () (load-file "~/.emacs.d/org-roam/org-roam.el"))))
 
 ;; add evil-org-mode package, a package to improve evil and org-mode integration
 (use-package evil-org
@@ -503,12 +517,12 @@ Version 2016-06-18"
 (map-leader "g" 'magit)
 
 ;;;;;; notes
-(map-leader "nf" 'org-roam-find-file)
-(map-leader "ni" 'org-roam-insert)
+(map-leader "nf" 'org-roam-node-find)
+(map-leader "ni" 'org-roam-node-insert)
 (map-leader "ns" 'org-todo)
 (map-leader "na" 'org-attach)
 (map-leader "nt" 'org-set-tags-command)
-(map-leader "nr" 'org-roam)
+(map-leader "nr" 'org-roam-buffer-toggle)
 ;;;;;;; display settings
 (map-leader "ndi" 'org-toggle-inline-images)
 (map-leader "ndl" 'org-toggle-link-display)
