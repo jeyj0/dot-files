@@ -216,68 +216,68 @@
   	    ("dd" "Generic Note" plain
   	     "%?"
   	     :if-new (file+head "dnd/%<%Y%m%d%H%M%S>-${slug}.org"
-				"#+TITLE: ${title}\n#+roam_tags:\n")
+				"#+TITLE: ${title}\n#+filetags:\n")
   	     :unnarrowed t)
   	    ("dr" "Resource" plain
   	     "%?\n* References\n- %^{Source}"
   	     :if-new (file+head "dnd/%<%Y%m%d%H%M%S>-${slug}.org"
-  	                        "#+TITLE: ${title}\n#+roam_tags: resource\n")
+  	                        "#+TITLE: ${title}\n#+filetags: resource\n")
   	     :unnarrowed t)
   	    ("ds" "Session" plain
              "%?"
              :if-new (file+head "dnd/%<%Y%m%d%H%M%S>-${slug}.org"
-                                "#+TITLE: ${title}\n#+roam_tags: session\n")
+                                "#+TITLE: ${title}\n#+filetags: session\n")
              :unnarrowed t)
   	    ("df" "Faction" plain
   	     (function dnd-faction-capture-template)
   	     :if-new (file+head "dnd/%<%Y%m%d%H%M%S>-${slug}.org"
-  	                        "#+TITLE: ${title}\n#+roam_tags: faction\n")
+  	                        "#+TITLE: ${title}\n#+filetags: faction\n")
   	     :unnarrowed t)
   	    ("dc" "NPC" plain
   	     (function npc-capture-template)
   	     :if-new (file+head "dnd/%<%Y%m%d%H%M%S>-${slug}.org"
-  	                        "#+TITLE: ${title}\n#+roam_tags: npc\n")
+  	                        "#+TITLE: ${title}\n#+filetags: npc\n")
   	     :unnarrowed t)
   	    ("dl" "Location")
   	    ("dll" "Land (Country, Empire,...)" plain
   	     "%?\n\n* Cities\n* Locations\n* Factions\n* History"
   	     :if-new (file+head "dnd/%<%Y%m%d%H%M%S>-${slug}.org"
-  	                        "#+TITLE: ${title}\n#+roam_tags: location country\n")
+  	                        "#+TITLE: ${title}\n#+filetags: location country\n")
   	     :unnarrowed t)
   	    ("dlc" "City" plain
   	     "%?\n\n* Districts\n* Locations"
   	     :if-new (file+head "dnd/%<%Y%m%d%H%M%S>-${slug}.org"
-  	                        "#+TITLE: ${title}\n#+roam_tags: location city\n")
+  	                        "#+TITLE: ${title}\n#+filetags: location city\n")
   	     :unnarrowed t)
   	    ("dlt" "Town" plain
   	     "%?\n\n* Districts\n* Locations"
   	     :if-new (file+head "dnd/%<%Y%m%d%H%M%S>-${slug}.org"
-  	                        "#+TITLE: ${title}\n#+roam_tags: location town\n")
+  	                        "#+TITLE: ${title}\n#+filetags: location town\n")
   	     :unnarrowed t)
   	    ("dlv" "Village" plain
   	     "%?\n\n* Locations"
   	     :if-new (file+head "dnd/%<%Y%m%d%H%M%S>-${slug}.org"
-  	                        "#+TITLE: ${title}\n#+roam_tags: location village\n")
+  	                        "#+TITLE: ${title}\n#+filetags: location village\n")
   	     :unnarrowed t)
   	    ("dld" "District" plain
   	     "\n- Location :: %^{Location}\n\n* Places of Interest\n%?"
   	     :if-new (file+head "dnd/%<%Y%m%d%H%M%S>-${slug}.org"
-  	                        "#+TITLE: ${title}\n#+roam_tags: location district\n")
+  	                        "#+TITLE: ${title}\n#+filetags: location district\n")
   	     :unnarrowed t)
   	    ("dls" "Store" plain
   	     "\n- Owner :: %?\n- Location :: %^{Location}\n\n* Inventory"
   	     :if-new (file+head "dnd/%<%Y%m%d%H%M%S>-${slug}.org"
-  	                        "#+TITLE: ${title}\n#+roam_tags: location store\n")
+  	                        "#+TITLE: ${title}\n#+filetags: location store\n")
   	     :unnarrowed t)
   	    ("dli" "inn/tavern" plain
   	     "\n- Owner :: %?\n- Location :: %^{Location}\n- Lifestyle :: %^{Lifestyle|Poor|Poor|Modest|Comfortable|Wealthy|Aristocratic}\n\n* Menu"
   	     :if-new (file+head "dnd/%<%Y%m%d%H%M%S>-${slug}.org"
-  	                        "#+TITLE: ${title}\n#+roam_tags: location tavern\n")
+  	                        "#+TITLE: ${title}\n#+filetags: location tavern\n")
   	     :unnarrowed t)
   	    ("dlo" "Other" plain
   	     "\n- Location :: %^{Location}\n%?"
   	     :if-new (file+head "dnd/%<%Y%m%d%H%M%S>-${slug}.org"
-  	                        "#+TITLE: ${title}\n#+roam_tags: location\n")
+  	                        "#+TITLE: ${title}\n#+filetags: location\n")
   	     :unnarrowed t)
   	    ))
   (org-roam-setup)
