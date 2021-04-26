@@ -196,7 +196,7 @@
   (setq org-roam-directory my-org-roam-directory)
   (setq org-id-link-to-org-use-id t)
   (setq org-roam-node-display-template
-	"${title:*}  ${tags:20}")
+        "${title:*}  ${tags:20}")
   :config
   ;;;; org-roam links completion-at-point
   (setq org-roam-completion-everywhere t)
