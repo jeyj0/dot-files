@@ -195,12 +195,6 @@
   (make-directory my-org-roam-directory t)
   (setq org-roam-directory my-org-roam-directory)
   (setq org-id-link-to-org-use-id t)
-  (add-to-list 'display-buffer-alist
-  		'(("\\*org-roam\\*"
-  		  (display-buffer-in-direction)
-  		  (direction . right)
-  		  (window-width . 0.33)
-  		  (window-height . fit-window-to-buffer))))
   (setq org-roam-node-display-template
 	"${title:*}  ${tags:20}")
   :config
