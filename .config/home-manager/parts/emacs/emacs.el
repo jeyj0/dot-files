@@ -202,7 +202,7 @@
   		  (window-width . 0.33)
   		  (window-height . fit-window-to-buffer))))
   (setq org-roam-node-display-template
-	"${title:*}  ${file:30} ${tags:20}")
+	"${title:*}  ${tags:20}")
   :config
   ;;;; org-roam links completion-at-point
   (setq org-roam-completion-everywhere t)
