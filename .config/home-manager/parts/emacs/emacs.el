@@ -403,8 +403,8 @@
   (load-theme 'doom-gruvbox t)
   (scroll-bar-mode 0)
   ;; additional, custom color modifications
-  (set-background-color "#1e2021")
-  (set-foreground-color "#ebdbb2")
+  (set-face-background 'default "#1e2021")
+  (set-face-foreground 'default "#ebdbb2")
   (set-face-background 'region "#3c3836") ;;; selection
   ;;; modeline
   (set-face-background 'mode-line "#282828")
