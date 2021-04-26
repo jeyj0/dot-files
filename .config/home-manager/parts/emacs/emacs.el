@@ -401,7 +401,16 @@
     (doom-themes-org-config))
 (defun set-theme-hook-func (frame)
   (load-theme 'doom-gruvbox t)
-  (scroll-bar-mode 0))
+  (scroll-bar-mode 0)
+  ;; additional, custom color modifications
+  (set-background-color "#1e2021")
+  (set-foreground-color "#ebdbb2")
+  (set-face-background 'region "#3c3836") ;;; selection
+  ;;; modeline
+  (set-face-background 'mode-line "#282828")
+  (set-face-foreground 'mode-line "#bdae93")
+  (set-face-background 'mode-line-inactive "#282828")
+  (set-face-foreground 'mode-line-inactive "#504945"))
 (add-hook 'after-make-frame-functions 'set-theme-hook-func)
 
 ;; magit
