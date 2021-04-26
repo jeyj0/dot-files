@@ -409,6 +409,20 @@
   (set-face-background 'default "#1e2021")
   (set-face-foreground 'default "#ebdbb2")
   (set-face-background 'region "#3c3836") ;;; selection
+  ;;; orgmode
+  (set-face-foreground 'org-drawer "#7c6f64")
+  (set-face-foreground 'org-special-keyword "#bdae93")
+  (set-face-foreground 'org-property-value "#ebdbb2")
+  (set-face-foreground 'outline-1 "#b8bb26") ; headline inherits this
+  (set-face-foreground 'outline-2 "#d3869b") ; headline inherits this
+  (set-face-foreground 'outline-3 "#83a598") ; headline inherits this
+  (set-face-foreground 'outline-4 "#8ec07c") ; headline inherits this
+  (set-face-foreground 'outline-5 "#d79921") ; headline inherits this
+  (set-face-foreground 'outline-6 "#e5918e") ; headline inherits this
+  (set-face-foreground 'outline-7 "#cc241d") ; headline inherits this
+  (set-face-foreground 'outline-8 "#d65d0e") ; headline inherits this
+  (set-face-foreground 'org-meta-line "#928374")
+  (set-face-foreground 'org-tag "#928374")
   ;;; modeline
   (set-face-background 'mode-line "#282828")
   (set-face-foreground 'mode-line "#bdae93")
