@@ -23,3 +23,5 @@
 
 # do not ignore xmonad config
 !.xmonad/
+
+!.emacs.d/

@@ -17,6 +17,8 @@
 
 ;; enable some included things
 (show-paren-mode 1) ; highlight matching parenthesis
+(line-number-mode 1)
+(column-number-mode 1)
 
 ;; enable narrow-to-region
 (put 'narrow-to-region 'disabled nil)
@@ -50,6 +52,10 @@
 ;  (setq sml/shorten-modes t)
 ;  (setq sml/name-width 20)
 ;  (setq sml/mode-width 20))
+(use-package jeyj0-modeline
+  :ensure nil
+  :load-path "~/.emacs.d/jeyj0-modeline/"
+  :hook (after-init . jeyj0-modeline-mode))
 
 ;; add direnv support
 (use-package direnv
