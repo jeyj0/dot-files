@@ -4,8 +4,8 @@ let
     niv = (import sources.niv {}).niv;
 
     nur = import (builtins.fetchTarball {
-      url = "https://github.com/nix-community/NUR/archive/cc3d8311e40485e881c56b159aa3c824b877a0e9.tar.gz";
-      sha256 = "04jfh0hbcwxy6rdk054gnmfc0ig6sr0s5fhkwwg90gn8hgmgln8l";
+      url = "https://github.com/nix-community/NUR/archive/2b95bf74192e883bb9088382f91a623c75cd717b.tar.gz";
+      sha256 = "0mizrajd6w1387py1gblr2wrb8ma1hp3whpanbkcg27jkqg0lap1";
     }) {
       inherit pkgs;
     };
@@ -25,7 +25,7 @@ in
     overlays = [
       overlay
       (import (builtins.fetchTarball {
-        url = https://github.com/nix-community/emacs-overlay/archive/6005779173365a3bdf793b37c3bd57446372eb70.tar.gz;
+        url = https://github.com/nix-community/emacs-overlay/archive/fb572c671b81c7f87c9e911e859a708278a33fa3.tar.gz;
       }))
     ];
     config = {
