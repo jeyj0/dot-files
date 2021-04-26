@@ -549,6 +549,7 @@ Version 2016-06-18"
 (map-leader "na" 'org-attach)
 (map-leader "nt" 'org-set-tags-command)
 (map-leader "nr" 'org-roam-buffer-toggle)
+(map-leader "nc" 'org-id-get-create)
 ;;;;;;; display settings
 (map-leader "ndi" 'org-toggle-inline-images)
 (map-leader "ndl" 'org-toggle-link-display)
