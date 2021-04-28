@@ -534,7 +534,23 @@ Version 2016-06-18"
 (map-leader "SPC" 'project-find-file)
 (map-leader "fs" 'save-buffer)
 
+;;;;;; emacs
+(defun my-open-emacs-el ()
+  (interactive)
+  (evil-edit "~/.config/home-manager/parts/emacs/emacs.el"))
+(map-leader "ee" 'my-open-emacs-el)
+(map-leader "er" 'eval-region)
+(map-leader "eq" 'quit)
+(map-leader "eQ" 'kill-emacs)
+
 ;;;;;; buffer manipulation
+(map-leader "bb" 'bs-show)
+(eval-after-load 'bs-mode
+  '(define-key bs-mode-map (kbd "j") 'next-line))
+(eval-after-load 'bs-mode
+  '(define-key bs-mode-map (kbd "k") 'previous-line))
+(eval-after-load 'bs-mode
+  '(define-key bs-mode-map (kbd "K") 'bs-kill))
 (map-leader "bk" 'my-kill-current-buffer)
 (map-leader "bh" 'my-next-user-buffer)
 (map-leader "bl" 'my-prev-user-buffer)
@@ -563,6 +579,8 @@ Version 2016-06-18"
 (map-leader "wl" 'evil-window-right)
 (map-leader "ws" 'evil-window-split)
 (map-leader "wv" 'evil-window-vsplit)
+(map-leader "wq" 'evil-quit)
+(map-leader "wQ" 'evil-quit-all)
 
 ;;;;;; org-mode-mappings
 (evil-define-key 'normal org-mode-map (kbd "RET") 'org-open-at-point)
