@@ -189,8 +189,9 @@
     "* Goals\n"
     "* Values\n"
     "* Bases of Influence\n"
+    "** %^{Base of Influence}"
     "* Assets\n"
-    "** Members\n"
+    "* Members\n"
     "* Background\n"))
 
 (use-package org-roam
