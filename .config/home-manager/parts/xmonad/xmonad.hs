@@ -592,6 +592,10 @@ projects =
               , projectDirectory = "~/projects/ihp-website"
               , projectStartHook = Nothing
               }
+    , Project { projectName = "shopping"
+              , projectDirectory = "~/projects/shopping-list"
+              , projectStartHook = Nothing
+              }
     ]
 
 main :: IO ()
