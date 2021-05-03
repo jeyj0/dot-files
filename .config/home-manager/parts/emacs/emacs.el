@@ -308,6 +308,16 @@
     (add-hook 'after-init-hook 'global-company-mode)
     (advice-add 'company-call-backend :before-while 'company-supported-p))
 
+(use-package plantuml-mode
+  :after org
+  :config
+  (setq plantuml-jar-path "~/.nix-profile/lib/plantuml.jar")
+  (setq org-plantuml-jar-path "~/.nix-profile/lib/plantuml.jar")
+  (setq plantuml-default-exec-mode "executable")
+  (setq org-plantuml-exec-mode 'plantuml)
+  (add-to-list 'org-src-lang-modes '("plantuml" . plantuml))
+  (org-babel-do-load-languages 'org-babel-load-languages '((plantuml . t))))
+
 ;; configure org-mode
 (use-package org
   :init
