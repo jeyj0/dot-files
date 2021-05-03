@@ -284,7 +284,6 @@
   (org-roam-setup)
   )
 
-
 ;; enable autocompletion using company-mode
 
 ;;; don't open company completion popup in unsupported evil states
