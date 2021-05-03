@@ -425,6 +425,7 @@
   (set-face-foreground 'outline-8 "#d65d0e") ; headline inherits this
   (set-face-foreground 'org-meta-line "#928374")
   (set-face-foreground 'org-tag "#928374")
+  (set-face-background 'org-block "#1e2021") ; blocks such as source blocks
   ;;; modeline
   (set-face-background 'mode-line "#282828")
   (set-face-foreground 'mode-line "#bdae93")
