@@ -10,8 +10,8 @@ let
   orgRoam = pkgs.fetchFromGitHub {
     owner = "org-roam";
     repo = "org-roam";
-    rev = "38b5375354e26165aaf520ea692a2f7d25b33edd"; # v2
-    sha256 = "05aqqvq3vxfj1g6kbqli0dpmrlplmzq14lazcfw5sq1km48irh60";
+    rev = "3d4c93a2a024db16e933fbdfcb71df0460a2b894"; # v2
+    sha256 = "0zh038ni2i8lxn7yww9kf12gj5q56c9h81syfgb0hjlz2gpgqhyh";
   };
 in
 {
@@ -33,7 +33,7 @@ in
       f
       s
       emacsql
-      emacsql-sqlite3
+      emacsql-sqlite
       magit-section
     ];
   };
