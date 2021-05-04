@@ -38,20 +38,6 @@
       backup-directory-alist '(("." . "~/.emacsbackups/")))
 
 ;; visual packages
-;;; merge modeline and minibuffer, for a more minimalistic look
-;(use-package mini-modeline
-;  :after smart-mode-line
-;  :init
-;  (setq mini-modeline-display-gui-line t)
-;  :config
-;  (mini-modeline-mode nil))
-;;; make modeline have a fixed width, mostly for mini-modeline to look good
-;(use-package smart-mode-line
-;  :init
-;  (setq sml/shorten-directory t)
-;  (setq sml/shorten-modes t)
-;  (setq sml/name-width 20)
-;  (setq sml/mode-width 20))
 (use-package jeyj0-modeline
   :ensure nil
   :load-path "~/.emacs.d/jeyj0-modeline/"
