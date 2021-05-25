@@ -34,5 +34,6 @@
     steam-run
 
     lychee-slicer
+    blender
   ];
 }
