@@ -4,7 +4,7 @@
     libreoffice
     gimp
     inkscape
-    scribus
+    # scribus
 
     vlc
     ffmpeg
