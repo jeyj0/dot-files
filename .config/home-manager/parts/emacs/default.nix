@@ -10,8 +10,8 @@ let
   orgRoam = pkgs.fetchFromGitHub {
     owner = "org-roam";
     repo = "org-roam";
-    rev = "3d4c93a2a024db16e933fbdfcb71df0460a2b894"; # v2
-    sha256 = "0zh038ni2i8lxn7yww9kf12gj5q56c9h81syfgb0hjlz2gpgqhyh";
+    rev = "b183fd47bde6d61a6cef0ef041bfa596487190c3"; # v2
+    sha256 = "1180j0yxzgc9r04jvqnh7yldnnm42liph4vmaf430dc8xnk3wgzz";
   };
 in
 {
