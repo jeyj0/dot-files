@@ -600,6 +600,10 @@ projects =
               , projectDirectory = "~/projects/shopping-list"
               , projectStartHook = Nothing
               }
+    , Project { projectName = "kla"
+              , projectDirectory = "~/projects/keyboard-layout-analyzer"
+              , projectStartHook = Nothing
+              }
     ]
 
 main :: IO ()
