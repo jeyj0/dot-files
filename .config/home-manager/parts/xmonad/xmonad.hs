@@ -430,22 +430,22 @@ myKeys =
 
     -- Useful programs to have a keybinding for launch
         , ("M-t", spawn (myTerminal))
-        , ("M-b", spawn (myBrowser))
+        -- , ("M-b", spawn (myBrowser))
         , ("M-e", launchEmacsclientForProject)
-        , ("M-v", spawn (myEditor))
-        , ("M-S-n", launchEmacsclient "notes" Nothing (File "~/org/index.org"))
-        , ("M-n", launchEmacsclient "notes" (Just "emacs-notepad") (Eval "(call-interactively 'org-journal-new-entry)"))
-        , ("M-a", launchEmacsclient "agenda" (Just "emacs-notepad") (Eval "(progn (org-agenda-list) (org-agenda-redo) (delete-other-windows))"))
+        -- , ("M-v", spawn (myEditor))
+        -- , ("M-S-n", launchEmacsclient "notes" Nothing (File "~/org/index.org"))
+        -- , ("M-n", launchEmacsclient "notes" (Just "emacs-notepad") (Eval "(call-interactively 'org-journal-new-entry)"))
+        -- , ("M-a", launchEmacsclient "agenda" (Just "emacs-notepad") (Eval "(progn (org-agenda-list) (org-agenda-redo) (delete-other-windows))"))
 
     -- Kill windows
         , ("M-c", kill1)                         -- Kill the currently focused client
         , ("M-M1-c", killAll)                       -- Kill all windows on current workspace
 
     -- Workspaces
-        , ("M-.", nextScreen)  -- Switch focus to next monitor
-        , ("M-,", prevScreen)  -- Switch focus to prev monitor
-        , ("M-u", moveTo Prev nonNSP)
-        , ("M-i", moveTo Next nonNSP)
+        , ("M-m", nextScreen)  -- Switch focus to next monitor
+        -- , ("M-,", prevScreen)  -- Switch focus to prev monitor
+        , ("M-,", moveTo Prev nonNSP)
+        , ("M-.", moveTo Next nonNSP)
         , ("M-S-<KP_Add>", shiftTo Next nonNSP >> moveTo Next nonNSP)       -- Shifts focused window to next ws
         , ("M-S-<KP_Subtract>", shiftTo Prev nonNSP >> moveTo Prev nonNSP)  -- Shifts focused window to prev ws
         , ("M-w c", DynWs.removeEmptyWorkspace)
@@ -463,9 +463,9 @@ myKeys =
         , ("M-S-i", incScreenSpacing 4)         -- Increase screen spacing
 
     -- Windows navigation
-        , ("M-m", windows W.focusMaster)  -- Move focus to the master window
-        , ("M-j", windows W.focusDown)    -- Move focus to the next window
-        , ("M-k", windows W.focusUp)      -- Move focus to the prev window
+        -- , ("M-m", windows W.focusMaster)  -- Move focus to the master window
+        , ("M-n", windows W.focusDown)    -- Move focus to the next window
+        , ("M-S-n", windows W.focusUp)      -- Move focus to the prev window
         , ("M-M1-m", windows W.swapMaster) -- Swap the focused window and the master window
         , ("M-M1-j", windows W.swapDown)   -- Swap focused window with next window
         , ("M-M1-k", windows W.swapUp)     -- Swap focused window with prev window
