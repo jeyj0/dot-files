@@ -564,6 +564,10 @@ projects =
               , projectDirectory = "~/projects/ihp-boilerplate"
               , projectStartHook = Nothing
               }
+    , Project { projectName = "VO"
+              , projectDirectory = "~/projects/virtual-office"
+              , projectStartHook = Nothing
+              }
     , Project { projectName = "ihp-cloud"
               , projectDirectory = "~/projects/ihp-cloud"
               , projectStartHook = Nothing
