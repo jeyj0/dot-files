@@ -1,5 +1,6 @@
 /*
 !.gitignore
+!mimeapps.list
 
 # select what program's settings are synced
 !home-manager/
