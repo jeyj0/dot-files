@@ -18,15 +18,15 @@
 
     networkmanager
     networkmanager_dmenu
-    wireshark
 
     lxc
 
     wonderdraft
+    obsidian
 
     chromium
-    qutebrowser
-    responsively
+    # qutebrowser
+    # responsively
 
     signal-desktop
 
