@@ -12,6 +12,8 @@
     fontpreview
     evince # for printing and pdf forms
 
+    gnome.file-roller
+
     xclip
     xorg.xwininfo
     xorg.xmodmap
