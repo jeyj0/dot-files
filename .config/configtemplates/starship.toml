@@ -6,9 +6,6 @@ truncation_length = 1
 [nix_shell]
 disabled = true
 
-[haskell]
-disabled = true
-
 [gcloud]
 disabled = true
 
