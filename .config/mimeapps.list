@@ -1,6 +1,6 @@
 [Added Associations]
 application/octet-stream=nvim.desktop;sxiv.desktop;
-application/zip=thunar.desktop;exo-file-manager.desktop;userapp-"unzip"-M2LOI0.desktop;org.gnome.FileRoller.desktop;userapp-"file-roller"-JN1Q10.desktop;Thunar-folder-handler.desktop;
+application/zip=userapp-"file-roller"-JN1Q10.desktop;exo-file-manager.desktop;thunar.desktop;userapp-"unzip"-M2LOI0.desktop;org.gnome.FileRoller.desktop;Thunar-folder-handler.desktop;
 x-scheme-handler/http=firefox.desktop;
 x-scheme-handler/https=firefox.desktop;
 x-scheme-handler/ftp=firefox.desktop;
@@ -24,6 +24,8 @@ application/vnd.rar=org.gnome.FileRoller.desktop;
 model/stl=org.freecadweb.FreeCAD.desktop;
 application/zstd=org.gnome.FileRoller.desktop;
 image/vnd.dxf=org.freecadweb.FreeCAD.desktop;
+application/json=emacs.desktop;
+application/javascript=emacs.desktop;
 
 [Default Applications]
 x-scheme-handler/http=firefox.desktop
