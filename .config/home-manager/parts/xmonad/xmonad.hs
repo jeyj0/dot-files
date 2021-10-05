@@ -558,7 +558,7 @@ projects =
               , projectStartHook = Nothing
               }
     , Project { projectName = "ihp"
-              , projectDirectory = "~/projects/ihp-boilerplate/IHP/"
+              , projectDirectory = "~/projects/ihp/"
               , projectStartHook = Nothing
               }
     , Project { projectName = "ihp-boilerplate"
