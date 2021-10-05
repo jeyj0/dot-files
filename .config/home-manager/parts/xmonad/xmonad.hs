@@ -420,7 +420,8 @@ launchEmacsclientForProject = do
 myKeys :: [(String, X ())]
 myKeys =
     -- Xmonad
-        [ ("M-S-c", spawn "xmonad --recompile") -- Recompiles xmonad
+        -- [ ("M-S-c", spawn "xmonad --recompile") -- Recompiles xmonad
+        [ ("M-S-c", spawn "notify-send 'xmonad\nRecompile using home-manager switch -b bkp'") -- Recompiles xmonad
         , ("M-S-r", spawn "xmonad --restart")   -- Restarts xmonad
         , ("M-S-q", io exitSuccess)             -- Quits xmonad
         , ("M-S-l", spawn "xfce4-session-logout &")
