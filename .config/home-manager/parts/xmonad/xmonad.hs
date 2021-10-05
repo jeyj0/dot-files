@@ -496,10 +496,10 @@ myKeys =
 
     -- Sublayouts
     -- This is used to push windows to tabbed sublayouts, or pull them out of it.
-        , ("M-C-h", sendMessage $ pullGroup L)
-        , ("M-C-j", sendMessage $ pullGroup D)
-        , ("M-C-k", sendMessage $ pullGroup U)
-        , ("M-C-l", sendMessage $ pullGroup R)
+        , ("M-C-<Left>", sendMessage $ pullGroup L)
+        , ("M-C-<Down>", sendMessage $ pullGroup D)
+        , ("M-C-<Up>", sendMessage $ pullGroup U)
+        , ("M-C-<Right>", sendMessage $ pullGroup R)
         , ("M-C-m", withFocused (sendMessage . MergeAll))
         , ("M-C-u", withFocused (sendMessage . UnMerge))
         , ("M-C-/", withFocused (sendMessage . UnMergeAll))
