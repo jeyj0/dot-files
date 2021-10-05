@@ -605,6 +605,10 @@ projects =
               , projectDirectory = "~/projects/keyboard-layout-analyzer"
               , projectStartHook = Nothing
               }
+    , Project { projectName = "dnd-spellcard-generator"
+              , projectDirectory = "~/projects/dnd-spellcard-generator"
+              , projectStartHook = Nothing
+              }
     ]
 
 main :: IO ()
