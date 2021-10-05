@@ -143,9 +143,6 @@
     (setq org-tags-column 0)
     ;;; configure tags that are available everywhere
     (setq org-tag-alist '(("private" . ?p) ("code" . ?c) ("dnd" . ?d) ("work" . ?w)))
-    ;;; exclude file-level-only tags from inheritance
-    (setq org-tags-exclude-from-inheritance
-	  '("faction" "location" "store" "resource" "session" "npc" "country" "city" "town" "village" "district" "store" "tavern"))
     ;;; set valid TODO states
     (setq org-todo-keywords
 	  '((sequence "TODO(t)" "WAITING(w)" "DOING(i)" "|" "DONE(d)" "CANCELLED(c)" "CARRIED")))
