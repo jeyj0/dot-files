@@ -134,7 +134,7 @@
     ;;; I only need them when I call them
     (setq org-agenda-inhibit-startup t)
     ;;; do not open a new split when opening org links
-    (add-to-list 'org-link-frame-setup '(file . find-file))
+    ;;;; (add-to-list 'org-link-frame-setup '(file . find-file))
     ;;; allow image size to be configured in org via ATTR_ORG
     (setq org-image-actual-width nil)
     ;;; attachments
