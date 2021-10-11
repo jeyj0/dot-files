@@ -382,6 +382,7 @@ myManageHook = composeAll
      , title =? "Zoom" --> doShift "chat" -- ( myWorkspaces !! 2 )
      , title =? "emacs-notepad" --> (customFloating $ W.RationalRect (1%6) (1%8) (4%6) (2%3))
      , className =? "discord" --> doShift "chat" -- ( myWorkspaces !! 2 )
+     , className =? "Thunar" --> (doRectFloat $ W.RationalRect (1%4) (1%4) (2%4) (2%4))
      , stringProperty "WM_WINDOW_ROLE" =? "GtkFileChooserDialog" --> (doRectFloat $ W.RationalRect (1%4) (1%4) (2%4) (2%4))
      , title =? "Error" --> (doRectFloat $ W.RationalRect (1%4) (1%4) (2%4) (2%4))
      ]
