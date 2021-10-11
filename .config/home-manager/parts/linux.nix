@@ -6,6 +6,8 @@
   ];
 
   home.packages = with pkgs; [
+    nixos-generators
+
     nur.repos.rycee.firefox-addons-generator
 
     sxiv
