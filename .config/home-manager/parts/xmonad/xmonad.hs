@@ -573,6 +573,10 @@ projects =
               , projectDirectory = "~/projects/ihp-cloud"
               , projectStartHook = Nothing
               }
+    , Project { projectName = "ihp-backend-management-console"
+              , projectDirectory = "~/projects/ihp-backend-management-console"
+              , projectStartHook = Nothing
+              }
     , Project { projectName = "ihp-casts"
               , projectDirectory = "~/projects/ihp-casts"
               , projectStartHook = Nothing
