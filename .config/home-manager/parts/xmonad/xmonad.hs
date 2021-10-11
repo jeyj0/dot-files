@@ -424,22 +424,19 @@ launchEmacsclientForProject = do
 myKeys :: [(String, X ())]
 myKeys =
     -- Xmonad
-        -- [ ("M-S-c", spawn "xmonad --recompile") -- Recompiles xmonad
-        [ ("M-S-c", spawn "notify-send 'xmonad\nRecompile using home-manager switch -b bkp'") -- Recompiles xmonad
-        , ("M-S-r", spawn "xmonad --restart")   -- Restarts xmonad
-        , ("M-S-q", io exitSuccess)             -- Quits xmonad
+        [ ("M-S-r", spawn "xmonad --restart")   -- Restarts xmonad
         , ("M-S-l", spawn "xfce4-session-logout &")
 
     -- Run Prompt
-        , ("M-o", shellPrompt jeyj0XPConfig) -- Shell Prompt
+        , ("M-o o", shellPrompt jeyj0XPConfig) -- Shell Prompt
 
     -- Useful programs to have a keybinding for launch
         , ("M-t", spawn (myTerminal))
         -- , ("M-b", spawn (myBrowser))
-        , ("M-e", launchEmacsclientForProject)
+        , ("M-v", launchEmacsclientForProject)
         -- , ("M-v", spawn (myEditor))
         -- , ("M-S-n", launchEmacsclient "notes" Nothing (File "~/org/index.org"))
-        -- , ("M-n", launchEmacsclient "notes" (Just "emacs-notepad") (Eval "(call-interactively 'org-journal-new-entry)"))
+        -- , ("M-o n", spawn "obsidian \"obsidian://path=~/dnd\"")
         -- , ("M-a", launchEmacsclient "agenda" (Just "emacs-notepad") (Eval "(progn (org-agenda-list) (org-agenda-redo) (delete-other-windows))"))
 
     -- Kill windows
@@ -448,24 +445,16 @@ myKeys =
 
     -- Workspaces
         , ("M-m", nextScreen)  -- Switch focus to next monitor
-        -- , ("M-,", prevScreen)  -- Switch focus to prev monitor
+        , ("M-S-m", prevScreen)  -- Switch focus to prev monitor
         , ("M-,", moveTo Prev nonNSP)
         , ("M-.", moveTo Next nonNSP)
         , ("M-S-<KP_Add>", shiftTo Next nonNSP >> moveTo Next nonNSP)       -- Shifts focused window to next ws
         , ("M-S-<KP_Subtract>", shiftTo Prev nonNSP >> moveTo Prev nonNSP)  -- Shifts focused window to prev ws
         , ("M-w c", DynWs.removeEmptyWorkspace)
-        -- , ("M-C-i", DynWsOrd.swapWith Next NonEmptyWS)
-        -- , ("M-C-u", DynWsOrd.swapWith Prev NonEmptyWS)
 
     -- Floating windows
         , ("M-f", withFocused $ windows . W.sink)  -- Push floating window back to tile
         , ("M-S-f", sinkAll)                       -- Push ALL floating windows to tile
-
-    -- Increase/decrease spacing (gaps)
-        , ("M-M1-h", decWindowSpacing 4)           -- Decrease window spacing
-        , ("M-M1-l", incWindowSpacing 4)           -- Increase window spacing
-        , ("M-S-d", decScreenSpacing 4)         -- Decrease screen spacing
-        , ("M-S-i", incScreenSpacing 4)         -- Increase screen spacing
 
     -- Windows navigation
         -- , ("M-m", windows W.focusMaster)  -- Move focus to the master window
@@ -474,29 +463,21 @@ myKeys =
         , ("M-M1-m", windows W.swapMaster) -- Swap the focused window and the master window
         , ("M-M1-j", windows W.swapDown)   -- Swap focused window with next window
         , ("M-M1-k", windows W.swapUp)     -- Swap focused window with prev window
-        , ("M-<Backspace>", promote)      -- Moves focused window to master, others maintain order
-        , ("M-C-<Tab>", rotSlavesDown)    -- Rotate all windows except master and keep focus in place
-        , ("M-M1-<Tab>", rotAllDown)       -- Rotate all the windows in the current stack
+        , ("M-<Space>", promote)     -- Moves focused window to master, others maintain order
+        , ("M-C-S-n", rotSlavesDown)    -- Rotate all windows except master and keep focus in place
+        , ("M-C-n", rotAllDown)       -- Rotate all the windows in the current stack
 
     -- Layouts
         , ("M-<Tab>", sendMessage NextLayout)           -- Switch to next layout
         , ("M-C-M1-<Up>", sendMessage Arrange)
         , ("M-C-M1-<Down>", sendMessage DeArrange)
-        , ("M-<Space>", sendMessage (MT.Toggle NBFULL) >> sendMessage ToggleStruts) -- Toggles noborder/full
-        , ("M-S-<Space>", sendMessage ToggleStruts)     -- Toggles struts
-        -- , ("M-S-n", sendMessage $ MT.Toggle NOBORDERS)  -- Toggles noborder
+        , ("M-<Esc>", sendMessage (MT.Toggle NBFULL) >> sendMessage ToggleStruts) -- Toggles noborder/full
 
     -- Increase/decrease windows in the master pane or the stack
         , ("M-S-<Up>", sendMessage (IncMasterN 1))      -- Increase number of clients in master pane
         , ("M-S-<Down>", sendMessage (IncMasterN (-1))) -- Decrease number of clients in master pane
         , ("M-C-<Up>", increaseLimit)                   -- Increase number of windows
         , ("M-C-<Down>", decreaseLimit)                 -- Decrease number of windows
-
-    -- Window resizing
-        -- , ("M-h", sendMessage Shrink)                   -- Shrink horiz window width
-        -- , ("M-l", sendMessage Expand)                   -- Expand horiz window width
-        -- , ("M-M1-j", sendMessage MirrorShrink)          -- Shrink vert window width
-        -- , ("M-M1-k", sendMessage MirrorExpand)          -- Expand vert window width
 
     -- Sublayouts
     -- This is used to push windows to tabbed sublayouts, or pull them out of it.
