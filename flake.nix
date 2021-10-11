@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-21.05";
+    nixpkgs-unstable.url = "nixpkgs/nixpkgs-unstable";
 
     home-manager.url = "github:nix-community/home-manager/release-21.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -17,6 +18,7 @@
 
   outputs =
     { nixpkgs
+    , nixpkgs-unstable
     , home-manager
     , nur
     , emacs-overlay
@@ -33,6 +35,9 @@
       overlays = [
         (import emacs-overlay)
         nur.overlay
+        (final: prev: {
+          unstable = nixpkgs-unstable.legacyPackages.${prev.system};
+        })
         (_: pkgs: {
           firefox-addons = pkgs.callPackage (import ./nixos/nix/pkgs/firefox-addons) {};
 
