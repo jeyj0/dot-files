@@ -1,0 +1,97 @@
+{
+  "nodes": {
+    "emacs-overlay": {
+      "locked": {
+        "lastModified": 1633944408,
+        "narHash": "sha256-MfWVgOe6UHC0GvR8vDMVmXZZRCpfQ77JynmkUqpCFW4=",
+        "owner": "nix-community",
+        "repo": "emacs-overlay",
+        "rev": "c8656f7150ac773cd042204be112032149bf7711",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "emacs-overlay",
+        "type": "github"
+      }
+    },
+    "home-manager": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1633596850,
+        "narHash": "sha256-5+qVLYvfOropjLAvpQs/APtD8eYnEIbAd9a36lGHZM0=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "49695f33aac22358b59e49c94fe6472218e5d766",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "ref": "release-21.05",
+        "repo": "home-manager",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1633853057,
+        "narHash": "sha256-TUf/NYJlIw7wVMLFt5G4TRwtrnbz+uuXtTEbulxxI8Y=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "93ca5ab64f78ce778c0bcecf9458263f0f6289b6",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "ref": "nixos-21.05",
+        "type": "indirect"
+      }
+    },
+    "nur": {
+      "locked": {
+        "lastModified": 1633960533,
+        "narHash": "sha256-NH8+XXTj9vpyBvRHnTAaqiusa/xjIn/Y9IpTU8kuuCY=",
+        "owner": "nix-community",
+        "repo": "NUR",
+        "rev": "529ad372fb867b1477a255516d733850856bf4a1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "NUR",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "emacs-overlay": "emacs-overlay",
+        "home-manager": "home-manager",
+        "nixpkgs": "nixpkgs",
+        "nur": "nur",
+        "solbera-dnd-fonts": "solbera-dnd-fonts"
+      }
+    },
+    "solbera-dnd-fonts": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1615651212,
+        "narHash": "sha256-hqqlUj8cduQSo8G8Lp0UGG74C8XntOQi7vbEBONSAnw=",
+        "owner": "jonathonf",
+        "repo": "solbera-dnd-fonts",
+        "rev": "ecad9fb8d6610f268e04ca52ccef18e3fefaef3c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "jonathonf",
+        "repo": "solbera-dnd-fonts",
+        "type": "github"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}

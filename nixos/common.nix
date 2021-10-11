@@ -7,13 +7,9 @@
 with lib;
 
 let
-  packages = import ./nix/packages.nix {};
-
   userName = "jeyj0";
   userHome = "/home/${userName}";
   hostName = "jeyj0-nixos";
-
-  home-manager = import ./nix/pkgs/home-manager.nix;
 
   nixPackages = ({ stdenv, nixStable, nixUnstable, lib }:
     stdenv.mkDerivation {
@@ -131,31 +127,19 @@ in
     users."${userName}" = {
       isNormalUser = true;
       extraGroups = [ userName "wheel" "docker" "lxd" "lxc" "audio" "video" ]; # Enable ‘sudo’ for the user.
-      shell = packages.fish;
+      shell = pkgs.fish;
       createHome = true;
       home = userHome;
       description = "Jannis Jorre";
-
-      packages = [
-        (home-manager
-          { pkgs = packages; }
-          {
-            user = userName;
-            userHome = userHome;
-            hostName = hostName;
-            home-manager-path = "${userHome}/home-manager";
-            config-path = "${userHome}/.config/home-manager/${hostName}.nix";
-          })
-      ];
     };
   };
 
   nix = {
     trustedUsers = [ "root" "${userName}" ];
-    # package = pkgs.nixFlakes;
-    # extraOptions = ''
-    #   experimental-features = nix-command flakes
-    # '';
+    package = pkgs.nixFlakes;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
   };
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -184,7 +168,7 @@ in
       enable = true;
       browsing = true;
       defaultShared = true;
-      drivers = with packages; [
+      drivers = with pkgs; [
         hplip
       ];
     };
@@ -290,7 +274,7 @@ in
   };
   nixpkgs.overlays = [
     (final: prev: {
-      nix = packages.callPackage nixPackages {};
+      nix = pkgs.callPackage nixPackages {};
     })
   ];
 
@@ -300,7 +284,7 @@ in
     VISUAL = "nvim";
   };
 
-  fonts.fonts = with packages; [
+  fonts.fonts = with pkgs; [
     fira-code
     hack-font
     font-awesome

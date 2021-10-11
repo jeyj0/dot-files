@@ -4,8 +4,8 @@ with lib;
 
 {
   imports = [
-    /home/jeyj0/nixos/hosts/jeyj0-nixos-hardware.nix
-    /home/jeyj0/nixos/common.nix
+    ./jeyj0-nixos-hardware.nix
+    ../common.nix
   ];
 
   boot.loader.grub.enable = true;

@@ -1,11 +1,17 @@
 { stdenv, appimageTools
 , gsettings-desktop-schemas
-, gtk3
+, gtk3, fetchurl
 }:
+let
+  appImage = fetchurl {
+    url = "https://mango-lychee.nyc3.cdn.digitaloceanspaces.com/LycheeSlicer-3.5.1.AppImage";
+    sha256 = "sha256-H5/2mnG6niuM+5KJ40a8Sqhl4pq19dY7ISoR7agGCWs=";
+  };
+in
 appimageTools.wrapType2 {
   name = "lycheeslicer";
 
-  src = ./LycheeSlicer-3.5.1.AppImage;
+  src = appImage;
 
   profile = ''
     export LC_ALL=C.UTF-8

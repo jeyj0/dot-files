@@ -23,7 +23,7 @@
 
     lxc
 
-    wonderdraft
+    # wonderdraft
     obsidian
 
     chromium

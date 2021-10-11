@@ -6,6 +6,13 @@
 # do not ignore configs
 !.config/
 
+# do not ignore config application/building scripts
+!build-system.sh
+!build-home.sh
+!apply-system.sh
+!apply-home.sh
+!update.sh
+
 # do not ignore NixOS configs
 !nixos/
 

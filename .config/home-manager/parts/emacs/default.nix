@@ -52,13 +52,13 @@ in
       source = emacsConfig;
       target = ".emacs";
     };
-    orgTransclusion = {
-      source = orgTransclusion;
-      target = ".emacs.d/org-transclusion/";
-    };
-    orgRoam = {
-      source = orgRoam;
-      target = ".emacs.d/org-roam/";
-    };
+  #   orgTransclusion = {
+  #     source = orgTransclusion;
+  #     target = ".emacs.d/org-transclusion/";
+  #   };
+  #   orgRoam = {
+  #     source = orgRoam;
+  #     target = ".emacs.d/org-roam/";
+  #   };
   };
 }

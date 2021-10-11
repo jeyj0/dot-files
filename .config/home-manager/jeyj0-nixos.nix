@@ -2,22 +2,21 @@
 let
   userName = "jeyj0";
   userHome = "/home/jeyj0";
-  packages = import ../../nixos/nix/packages.nix {};
 in
 {
   imports = [
-    (import ./parts/linux.nix { pkgs = packages; })
-    (import ./parts/common.nix { pkgs = packages; })
+    (import ./parts/linux.nix { pkgs = pkgs; })
+    (import ./parts/common.nix { pkgs = pkgs; })
     (import ./parts/firefox {
-      pkgs = packages;
+      pkgs = pkgs;
       userName = userName;
     })
-    (import ./parts/xmonad { pkgs = packages; })
-    (import ./parts/latex { pkgs = packages; })
-    (import ./parts/games { pkgs = packages; })
+    (import ./parts/xmonad { pkgs = pkgs; })
+    (import ./parts/latex { pkgs = pkgs; })
+    (import ./parts/games { pkgs = pkgs; })
   ];
 
-  home.packages = with packages; [
+  home.packages = with pkgs; [
     # communication
     slack
     discord
