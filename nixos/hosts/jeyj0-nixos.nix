@@ -17,6 +17,7 @@ with lib;
   networking.interfaces.enp0s31f6.useDHCP = true;
 
   services.xserver.videoDrivers = [ "nvidia" ];
+  services.udev.packages = [ pkgs.unstable.qmk-udev-rules ];
 
   virtualisation.docker.enableNvidia = true;
 
