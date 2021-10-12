@@ -149,11 +149,6 @@
     ;;; hide asterisks, slashes,... that mark text as italic/bold/...
     (setq org-hide-emphasis-markers t))
 
-(use-package org-transclusion
-  :after org
-  :ensure nil
-  :load-path "~/.emacs.d/org-transclusion/")
-
 ;; add evil-org-mode package, a package to improve evil and org-mode integration
 (use-package evil-org
   :after org
