@@ -11,6 +11,8 @@
     nitrogen # to set wallpapers
     picom # for animations and other fancy stuff
 
+    rofi
+
     libnotify # to actually send notifications
   ];
 

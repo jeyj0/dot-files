@@ -428,7 +428,7 @@ myKeys =
         , ("M-S-l", spawn "xfce4-session-logout &")
 
     -- Run Prompt
-        , ("M-o o", shellPrompt jeyj0XPConfig) -- Shell Prompt
+        , ("M-o", spawn "rofi -show run")
 
     -- Useful programs to have a keybinding for launch
         , ("M-t", spawn (myTerminal))
