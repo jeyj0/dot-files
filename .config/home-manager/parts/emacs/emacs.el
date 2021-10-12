@@ -157,40 +157,6 @@
   (require 'evil-org-agenda)
   (evil-org-agenda-set-keys))
 
-;; setup org-journal for fleeting note-taking and personal organization
-;;; function to format the header of a journal file, modified from org-journal's readme
-(defun my-org-journal-file-header-func (time)
-  "Custom function to create journal header."
-  (concat
-    (pcase org-journal-file-type
-      (`daily (format-time-string "#+TITLE: %A, %d %B %Y (Daily Journal)\n#+STARTUP: show2levels\n\n" time))
-      (`weekly "#+TITLE: Weekly Journal\n#+STARTUP: folded\n\n")
-      (`monthly "#+TITLE: Monthly Journal\n#+STARTUP: folded\n\n")
-      (`yearly "#+TITLE: Yearly Journal\n#+STARTUP: folded\n\n"))))
-
-;;; function to tag carried-over items instead of deleting them
-;;; taken from org-journal's readme
-(defun my-org-journal-carryover-item-handler (old_carryover)
-  (save-excursion
-    (let ((matcher (cdr (org-make-tags-matcher org-journal-carryover-items))))
-      (dolist (entry (reverse old_carryover))
-	(save-restriction
-	  (narrow-to-region (car entry) (cadr entry))
-	  (goto-char (point-min))
-	  (org-scan-tags '(lambda ()
-			    (org-todo "CARRIED"))
-			 matcher org--matcher-tags-todo-only))))))
-
-(use-package org-journal
-  :init
-  (setq org-journal-dir "~/org/journal")
-  (setq org-journal-find-file 'find-file)
-  (setq org-journal-date-format "%Y-%m-%d (%A)")
-  (setq org-journal-file-format "%Y-%m-%d.org")
-  (setq org-journal-file-header 'my-org-journal-file-header-func)
-  (setq org-journal-carryover-items "TODO=\"TODO\"|TODO=\"WAITING\"|TODO=\"DOING\"")
-  (setq org-journal-handle-old-carryover 'my-org-journal-carryover-item-handler))
-
 ;; use ivy for minibuffer-completion
 (use-package flx)
 (use-package ivy
