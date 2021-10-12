@@ -171,12 +171,6 @@
     (ivy-mode 1))
 
 ;; color theme to gruvbox for each new frame (otherwise creates issues)
-(use-package doom-themes
-  :init
-    (setq doom-themes-enable-bold 5
-          doom-themes-enable-italic t)
-    (load-theme 'doom-gruvbox t)
-    (doom-themes-org-config))
 (defun set-theme-hook-func (frame)
   (load-theme 'doom-gruvbox t)
   (scroll-bar-mode 0)
@@ -205,6 +199,12 @@
   (set-face-background 'mode-line-inactive "#282828")
   (set-face-foreground 'mode-line-inactive "#504945"))
 (add-hook 'after-make-frame-functions 'set-theme-hook-func)
+(use-package doom-themes
+  :init
+    (setq doom-themes-enable-bold 5
+          doom-themes-enable-italic t)
+    (set-theme-hook-func (selected-frame))
+    (doom-themes-org-config))
 
 ;; magit
 (use-package magit)
