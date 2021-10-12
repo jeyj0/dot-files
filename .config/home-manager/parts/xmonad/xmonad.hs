@@ -561,8 +561,8 @@ projects =
               , projectDirectory = "~/"
               , projectStartHook = Nothing
               }
-    , Project { projectName = "bgRun"
-              , projectDirectory = "~/"
+    , Project { projectName = "lychee"
+              , projectDirectory = "~/Documents/06-mass-storage/3d-printing"
               , projectStartHook = Nothing
               }
     , Project { projectName = "equilibrium"
