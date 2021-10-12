@@ -11,6 +11,7 @@
 !build-home.sh
 !apply-system.sh
 !apply-home.sh
+!apply.sh
 !update.sh
 
 # do not ignore NixOS configs
