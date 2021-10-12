@@ -87,12 +87,14 @@ import XMonad.Actions.DynamicProjects (Project(Project), projectName, projectDir
 import qualified XMonad.Actions.DynamicWorkspaces as DynWs
 import qualified XMonad.Actions.DynamicWorkspaceOrder as DynWsOrd
 import XMonad.Actions.WorkspaceNames (getCurrentWorkspaceName)
+import qualified XMonad.Actions.TreeSelect as TS
 
     -- Data
 import Data.Char (isSpace, toUpper)
 import qualified Data.Monoid
 import Data.Maybe (isJust)
 import qualified Data.Map as M
+import Data.Tree
 
     -- Hooks
 import XMonad.Hooks.DynamicLog (dynamicLogWithPP, wrap, xmobarPP, xmobarColor, shorten, PP(..))
@@ -385,6 +387,7 @@ myManageHook = composeAll
      , className =? "Thunar" --> (doRectFloat $ W.RationalRect (1%4) (1%4) (2%4) (2%4))
      , stringProperty "WM_WINDOW_ROLE" =? "GtkFileChooserDialog" --> (doRectFloat $ W.RationalRect (1%4) (1%4) (2%4) (2%4))
      , title =? "Error" --> (doRectFloat $ W.RationalRect (1%4) (1%4) (2%4) (2%4))
+     , className =? "nnn" --> (doRectFloat $ W.RationalRect (1%4) (1%4) (2%4) (2%4))
      ]
 
 data EmacsOpenAction
@@ -413,6 +416,29 @@ launchEmacsclientForProject = do
   project <- currentProject
   launchEmacsclient' $ projectName project
   
+-- rbg not rgb
+myTreeSelectConf = TS.TSConfig
+  { TS.ts_hidechildren = True
+  , TS.ts_background = 0x00000000
+  , TS.ts_font = "xft:Sans-16"
+  , TS.ts_node = (0xffebb2db, 0xff1d2021)
+  , TS.ts_nodealt = (0xffebb2db, 0xff282828)
+  , TS.ts_highlight = (0xff282828, 0xff98971a)
+  , TS.ts_extra = 0xff66545c
+  , TS.ts_node_width = 200
+  , TS.ts_node_height = 30
+  , TS.ts_originX = 0
+  , TS.ts_originY = 0
+  , TS.ts_indent = 50
+  , TS.ts_navigate = TS.defaultNavigation
+  }
+
+treeSelectOpenActions =
+  [ Node (TS.TSNode "Terminal" "" (spawn myTerminal)) []
+  , Node (TS.TSNode "Browser" "" (spawn myBrowser)) []
+  , Node (TS.TSNode "Files" "Launches nnn in current project directory" $ spawn $ myTerminal ++ "--class Alacritty,nnn --command nnn") []
+  ]
+
 -- M (GUI)  : Do something with xmonad
 --             Common actions should only require this key to be held. Everything in this config should require it to be held though.
 -- M1 (Alt) : Windows
@@ -429,6 +455,7 @@ myKeys =
 
     -- Run Prompt
         , ("M-o", spawn "rofi -show run")
+        , ("M-S-o", TS.treeselectAction myTreeSelectConf treeSelectOpenActions) -- Open action tree select
 
     -- Useful programs to have a keybinding for launch
         , ("M-t", spawn (myTerminal))
