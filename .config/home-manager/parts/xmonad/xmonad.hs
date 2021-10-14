@@ -577,6 +577,14 @@ projects =
               , projectDirectory = "~/projects/ihp-backend"
               , projectStartHook = Nothing
               }
+    , Project { projectName = "ihp-backend-api-service"
+              , projectDirectory = "~/projects/ihp-backend-api-service"
+              , projectStartHook = Nothing
+              }
+    , Project { projectName = "ihp-backend-management-console"
+              , projectDirectory = "~/projects/ihp-backend-management-console"
+              , projectStartHook = Nothing
+              }
     , Project { projectName = "ihp-boilerplate"
               , projectDirectory = "~/projects/ihp-boilerplate"
               , projectStartHook = Nothing
@@ -587,10 +595,6 @@ projects =
               }
     , Project { projectName = "ihp-cloud"
               , projectDirectory = "~/projects/ihp-cloud"
-              , projectStartHook = Nothing
-              }
-    , Project { projectName = "ihp-backend-management-console"
-              , projectDirectory = "~/projects/ihp-backend-management-console"
               , projectStartHook = Nothing
               }
     , Project { projectName = "ihp-casts"
