@@ -44,10 +44,9 @@
   :hook (after-init . jeyj0-modeline-mode))
 
 ;; add direnv support
-(use-package direnv
-  :config
-  (setq direnv-always-show-summary nil)
-  (direnv-mode))
+(use-package envrc
+  :init
+  (envrc-global-mode))
 
 ;; add undo-tree for undo/redo on steroids
 (use-package undo-tree
