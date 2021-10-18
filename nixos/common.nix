@@ -142,6 +142,15 @@ in
       keep-outputs = true
       keep-derivations = true
     '';
+    binaryCaches = [
+      "https://hydra.iohk.io" # haskell.nix
+    ];
+    trustedBinaryCaches = [
+      "https://hydra.iohk.io" # haskell.nix
+    ];
+    binaryCachePublicKeys = [
+      "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ=" # haskell.nix
+    ];
   };
 
   # Some programs need SUID wrappers, can be configured further or are
