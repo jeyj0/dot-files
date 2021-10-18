@@ -209,15 +209,6 @@
 (use-package magit)
 
 ;; language modes
-;;; haskell
-(use-package haskell-mode)
-(use-package lsp-haskell
-  :init
-  (setq haskell-font-lock-quasi-quote-modes nil)
-  :config
-  (add-hook 'haskell-mode-hook #'lsp)
-  (add-hook 'haskell-literate-mode-hook #'lsp))
-
 ;;; nix
 (use-package nix-mode
   :mode "\\.nix\\'")
@@ -242,18 +233,37 @@
   (add-hook 'before-save-hook 'tide-format-before-save)
   (add-hook 'typescript-mode-hook #'setup-tide-mode))
 
-;; language server protocol
-(use-package lsp-ui)
-(use-package lsp-mode
+;;; haskell
+(use-package haskell-mode)
+(use-package lsp-haskell
+  :defer t
   :init
-  (setq lsp-keymap-prefix "C-c l")
+  (setq haskell-font-lock-quasi-quote-modes nil)
+  (setq lsp-haskell-server-path "haskell-language-server")
+  :config
+  (add-hook 'haskell-mode-hook #'lsp)
+  (add-hook 'haskell-literate-mode-hook #'lsp))
+
+;; language server protocol
+(use-package lsp-mode
+  :hook
+  (prog-mode . lsp-mode)
+  (lsp-mode . lsp-enable-which-key-integration)
+  :init
+  ; (setq lsp-keymap-prefix "C-c l")
   (setq lsp-completion-provider :capf)
   (setq gc-cons-threshold 100000000)
   (setq read-process-output-max (* 1024 1024)) ;; 1mb
-  :hook
-  (haskell-mode . lsp-mode)
-  (lsp-mode . lsp-enable-which-key-integration)
+  :config
+  (advice-add 'lsp :before #'envrc-reload-all)
+  (setq lsp-modeline-code-actions-enable nil)
   :commands lsp)
+
+(use-package lsp-ui
+  :hook (prog-mode . lsp-ui-mode)
+  :config
+  (setq lsp-ui-doc-show-with-cursor nil)
+  (setq lsp-ui-doc-position 'bottom))
 
 ;; set font
 (add-to-list 'default-frame-alist '(font . "Hack-12"))
