@@ -213,6 +213,14 @@
 (use-package nix-mode
   :mode "\\.nix\\'")
 
+;;; protobuf
+(use-package protobuf-mode
+  :mode "\\.proto\\'")
+
+;;; yaml
+(use-package yaml-mode
+  :mode "\\.yaml\\'")
+
 ;;; typescript
 (use-package typescript-mode)
 
