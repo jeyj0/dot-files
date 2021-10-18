@@ -362,6 +362,10 @@ Version 2016-06-18"
 (map-leader "bh" 'my-next-user-buffer)
 (map-leader "bl" 'my-prev-user-buffer)
 
+;;;;;; lsp
+(map-leader "k" 'lsp-ui-doc-glance)
+(map-leader "a" 'lsp-execute-code-action)
+
 ;;;;;; git (magit)
 (map-leader "g" 'magit)
 
