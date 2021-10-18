@@ -565,6 +565,10 @@ projects =
               , projectDirectory = "~/Documents/06-mass-storage/3d-printing"
               , projectStartHook = Nothing
               }
+    , Project { projectName = "et"
+              , projectDirectory = "~/projects/et"
+              , projectStartHook = Nothing
+              }
     , Project { projectName = "equilibrium"
               , projectDirectory = "~/projects/equilibrium/"
               , projectStartHook = Nothing
