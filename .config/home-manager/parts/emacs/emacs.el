@@ -378,7 +378,6 @@ Version 2016-06-18"
 (map-leader "ndi" 'org-toggle-inline-images)
 (map-leader "ndl" 'org-toggle-link-display)
 (map-leader "ndc" 'org-column)
-(map-leader "ndt" 'org-transclusion-mode)
 
 ;;;;;; window manipulation
 (map-leader "wh" 'evil-window-left)
