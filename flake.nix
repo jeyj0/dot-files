@@ -41,7 +41,7 @@
         (_: pkgs: {
           firefox-addons = pkgs.callPackage (import ./nixos/nix/pkgs/firefox-addons) {};
 
-          # responsively = pkgs.callPackage (import ./nixos/nix/pkgs/responsively.nix) {};
+          responsively = pkgs.callPackage (import ./nixos/nix/pkgs/responsively.nix) {};
           nnn = pkgs.callPackage (import ./nixos/nix/pkgs/nnn.nix) {};
 
           dnd-fonts = pkgs.callPackage (import ./nixos/nix/pkgs/dnd-fonts.nix) {};

@@ -5,8 +5,8 @@ let
 
   name = "responsively";
   src = fetchurl {
-    url = "https://github.com/responsively-org/responsively-app/releases/download/v0.15.0/ResponsivelyApp-0.15.0.AppImage";
-    sha256 = "101mg73qalkhbx47xk8swk067x9ll7ff63icgjmmw06xv3d26rgw";
+    url = "https://github.com/responsively-org/responsively-app/releases/download/v0.17.0/ResponsivelyApp-0.17.0.AppImage";
+    sha256 = "sha256-2i3CK7OHRSYEkEpfsjUDg6Dzfnd/k+cqb3IWXOMMNwI=";
   };
 in
 wrapType2 {

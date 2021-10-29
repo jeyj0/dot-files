@@ -30,7 +30,7 @@
 
     chromium
     # qutebrowser
-    # responsively
+    responsively
 
     signal-desktop
 
