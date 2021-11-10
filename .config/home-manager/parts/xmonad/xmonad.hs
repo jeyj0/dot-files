@@ -569,6 +569,10 @@ projects =
               , projectDirectory = "~/projects/et"
               , projectStartHook = Nothing
               }
+    , Project { projectName = "campaign"
+              , projectDirectory = "~/projects/obsidianmd-campaign-planner"
+              , projectStartHook = Nothing
+              }
     , Project { projectName = "equilibrium"
               , projectDirectory = "~/projects/equilibrium/"
               , projectStartHook = Nothing
