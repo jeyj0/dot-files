@@ -597,6 +597,10 @@ projects =
               , projectDirectory = "~/projects/ihp-boilerplate"
               , projectStartHook = Nothing
               }
+    , Project { projectName = "datavise"
+              , projectDirectory = "~/projects/datavise-dsms"
+              , projectStartHook = Nothing
+              }
     , Project { projectName = "VO"
               , projectDirectory = "~/projects/virtual-office"
               , projectStartHook = Nothing
