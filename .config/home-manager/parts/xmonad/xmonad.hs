@@ -585,11 +585,11 @@ projects =
               , projectDirectory = "~/projects/ihp-backend"
               , projectStartHook = Nothing
               }
-    , Project { projectName = "ihp-backend-api-service"
+    , Project { projectName = "ihp-baas-api"
               , projectDirectory = "~/projects/ihp-backend-api-service"
               , projectStartHook = Nothing
               }
-    , Project { projectName = "ihp-backend-management-console"
+    , Project { projectName = "ihp-baas-console"
               , projectDirectory = "~/projects/ihp-backend-management-console"
               , projectStartHook = Nothing
               }
