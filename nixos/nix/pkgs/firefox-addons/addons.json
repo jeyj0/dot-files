@@ -18,5 +18,9 @@
   {
     "slug": "pushbullet",
     "pname": "pushbullet"
+  },
+  {
+    "slug": "ublock-origin",
+    "pname": "ublock-origin"
   }
 ]
