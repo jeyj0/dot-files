@@ -19,6 +19,7 @@
     xclip
     xorg.xwininfo
     xorg.xmodmap
+    lm_sensors
 
     networkmanager
     networkmanager_dmenu
