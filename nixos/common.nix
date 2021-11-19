@@ -137,6 +137,7 @@ in
   nix = {
     trustedUsers = [ "root" "${userName}" ];
     package = pkgs.nixFlakes;
+    autoOptimizeStore = true;
     extraOptions = ''
       experimental-features = nix-command flakes
       keep-outputs = true
