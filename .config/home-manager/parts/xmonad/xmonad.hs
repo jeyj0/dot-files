@@ -569,6 +569,10 @@ projects =
               , projectDirectory = "~/projects/et"
               , projectStartHook = Nothing
               }
+    , Project { projectName = "life"
+              , projectDirectory = "~/projects/life"
+              , projectStartHook = Nothing
+              }
     , Project { projectName = "troveoflore"
               , projectDirectory = "~/projects/troveoflore"
               , projectStartHook = Nothing
