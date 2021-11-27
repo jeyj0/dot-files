@@ -561,6 +561,10 @@ projects =
               , projectDirectory = "~/"
               , projectStartHook = Nothing
               }
+    , Project { projectName = "ttrpg"
+              , projectDirectory = "~/Documents/02-areas/00-ttrpgs"
+              , projectStartHook = Nothing
+              }
     , Project { projectName = "lychee"
               , projectDirectory = "~/Documents/06-mass-storage/3d-printing"
               , projectStartHook = Nothing
