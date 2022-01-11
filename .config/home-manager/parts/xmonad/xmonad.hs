@@ -589,6 +589,10 @@ projects =
               , projectDirectory = "~/projects/ihp/"
               , projectStartHook = Nothing
               }
+    , Project { projectName = "ihp-pro"
+              , projectDirectory = "~/projects/ihp-pro/"
+              , projectStartHook = Nothing
+              }
     , Project { projectName = "ihp-backend"
               , projectDirectory = "~/projects/ihp-backend"
               , projectStartHook = Nothing
