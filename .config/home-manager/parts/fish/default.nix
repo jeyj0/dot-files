@@ -39,6 +39,14 @@
 
       # source nnn config
       source $FISH_PATH/nnn.fish
+
+      # a function to load key=value environment variable files
+      function posix-source
+        for i in (cat $argv)
+          set arr (echo $i |tr = \n)
+          set -gx $arr[1] $arr[2]
+        end
+      end
     '' + extraConfigPost;
   };
 }
