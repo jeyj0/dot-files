@@ -33,7 +33,7 @@
     # qutebrowser
     responsively
 
-    signal-desktop
+    unstable.signal-desktop
 
     appimage-run
     steam-run
