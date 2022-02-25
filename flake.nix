@@ -27,16 +27,19 @@
   let
     system = "x86_64-linux";
 
+    config = {
+      allowUnfree = true;
+    };
+
     pkgs = import nixpkgs {
-      inherit system;
-      config = {
-        allowUnfree = true;
-      };
+      inherit system config;
       overlays = [
         (import emacs-overlay)
         nur.overlay
         (final: prev: {
-          unstable = nixpkgs-unstable.legacyPackages.${prev.system};
+          unstable = import nixpkgs-unstable {
+            inherit system config;
+          };
         })
         (_: pkgs: {
           firefox-addons = pkgs.callPackage (import ./nixos/nix/pkgs/firefox-addons) {};
