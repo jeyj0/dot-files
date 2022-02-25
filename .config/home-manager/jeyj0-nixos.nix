@@ -19,7 +19,7 @@ in
   home.packages = with pkgs; [
     # communication
     slack
-    discord
+    unstable.discord
     spotify
     zoom-us
   ];
