@@ -40,5 +40,7 @@
 
     lychee-slicer
     blender
+
+    unstable.vscodium
   ];
 }
