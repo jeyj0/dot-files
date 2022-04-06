@@ -1,7 +1,14 @@
 [
 	{
 		"name": "home",
-		"rootPath": "/home/jeyj0",
+		"rootPath": "~",
+		"paths": [],
+		"tags": [],
+		"enabled": true
+	},
+	{
+		"name": "qmk_firmware",
+		"rootPath": "~/qmk_firmware",
 		"paths": [],
 		"tags": [],
 		"enabled": true
