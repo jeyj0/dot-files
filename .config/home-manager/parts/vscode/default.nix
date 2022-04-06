@@ -99,7 +99,7 @@
       "[typescript]" = {
         "editor.defaultFormatter" = "esbenp.prettier-vscode";
       };
-      "editor.formatOnSave" = false; # true!
+      "editor.formatOnSave" = true;
       "[javascript]" =  {
         "editor.defaultFormatter" = "esbenp.prettier-vscode";
       };
