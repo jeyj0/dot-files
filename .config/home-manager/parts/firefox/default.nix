@@ -2,6 +2,7 @@
 {
   programs.firefox = {
     enable = true;
+    package = pkgs.unstable.firefox;
     extensions = with pkgs.firefox-addons; [
       bitwarden
       https-everywhere
