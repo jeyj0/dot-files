@@ -3,14 +3,49 @@
 		"name": "home",
 		"rootPath": "~",
 		"paths": [],
-		"tags": [],
+		"tags": ["private"],
 		"enabled": true
 	},
 	{
 		"name": "qmk_firmware",
 		"rootPath": "~/qmk_firmware",
 		"paths": [],
-		"tags": [],
+		"tags": ["private"],
+		"enabled": true
+	},
+	{
+		"name": "traumimmo",
+		"rootPath": "~/projects/traumimmo",
+		"paths": [],
+		"tags": ["digitallyinduced"],
+		"enabled": true
+	},
+	{
+		"name": "ihp",
+		"rootPath": "~/projects/ihp",
+		"paths": [],
+		"tags": ["digitallyinduced"],
+		"enabled": true
+	},
+	{
+		"name": "ihp-cloud",
+		"rootPath": "~/projects/ihp-cloud",
+		"paths": [],
+		"tags": ["digitallyinduced"],
+		"enabled": true
+	},
+	{
+		"name": "troveoflore",
+		"rootPath": "~/projects/troveoflore",
+		"paths": [],
+		"tags": ["troveoflore"],
+		"enabled": true
+	},
+	{
+		"name": "troveoflore-content",
+		"rootPath": "~/projects/troveoflore-content",
+		"paths": [],
+		"tags": ["troveoflore"],
 		"enabled": true
 	}
 ]
