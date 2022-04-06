@@ -1,0 +1,4 @@
+theme = "gruvbox_contrast"
+
+[keys.normal]
+"space" = {  "space" = "file_picker", "f" = { "s" = ":write" } }
