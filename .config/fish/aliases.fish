@@ -35,8 +35,5 @@ alias vi='vim'
 alias v='vim'
 alias f='~/.config/nvim/jeyj0-plugged/vim-floaterm/bin/floaterm'
 
-# vscodium = vscode
-alias code='codium'
-
 # utilities
 alias whatismyip='curl ipinfo.io/ip'
