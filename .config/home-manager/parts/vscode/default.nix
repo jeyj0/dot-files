@@ -110,6 +110,7 @@
         "~/projects"
       ];
       "projectManager.git.maxDepthRecursion" = 1;
+      "workbench.startupEditor" = "none";
     };
     keybindings = [
       # {
