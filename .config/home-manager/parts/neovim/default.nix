@@ -14,7 +14,7 @@ in
     pythonWithPackages
 
     # nodejs
-    nodejs-12_x
+    unstable.nodejs
     nodePackages.eslint
 
     fzf
