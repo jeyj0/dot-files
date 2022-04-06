@@ -14,7 +14,7 @@
 !i3/
 !Thunar/
 !polybar/
-!VSCodium/
+!VSCodium/User/settings.json
 !configtemplates/
 !compton.conf
 !picom.conf
