@@ -215,6 +215,7 @@ in
         night = 3000;
       };
     };
+    gnome.gnome-keyring.enable = true;
   };
 
   # Enable the X11 windowing system.
