@@ -29,7 +29,7 @@
     # wonderdraft
     obsidian
 
-    chromium
+    unstable.chromium
     # qutebrowser
     responsively
 
