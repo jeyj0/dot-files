@@ -13,6 +13,7 @@
 
     git
     gitAndTools.diff-so-fancy # pretty diffs
+    unstable.gitui
 
     # pijul
 
