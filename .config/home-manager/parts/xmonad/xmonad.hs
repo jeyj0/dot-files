@@ -217,6 +217,9 @@ myBrowser = "firefox "
 myEditor :: String
 myEditor = myTerminal ++ " -e nvim "
 
+vscode :: String
+vscode = "code ."
+
 myBorderWidth :: Dimension
 myBorderWidth = 5
 
@@ -460,7 +463,8 @@ myKeys =
     -- Useful programs to have a keybinding for launch
         , ("M-t", spawn (myTerminal))
         -- , ("M-b", spawn (myBrowser))
-        , ("M-v", launchEmacsclientForProject)
+        , ("M-V", launchEmacsclientForProject)
+        , ("M-v", spawn vscode)
         -- , ("M-v", spawn (myEditor))
         -- , ("M-S-n", launchEmacsclient "notes" Nothing (File "~/org/index.org"))
         -- , ("M-o n", spawn "obsidian \"obsidian://path=~/dnd\"")
