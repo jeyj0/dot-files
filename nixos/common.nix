@@ -309,7 +309,6 @@ in
       ];
     })
     dnd-fonts
-    atkinson-hyperlegible
   ];
 
   # Enable touchpad support.
