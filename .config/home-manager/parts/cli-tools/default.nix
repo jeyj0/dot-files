@@ -36,5 +36,7 @@
     tldr # tl;dr man page alternative
 
     speedtest-cli
+    
+    asciinema
   ];
 }
