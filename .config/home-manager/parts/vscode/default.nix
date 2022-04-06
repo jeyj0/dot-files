@@ -76,6 +76,12 @@
         version = "1.21.0";
         sha256 = "sha256-VtGqoSDagmYjq9vXtgluiOMB40WphDTWd0F3Y3mgNIs=";
       }
+      {
+        name = "project-manager";
+        publisher = "alefragnani";
+        version = "12.5.0";
+        sha256 = "sha256-uIV9K67sBp3PRjd63Wycjfawxx0RZfkvl2NQj/lkX2w=";
+      }
     ];
     userSettings = {
       "editor.fontSize" = 16;
@@ -100,6 +106,10 @@
       "terminal.integrated.defaultLocation" = "editor";
       "editor.fontFamily" = "'Hack Nerd Font', 'Hack', 'monospace', monospace";
       "editor.inlineSuggest.enabled" = true;
+      "projectManager.git.baseFolders" = [
+        "~/projects"
+      ];
+      "projectManager.git.maxDepthRecursion" = 1;
     };
     keybindings = [
       # {
@@ -108,5 +118,12 @@
       #   when = "textInputFocus";
       # }
     ];
+  };
+
+  home.file = {
+    projectManagerConfig = {
+      source = ./projects.json;
+      target = ".config/Code/User/globalStorage/alefragnani.project-manager/projects.json";
+    };
   };
 }
