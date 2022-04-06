@@ -585,6 +585,10 @@ projects =
               , projectDirectory = "~/projects/troveoflore"
               , projectStartHook = Nothing
               }
+    , Project { projectName = "pureparcel"
+              , projectDirectory = "~/projects/parcel-purescript-test"
+              , projectStartHook = Nothing
+              }
     , Project { projectName = "equilibrium"
               , projectDirectory = "~/projects/equilibrium/"
               , projectStartHook = Nothing
@@ -593,12 +597,24 @@ projects =
               , projectDirectory = "~/projects/ihp/"
               , projectStartHook = Nothing
               }
+    , Project { projectName = "datasync-test"
+              , projectDirectory = "~/projects/datasync-test/"
+              , projectStartHook = Nothing
+              }
     , Project { projectName = "ihp-pro"
               , projectDirectory = "~/projects/ihp-pro/"
               , projectStartHook = Nothing
               }
     , Project { projectName = "ihp-backend"
               , projectDirectory = "~/projects/ihp-backend"
+              , projectStartHook = Nothing
+              }
+    , Project { projectName = "thin"
+              , projectDirectory = "~/projects/thin-backend"
+              , projectStartHook = Nothing
+              }
+    , Project { projectName = "ex"
+              , projectDirectory = "~/projects/react-realtime-chat-1"
               , projectStartHook = Nothing
               }
     , Project { projectName = "ihp-baas-api"
