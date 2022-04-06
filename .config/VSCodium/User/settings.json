@@ -1,35 +1,21 @@
 {
-    "vscode-neovim.mouseSelectionStartVisualMode": false,
-    "vscode-neovim.neovimPath": "/run/current-system/sw/bin/nvim",
-    "workbench.colorTheme": "Dark (Molokai)",
-    "editor.renderControlCharacters": false,
-    "editor.minimap.enabled": false,
-    "breadcrumbs.enabled": false,
-    "editor.lineNumbers": "relative",
-    "editor.fontFamily": "'Hack','Fira Code','Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
-    "editor.fontSize": 15.5,
-    "editor.renderWhitespace": "none",
+    "editor.fontSize": 16,
+    "debug.console.fontSize": 16,
+    "markdown.preview.fontSize": 16,
+    "terminal.integrated.fontSize": 16,
+    "git.confirmSync": false,
+    "workbench.colorTheme": "Gruvbox Dark Hard",
+    "update.mode": "none",
     "window.menuBarVisibility": "toggle",
-    "workbench.activityBar.visible": false,
-    "workbench.editor.showTabs": false,
-    "editor.renderIndentGuides": false,
-    "editor.renderLineHighlight": "all",
-    "editor.matchBrackets": "near",
-    "workbench.sideBar.location": "left",
-    "workbench.startupEditor": "welcomePage",
-    "workbench.statusBar.visible": true,
-    "workbench.colorCustomizations": {
-        "[Dark (Molokai)]": {
-            "statusBar.background": "#00000000",
-        }
+    "editor.minimap.enabled": false,
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "editor.formatOnSave": true,
     "[javascript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[jsonc]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[json]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
+    }
 }
