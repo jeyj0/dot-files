@@ -111,7 +111,7 @@
       ];
       "projectManager.git.maxDepthRecursion" = 1;
       "workbench.startupEditor" = "none";
-      "projectManager.projectsLocation" = "~/.config/home-manager/parts/vscode/";
+      "projectManager.projectsLocation" = "~/.config/home-manager/parts/vscode/"; # TODO remove this
     };
     keybindings = [
       # {
