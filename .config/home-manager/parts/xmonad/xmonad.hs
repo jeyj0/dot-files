@@ -544,7 +544,7 @@ myKeys =
 -- these are the open-by-default workspaces
 -- they have to be defined in the project list as well
 myWorkspaces :: [String]
-myWorkspaces = ["home", "web"]
+myWorkspaces = ["home", "web", "code"]
 
 projects :: [Project]
 projects =
@@ -556,6 +556,11 @@ projects =
               , projectDirectory = "~/"
               , projectStartHook = Just $ do
                   spawn myBrowser
+              }
+    , Project { projectName = "code"
+              , projectDirectory = "~/"
+              , projectStartHook = Just $ do
+                  spawn vscode
               }
     , Project { projectName = "chat"
               , projectDirectory = "~/"
@@ -575,114 +580,6 @@ projects =
               }
     , Project { projectName = "lychee"
               , projectDirectory = "~/Documents/06-mass-storage/3d-printing"
-              , projectStartHook = Nothing
-              }
-    , Project { projectName = "et"
-              , projectDirectory = "~/projects/et"
-              , projectStartHook = Nothing
-              }
-    , Project { projectName = "life"
-              , projectDirectory = "~/projects/life"
-              , projectStartHook = Nothing
-              }
-    , Project { projectName = "troveoflore"
-              , projectDirectory = "~/projects/troveoflore"
-              , projectStartHook = Nothing
-              }
-    , Project { projectName = "pureparcel"
-              , projectDirectory = "~/projects/parcel-purescript-test"
-              , projectStartHook = Nothing
-              }
-    , Project { projectName = "equilibrium"
-              , projectDirectory = "~/projects/equilibrium/"
-              , projectStartHook = Nothing
-              }
-    , Project { projectName = "ihp"
-              , projectDirectory = "~/projects/ihp/"
-              , projectStartHook = Nothing
-              }
-    , Project { projectName = "datasync-test"
-              , projectDirectory = "~/projects/datasync-test/"
-              , projectStartHook = Nothing
-              }
-    , Project { projectName = "ihp-pro"
-              , projectDirectory = "~/projects/ihp-pro/"
-              , projectStartHook = Nothing
-              }
-    , Project { projectName = "ihp-backend"
-              , projectDirectory = "~/projects/ihp-backend"
-              , projectStartHook = Nothing
-              }
-    , Project { projectName = "thin"
-              , projectDirectory = "~/projects/thin-backend"
-              , projectStartHook = Nothing
-              }
-    , Project { projectName = "ex"
-              , projectDirectory = "~/projects/react-realtime-chat-1"
-              , projectStartHook = Nothing
-              }
-    , Project { projectName = "ihp-baas-api"
-              , projectDirectory = "~/projects/ihp-backend-api-service"
-              , projectStartHook = Nothing
-              }
-    , Project { projectName = "ihp-baas-console"
-              , projectDirectory = "~/projects/ihp-backend-management-console"
-              , projectStartHook = Nothing
-              }
-    , Project { projectName = "ihp-boilerplate"
-              , projectDirectory = "~/projects/ihp-boilerplate"
-              , projectStartHook = Nothing
-              }
-    , Project { projectName = "traumimmo"
-              , projectDirectory = "~/projects/traumimmo"
-              , projectStartHook = Nothing
-              }
-    , Project { projectName = "datavise"
-              , projectDirectory = "~/projects/datavise-dsms"
-              , projectStartHook = Nothing
-              }
-    , Project { projectName = "VO"
-              , projectDirectory = "~/projects/virtual-office"
-              , projectStartHook = Nothing
-              }
-    , Project { projectName = "ihp-cloud"
-              , projectDirectory = "~/projects/ihp-cloud"
-              , projectStartHook = Nothing
-              }
-    , Project { projectName = "ihp-casts"
-              , projectDirectory = "~/projects/ihp-casts"
-              , projectStartHook = Nothing
-              }
-    , Project { projectName = "ihp-blog-example-app"
-              , projectDirectory = "~/projects/ihp-blog-example-app"
-              , projectStartHook = Nothing
-              }
-    , Project { projectName = "dnd-org-to-tex"
-              , projectDirectory = "~/projects/dnd-org-to-tex"
-              , projectStartHook = Nothing
-              }
-    , Project { projectName = "mkcollage"
-              , projectDirectory = "~/projects/mkcollage"
-              , projectStartHook = Nothing
-              }
-    , Project { projectName = "ecs-prototype"
-              , projectDirectory = "~/projects/ecs-prototype"
-              , projectStartHook = Nothing
-              }
-    , Project { projectName = "ihp-website"
-              , projectDirectory = "~/projects/ihp-website"
-              , projectStartHook = Nothing
-              }
-    , Project { projectName = "shopping"
-              , projectDirectory = "~/projects/shopping-list"
-              , projectStartHook = Nothing
-              }
-    , Project { projectName = "kla"
-              , projectDirectory = "~/projects/keyboard-layout-analyzer"
-              , projectStartHook = Nothing
-              }
-    , Project { projectName = "dnd-spellcard-generator"
-              , projectDirectory = "~/projects/dnd-spellcard-generator"
               , projectStartHook = Nothing
               }
     ]
