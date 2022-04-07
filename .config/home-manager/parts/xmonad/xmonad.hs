@@ -218,7 +218,7 @@ myEditor :: String
 myEditor = myTerminal ++ " -e nvim "
 
 vscode :: String
-vscode = "code ."
+vscode = "code"
 
 myBorderWidth :: Dimension
 myBorderWidth = 5
