@@ -70,5 +70,14 @@
 			"private"
 		],
 		"enabled": true
+	},
+	{
+		"name": "ihp-backend-management-console",
+		"rootPath": "/home/jeyj0/projects/ihp-backend-management-console",
+		"paths": [],
+		"tags": [
+			"digitallyinduced"
+		],
+		"enabled": true
 	}
 ]
