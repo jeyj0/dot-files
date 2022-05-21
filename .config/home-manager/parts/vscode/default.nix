@@ -25,7 +25,7 @@
       {
         name = "nix-env-selector";
         publisher = "arrterian";
-        version = "1.0.7";
+        version = "1.0.9";
         sha256 = "sha256-DnaIXJ27bcpOrIp1hm7DcrlIzGSjo4RTJ9fD72ukKlc=";
       }
       {
@@ -37,13 +37,13 @@
       {
         name = "vscode-hsx";
         publisher = "s0kil";
-        version = "0.3.1";
+        version = "0.4.0";
         sha256 = "sha256-K2L9GrFbXu/AxdgToAuaW9PXRuUgUx9rHd7MqimFUT8=";
       }
       {
         name = "haskell";
         publisher = "haskell";
-        version = "2.0.0";
+        version = "2.2.0";
         sha256 = "sha256-dmfOS3KIaLsMl+aO+BSBwthVIAyDJRtPLPjcVzqdKOE=";
       }
       {
@@ -55,13 +55,13 @@
       {
         name = "copilot";
         publisher = "GitHub";
-        version = "1.12.5517";
+        version = "1.20.5902";
         sha256 = "sha256-jr6WfOB+efK8goNU9O0bIrcaerH+DxKkt4ioOaPpXh0=";
       }
       {
         name = "vscode-pull-request-github";
         publisher = "GitHub";
-        version = "0.41.2022040609";
+        version = "0.43.2022051220";
         sha256 = "sha256-Rj3xyMkJosCTeBN9rA4zL0EVhtorKYfqbTPiSgC8zbQ=";
       }
       {
@@ -73,7 +73,7 @@
       {
         name = "vscode-docker";
         publisher = "ms-azuretools";
-        version = "1.21.0";
+        version = "1.22.0";
         sha256 = "sha256-VtGqoSDagmYjq9vXtgluiOMB40WphDTWd0F3Y3mgNIs=";
       }
       {
@@ -81,6 +81,12 @@
         publisher = "alefragnani";
         version = "12.5.0";
         sha256 = "sha256-uIV9K67sBp3PRjd63Wycjfawxx0RZfkvl2NQj/lkX2w=";
+      }
+      {
+        name = "sass-indented";
+        publisher = "syler";
+        version = "1.8.19";
+        sha256 = "sha256-CHv4MbcqGqoJOkw4haR2jW8yl3PLiJKQ0OnISEutEhY=";
       }
     ];
     userSettings = {
@@ -102,6 +108,10 @@
       "editor.formatOnSave" = true;
       "[javascript]" =  {
         "editor.defaultFormatter" = "esbenp.prettier-vscode";
+      };
+      "[nix]" = {
+        "editor.defaultFormatter" = "jnoortheen.nix-ide";
+        "editor.formatOnSave" = false;
       };
       "terminal.integrated.defaultLocation" = "editor";
       "editor.fontFamily" = "'Hack Nerd Font', 'Hack', 'monospace', monospace";

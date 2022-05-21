@@ -22,6 +22,12 @@ in
     unstable.discord
     spotify
     zoom-us
+
+    unstable.atkinson-hyperlegible
+    unstable.kdenlive
+    unstable.libwebp
   ];
+
+  fonts.fontconfig.enable = true;
 }
 
