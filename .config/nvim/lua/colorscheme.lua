@@ -23,6 +23,7 @@
 --     endif
 -- ]]
 vim.opt.background = "dark"
+vim.opt.termguicolors = true
 vim.cmd [[
     let g:gruvbox_contrast_dark = "hard"
     let g:gruvbox_sign_column = "bg0"
