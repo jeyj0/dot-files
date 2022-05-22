@@ -120,6 +120,15 @@ return packer.startup(function(use)
 
 	-- reasonable Bdelete command
 	use "kazhala/close-buffers.nvim"
+	-- distraction-free, centered editing
+	use {
+		"folke/zen-mode.nvim",
+		config = function()
+			require('zen-mode').setup {
+				-- default
+			}
+		end
+	}
 
 	if PACKER_BOOTSTRAP then require("packer").sync() end
 end)

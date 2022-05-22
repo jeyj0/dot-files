@@ -1,28 +1,33 @@
 local opts = { noremap = true, silent = true }
 
 local keymap = vim.api.nvim_set_keymap
+function normal(keys, effects)
+	keymap("n", keys, effects, opts)
+end
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-keymap("n", "<leader><leader>", "<cmd>Telescope git_files<CR>", opts)
-keymap("n", "<leader>fs", "<cmd>write<CR>", opts)
-keymap("n", "<leader>fe", "<cmd>NvimTreeToggle<CR>", opts)
-keymap("n", "<leader>fo", "<cmd>SymbolsOutline<CR>", opts)
-keymap("n", "<leader>f%", "<cmd>luafile %<CR>", opts)
+normal("<leader><leader>", "<cmd>Telescope git_files<CR>")
 
-keymap("n", "<leader>t", "<cmd>:Telescope<CR>", opts)
+normal("<leader>fs", "<cmd>write<CR>")
+normal("<leader>fe", "<cmd>NvimTreeToggle<CR>")
+normal("<leader>fo", "<cmd>SymbolsOutline<CR>")
+normal("<leader>f%", "<cmd>luafile %<CR>")
 
-keymap("n", "<esc>", "<cmd>noh<CR>", opts)
+normal("<leader>t", "<cmd>:Telescope<CR>")
 
-keymap("n", "<leader><left>", "<C-w>h", opts)
-keymap("n", "<leader><up>", "<C-w>j", opts)
-keymap("n", "<leader><down>", "<C-w>k", opts)
-keymap("n", "<leader><right>", "<C-w>l", opts)
+normal("<esc>", "<cmd>noh<CR>")
 
-keymap("n", "<leader>bb", "<cmd>Telescope buffers<CR>", opts)
-keymap("n", "<leader>bn", "<cmd>lua require('bufferline').cycle(1)<CR>", opts)
-keymap("n", "<leader>bp", "<cmd>lua require('bufferline').cycle(-1)<CR>", opts)
-keymap("n", "<leader>bk", "<cmd>lua require('close_buffers').delete({type='this'})<CR>", opts)
-keymap("n", "<leader>bo", "<cmd>lua require('close_buffers').delete({type='other'})<CR>", opts)
+normal("<leader><left>" , "<C-w>h")
+normal("<leader><up>"   , "<C-w>j")
+normal("<leader><down>" , "<C-w>k")
+normal("<leader><right>", "<C-w>l")
+normal("<leader>z"      , "<cmd>ZenMode<CR>")
+
+normal("<leader>bb", "<cmd>Telescope buffers<CR>")
+normal("<leader>bn", "<cmd>lua require('bufferline').cycle(1)<CR>")
+normal("<leader>bp", "<cmd>lua require('bufferline').cycle(-1)<CR>")
+normal("<leader>bk", "<cmd>lua require('close_buffers').delete({type='this'})<CR>")
+normal("<leader>bo", "<cmd>lua require('close_buffers').delete({type='other'})<CR>")
 
