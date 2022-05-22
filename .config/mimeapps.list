@@ -1,6 +1,6 @@
 [Added Associations]
 application/octet-stream=nvim.desktop;sxiv.desktop;
-application/zip=org.gnome.FileRoller.desktop;userapp-"file-roller"-JN1Q10.desktop;exo-file-manager.desktop;thunar.desktop;userapp-"unzip"-M2LOI0.desktop;Thunar-folder-handler.desktop;
+application/zip=userapp-"unzip"-M2LOI0.desktop;org.gnome.FileRoller.desktop;userapp-"file-roller"-JN1Q10.desktop;exo-file-manager.desktop;thunar.desktop;Thunar-folder-handler.desktop;
 x-scheme-handler/http=firefox.desktop;
 x-scheme-handler/https=firefox.desktop;
 x-scheme-handler/ftp=firefox.desktop;
@@ -15,7 +15,7 @@ application/x-extension-xht=firefox.desktop;
 image/svg+xml=firefox.desktop;nvim.desktop;userapp-"nvim"-4TIBN0.desktop;emacsclient.desktop;
 application/pdf=org.gnome.Evince.desktop;gimp.desktop;firefox.desktop;org.pwmt.zathura.desktop;
 image/jpeg=gimp.desktop;ristretto.desktop;sxiv.desktop;
-text/plain=nvim.desktop;userapp-"nvim"-4TIBN0.desktop;
+text/plain=code.desktop;nvim.desktop;userapp-"nvim"-4TIBN0.desktop;
 image/png=gimp.desktop;ristretto.desktop;chromium-browser.desktop;org.pwmt.zathura.desktop;sxiv.desktop;
 image/jp2=sxiv.desktop;
 inode/directory=exo-file-manager.desktop;
@@ -30,6 +30,8 @@ application/x-dbf=nvim.desktop;userapp-"nvim"-4TIBN0.desktop;
 application/geo+json=nvim.desktop;
 text/vnd.qt.linguist=nvim.desktop;userapp-"nvim"-4TIBN0.desktop;emacs.desktop;
 text/css=nvim.desktop;
+image/webp=gimp.desktop;
+image/gif=firefox.desktop;
 
 [Default Applications]
 x-scheme-handler/http=firefox.desktop
