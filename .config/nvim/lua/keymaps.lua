@@ -32,3 +32,7 @@ normal("<leader>bp", "<cmd>lua require('bufferline').cycle(-1)<CR>")
 normal("<leader>bk", "<cmd>lua require('close_buffers').delete({type='this'})<CR>")
 normal("<leader>bo", "<cmd>lua require('close_buffers').delete({type='other'})<CR>")
 
+vim.cmd [[
+    imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
+]]
+    -- let g:copilot_no_tab_map = v:true
