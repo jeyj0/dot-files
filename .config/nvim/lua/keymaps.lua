@@ -15,7 +15,8 @@ normal("<leader>fe", "<cmd>NvimTreeToggle<CR>")
 normal("<leader>fo", "<cmd>SymbolsOutline<CR>")
 normal("<leader>f%", "<cmd>luafile %<CR>")
 
-normal("<leader>t", "<cmd>:Telescope<CR>")
+normal("<leader>t", "<cmd>Telescope<CR>")
+normal("<leader>g", "<cmd>Neogit<CR>")
 
 normal("<esc>", "<cmd>noh<CR>")
 
