@@ -35,8 +35,8 @@ return packer.startup(function(use)
 	-- lsp
 	use "williamboman/nvim-lsp-installer"
 	use 'neovim/nvim-lspconfig' -- Collection of configurations for the built-in LSP client
-	use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
-	use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
+	use { "nvim-lua/popup.nvim", requires = "nvim-lua/plenary.nvim" } -- An implementation of the Popup API from vim in Neovim
+	-- use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
 	use { "jose-elias-alvarez/null-ls.nvim", requires = 'nvim-lua/plenary.nvim' }
 
 	-- autocompletion
@@ -47,11 +47,6 @@ return packer.startup(function(use)
 	use "hrsh7th/cmp-cmdline"
 	-- use "hrsh7th/cmp-copilot"
 	use "hrsh7th/cmp-nvim-lua"
-	-- use {
-	--	 'tzachar/cmp-tabnine',
-	--	 run = './install.sh',
-	--	 requires = 'hrsh7th/nvim-cmp'
-	-- }
 	use "onsails/lspkind-nvim"
 	use "saadparwaiz1/cmp_luasnip"
 	use "L3MON4D3/LuaSnip"
@@ -69,7 +64,6 @@ return packer.startup(function(use)
 		end
 	}
 	use { "zbirenbaum/copilot-cmp", after = { "copilot.lua", "nvim-cmp" } }
-
 
 	-- treesitter plugins
 	use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
@@ -98,15 +92,15 @@ return packer.startup(function(use)
 	-- use "nvim-telescope/telescope-frecency.nvim"
 	use "nvim-telescope/telescope-file-browser.nvim"
 	use "nvim-telescope/telescope-ui-select.nvim"
-	use "nvim-telescope/telescope-project.nvim"
+	-- use "nvim-telescope/telescope-project.nvim"
 	
 	-- UI
 	use "rcarriga/nvim-notify"
 	use "lukas-reineke/indent-blankline.nvim"
 	use "norcalli/nvim-colorizer.lua"
-	use "Mofiqul/vscode.nvim"
+	-- use "Mofiqul/vscode.nvim"
 	use "ellisonleao/gruvbox.nvim"
-	use "goolord/alpha-nvim"
+	use { "goolord/alpha-nvim", requires = { "kyazdani42/nvim-web-devicons" } }
 	use { 'akinsho/bufferline.nvim', tag = "v2.*", requires = "kyazdani42/nvim-web-devicons" }
 	use { 'kyazdani42/nvim-tree.lua', tag = 'nightly', requires = 'kyazdani42/nvim-web-devicons' }
 
