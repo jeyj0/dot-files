@@ -37,7 +37,7 @@ return packer.startup(function(use)
 	use 'neovim/nvim-lspconfig' -- Collection of configurations for the built-in LSP client
 	use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
 	use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
-	use "jose-elias-alvarez/null-ls.nvim"
+	use { "jose-elias-alvarez/null-ls.nvim", requires = 'nvim-lua/plenary.nvim' }
 
 	-- autocompletion
 	use "hrsh7th/nvim-cmp"
