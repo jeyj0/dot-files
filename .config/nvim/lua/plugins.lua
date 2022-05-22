@@ -125,6 +125,8 @@ return packer.startup(function(use)
 	}
 	-- use "folke/twilight.nvim"
 	
+	use "tpope/vim-surround"
+	
 	use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
 
 	if PACKER_BOOTSTRAP then require("packer").sync() end
