@@ -125,6 +125,9 @@ return packer.startup(function(use)
 	}
 	-- use "folke/twilight.nvim"
 	
+	-- detect indentation
+	use "NMAC427/guess-indent.nvim"
+	
 	use "tpope/vim-surround"
 	
 	use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }

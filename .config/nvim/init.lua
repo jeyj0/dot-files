@@ -7,6 +7,7 @@ require('globals')
 require('colorscheme')
 
 require('plugins.close-buffers')
+require('plugins.guess-indent')
 
 -- require('plugins.vimspector')
 -- require('plugins.dap')
