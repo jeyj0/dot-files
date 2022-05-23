@@ -81,6 +81,10 @@ return packer.startup(function(use)
 		requires = "nvim-treesitter/nvim-treesitter",
 	}
 
+	-- other plugins to check out:
+	--     https://github.com/ziontee113/syntax-tree-surfer
+	--     https://github.com/drybalka/tree-climber.nvim
+
 	-- telescope plugins
 	use {
 		'nvim-telescope/telescope.nvim',
