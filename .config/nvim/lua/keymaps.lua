@@ -28,6 +28,7 @@ normal("<leader>fs", "<cmd>write<CR>")
 normal("<leader>fe", "<cmd>NvimTreeToggle<CR>")
 normal("<leader>fo", "<cmd>SymbolsOutline<CR>")
 normal("<leader>f%", "<cmd>luafile %<CR>")
+normal("<leader>fd", "<cmd>Trouble document_diagnostics<CR>")
 
 -- common actions via leader
 normal("<leader>t", "<cmd>Telescope<CR>")

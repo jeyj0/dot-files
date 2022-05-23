@@ -100,9 +100,12 @@ return packer.startup(function(use)
 	use "norcalli/nvim-colorizer.lua"
 	-- use "Mofiqul/vscode.nvim"
 	use "ellisonleao/gruvbox.nvim"
+	use "folke/lsp-colors.nvim" -- automatically patch colorschemes that don't have lsp support
 	use { "goolord/alpha-nvim", requires = { "kyazdani42/nvim-web-devicons" } }
 	use { 'akinsho/bufferline.nvim', tag = "v2.*", requires = "kyazdani42/nvim-web-devicons" }
 	use { 'kyazdani42/nvim-tree.lua', tag = 'nightly', requires = 'kyazdani42/nvim-web-devicons' }
+
+	use { "folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons" }
 
 	-- UI.statusline
 	use "nvim-lualine/lualine.nvim"
