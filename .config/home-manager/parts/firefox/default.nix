@@ -1,5 +1,7 @@
 { userName, pkgs }:
 {
+  # consider swithching to librewolf:
+  # https://librewolf.net/
   programs.firefox = {
     enable = true;
     package = pkgs.unstable.firefox;
