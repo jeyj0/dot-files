@@ -34,6 +34,9 @@ normal("<leader>fd", "<cmd>Trouble document_diagnostics<CR>")
 normal("<leader>t", "<cmd>Telescope<CR>")
 normal("<leader>g", "<cmd>Neogit<CR>")
 
+-- lsp code action
+normal("<leader>.", "<cmd>lua vim.lsp.buf.code_action()<CR>")
+
 -- clear search highlight
 normal("<esc>", "<cmd>noh<CR>")
 
