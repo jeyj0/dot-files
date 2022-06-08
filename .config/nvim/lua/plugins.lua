@@ -136,7 +136,7 @@ return packer.startup(function(use)
 	use "NMAC427/guess-indent.nvim"
 	
 	use "tpope/vim-surround"
-	use "tpope/vim-abolish"
+	use "tpope/vim-abolish" -- consider johmsalas/text-case.nvim
 	
 	use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
 
