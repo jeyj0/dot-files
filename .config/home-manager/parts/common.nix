@@ -26,6 +26,8 @@
     curlie
 
     sc-im
+
+    qbittorrent
   ];
 }
 
