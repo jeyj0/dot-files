@@ -12,7 +12,7 @@ null_ls.setup({
 		-- formatter
 		formatting.shfmt,
 		-- formatting.stylua,
-		formatting.prettier,
+		-- formatting.prettier,
 		formatting.clang_format,
 		diagnostics.cspell,
 	},
