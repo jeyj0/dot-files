@@ -18,12 +18,6 @@ in
   # should.
   system.stateVersion = "19.09"; # Did you read the comment?
 
-  system.autoUpgrade = {
-    # enable = true;
-    allowReboot = false;
-    channel = https://nixos.org/channels/nixos-20.03;
-  };
-
   boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ]; # used to build images for RPi
 
@@ -40,15 +34,6 @@ in
     };
   };
 
-  # boot.loader.systemd-boot.enable = true;
-  # boot.loader.efi.canTouchEfiVariables = true;
-
-  # Use the GRUB 2 boot loader.
-  # boot.loader.grub.efiSupport = true;
-  # boot.loader.grub.efiInstallAsRemovable = true;
-  # boot.loader.efi.efiSysMountPoint = "/boot/efi";
-  # Define on which hard drive you want to install Grub.
-
   networking = {
     # hostName = "jannis-arcusx"; # Define your hostname.
     # wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -59,19 +44,6 @@ in
   # Per-interface useDHCP will be mandatory in the future, so this generated config
   # replicates the default behaviour.
   networking.useDHCP = false;
-  # networking.interfaces.enp0s31f6.useDHCP = true;
-  # networking.interfaces.enp0s31f6.useDHCP = true;
-  # networking.interfaces.wlp3s0.useDHCP = true;
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Select internationalisation properties.
-  i18n = {
-  #   consoleKeyMap = "us";
-  #   defaultLocale = "en_US.UTF-8";
-  };
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
@@ -104,20 +76,10 @@ in
     '';
   };
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = { enable = true; enableSSHSupport = true; };
-
-  # List services that you want to enable:
-
   networking.firewall.enable = true;
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [ 80 443 631 4443 8000 3000 8080 8001 8081 8082 8083 8084 8085 5000 9993 10000 ];
   networking.firewall.allowedUDPPorts = [ 10000 9993 631 ];
-
-  # Enable CUPS to print documents.
-  # services.printing.enable = true;
 
   # Enable sound.
   sound.enable = true;
@@ -142,7 +104,6 @@ in
         userServices = true;
       };
     };
-    zerotierone.enable = true;
     syncthing = {
       enable = true;
       openDefaultPorts = true;
@@ -157,7 +118,6 @@ in
       package = pkgs.unclutter-xfixes;
     };
     openssh.enable = true;
-    lorri.enable = true;
     blueman.enable = true;
     redshift = {
       enable = true;
