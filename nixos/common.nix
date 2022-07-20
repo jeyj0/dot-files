@@ -223,18 +223,6 @@ in
   # system-wide program settings
   programs = {
     command-not-found.enable = true;
-    zsh = {
-      enable = true;
-      autosuggestions.enable = true;
-      syntaxHighlighting.enable = true;
-      interactiveShellInit = ''
-        export ZSH=${pkgs.oh-my-zsh}/share/oh-my-zsh/
-      '';
-      promptInit = "";
-      ohMyZsh = {
-        enable = true;
-      };
-    };
   };
 
   # globally installed packages
