@@ -26,6 +26,8 @@ in
     unstable.atkinson-hyperlegible
     unstable.kdenlive
     unstable.libwebp
+
+    unstable.krita
   ];
 
   fonts.fontconfig.enable = true;
