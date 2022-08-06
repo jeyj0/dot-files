@@ -9,7 +9,8 @@
   home.packages = with pkgs; [
     nixos-generators
 
-    nur.repos.rycee.firefox-addons-generator
+    # nur.repos.rycee.firefox-addons-generator
+    # nur.repos.rycee.mozilla-addons-to-nix
 
     sxiv
     fontpreview
