@@ -35,7 +35,8 @@
       end
 
       # add direnv hook
-      eval (direnv hook fish)
+      # eval (direnv hook fish)
+      direnv hook fish | source
 
       # source nnn config
       source $FISH_PATH/nnn.fish
