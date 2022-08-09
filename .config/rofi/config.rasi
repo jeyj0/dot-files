@@ -1,7 +1,7 @@
 configuration {
   modi: "window,run,keys";
   show-icons: true;
-  font: "Fira Code 19";
+  font: "Hack Nerd Font 14";
   sort: true;
   matching: "fuzzy";
   case-sensitive: false;
