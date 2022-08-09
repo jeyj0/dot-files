@@ -391,6 +391,7 @@ myManageHook = composeAll
      , stringProperty "WM_WINDOW_ROLE" =? "GtkFileChooserDialog" --> (doRectFloat $ W.RationalRect (1%4) (1%4) (2%4) (2%4))
      , title =? "Error" --> (doRectFloat $ W.RationalRect (1%4) (1%4) (2%4) (2%4))
      , className =? "nnn" --> (doRectFloat $ W.RationalRect (1%4) (1%4) (2%4) (2%4))
+     , className =? "Rofi" --> (doRectFloat $ W.RationalRect (1%4) (1%4) (2%4) (2%4))
      ]
 
 data EmacsOpenAction
@@ -457,7 +458,7 @@ myKeys =
         , ("M-S-l", spawn "xfce4-session-logout &")
 
     -- Run Prompt
-        , ("M-o", spawn "rofi -show run")
+        , ("M-o", spawn "rofi -show run -normal-window")
         , ("M-S-o", TS.treeselectAction myTreeSelectConf treeSelectOpenActions) -- Open action tree select
 
     -- Useful programs to have a keybinding for launch
