@@ -107,6 +107,8 @@ import XMonad.Hooks.SetWMName (setWMName)
 import XMonad.Hooks.WorkspaceHistory (workspaceHistoryHook)
 
     -- Layouts
+import XMonad.Layout.Reflect (reflectHoriz)
+import XMonad.Layout.PerScreen (ifWider)
 import XMonad.Layout.ResizableTile
   ( ResizableTall(ResizableTall)
   , MirrorResize(MirrorShrink, MirrorExpand)
@@ -129,7 +131,7 @@ import qualified XMonad.Layout.LayoutModifier
 import XMonad.Layout.LimitWindows (limitWindows, increaseLimit, decreaseLimit)
 import XMonad.Layout.MultiToggle (mkToggle, single, EOT(EOT), (??))
 import XMonad.Layout.MultiToggle.Instances (StdTransformers(NBFULL, MIRROR, NOBORDERS))
-import XMonad.Layout.NoBorders (noBorders)
+import XMonad.Layout.NoBorders (noBorders, hasBorder, smartBorders)
 import XMonad.Layout.Renamed (renamed, Rename(Replace))
 import XMonad.Layout.Simplest (Simplest(Simplest))
 import XMonad.Layout.Spacing (Spacing, spacingRaw, Border(Border), incWindowSpacing, decWindowSpacing, incScreenSpacing, decScreenSpacing)
@@ -361,12 +363,21 @@ myTabTheme = def { fontName            = myFont
                  , inactiveTextColor   = "#928374"
                  }
 
-myLayoutHook = avoidStruts $ mouseResize $ windowArrange
-               $ mkToggle (NBFULL ?? EOT) myDefaultLayout
-             where
-               myDefaultLayout =     tall
-                                 ||| noBorders tabs
-                                 ||| equal
+myLayoutHook =
+  smartBorders $
+  avoidStruts $
+  mouseResize $
+  windowArrange $
+  mkToggle (NBFULL ?? EOT) $
+  ifWider 1920 myWideLayout myThinLayout
+  where
+    myWideLayout = tall
+      ||| noBorders tabs
+      ||| equal
+
+    myThinLayout = (renamed [Replace "tall"] $ reflectHoriz tall)
+      ||| (renamed [Replace "tabs"] $ reflectHoriz $ noBorders tabs)
+      ||| (renamed [Replace "equal"] $ reflectHoriz equal)
 
 xmobarEscape :: String -> String
 xmobarEscape = concatMap doubleLts
@@ -391,7 +402,10 @@ myManageHook = composeAll
      , stringProperty "WM_WINDOW_ROLE" =? "GtkFileChooserDialog" --> (doRectFloat $ W.RationalRect (1%4) (1%4) (2%4) (2%4))
      , title =? "Error" --> (doRectFloat $ W.RationalRect (1%4) (1%4) (2%4) (2%4))
      , className =? "nnn" --> (doRectFloat $ W.RationalRect (1%4) (1%4) (2%4) (2%4))
-     , className =? "Rofi" --> (doRectFloat $ W.RationalRect (1%4) (1%4) (2%4) (2%4))
+     , className =? "Rofi" --> composeAll
+        [ doRectFloat $ W.RationalRect (1%4) (1%4) (2%4) (2%4)
+        , hasBorder False
+        ]
      ]
 
 data EmacsOpenAction
@@ -620,7 +634,7 @@ main = do
                         , ppTitle = xmobarColor "#ebdbb2" "" . shorten 60     -- Title of active window in xmobar
                         , ppSep =  "<fc=#928374> <fn=2>|</fn> </fc>"          -- Separators in xmobar
                         , ppUrgent = xmobarColor "#cc241d" "" . wrap "!" "!"  -- Urgent workspace
-                        , ppExtras  = [windowCount]                           -- # of windows current workspace
+                        , ppExtras  = []-- [windowCount] -- # of windows current workspace
                         , ppOrder  = \(ws:l:t:ex) -> [ws,l]++ex++[t]
                         }
         } `additionalKeysP` myKeys

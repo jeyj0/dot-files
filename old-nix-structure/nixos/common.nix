@@ -150,7 +150,7 @@ in
       xmonad = {
         enable = true;
         enableContribAndExtras = true;
-        config = ../.config/home-manager/parts/xmonad/xmonad.hs;
+        config = ../home-manager/parts/xmonad/xmonad.hs;
         extraPackages = hpkgs: with hpkgs; [
           xmonad
           xmonad-contrib

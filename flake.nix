@@ -42,16 +42,16 @@
           };
         })
         (_: pkgs: {
-          firefox-addons = pkgs.callPackage (import ./nixos/nix/pkgs/firefox-addons) {};
+          firefox-addons = pkgs.callPackage (import ./old-nix-structure/nixos/nix/pkgs/firefox-addons) {};
 
-          responsively = pkgs.callPackage (import ./nixos/nix/pkgs/responsively.nix) {};
-          nnn = pkgs.callPackage (import ./nixos/nix/pkgs/nnn.nix) {};
+          responsively = pkgs.callPackage (import ./old-nix-structure/nixos/nix/pkgs/responsively.nix) {};
+          nnn = pkgs.callPackage (import ./old-nix-structure/nixos/nix/pkgs/nnn.nix) {};
 
-          dnd-fonts = pkgs.callPackage (import ./nixos/nix/pkgs/dnd-fonts.nix) {};
+          dnd-fonts = pkgs.callPackage (import ./old-nix-structure/nixos/nix/pkgs/dnd-fonts.nix) {};
 
-          picom = pkgs.callPackage (import ./nixos/nix/pkgs/picom) {};
-          # wonderdraft = pkgs.callPackage (import ./nixos/nix/pkgs/wonderdraft) {};
-          lychee-slicer = pkgs.callPackage (import ./nixos/nix/pkgs/lychee-slicer) {};
+          picom = pkgs.callPackage (import ./old-nix-structure/nixos/nix/pkgs/picom) {};
+          # wonderdraft = pkgs.callPackage (import ./old-nix-structure/nixos/nix/pkgs/wonderdraft) {};
+          lychee-slicer = pkgs.callPackage (import ./old-nix-structure/nixos/nix/pkgs/lychee-slicer) {};
         })
       ];
     };
@@ -66,7 +66,7 @@
         homeDirectory = "/home/jeyj0";
         configuration = {
           imports = [
-            ./.config/home-manager/jeyj0-nixos.nix
+            ./old-nix-structure/home-manager/jeyj0-nixos.nix
           ];
         };
 
@@ -78,7 +78,7 @@
         inherit system pkgs;
 
         modules = [
-          ./nixos/hosts/jeyj0-nixos.nix
+          ./old-nix-structure/nixos/hosts/jeyj0-nixos.nix
         ];
       };
     };

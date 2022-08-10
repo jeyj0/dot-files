@@ -15,7 +15,7 @@
 !update.sh
 
 # do not ignore NixOS configs
-!nixos/
+!old-nix-structure/
 
 # do not ignore custom home-manager checkout
 !home-manager/
