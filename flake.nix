@@ -60,6 +60,7 @@
         configuration = {
           imports = [
             ./old-nix-structure/home-manager/jeyj0-nixos.nix
+            ./modules/home-manager
           ];
         };
 
