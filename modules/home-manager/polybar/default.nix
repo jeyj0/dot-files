@@ -17,7 +17,7 @@ with lib;
             left = "start xmonad";
             right = "cpu ram disk date";
           };
-          font = ["Hack Nerd Font"];
+          font = ["Hack Nerd Font:pixelsize=12.5;2"];
           background = "#1d2021";
           foreground = "#fbf1c7";
           module.margin = 1;
