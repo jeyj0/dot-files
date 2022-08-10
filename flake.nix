@@ -42,7 +42,7 @@
             inherit system config;
           };
         })
-        (_: pkgs: self.packages)
+        (_: _: self.packages.${system})
       ];
     };
 
@@ -73,7 +73,7 @@
       };
     };
 
-    packages = {
+    packages.${system} = {
       firefox-addons = pkgs.callPackage (import ./old-nix-structure/nixos/nix/pkgs/firefox-addons) {};
 
       responsively = pkgs.callPackage (import ./old-nix-structure/nixos/nix/pkgs/responsively.nix) {};
