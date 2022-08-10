@@ -155,6 +155,8 @@ in
           xmonad
           xmonad-contrib
           xmonad-extras
+          dbus
+          monad-logger
         ];
       };
     };

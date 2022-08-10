@@ -15,7 +15,7 @@ with lib;
           height = 32;
           modules = {
             # left = "cpu ram";
-            left = "cpu";
+            left = "xmonad cpu";
           };
           font = ["Hack Nerd Font"];
           background = "#1d2021";
@@ -23,6 +23,11 @@ with lib;
         };
         "module/cpu" = {
           type = "internal/cpu";
+        };
+        "module/xmonad" = {
+          type = "custom/script";
+          exec = "${pkgs.xmonad-log}/bin/xmonad-log";
+          tail = true;
         };
       };
     };

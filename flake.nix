@@ -62,6 +62,8 @@
             ./old-nix-structure/home-manager/jeyj0-nixos.nix
             ./modules/home-manager
           ];
+
+          jeyj0.polybar.enable = true;
         };
 
       };
