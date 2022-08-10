@@ -13,7 +13,6 @@
 !git/
 !i3/
 !Thunar/
-!polybar/
 !VSCodium/User/settings.json
 !configtemplates/
 !compton.conf
