@@ -9,7 +9,7 @@ Config { font    = "xft:Hack Nerd Font:weight=regular:pixelsize=16:antialias=tru
                            ]
        , bgColor = "#1c1c1c"
        , fgColor = "#ebdbb2"
-       , position = Static { xpos = 0 , ypos = 0, width = 1920, height = 24 }
+       , position = Static { xpos = 0 , ypos = 0, width = 1920, height = 32 }
        , lowerOnStart = True
        , hideOnStart = False
        , allDesktops = True
