@@ -43,6 +43,9 @@
           };
         })
         (_: _: self.packages.${system})
+        (_: _: {
+          firefox-addons = self.firefox-addons;
+        })
       ];
     };
 
@@ -73,9 +76,9 @@
       };
     };
 
-    packages.${system} = {
-      firefox-addons = pkgs.callPackage (import ./old-nix-structure/nixos/nix/pkgs/firefox-addons) {};
+    firefox-addons = pkgs.callPackage (./old-nix-structure/nixos/nix/pkgs/firefox-addons) {};
 
+    packages.${system} = {
       responsively = pkgs.callPackage (import ./old-nix-structure/nixos/nix/pkgs/responsively.nix) {};
       nnn = pkgs.callPackage (import ./old-nix-structure/nixos/nix/pkgs/nnn.nix) {};
 
