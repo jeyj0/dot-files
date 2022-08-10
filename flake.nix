@@ -17,7 +17,8 @@
   };
 
   outputs =
-    { nixpkgs
+    { self
+    , nixpkgs
     , nixpkgs-unstable
     , home-manager
     , nur
@@ -41,18 +42,7 @@
             inherit system config;
           };
         })
-        (_: pkgs: {
-          firefox-addons = pkgs.callPackage (import ./old-nix-structure/nixos/nix/pkgs/firefox-addons) {};
-
-          responsively = pkgs.callPackage (import ./old-nix-structure/nixos/nix/pkgs/responsively.nix) {};
-          nnn = pkgs.callPackage (import ./old-nix-structure/nixos/nix/pkgs/nnn.nix) {};
-
-          dnd-fonts = pkgs.callPackage (import ./old-nix-structure/nixos/nix/pkgs/dnd-fonts.nix) {};
-
-          picom = pkgs.callPackage (import ./old-nix-structure/nixos/nix/pkgs/picom) {};
-          # wonderdraft = pkgs.callPackage (import ./old-nix-structure/nixos/nix/pkgs/wonderdraft) {};
-          lychee-slicer = pkgs.callPackage (import ./old-nix-structure/nixos/nix/pkgs/lychee-slicer) {};
-        })
+        (_: pkgs: self.packages)
       ];
     };
 
@@ -81,6 +71,19 @@
           ./old-nix-structure/nixos/hosts/jeyj0-nixos.nix
         ];
       };
+    };
+
+    packages = {
+      firefox-addons = pkgs.callPackage (import ./old-nix-structure/nixos/nix/pkgs/firefox-addons) {};
+
+      responsively = pkgs.callPackage (import ./old-nix-structure/nixos/nix/pkgs/responsively.nix) {};
+      nnn = pkgs.callPackage (import ./old-nix-structure/nixos/nix/pkgs/nnn.nix) {};
+
+      dnd-fonts = pkgs.callPackage (import ./old-nix-structure/nixos/nix/pkgs/dnd-fonts.nix) {};
+
+      picom = pkgs.callPackage (import ./old-nix-structure/nixos/nix/pkgs/picom) {};
+      # wonderdraft = pkgs.callPackage (import ./old-nix-structure/nixos/nix/pkgs/wonderdraft) {};
+      lychee-slicer = pkgs.callPackage (import ./old-nix-structure/nixos/nix/pkgs/lychee-slicer) {};
     };
 
   };
