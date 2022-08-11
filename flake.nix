@@ -98,13 +98,15 @@
       picom = pkgs.callPackage (import ./old-nix-structure/nixos/nix/pkgs/picom) {};
       # wonderdraft = pkgs.callPackage (import ./old-nix-structure/nixos/nix/pkgs/wonderdraft) {};
       lychee-slicer = pkgs.callPackage (import ./old-nix-structure/nixos/nix/pkgs/lychee-slicer) {};
-      dotgen = pkgs.unstable.callPackage (import ./packages/dotgen) {};
 
+      dotgen = pkgs.unstable.callPackage (import ./packages/dotgen) {};
       # dotgen package marker
     };
 
     devShell.${system} = pkgs.mkShell {
-      packages = with pkgs; [ dotgen ];
+      packages = with pkgs; [
+        dotgen
+      ];
     };
 
   };
