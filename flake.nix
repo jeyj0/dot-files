@@ -100,12 +100,14 @@
       lychee-slicer = pkgs.callPackage (import ./old-nix-structure/nixos/nix/pkgs/lychee-slicer) {};
 
       dotgen = pkgs.unstable.callPackage (import ./packages/dotgen) {};
+      dotfiles-scripts = pkgs.unstable.callPackage (import ./packages/dotfiles-scripts) {};
       # dotgen package marker
     };
 
     devShell.${system} = pkgs.mkShell {
       packages = with pkgs; [
         dotgen
+        dotfiles-scripts
       ];
     };
 
