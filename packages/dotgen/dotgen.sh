@@ -70,7 +70,7 @@ with lib;
 cat <<'EOF' >\"$FILE_PATH\"
 $FILE_CONTENTS
 EOF
-sed --in-place \"s/^\(\s*\)# dotgen home module marker/\1.\/test\n\1# dotgen home module marker/\" \"$ROOT_FOLDER/modules/home-manager/default.nix\""
+sed --in-place \"s/^\(\s*\)# dotgen home module marker/\1.\/$MODULE_NAME\n\1# dotgen home module marker/\" \"$ROOT_FOLDER/modules/home-manager/default.nix\""
     echo ""
     echo "Going to execute:"
     echo "$CMDS"
