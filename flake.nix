@@ -71,6 +71,7 @@
           jeyj0 = {
             polybar.enable = true;
             obsidian.enable = true;
+            picom.enable = true;
           };
         };
 

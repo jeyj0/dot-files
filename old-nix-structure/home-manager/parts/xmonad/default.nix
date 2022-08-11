@@ -9,7 +9,8 @@
     xdotool
 
     nitrogen # to set wallpapers
-    picom # for animations and other fancy stuff
+    # TODO add picom module to xmonad collection when it's created
+    # picom # for animations and other fancy stuff
 
     rofi
 

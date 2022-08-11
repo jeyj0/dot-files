@@ -15,7 +15,6 @@
 !VSCodium/User/settings.json
 !configtemplates/
 !compton.conf
-!picom.conf
 !nixpkgs/
 !coc/
 !xmonad/
