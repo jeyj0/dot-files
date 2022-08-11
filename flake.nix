@@ -63,7 +63,10 @@
             ./modules/home-manager
           ];
 
-          jeyj0.polybar.enable = true;
+          jeyj0 = {
+            git.enable = true;
+            polybar.enable = true;
+          };
         };
 
       };

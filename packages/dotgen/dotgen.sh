@@ -46,6 +46,8 @@ if [ "$TYPE" = "home module" ]; then
 
     FILE_CONTENTS="{ config
 , pkgs
+, lib
+, ...
 }:
 with lib;
 {
@@ -53,7 +55,7 @@ with lib;
     enable = mkEnableOption \"$MODULE_NAME\";
   };
 
-  config = mkIf config.jeyj0.$MODULE_NAME.enable = {
+  config = mkIf config.jeyj0.$MODULE_NAME.enable {
     home.packages = with $PKGS; [ $PACKAGE_NAME ];
   };
 }
