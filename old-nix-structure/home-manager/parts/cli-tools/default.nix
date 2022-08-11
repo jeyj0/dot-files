@@ -11,8 +11,6 @@
     wget
     htop
 
-    # git
-    gitAndTools.diff-so-fancy # TODO move | pretty diffs
     unstable.gitui
 
     # pijul
