@@ -61,18 +61,20 @@ with lib;
 }
 "
 
+    HM_MODULES_LIST_FILE="$ROOT_FOLDER/modules/home-manager/default.nix"
+
     echo ""
 
     echo "Planned Actions:"
     echo "Create directory: $FOLDER"
     echo "Create file: $FILE_PATH"
-    echo "Add \"./$MODULE_NAME\" to import list in $ROOT/modules/home-manager/default.nix"
+    echo "Add \"./$MODULE_NAME\" to import list in $HM_MODULES_LIST_FILE"
 
     CMDS="mkdir --parents \"$FOLDER\"
 cat <<'EOF' >\"$FILE_PATH\"
 $FILE_CONTENTS
 EOF
-sed --in-place \"s/^\(\s*\)# dotgen home module marker/\1.\/$MODULE_NAME\n\1# dotgen home module marker/\" \"$ROOT_FOLDER/modules/home-manager/default.nix\""
+sed --in-place \"s/^\(\s*\)# dotgen home module marker/\1.\/$MODULE_NAME\n\1# dotgen home module marker/\" \"$HM_MODULES_LIST_FILE\""
     echo ""
     echo "Going to execute:"
     echo "$CMDS"
@@ -88,6 +90,56 @@ sed --in-place \"s/^\(\s*\)# dotgen home module marker/\1.\/$MODULE_NAME\n\1# do
 elif [ "$TYPE" = "system module" ]; then
   echo "Sorry, haven't implemented that yet..."
 elif [ "$TYPE" = "package" ]; then
-  echo "Sorry, haven't implemented that yet..."
+
+  echo "❓ What should be the package's name?"
+  PACKAGE_NAME=$(gum input)
+  echo "$PACKAGE_NAME"
+  echo ""
+
+  FOLDER="$ROOT_FOLDER/packages/$PACKAGE_NAME"
+  FILE_PATH="$FOLDER/default.nix"
+  FLAKE_NIX_PATH="$ROOT_FOLDER/flake.nix"
+  FILE_CONTENTS="{ lib
+, stdenv
+, pkgs
+, ...
+}:
+stdenv.mkDerivation {
+  name = \"$PACKAGE_NAME\";
+  src = ./.;
+  installPhase = ''
+    mkdir -p \$out/bin
+    cat <<'EOF' > \$out/bin/hello
+    #!/bin/sh
+    echo \"Hello $PACKAGE_NAME!\"
+    EOF
+    chmod +x \$out/bin/hello
+  '';
+}
+"
+  PACKAGE_ENTRY="$PACKAGE_NAME = pkgs.unstable.callPackage (import .\/packages\/$PACKAGE_NAME) {};"
+
+  echo "Planned Actions:"
+  echo "Create directory: $FOLDER"
+  echo "Create file: $FILE_PATH"
+  echo "Add \"$PACKAGE_ENTRY\" to package list in $FLAKE_NIX_PATH"
+
+  DOTGEN_MARKER="dotgen package marker"
+  CMDS="mkdir --parents \"$FOLDER\"
+cat <<'EOF' >\"$FILE_PATH\"
+$FILE_CONTENTS
+EOF
+sed --in-place \"s/^\(\s*\)# $DOTGEN_MARKER/\1$PACKAGE_ENTRY\n\1# $DOTGEN_MARKER/\" \"$FLAKE_NIX_PATH\""
+  echo ""
+  echo "Going to execute:"
+  echo "$CMDS"
+  echo ""
+
+  if gum confirm "Run actions?" ; then
+    bash -c "$CMDS"
+  else
+    echo "Exiting without applying changes"
+  fi
+
 fi
 
