@@ -29,7 +29,6 @@
     lxc
 
     # wonderdraft
-    unstable.obsidian
 
     unstable.chromium
     # qutebrowser

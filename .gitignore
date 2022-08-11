@@ -29,7 +29,4 @@
 # do not ignore my documentation
 !docs/
 
-# do not ignore scripts in .local/
-!.local/
-
 !.emacs.d/
