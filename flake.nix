@@ -61,10 +61,14 @@
           imports = [
             ./old-nix-structure/home-manager/jeyj0-nixos.nix
             ./modules/home-manager
+            ./collections/home-manager
           ];
 
+          jeyj0.collections = {
+            core.enable = true;
+          };
+
           jeyj0 = {
-            git.enable = true;
             polybar.enable = true;
           };
         };

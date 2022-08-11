@@ -18,6 +18,7 @@
 !old-nix-structure/
 !modules/
 !packages/
+!collections/
 
 # do not ignore custom home-manager checkout
 !home-manager/
