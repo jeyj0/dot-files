@@ -1,5 +1,5 @@
 #!/bin/sh
-pushd ~
-nix build .#homeManagerConfigurations.jeyj0.activationPackage
-./result/activate 
+pushd ~/projects/dotfiles
+nix --extra-experimental-features "nix-command flakes" build .#homeManagerConfigurations.jeyj0.activationPackage
+./result/activate
 popd

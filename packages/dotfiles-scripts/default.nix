@@ -82,6 +82,19 @@ let
       ];
       text = ./update.sh;
     }) inputs;
+
+  shell = pkgs.callPackage
+    ({ writeShellApplication
+    , pkgs
+    , ...
+    }:
+    writeShellApplication {
+      name = "dot-shell";
+      runtimeInputs = with pkgs; [
+        bash
+      ];
+      text = ./shell.sh;
+    }) inputs;
 in
 symlinkJoin {
   name = "dotfiles-scripts";
@@ -92,6 +105,7 @@ symlinkJoin {
     build-home
     build-system
     update
+    shell
   ];
 }
 

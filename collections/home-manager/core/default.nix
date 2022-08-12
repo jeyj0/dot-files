@@ -14,6 +14,7 @@ with lib;
       git.enable = true;
       fish.enable = true;
       starship.enable = true;
+      neovim.enable = true;
     };
   };
 }

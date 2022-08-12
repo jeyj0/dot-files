@@ -21,6 +21,7 @@ To solve this, you need to split building and activating the home-manager config
 ```sh
 nix-env -iA git # in case you haven't already
 git clone ... # clone this repository using git
+nix --extra-experimental-features "nix-command flakes" develop # enter a nix shell (enabling required experimental nix features)
 dot-build-home # build the home-manager configuration
 nix-env -e git-minimal # remove the nix-env git again
 ./result/activate # activate the home-manager installation that includes git

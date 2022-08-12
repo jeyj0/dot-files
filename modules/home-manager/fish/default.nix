@@ -10,7 +10,10 @@ with lib;
   };
 
   config = mkIf config.jeyj0.fish.enable {
-    home.packages = with pkgs.unstable; [ fish ];
+    home.packages = with pkgs.unstable; [
+      fish
+      direnv
+    ];
     programs.fish = {
       enable = true;
       package = pkgs.unstable.fish;
@@ -60,6 +63,8 @@ with lib;
             set -gx $arr[1] $arr[2]
           end
         end
+
+	source ~/.config/fish/fish_variables.bkp # temporary "fix"
       '';
     };
     home.file.fishConfigs = {

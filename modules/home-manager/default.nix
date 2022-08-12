@@ -8,6 +8,7 @@
     ./starship
     ./fish
     ./starship
+    ./neovim
     # dotgen home module marker
   ];
 }
