@@ -15,6 +15,7 @@
     ./alacritty
     ./ag
     ./direnv
+    ./helix
     # dotgen home module marker
   ];
 }
