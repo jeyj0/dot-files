@@ -1,8 +1,0 @@
-add_newline = false
-
-format = """$directory
-$character
-"""
-
-[directory]
-truncation_length = 1

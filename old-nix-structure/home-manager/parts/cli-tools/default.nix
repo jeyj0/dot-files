@@ -27,7 +27,7 @@
     zip unzip
     gnumake
 
-    starship # beautiful command prompt
+    # starship # beautiful command prompt
 
     fzf
     silver-searcher # ag (faster ack (faster & better grep))

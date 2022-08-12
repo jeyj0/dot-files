@@ -58,7 +58,7 @@ in
     users."${userName}" = {
       isNormalUser = true;
       extraGroups = [ userName "wheel" "docker" "lxd" "lxc" "audio" "video" ]; # Enable ‘sudo’ for the user.
-      shell = pkgs.fish;
+      shell = pkgs.unstable.fish;
       createHome = true;
       home = userHome;
       description = "Jannis Jorre";
