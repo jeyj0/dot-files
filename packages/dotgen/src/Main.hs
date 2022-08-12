@@ -75,29 +75,12 @@ generateActions HomeModule = do
     [SimplePackage, HomeManagerProgram]
   case typeHomeModule of
     SimplePackage -> do
-      putStrLn "❓ What is the package's name in nixpkgs?"
-      packageName <- getLine
+      packageName <- askLine "What is the package's name in nixpkgs?"
 
-      putStrLn "❓ What do you want to call the module?"
-      moduleName' <- getLine
-      let moduleName = if moduleName' == "" then packageName else moduleName'
+      moduleName <- askLineDefault packageName "What do you want to call the module?"
       putStrLn $ "Using " <> moduleName <> " as module name"
 
-      rootFolder' <- getRootFolder
-      let rootFolder = T.pack rootFolder'
-      let folderPath = rootFolder <> "/modules/home-manager/" <> moduleName
-
-      addActionToContext
-        ( "Create directory: " <> folderPath
-        , mkdirP folderPath
-        )
-
-      let homeManagerModulesListFilePath = rootFolder <> "/modules/home-manager/default.nix"
-
-      addActionToContext
-        ( "Add module to list in " <> homeManagerModulesListFilePath
-        , insertLineBefore homeManagerModulesMarker ("./" <> moduleName) homeManagerModulesListFilePath
-        )
+      folderPath <- addHMModule moduleName
 
       let filePath = folderPath <> "/default.nix"
 
@@ -112,12 +95,89 @@ generateActions HomeModule = do
         , writeFile filePath fileContents
         )
 
-    HomeManagerProgram -> undefined
+    HomeManagerProgram -> do
+      programName <- askLine "What is the program's name in home-manager?"
+      moduleName <- askLineDefault programName "What do you want to call the module?"
+
+      folderPath <- addHMModule moduleName
+
+      overridePackage <- confirm "Do you want to override the program's package?"
+
+      overridePackageText <- if overridePackage
+        then do
+          useUnstable <- confirm "Do you want to use unstable nixpkgs?"
+          let pkgs = if useUnstable then "pkgs.unstable" else "pkgs"
+          let empty = ""
+          pure [trimming|
+            ${empty}
+            package = ${pkgs}.${programName};
+          |]
+        else pure ""
+
+      addActionToContext
+        ( "Write generated module code to " <> folderPath <> "/default.nix"
+        , writeFile (folderPath <> "/default.nix") [trimming|
+          { config
+          , pkgs
+          , lib
+          , ...
+          }:
+          with lib;
+          {
+            options.jeyj0.$moduleName = {
+              enable = mkEnableOption "${moduleName}";
+            };
+
+            config = mkIf config.jeyj0.${moduleName}.enable {
+              programs.${programName} = {
+                enable = true;${overridePackageText}
+              };
+            };
+          }
+        |]
+        )
+
+      pure ()
 
 generateActions SystemModule = error "Sorry, I haven't implemented that yet"
 
 generateActions Package = do
   pure ()
+
+addHMModule :: (?context :: Context) => Text -> IO Text
+addHMModule moduleName = do
+  rootFolder' <- getRootFolder
+  let rootFolder = T.pack rootFolder'
+  let folderPath = rootFolder <> "/modules/home-manager/" <> moduleName
+
+  addActionToContext
+    ( "Create directory: " <> folderPath
+    , mkdirP folderPath
+    )
+
+  let homeManagerModulesListFilePath = rootFolder <> "/modules/home-manager/default.nix"
+
+  addActionToContext
+    ( "Add module to list in " <> homeManagerModulesListFilePath
+    , insertLineBefore homeManagerModulesMarker ("./" <> moduleName) homeManagerModulesListFilePath
+    )
+
+  pure folderPath
+
+
+askLine :: Text -> IO Text
+askLine question = do
+  putStrLn $ "❓" <> question
+  getLine
+
+askLineDefault :: Text -> Text -> IO Text
+askLineDefault fallback question = do
+  answer <- askLine question
+  if answer == ""
+    then do
+      putStrLn $ "Using fallback: " <> fallback
+      pure fallback
+    else pure answer
 
 chooseOne :: (Show a) => Text -> [a] -> IO a
 chooseOne q [] = error $ "Can't choose from nothing"
