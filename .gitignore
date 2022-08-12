@@ -14,5 +14,3 @@
 
 # do not ignore my documentation
 !docs/
-
-!.emacs.d/
