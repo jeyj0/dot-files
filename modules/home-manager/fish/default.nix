@@ -12,8 +12,8 @@ with lib;
   config = mkIf config.jeyj0.fish.enable {
     home.packages = with pkgs.unstable; [
       fish
-      direnv
     ];
+    jeyj0.direnv.enable = true;
     programs.fish = {
       enable = true;
       package = pkgs.unstable.fish;

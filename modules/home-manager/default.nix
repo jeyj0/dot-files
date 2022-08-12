@@ -14,6 +14,7 @@
     ./trash
     ./alacritty
     ./ag
+    ./direnv
     # dotgen home module marker
   ];
 }
