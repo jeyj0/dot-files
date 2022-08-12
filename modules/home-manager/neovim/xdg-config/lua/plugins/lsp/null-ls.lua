@@ -10,7 +10,7 @@ null_ls.setup({
 	debug = true,
 	sources = {
 		-- formatter
-		formatting.shfmt,
+		-- formatting.shfmt,
 		-- formatting.stylua,
 		-- formatting.prettier,
 		formatting.clang_format,

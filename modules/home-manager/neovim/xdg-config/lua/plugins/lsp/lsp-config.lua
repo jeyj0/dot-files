@@ -10,7 +10,7 @@ local servers = {
 	"pyright",
 	-- "sumneko_lua",
 	"eslint",
-	"bashls",
+	-- "bashls",
 	"yamlls",
 	"jsonls",
 	"cssls",
