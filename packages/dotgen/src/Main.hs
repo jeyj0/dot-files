@@ -42,9 +42,6 @@ confirm prompt = do
   l <- getLine
   pure $ l == "y"
 
-getRootFolder :: IO Text
-getRootFolder = pure "/home/jeyj0" -- TODO
-
 homeManagerModulesMarker :: Text
 homeManagerModulesMarker = "# dotgen home module marker"
 

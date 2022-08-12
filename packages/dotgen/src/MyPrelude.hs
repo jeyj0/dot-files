@@ -90,3 +90,28 @@ insertLineBefore searchLineContent lineToInsert file = do
 writeFile :: Text -> Text -> IO ()
 writeFile path = writeFileUtf8 (T.unpack path)
 
+getRootFolder :: IO Text
+getRootFolder = do
+  pwd' <- Turtle.pwd
+
+  rootPath <- go pwd'
+
+  case Turtle.toText rootPath of
+    Left _ -> error "Unreachable as per documentation"
+    Right path -> if T.isSuffixOf "/" path
+      then pure $ T.reverse . T.tail . T.reverse $ path
+      else pure path
+  where
+    go :: Turtle.FilePath -> IO Turtle.FilePath
+    go path = do
+      isRootPath <- containsDotfilesRoot path
+
+      if isRootPath
+        then pure path
+        else if path == "/"
+          then error "No .dotfiles-root file in any parent directory"
+          else go $ Turtle.parent path
+
+    containsDotfilesRoot :: Turtle.FilePath -> IO Bool
+    containsDotfilesRoot dirPath = Turtle.testfile $ dirPath Turtle.</> ".dotfiles-root"
+

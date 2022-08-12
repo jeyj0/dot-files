@@ -19,6 +19,7 @@
 !modules/
 !packages/
 !collections/
+!.dotfiles-root
 
 # do not ignore custom home-manager checkout
 !home-manager/
