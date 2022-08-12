@@ -15,6 +15,8 @@ with lib;
       fish.enable = true;
       starship.enable = true;
       neovim.enable = true;
+      exa.enable = true;
+      bat.enable = true;
     };
   };
 }

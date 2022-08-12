@@ -9,6 +9,8 @@
     ./fish
     ./starship
     ./neovim
+    ./exa
+    ./bat
     # dotgen home module marker
   ];
 }
