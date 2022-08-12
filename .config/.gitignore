@@ -14,7 +14,6 @@
 !Thunar/
 !VSCodium/User/settings.json
 !configtemplates/
-!compton.conf
 !nixpkgs/
 !coc/
 !xmonad/
