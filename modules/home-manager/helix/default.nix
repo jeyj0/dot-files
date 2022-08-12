@@ -14,12 +14,12 @@ with lib;
       enable = true;
       package = pkgs.unstable.helix;
       settings = {
-        theme = "gruvbox_contrast"
+        theme = "gruvbox_contrast";
         keys.normal = {
           space = {
             space = "file_picker";
             f = {
-              s = ":write"
+              s = ":write";
             };
           };
         };
