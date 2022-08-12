@@ -42,7 +42,7 @@ confirm prompt = do
   l <- getLine
   pure $ l == "y"
 
-getRootFolder :: IO FilePath
+getRootFolder :: IO Text
 getRootFolder = pure "/home/jeyj0" -- TODO
 
 homeManagerModulesMarker :: Text
@@ -142,12 +142,53 @@ generateActions HomeModule = do
 generateActions SystemModule = error "Sorry, I haven't implemented that yet"
 
 generateActions Package = do
-  pure ()
+  packageName <- askLine "What should be the package's name?"
+  rootFolder <- getRootFolder
+  let folderPath = rootFolder <> "/packages/" <> packageName
+
+  addActionToContext
+    ( "Create directory: " <> folderPath
+    , mkdirP folderPath
+    )
+
+  let flakeNixPath = rootFolder <> "/flake.nix"
+
+  let packagesMarker = "# dotgen package marker"
+  let packageEntryLine = packageName <> " = pkgs.unstable.callPackage (import ./packages/" <> packageName <> ") {};"
+
+  addActionToContext
+    ( "Add package to list in " <> flakeNixPath
+    , insertLineBefore packagesMarker packageEntryLine flakeNixPath
+    )
+
+  let derivationPath = folderPath <> "/default.nix"
+
+  addActionToContext
+    ( "Create basic package derivation in " <> derivationPath
+    , writeFile derivationPath [trimming|
+      { lib
+      , stdenv
+      , pkgs
+      , ...
+      }:
+      stdenv.mkDerivation {
+        name = "${packageName}";
+        src = ./.;
+        installPhase = ''
+          mkdir -p $$out/bin
+          cat <<'EOF' >$$out/bin/hello-${packageName}
+          #!/bin/sh
+          echo "Hello, ${packageName}"
+          EOF
+          chmod +x $$out/bin/hello-${packageName}
+        '';
+      }
+    |]
+    )
 
 addHMModule :: (?context :: Context) => Text -> IO Text
 addHMModule moduleName = do
-  rootFolder' <- getRootFolder
-  let rootFolder = T.pack rootFolder'
+  rootFolder <- getRootFolder
   let folderPath = rootFolder <> "/modules/home-manager/" <> moduleName
 
   addActionToContext
