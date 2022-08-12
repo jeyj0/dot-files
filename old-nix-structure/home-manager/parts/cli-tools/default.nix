@@ -21,16 +21,16 @@
       # highlight # highlight enables syntax highlighting in previews
     nnn
     jq
-    bat
-    exa
-    trash-cli
+    # bat
+    # exa
+    # trash-cli
     zip unzip
     gnumake
 
     # starship # beautiful command prompt
 
     fzf
-    silver-searcher # ag (faster ack (faster & better grep))
+    # silver-searcher # ag (faster ack (faster & better grep))
 
     tldr # tl;dr man page alternative
 
