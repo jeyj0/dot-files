@@ -63,8 +63,6 @@ with lib;
             set -gx $arr[1] $arr[2]
           end
         end
-
-	source ~/.config/fish/fish_variables.bkp # temporary "fix"
       '';
     };
     home.file.fishConfigs = {
