@@ -20,6 +20,8 @@ addActionToContext action = do
 
 main :: IO ()
 main = do
+  _ <- getRootFolder -- this forces the program to exit if none is found
+
   theContext <- newContext
   let ?context = theContext
   creatableType <- chooseOne
