@@ -17,6 +17,7 @@
     ./direnv
     ./helix
     ./qutebrowser
+    ./thunar
     # dotgen home module marker
   ];
 }
