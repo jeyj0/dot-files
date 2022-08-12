@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+trap "echo \"\"; echo \"Cancelled\"; exit" SIGINT
+
 ROOT_FOLDER="$HOME"
 
 echo "❓ What do you want to create?"
@@ -10,7 +12,7 @@ echo ""
 if [ "$TYPE" = "home module" ]; then
 
   echo "❓ What type of module do you want?"
-  MODULE_TYPE=$(gum choose "simple package")
+  MODULE_TYPE=$(gum choose "simple package" "home manager program")
   echo "$MODULE_TYPE"
   echo ""
 
@@ -30,7 +32,8 @@ if [ "$TYPE" = "home module" ]; then
     echo "$MODULE_NAME"
     echo ""
 
-    UNSTABLE_NIXPKGS=$(gum confirm "Use unstable nixpkgs?")
+    gum confirm "Use unstable nixpkgs?"
+    UNSTABLE_NIXPKGS=$?
 
     if $UNSTABLE_NIXPKGS ; then
       PKGS="pkgs.unstable"
@@ -85,6 +88,93 @@ sed --in-place \"s/^\(\s*\)# dotgen home module marker/\1.\/$MODULE_NAME\n\1# do
     else
       echo "Exiting without applying changes"
     fi
+
+  elif [ "$MODULE_TYPE" = "home manager program" ]; then
+    echo "❓ What is the program's name in home-manager?"
+    PROGRAM_NAME=$(gum input)
+    echo "$PROGRAM_NAME"
+    echo ""
+
+    echo "❓ What do you want to call the module?"
+    MODULE_NAME=$(gum input --placeholder "$PROGRAM_NAME")
+
+    if [ "$MODULE_NAME" = "" ]; then
+      MODULE_NAME=$PROGRAM_NAME
+    fi
+    echo "$MODULE_NAME"
+    echo ""
+
+    echo "❓ Do you want to override the package used?"
+    gum confirm "Override?"
+    OVERRIDE_PACKAGE=$?
+
+    if $OVERRIDE_PACKAGE ; then
+      gum confirm "Use unstable nixpkgs?"
+      UNSTABLE_NIXPKGS=$?
+
+      if $UNSTABLE_NIXPKGS ; then
+        PKGS="pkgs.unstable"
+        echo "Using unstable nixpkgs"
+      else
+        PKGS="pkgs"
+        echo "Using stable nixpkgs"
+      fi
+
+      OVERRIDE_PACKAGE_TEXT="
+      package = $PKGS.$PROGRAM_NAME"
+
+      echo ""
+    else
+      OVERRIDE_PACKAGE_TEXT=""
+    fi
+
+    FOLDER="$ROOT_FOLDER/modules/home-manager/$MODULE_NAME"
+    FILE_PATH="$FOLDER/default.nix"
+
+    FILE_CONTENTS="{ config
+, pkgs
+, lib
+, ...
+}:
+with lib;
+{
+  options.jeyj0.$MODULE_NAME = {
+    enable = mkEnableOption \"$MODULE_NAME\";
+  };
+
+  config = mkIf config.jeyj0.$MODULE_NAME.enable {
+    home.programs.$PROGRAM_NAME = {
+      enable = true;$OVERRIDE_PACKAGE_TEXT
+    };
+  };
+}
+"
+
+    HM_MODULES_LIST_FILE="$ROOT_FOLDER/modules/home-manager/default.nix"
+
+    echo ""
+
+    echo "Planned Actions:"
+    echo "Create directory: $FOLDER"
+    echo "Create file: $FILE_PATH"
+    echo "Add \"./$MODULE_NAME\" to import list in $HM_MODULES_LIST_FILE"
+
+    CMDS="mkdir --parents \"$FOLDER\"
+cat <<'EOF' >\"$FILE_PATH\"
+$FILE_CONTENTS
+EOF
+sed --in-place \"s/^\(\s*\)# dotgen home module marker/\1.\/$MODULE_NAME\n\1# dotgen home module marker/\" \"$HM_MODULES_LIST_FILE\""
+    echo ""
+    echo "Going to execute:"
+    echo "$CMDS"
+    echo ""
+
+    if gum confirm "Run actions?" ; then
+      bash -c "$CMDS"
+    else
+      echo "Exiting without applying changes"
+    fi
+
   fi
 
 elif [ "$TYPE" = "system module" ]; then

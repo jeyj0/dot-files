@@ -1,14 +1,28 @@
-{ writeShellApplication
-, pkgs
+{ pkgs
+, stdenv
 }:
-writeShellApplication {
+let
+  ghc = pkgs.haskellPackages.ghcWithPackages (h: with h; [
+    classy-prelude
+    containers
+    typerep-map
+    neat-interpolation
+    turtle
+  ]);
+in
+stdenv.mkDerivation {
   name = "dotgen";
-  runtimeInputs = with pkgs; [
-    bash
-    coreutils # for printf, cat
-    gnused # for sed
-    gum # for easy nice interactivity
+  src = ./.;
+  buildPhase = ''
+    make build
+  '';
+  installPhase = ''
+    mkdir -p $out/bin
+    cp out/main $out/bin/dotgen
+  '';
+  buildInputs = [
+    ghc
+    pkgs.gnumake
   ];
-  text = ./dotgen.sh;
 }
 
