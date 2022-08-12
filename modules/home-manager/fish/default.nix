@@ -62,6 +62,11 @@ with lib;
         end
       '';
     };
+    home.file.fishConfigs = {
+      source = ./xdg-config;
+      target = ".config/fish";
+      recursive = true;
+    };
   };
 }
 

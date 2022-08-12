@@ -6,12 +6,10 @@
 !rofi/
 !xfce4/
 !autostart/
-!fish/
 !doom/
 !nvim/
 !Thunar/
 !VSCodium/User/settings.json
-!configtemplates/
 !nixpkgs/
 !coc/
 !xmonad/
