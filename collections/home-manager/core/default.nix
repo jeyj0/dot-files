@@ -18,6 +18,7 @@ with lib;
       exa.enable = true;
       bat.enable = true;
       trash.enable = true;
+      ag.enable = true;
     };
   };
 }

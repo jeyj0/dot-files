@@ -13,6 +13,7 @@
     ./bat
     ./trash
     ./alacritty
+    ./ag
     # dotgen home module marker
   ];
 }
