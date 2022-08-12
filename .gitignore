@@ -1,18 +1,9 @@
 /*
 !.gitignore
-!.gitmodules
 !*.md
 
 # do not ignore configs
 !.config/
-
-# do not ignore config application/building scripts
-!build-system.sh
-!build-home.sh
-!apply-system.sh
-!apply-home.sh
-!apply.sh
-!update.sh
 
 # do not ignore NixOS configs
 !old-nix-structure/
@@ -20,9 +11,6 @@
 !packages/
 !collections/
 !.dotfiles-root
-
-# do not ignore custom home-manager checkout
-!home-manager/
 
 # do not ignore my scripts
 !scripts/
