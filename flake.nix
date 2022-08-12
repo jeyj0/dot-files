@@ -76,6 +76,26 @@
         };
 
       };
+
+      core = home-manager.lib.homeManagerConfiguration {
+        inherit system pkgs;
+        username = "jeyj0";
+        homeDirectory = "/home/jeyj0";
+        configuration = {
+          imports = [
+            ./modules/home-manager
+            ./collections/home-manager
+          ];
+
+          jeyj0.collections = {
+            core.enable = true;
+          };
+
+          jeyj0 = {
+            alacritty.enable = true;
+          };
+        };
+      };
     };
 
     nixosConfigurations = {
@@ -114,3 +134,4 @@
 
   };
 }
+
