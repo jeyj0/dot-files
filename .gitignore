@@ -12,9 +12,6 @@
 !collections/
 !.dotfiles-root
 
-# do not ignore my scripts
-!scripts/
-
 # do not ignore my documentation
 !docs/
 
