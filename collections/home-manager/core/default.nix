@@ -17,6 +17,7 @@ with lib;
       neovim.enable = true;
       exa.enable = true;
       bat.enable = true;
+      trash.enable = true;
     };
   };
 }

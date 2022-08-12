@@ -11,6 +11,7 @@
     ./neovim
     ./exa
     ./bat
+    ./trash
     # dotgen home module marker
   ];
 }
