@@ -72,6 +72,7 @@
             polybar.enable = true;
             obsidian.enable = true;
             picom.enable = true;
+            thunar.enable = true;
           };
         };
 
