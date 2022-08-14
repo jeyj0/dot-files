@@ -19,7 +19,6 @@
 
     cachix
 
-    alacritty
     # zerotierone
 
     ngrok
