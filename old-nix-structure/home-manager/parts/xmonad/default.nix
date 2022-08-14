@@ -12,7 +12,7 @@
     # TODO add picom module to xmonad collection when it's created
     # picom # for animations and other fancy stuff
 
-    rofi
+    # rofi # TODO add rofi to xmonad collection when it's created
 
     libnotify # to actually send notifications
   ];
