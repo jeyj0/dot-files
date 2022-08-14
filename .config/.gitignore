@@ -1,12 +1,9 @@
 /*
 !.gitignore
-!mimeapps.list
 
 # select what program's settings are synced
 !xfce4/
 !autostart/
 !VSCodium/User/settings.json
 !nixpkgs/
-!xmonad/
-!xmobar/
 !pulse/
