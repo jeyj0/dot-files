@@ -73,6 +73,7 @@
             obsidian.enable = true;
             picom.enable = true;
             thunar.enable = true;
+            rofi.enable = true;
           };
         };
 
