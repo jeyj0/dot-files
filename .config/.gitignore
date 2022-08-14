@@ -5,7 +5,6 @@
 # select what program's settings are synced
 !xfce4/
 !autostart/
-!doom/
 !VSCodium/User/settings.json
 !nixpkgs/
 !coc/
