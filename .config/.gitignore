@@ -7,7 +7,6 @@
 !autostart/
 !VSCodium/User/settings.json
 !nixpkgs/
-!coc/
 !xmonad/
 !xmobar/
 !pulse/
