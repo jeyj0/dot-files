@@ -3,7 +3,6 @@
 !mimeapps.list
 
 # select what program's settings are synced
-!rofi/
 !xfce4/
 !autostart/
 !doom/

@@ -18,6 +18,7 @@
     ./helix
     ./qutebrowser
     ./thunar
+    ./rofi
     # dotgen home module marker
   ];
 }
