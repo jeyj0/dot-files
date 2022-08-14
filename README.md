@@ -27,3 +27,10 @@ nix-env -e git-minimal # remove the nix-env git again
 ./result/activate # activate the home-manager installation that includes git
 ```
 
+## WIP Note
+
+The `.config` and `old-nix-structure` folders are left-over from the old way I managed my dotfiles, which assumed this directory to be cloned into `~` directly.
+
+I am slowly working through everything, starting by moving everything inside `.config` into `modules/home-manager/`. That is the last thing required before `~` does not have to be a home directory anymore.
+
+Afterwards, everything inside `old-nix-structure` needs to be moved into `modules/` and `collections/`, as well as some other folders, most likely.
