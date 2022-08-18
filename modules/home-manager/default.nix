@@ -19,6 +19,7 @@
     ./qutebrowser
     ./thunar
     ./rofi
+    ./wonderdraft
     # dotgen home module marker
   ];
 }

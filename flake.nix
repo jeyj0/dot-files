@@ -75,6 +75,7 @@
             thunar.enable = true;
             rofi.enable = true;
             alacritty.enable = true;
+            # wonderdraft.enable = true;
           };
         };
 
