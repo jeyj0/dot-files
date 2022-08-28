@@ -20,6 +20,7 @@
     ./thunar
     ./rofi
     ./wonderdraft
+    ./freecad
     # dotgen home module marker
   ];
 }

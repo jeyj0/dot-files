@@ -76,6 +76,7 @@
             rofi.enable = true;
             alacritty.enable = true;
             # wonderdraft.enable = true;
+            freecad.enable = true;
           };
         };
 
