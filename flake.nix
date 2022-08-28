@@ -98,6 +98,7 @@
 
           jeyj0 = {
             alacritty.enable = true;
+            vscode.enable = true;
           };
         };
       };

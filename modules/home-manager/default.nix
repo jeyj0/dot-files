@@ -21,6 +21,7 @@
     ./rofi
     ./wonderdraft
     ./freecad
+    ./vscode
     # dotgen home module marker
   ];
 }
