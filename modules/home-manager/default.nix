@@ -22,7 +22,6 @@
     ./wonderdraft
     ./freecad
     ./vscode
-    ./obsidian
     # dotgen home module marker
   ];
 }
