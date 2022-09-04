@@ -45,7 +45,7 @@ mvCmd=0
 # to the left of the prompt. Otherwise, if set to 'custom', this information
 # will be stored in environment variables to be handled by the prompt string
 # itself. Consult the manpage for more information.
-PromptStyle=default
+PromptStyle=custom
 
 # A prompt to warn the user about invalid command names
 WarningPrompt=true
@@ -170,7 +170,7 @@ Sort=1
 SortReverse=false
 
 # Print a usage tip at startup
-Tips=true
+Tips=false
 
 ListFoldersFirst=true
 
