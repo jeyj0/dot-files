@@ -121,6 +121,7 @@
             alacritty.enable = true;
             vscode.enable = true;
             obsidian.enable = true;
+            clifm.enable = true;
           };
         };
       };

@@ -22,6 +22,7 @@
     ./wonderdraft
     ./freecad
     ./vscode
+    ./clifm
     # dotgen home module marker
   ];
 }
