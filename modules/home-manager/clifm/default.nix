@@ -20,6 +20,10 @@ with lib;
         source = ./default.cfm;
         target = ".config/clifm/colors/default-starship.cfm";
       };
+      clifmDefaultProfileMimetypes = {
+        source = ./mimelist.cfm;
+        target = "/home/jeyj0/.config/clifm/profiles/default/mimelist.cfm";
+      };
     };
   };
 }
