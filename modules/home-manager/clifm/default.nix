@@ -16,6 +16,10 @@ with lib;
         source = ./clifmrc;
         target = ".config/clifm/profiles/default/clifmrc";
       };
+      clifmDefaultColorsWithStarshipPrompt = {
+        source = ./default.cfm;
+        target = ".config/clifm/colors/default-starship.cfm";
+      };
     };
   };
 }

@@ -8,7 +8,7 @@
 # Color schemes are stored in the colors directory. By default,
 # the 'default' color scheme is used. Visit https://github.com/leo-arch/clifm-colors
 # to get a few more
-ColorScheme=default
+ColorScheme=default-starship
 
 # The amount of files contained by a directory is informed next
 # to the directory name. However, this feature might slow things down when,
