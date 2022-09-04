@@ -24,7 +24,8 @@ DividingLine="-"
 # Prompt="\[\e[0m\][\S\[\e[0m\]]\l \A \u:\H \[\e[00;36m\]\w\n\[\e[0m\]<\z\[\e[0m\]>\[\e[0;34m\] \$\[\e[0m\] "
 Prompt="$(starship prompt)"
 
-WarningPromptStr="\[\e[0m\]\[\e[00;02;31m\](!) > "
+# WarningPromptStr="\[\e[0m\]\[\e[00;02;31m\](!) > "
+WarningPromptStr=""
 
 FzfTabOption="--color=16,prompt:6,fg+:-1,pointer:4,hl:5,hl+:5,gutter:-1,marker:2 --bind tab:accept,right:accept,left:abort --inline-info --layout=reverse-list"
 
