@@ -47,6 +47,8 @@ mvCmd=0
 # itself. Consult the manpage for more information.
 PromptStyle=custom
 
+Notifications=false
+
 # A prompt to warn the user about invalid command names
 WarningPrompt=true
 
