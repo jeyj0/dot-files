@@ -8,6 +8,8 @@
     home-manager.url = "github:nix-community/home-manager/release-21.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
     nur.url = "github:nix-community/NUR";
 
     emacs-overlay.url = "github:nix-community/emacs-overlay";
@@ -21,6 +23,7 @@
     , nixpkgs
     , nixpkgs-unstable
     , home-manager
+    , nixos-hardware
     , nur
     , emacs-overlay
     , solbera-dnd-fonts
@@ -133,6 +136,20 @@
 
         modules = [
           ./old-nix-structure/nixos/hosts/jeyj0-nixos.nix
+        ];
+      };
+
+      framework = lib.nixosSystem {
+        inherit system pkgs;
+
+        modules = [
+          nixos-hardware.nixosModules.framework
+          ./modules/nixos
+          ({ ... }: {
+            jeyj0 = {
+              fonts.enable = true;
+            };
+          })
         ];
       };
     };
