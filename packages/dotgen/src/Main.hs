@@ -47,6 +47,9 @@ confirm prompt = do
 homeManagerModulesMarker :: Text
 homeManagerModulesMarker = "# dotgen home module marker"
 
+nixosModulesMarker :: Text
+nixosModulesMarker = "# dotgen nixos module marker"
+
 hmModuleSimplePackageFile :: Text -> Text -> Text -> Text
 hmModuleSimplePackageFile moduleName packageName pkgs = [trimming|
   { config
@@ -138,7 +141,30 @@ generateActions HomeModule = do
 
       pure ()
 
-generateActions SystemModule = error "Sorry, I haven't implemented that yet"
+generateActions SystemModule = do
+  moduleName <- askLine "What should the module be named?"
+  folderPath <- addSystemModule moduleName
+  addActionToContext
+    ( "Write generated module code to " <> folderPath <> "/default.nix"
+    , writeFile (folderPath <> "/default.nix") [trimming|
+      { config
+      , pkgs
+      , lib
+      , ...
+      }:
+      with lib;
+      {
+        options.jeyj0.$moduleName = {
+          enable = mkEnableOption "${moduleName}";
+        };
+
+        config = mkIf config.jeyj0.${moduleName}.enable {
+          # add your configuration here
+        };
+      }
+    |]
+    )
+  pure ()
 
 generateActions Package = do
   packageName <- askLine "What should be the package's name?"
@@ -200,6 +226,25 @@ addHMModule moduleName = do
   addActionToContext
     ( "Add module to list in " <> homeManagerModulesListFilePath
     , insertLineBefore homeManagerModulesMarker ("./" <> moduleName) homeManagerModulesListFilePath
+    )
+
+  pure folderPath
+
+addSystemModule :: (?context :: Context) => Text -> IO Text
+addSystemModule moduleName = do
+  rootFolder <- getRootFolder
+  let folderPath = rootFolder <> "/modules/nixos/" <> moduleName
+
+  addActionToContext
+    ( "Create directory: " <> folderPath
+    , mkdirP folderPath
+    )
+
+  let systemModulesListFilePath = rootFolder <> "/modules/nixos/default.nix"
+
+  addActionToContext
+    ( "Add module to list in " <> systemModulesListFilePath
+    , insertLineBefore nixosModulesMarker ("./" <> moduleName) systemModulesListFilePath
     )
 
   pure folderPath
