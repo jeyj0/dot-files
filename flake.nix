@@ -143,7 +143,7 @@
         inherit system pkgs;
 
         modules = [
-          nixos-hardware.nixosModules.framework
+          # nixos-hardware.nixosModules.framework
           ./modules/nixos
           ({ ... }: {
             networking.hostName = "jeyj0-framework";
@@ -157,6 +157,7 @@
             system.stateVersion = "22.05"; # Did you read the comment?
 
             jeyj0 = {
+              unmigrated-framework-config.enable = true;
               settings.enable = true;
               fonts.enable = true;
             };
