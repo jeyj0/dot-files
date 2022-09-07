@@ -125,6 +125,7 @@
             vscode.enable = true;
             obsidian.enable = true;
             clifm.enable = true;
+            spotify.enable = true;
           };
         };
       };

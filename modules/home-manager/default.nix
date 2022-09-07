@@ -23,6 +23,7 @@
     ./freecad
     ./vscode
     ./clifm
+    ./spotify
     # dotgen home module marker
   ];
 }
