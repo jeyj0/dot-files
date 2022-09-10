@@ -19,6 +19,7 @@ with lib;
       bat.enable = true;
       trash.enable = true;
       ag.enable = true;
+      clifm.enable = true;
     };
   };
 }
