@@ -4,8 +4,8 @@
 }:
 let
   appImage = fetchurl {
-    url = "https://mango-lychee.nyc3.cdn.digitaloceanspaces.com/LycheeSlicer-3.5.1.AppImage";
-    sha256 = "sha256-H5/2mnG6niuM+5KJ40a8Sqhl4pq19dY7ISoR7agGCWs=";
+    url = "https://mango-lychee.nyc3.cdn.digitaloceanspaces.com/LycheeSlicer-4.1.0.AppImage";
+    sha256 = "sha256-TYGaSOfwThnSE9/x3F1PEWf8j7Ex3r6X5lC4TH9oYIY=";
   };
 in
 appimageTools.wrapType2 {
