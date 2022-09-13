@@ -24,6 +24,7 @@
     ./vscode
     ./clifm
     ./spotify
+    ./slack
     # dotgen home module marker
   ];
 }

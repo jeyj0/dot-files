@@ -125,6 +125,7 @@
             vscode.enable = true;
             obsidian.enable = true;
             spotify.enable = true;
+            slack.enable = true;
           };
         };
       };
