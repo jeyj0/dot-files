@@ -7,10 +7,10 @@ let
 in
 {
   home.packages = with pkgs; [
-    unstable.neovim-unwrapped
+    # unstable.neovim-unwrapped
 
     watchman # watchman for coc.nvim
-    neovim-remote # enable the use of only one neovim instance
+    # neovim-remote # enable the use of only one neovim instance
     pythonWithPackages
 
     # nodejs

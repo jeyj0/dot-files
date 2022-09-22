@@ -10,6 +10,9 @@
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
+    nvim.url = "github:neovim/neovim?dir=contrib";
+    # nvim.inputs.nixpkgs.follows = "nixpkgs-unstable";
+
     nur.url = "github:nix-community/NUR";
 
     emacs-overlay.url = "github:nix-community/emacs-overlay";
@@ -24,6 +27,7 @@
     , nixpkgs-unstable
     , home-manager
     , nixos-hardware
+    , nvim
     , nur
     , emacs-overlay
     , solbera-dnd-fonts
@@ -46,6 +50,11 @@
           };
         })
         (_: _: self.packages.${system})
+        (_: _: {
+          jeyj0 = self.packages.${system} // {
+            neovim = nvim.packages.${system}.default;
+          };
+        })
         (_: _: {
           firefox-addons = self.firefox-addons;
         })

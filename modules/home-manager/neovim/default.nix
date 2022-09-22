@@ -10,7 +10,9 @@ with lib;
   };
 
   config = mkIf config.jeyj0.neovim.enable {
-    home.packages = with pkgs.unstable; [ neovim ];
+    home.packages = with pkgs.unstable; [
+      pkgs.jeyj0.neovim
+    ];
     # programs.neovim = {
     #   enable = true;
     #   package = pkgs.neovim;
