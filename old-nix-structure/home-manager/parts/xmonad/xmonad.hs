@@ -499,8 +499,8 @@ myKeys =
         , ("M-S-m", prevScreen)  -- Switch focus to prev monitor
         , ("M-,", moveTo Prev nonNSP)
         , ("M-.", moveTo Next nonNSP)
-        , ("M-S-<KP_Add>", shiftTo Next nonNSP >> moveTo Next nonNSP)       -- Shifts focused window to next ws
-        , ("M-S-<KP_Subtract>", shiftTo Prev nonNSP >> moveTo Prev nonNSP)  -- Shifts focused window to prev ws
+        , ("M-i", shiftTo Next nonNSP >> moveTo Next nonNSP)       -- Shifts focused window to next ws
+        , ("M-a", shiftTo Prev nonNSP >> moveTo Prev nonNSP)  -- Shifts focused window to prev ws
         , ("M-w c", DynWs.removeEmptyWorkspace)
 
     -- Floating windows
