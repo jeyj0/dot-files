@@ -125,6 +125,10 @@
             ./collections/home-manager
           ];
 
+          home.packages = [
+            pkgs.unstable.zoom-us
+          ];
+
           jeyj0.collections = {
             core.enable = true;
           };
