@@ -29,9 +29,11 @@ in
   hardware = {
     bluetooth.enable = true;
     opengl = {
+      enable = true;
       driSupport32Bit = true;
       # extraPackages = with pkgs; [ vaapiIntel ];
     };
+    nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
   networking = {
@@ -133,7 +135,7 @@ in
     enable = true;
     layout = "us";
 
-    # videoDrivers = [ "nvidia" ];
+    videoDrivers = [ "nvidia" ];
 
     displayManager.defaultSession = "xfce+xmonad";
 
