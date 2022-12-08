@@ -2,7 +2,7 @@
   description = "jeyj0's main flake. Contains packages and system, and home-manager configurations";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-21.05";
+    nixpkgs.url = "nixpkgs/nixos-22.11";
     nixpkgs-unstable.url = "nixpkgs/nixpkgs-unstable";
 
     home-manager.url = "github:nix-community/home-manager/release-21.05";

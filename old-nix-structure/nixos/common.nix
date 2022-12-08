@@ -68,9 +68,11 @@ in
   };
 
   nix = {
-    trustedUsers = [ "root" "${userName}" ];
+    settings = {
+      trusted-users = [ "root" "${userName}" ];
+      auto-optimise-store = true;
+    };
     package = pkgs.nixFlakes;
-    autoOptimiseStore = true;
     extraOptions = ''
       experimental-features = nix-command flakes
       keep-outputs = true

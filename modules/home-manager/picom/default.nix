@@ -10,7 +10,7 @@ with lib;
   };
 
   config = mkIf config.jeyj0.picom.enable {
-    home.packages = with pkgs; [ picom ];
+    home.packages = with pkgs; [ unstable.picom ];
     home.file.picomConf = {
       source = ./picom.conf;
       target = ".config/picom.conf";

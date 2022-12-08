@@ -20,9 +20,9 @@ appimageTools.wrapType2 {
 
   extraPkgs = pkgs: (appimageTools.defaultFhsEnvArgs.multiPkgs pkgs) ++ (with pkgs; [
     # fixes "unexpected error"
-    gsettings_desktop_schemas glib gtk3
+    gsettings-desktop-schemas glib gtk3
 
     # needed for icons
-    gnome3.defaultIconTheme
+    gnome.adwaita-icon-theme
   ]);
 }

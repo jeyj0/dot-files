@@ -10,6 +10,6 @@
     ffmpeg
 
     obs-studio
-    obs-v4l2sink
+    # obs-v4l2sink
   ];
 }
