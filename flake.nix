@@ -127,6 +127,8 @@
 
           home.packages = [
             pkgs.unstable.zoom-us
+            pkgs.unstable.sshfs
+            pkgs.unstable.htop
           ];
 
           jeyj0.collections = {
