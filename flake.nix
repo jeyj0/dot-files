@@ -153,10 +153,15 @@
 
         modules = [
           ./old-nix-structure/nixos/hosts/jeyj0-nixos.nix
+          ({ ... }: {
+            jeyj0 = {
+              printing.enable = true;
+            };
+          })
         ];
       };
 
-      framework = lib.nixosSystem {
+      jeyj0-framework = lib.nixosSystem {
         inherit system pkgs;
 
         modules = [
@@ -176,9 +181,14 @@
             imports = [ ./framework-configuration.nix ];
 
             jeyj0 = {
-              # unmigrated-framework-config.enable = true;
               settings.enable = true;
               fonts.enable = true;
+              gnome.enable = true;
+              printing.enable = true;
+              sound.enable = true;
+              docker.enable = true;
+              X11.enable = true;
+              networkmanager.enable = true;
             };
           })
         ];

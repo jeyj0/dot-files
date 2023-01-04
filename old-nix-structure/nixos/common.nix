@@ -92,14 +92,7 @@ in
 
   location.provider = "geoclue2";
   services = {
-    printing = {
-      enable = true;
-      browsing = true;
-      defaultShared = true;
-      drivers = with pkgs; [
-        hplip
-      ];
-    };
+    
     avahi = {
       enable = true;
       nssmdns = true;
