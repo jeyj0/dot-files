@@ -25,6 +25,7 @@
     ./clifm
     ./spotify
     ./slack
+    ./firefox
     # dotgen home module marker
   ];
 }

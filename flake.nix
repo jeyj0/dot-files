@@ -142,6 +142,7 @@
             obsidian.enable = true;
             spotify.enable = true;
             slack.enable = true;
+            firefox.enable = true;
           };
         };
       };
