@@ -14,16 +14,4 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.jeyj0 = {
-    isNormalUser = true;
-    description = "Jannis";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
-    packages = with pkgs; [
-      firefox
-    #  thunderbird
-    ];
-  };
-
 }
