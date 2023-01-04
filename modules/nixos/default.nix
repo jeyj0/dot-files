@@ -10,6 +10,7 @@
     ./X11
     ./networkmanager
     ./user-jeyj0
+    ./syncthing
     # dotgen nixos module marker
   ];
 }

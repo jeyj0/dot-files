@@ -182,6 +182,7 @@
               X11.enable = true;
               networkmanager.enable = true;
               user-jeyj0.enable = true;
+              syncthing.enable = true;
             };
           })
         ];
