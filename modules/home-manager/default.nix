@@ -29,6 +29,7 @@
     ./htop
     ./sshfs
     ./signal
+    ./zoom
     # dotgen home module marker
   ];
 }

@@ -125,10 +125,6 @@
             ./collections/home-manager
           ];
 
-          home.packages = [
-            pkgs.unstable.zoom-us
-          ];
-
           jeyj0.collections = {
             core.enable = true;
           };
@@ -141,6 +137,7 @@
             slack.enable = true;
             firefox.enable = true;
             signal.enable = true;
+            zoom.enable = true;
           };
         };
       };
