@@ -26,6 +26,8 @@
     ./spotify
     ./slack
     ./firefox
+    ./htop
+    ./sshfs
     # dotgen home module marker
   ];
 }

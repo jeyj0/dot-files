@@ -20,6 +20,8 @@ with lib;
       trash.enable = true;
       ag.enable = true;
       clifm.enable = true;
+      htop.enable = true;
+      sshfs.enable = true;
     };
   };
 }

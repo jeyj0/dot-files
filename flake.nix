@@ -127,8 +127,6 @@
 
           home.packages = [
             pkgs.unstable.zoom-us
-            pkgs.unstable.sshfs
-            pkgs.unstable.htop
             pkgs.unstable.signal-desktop
           ];
 
