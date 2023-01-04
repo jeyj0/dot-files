@@ -127,7 +127,6 @@
 
           home.packages = [
             pkgs.unstable.zoom-us
-            pkgs.unstable.signal-desktop
           ];
 
           jeyj0.collections = {
@@ -141,6 +140,7 @@
             spotify.enable = true;
             slack.enable = true;
             firefox.enable = true;
+            signal.enable = true;
           };
         };
       };

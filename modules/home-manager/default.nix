@@ -28,6 +28,7 @@
     ./firefox
     ./htop
     ./sshfs
+    ./signal
     # dotgen home module marker
   ];
 }
