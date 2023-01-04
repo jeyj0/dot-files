@@ -127,16 +127,12 @@
 
           jeyj0.collections = {
             core.enable = true;
+            core-gui.enable = true;
           };
 
           jeyj0 = {
-            alacritty.enable = true;
-            vscode.enable = true;
-            obsidian.enable = true;
             spotify.enable = true;
             slack.enable = true;
-            firefox.enable = true;
-            signal.enable = true;
             zoom.enable = true;
           };
         };
