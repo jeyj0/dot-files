@@ -129,6 +129,7 @@
             pkgs.unstable.zoom-us
             pkgs.unstable.sshfs
             pkgs.unstable.htop
+            pkgs.unstable.signal-desktop
           ];
 
           jeyj0.collections = {
@@ -159,7 +160,7 @@
         inherit system pkgs;
 
         modules = [
-          # nixos-hardware.nixosModules.framework
+          nixos-hardware.nixosModules.framework
           ./modules/nixos
           ({ ... }: {
             networking.hostName = "jeyj0-framework";
@@ -172,8 +173,10 @@
             # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
             system.stateVersion = "22.05"; # Did you read the comment?
 
+            imports = [ ./framework-configuration.nix ];
+
             jeyj0 = {
-              unmigrated-framework-config.enable = true;
+              # unmigrated-framework-config.enable = true;
               settings.enable = true;
               fonts.enable = true;
             };
