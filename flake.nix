@@ -145,6 +145,7 @@
 
         modules = [
           ./old-nix-structure/nixos/hosts/jeyj0-nixos.nix
+          ./modules/nixos
           ({ ... }: {
             jeyj0 = {
               printing.enable = true;
