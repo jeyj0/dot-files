@@ -32,6 +32,7 @@
     ./zoom
     ./xfconf
     ./jeyj0
+    ./syncthing
     # dotgen home module marker
   ];
 }

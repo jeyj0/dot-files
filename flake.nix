@@ -63,6 +63,12 @@
 
     lib = nixpkgs.lib;
 
+    frameworkSyncthingFolders = {
+      "02-areas" = true;
+      "02-areas/00-ttrpgs" = true;
+      "666-test" = true;
+    };
+
   in {
     homeManagerConfigurations = {
       jeyj0 = home-manager.lib.homeManagerConfiguration {
@@ -135,6 +141,11 @@
               slack.enable = true;
               zoom.enable = true;
               xfconf.enable = true;
+
+              syncthing = {
+                enable = true;
+                folders = frameworkSyncthingFolders;
+              };
             };
           }
         ];
@@ -185,7 +196,10 @@
               X11.enable = true;
               networkmanager.enable = true;
               user-jeyj0.enable = true;
-              syncthing.enable = true;
+              syncthing = {
+                enable = true;
+                folders = frameworkSyncthingFolders;
+              };
             };
           })
         ];
