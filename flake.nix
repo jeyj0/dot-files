@@ -86,7 +86,10 @@
             picom.enable = true;
             thunar.enable = true;
             rofi.enable = true;
-            alacritty.enable = true;
+            alacritty = {
+              enable = true;
+              fontSize = 14.0;
+            };
             # wonderdraft.enable = true;
             freecad.enable = true;
           };
