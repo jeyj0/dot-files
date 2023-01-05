@@ -87,7 +87,7 @@
               rofi.enable = true;
               alacritty = {
                 enable = true;
-                fontSize = 14.0;
+                fontSize = 12.0;
               };
               # wonderdraft.enable = true;
               freecad.enable = true;
