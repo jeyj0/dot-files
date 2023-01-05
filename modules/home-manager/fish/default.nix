@@ -81,10 +81,6 @@ with lib;
         # use starship prompt
         starship init fish | source
 
-        if test -d $NVM_DIR
-          source $FISH_PATH/nvm.fish
-        end
-
         # load rust
         if test -e $HOME/.cargo/env
           source $HOME/.cargo/env
@@ -93,9 +89,6 @@ with lib;
         # add direnv hook
         # eval (direnv hook fish)
         direnv hook fish | source
-
-        # source nnn config
-        source $FISH_PATH/nnn.fish
 
         # a function to load key=value environment variable files
         function posix-source
