@@ -25,6 +25,11 @@ with lib;
         "Xft/DPI" = 96;
         "Xft/Antialias" = 1;
       };
+
+      keyboard-layout = {
+        "Default/XkbDisable" = false;
+        "Default/XkbOptions/Compose" = "compose:ralt";
+      };
     };
   };
 }
