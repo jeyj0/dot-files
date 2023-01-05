@@ -5,37 +5,21 @@
 }:
 with lib;
 let
-  folderModule = { label, id, path, devices }: { config, ...}: {
-      options.jeyj0.syncthing.folders.${id} = mkEnableOption id;
+  folderModule = { label, id, path, devices }@folder: { config, ...}: {
       config = let conf = config.jeyj0.syncthing; in mkIf conf.enable {
-        services.syncthing.folders.${id} = mkIf conf.folders.${id} {
-          inherit id label devices;
-          path = "/home/jeyj0/Documents/${path}";
-        };
+        services.syncthing.folders.${id} =
+          let shouldAddFolder = elem config.networking.hostName devices;
+          in mkIf shouldAddFolder folder;
       };
     };
+  syncthingFolders = import ../../../syncthing-folders.nix;
+  formatFolder = { id, label, path, stignore, devices }: {
+    inherit id label devices;
+    path = "/home/jeyj0/Documents/${path}";
+  };
 in
 {
-  imports = [
-    (folderModule {
-      label = "00-ttrpgs";
-      id = "02-areas/00-ttrpgs";
-      path = "02-areas/00-ttrpgs";
-      devices = [];
-    })
-    (folderModule {
-      label = "02-areas";
-      id = "02-areas";
-      path = "02-areas";
-      devices = [];
-    })
-    (folderModule {
-      label = "666-test";
-      id = "666-test";
-      path = "666-test";
-      devices = [ "jeyj0-nixos" "jeyj0-framework" ];
-    })
-  ];
+  imports = map folderModule (map formatFolder syncthingFolders);
 
   options.jeyj0.syncthing = {
     enable = mkEnableOption "syncthing";

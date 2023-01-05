@@ -62,20 +62,9 @@
     };
 
     lib = nixpkgs.lib;
-
-    syncthingFolders = {
-      desktop = {
-        "666-test" = true;
-      };
-      framework = {
-        "02-areas" = true;
-        "02-areas/00-ttrpgs" = true;
-        "666-test" = true;
-      };
-    };
   in {
     homeManagerConfigurations = {
-      jeyj0 = home-manager.lib.homeManagerConfiguration {
+      "jeyj0@jeyj0-nixos" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
  
         modules = [
@@ -85,6 +74,7 @@
           {
             jeyj0 = {
               enable = true;
+              hostName = "jeyj0-nixos";
 
               collections = {
                 core.enable = true;
@@ -102,16 +92,13 @@
               # wonderdraft.enable = true;
               freecad.enable = true;
               xfconf.enable = true;
-              syncthing = {
-                enable = true;
-                folders = syncthingFolders.desktop;
-              };
+              syncthing.enable = true;
             };
           }
         ];
       };
 
-      core = home-manager.lib.homeManagerConfiguration {
+      "jeyj0@jeyj0-framework" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
           ./modules/home-manager
@@ -119,26 +106,7 @@
           {
             jeyj0 = {
               enable = true;
-
-              collections = {
-                core.enable = true;
-              };
-
-              alacritty.enable = true;
-              vscode.enable = true;
-            };
-          }
-        ];
-      };
-
-      laptop = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [
-          ./modules/home-manager
-          ./collections/home-manager
-          {
-            jeyj0 = {
-              enable = true;
+              hostName = "jeyj0-framework";
 
               collections = {
                 core.enable = true;
@@ -150,10 +118,7 @@
               zoom.enable = true;
               xfconf.enable = true;
 
-              syncthing = {
-                enable = true;
-                folders = syncthingFolders.framework;
-              };
+              syncthing.enable = true;
             };
           }
         ];
@@ -170,10 +135,7 @@
           ({ ... }: {
             jeyj0 = {
               printing.enable = true;
-              syncthing = {
-                enable = true;
-                folders = syncthingFolders.desktop;
-              };
+              syncthing.enable = true;
             };
           })
         ];
@@ -208,10 +170,7 @@
               X11.enable = true;
               networkmanager.enable = true;
               user-jeyj0.enable = true;
-              syncthing = {
-                enable = true;
-                folders = syncthingFolders.framework;
-              };
+              syncthing.enable = true;
             };
           })
         ];
