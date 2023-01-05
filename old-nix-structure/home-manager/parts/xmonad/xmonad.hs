@@ -222,10 +222,7 @@ myBrowser :: String
 myBrowser = "firefox "
 
 myEditor :: String
-myEditor = myTerminal ++ " -e nvim "
-
-vscode :: String
-vscode = "code"
+myEditor = terminalRunning " -e nvim "
 
 myBorderWidth :: Dimension
 myBorderWidth = 5
@@ -250,6 +247,7 @@ myStartupHook = do
           setWMName "LG3D"
           spawnOnce "sleep 2 && nitrogen --restore &"
           spawnOnce "sleep 2 && picom &"
+          spawnOnce "sleep 2 && systemctl --user restart polybar.service"
 
 jeyj0XPConfig :: XPConfig
 jeyj0XPConfig = def
@@ -443,7 +441,8 @@ launchEmacsclientForProject = do
 myTreeSelectConf = TS.TSConfig
   { TS.ts_hidechildren = True
   , TS.ts_background = 0x00000000
-  , TS.ts_font = "xft:Sans-16"
+  -- , TS.ts_font = "xft:Sans-16"
+  , TS.ts_font = "xft:Atkinson Hyperlegible-16"
   , TS.ts_node = (0xffebb2db, 0xff1d2021)
   , TS.ts_nodealt = (0xffebb2db, 0xff282828)
   , TS.ts_highlight = (0xff282828, 0xff98971a)
@@ -462,13 +461,13 @@ treeSelectOpenActions =
   , Node (TS.TSNode "Files" "Launches nnn in current project directory" $ spawn $ myTerminal ++ "--class Alacritty,nnn --command nnn") []
   ]
 
--- M (GUI)  : Do something with xmonad
+-- M (GUI)   : Do something with xmonad
 --             Common actions should only require this key to be held. Everything in this config should require it to be held though.
--- M1 (Alt) : Windows
+-- M1 (Alt)  : Windows
 --             Manipulating windows should be done with Alt, as it's generally a fairly frequent action, but not always fully frequent
--- C (Ctrl) : Workspaces/Projects and screens
+-- C (Ctrl)  : Workspaces/Projects and screens
 --             Workspaces are less common to manipulate than windows, so they should be accessed with ctrl (which is not as nice to access for me)
--- S (Shift): Unusual actions
+-- S (Shift) : Unusual actions
 --             This is really not nice to access. Don't put normal stuff here.
 myKeys :: [(String, X ())]
 myKeys =
@@ -482,13 +481,7 @@ myKeys =
 
     -- Useful programs to have a keybinding for launch
         , ("M-t", spawn (myTerminal))
-        -- , ("M-b", spawn (myBrowser))
-        , ("M-V", launchEmacsclientForProject)
-        , ("M-v", spawn vscode)
-        -- , ("M-v", spawn (myEditor))
-        -- , ("M-S-n", launchEmacsclient "notes" Nothing (File "~/org/index.org"))
-        -- , ("M-o n", spawn "obsidian \"obsidian://path=~/dnd\"")
-        -- , ("M-a", launchEmacsclient "agenda" (Just "emacs-notepad") (Eval "(progn (org-agenda-list) (org-agenda-redo) (delete-other-windows))"))
+        , ("M-v", spawn (myEditor))
 
     -- Kill windows
         , ("M-c", kill1)                         -- Kill the currently focused client
@@ -576,11 +569,6 @@ projects =
               , projectDirectory = "~/"
               , projectStartHook = Just $ do
                   spawn myBrowser
-              }
-    , Project { projectName = "code"
-              , projectDirectory = "~/"
-              , projectStartHook = Just $ do
-                  spawn vscode
               }
     , Project { projectName = "chat"
               , projectDirectory = "~/"
