@@ -73,7 +73,7 @@ with lib;
 
         fundle init
 
-        source $FISH_PATH/paths.fish
+        set PATH $HOME/.local/bin $HOME/.emacs.d/bin $HOME/.cargo/bin $PATH
 
         # do not show a welcome message
         set fish_greeting
