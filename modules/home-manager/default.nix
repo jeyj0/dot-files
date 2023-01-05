@@ -30,6 +30,8 @@
     ./sshfs
     ./signal
     ./zoom
+    ./xfconf
+    ./jeyj0
     # dotgen home module marker
   ];
 }

@@ -5,7 +5,7 @@
     nixpkgs.url = "nixpkgs/nixos-22.11";
     nixpkgs-unstable.url = "nixpkgs/nixpkgs-unstable";
 
-    home-manager.url = "github:nix-community/home-manager/release-21.05";
+    home-manager.url = "github:nix-community/home-manager/release-22.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
@@ -66,79 +66,78 @@
   in {
     homeManagerConfigurations = {
       jeyj0 = home-manager.lib.homeManagerConfiguration {
-        inherit system pkgs;
-        username = "jeyj0";
-        homeDirectory = "/home/jeyj0";
-        configuration = {
-          imports = [
-            ./old-nix-structure/home-manager/jeyj0-nixos.nix
-            ./modules/home-manager
-            ./collections/home-manager
-          ];
-
-          jeyj0.collections = {
-            core.enable = true;
-          };
-
-          jeyj0 = {
-            polybar.enable = true;
-            obsidian.enable = true;
-            picom.enable = true;
-            thunar.enable = true;
-            rofi.enable = true;
-            alacritty = {
+        inherit pkgs;
+ 
+        modules = [
+          ./old-nix-structure/home-manager/jeyj0-nixos.nix
+          ./modules/home-manager
+          ./collections/home-manager
+          {
+            jeyj0 = {
               enable = true;
-              fontSize = 14.0;
-            };
-            # wonderdraft.enable = true;
-            freecad.enable = true;
-          };
-        };
 
+              collections = {
+                core.enable = true;
+              };
+
+              polybar.enable = true;
+              obsidian.enable = true;
+              picom.enable = true;
+              thunar.enable = true;
+              rofi.enable = true;
+              alacritty = {
+                enable = true;
+                fontSize = 14.0;
+              };
+              # wonderdraft.enable = true;
+              freecad.enable = true;
+              xfconf.enable = true;
+            };
+          }
+        ];
       };
 
       core = home-manager.lib.homeManagerConfiguration {
-        inherit system pkgs;
-        username = "jeyj0";
-        homeDirectory = "/home/jeyj0";
-        configuration = {
-          imports = [
-            ./modules/home-manager
-            ./collections/home-manager
-          ];
+        inherit pkgs;
+        modules = [
+          ./modules/home-manager
+          ./collections/home-manager
+          {
+            jeyj0 = {
+              enable = true;
 
-          jeyj0.collections = {
-            core.enable = true;
-          };
+              collections = {
+                core.enable = true;
+              };
 
-          jeyj0 = {
-            alacritty.enable = true;
-            vscode.enable = true;
-          };
-        };
+              alacritty.enable = true;
+              vscode.enable = true;
+            };
+          }
+        ];
       };
 
       laptop = home-manager.lib.homeManagerConfiguration {
-        inherit system pkgs;
-        username = "jeyj0";
-        homeDirectory = "/home/jeyj0";
-        configuration = {
-          imports = [
-            ./modules/home-manager
-            ./collections/home-manager
-          ];
+        inherit pkgs;
+        modules = [
+          ./modules/home-manager
+          ./collections/home-manager
+          {
+            jeyj0 = {
+              enable = true;
 
-          jeyj0.collections = {
-            core.enable = true;
-            core-gui.enable = true;
-          };
+              collections = {
+                core.enable = true;
+                core-gui.enable = true;
+              };
 
-          jeyj0 = {
-            spotify.enable = true;
-            slack.enable = true;
-            zoom.enable = true;
-          };
-        };
+              spotify.enable = true;
+              slack.enable = true;
+              zoom.enable = true;
+              xfconf.enable = true;
+            };
+          }
+        ];
       };
     };
 
