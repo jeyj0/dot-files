@@ -18,6 +18,48 @@ with lib;
       enable = true;
       package = pkgs.unstable.fish;
 
+      shellAliases = {
+        # general
+        cp = "cp -i";
+        mv = "mv -i";
+        ls = "exa";
+        la = "ls -l --all";
+        tree = "exa --tree";
+        op = "cd ~/projects/(ls ~/projects/ | fzf)";
+
+        # nnn
+        nnn = "nnn -H";
+        fm = "nnn";
+
+        # git
+        gs = "git status";
+        gss = "git status -s";
+        gpush = "git push";
+        gpull = "git pull";
+        gc = "git commit";
+        gco = "git_checkout_fzf";
+        glog = "git log";
+        # glog-graph = "git log --graph --abbrev-commit --color=always --decorate --format=format:\"\%C(blue)\%h\%C(reset) - \%C(white bold)\%s\%C(reset) \%C(dim white)- \%an\%C(reset)\%n""           \%C(cyan)\%aD\%C(reset) \%C(green)(\%ar)\%C(reset)\%C(auto)\%d\%C(reset)\"";
+        ga = "git add";
+        gd = "git diff";
+        gdc = "git diff --cached";
+
+        # make deletion of files on command line safer
+        rm = "trash";
+
+        # alias e to the default editor
+        e = "$VISUAL";
+
+        # (neo)vim
+        vim = "nvim";
+        vi = "vim";
+        v = "vim";
+        f = "~/.config/nvim/jeyj0-plugged/vim-floaterm/bin/floaterm";
+
+        # utilities
+        whatismyip = "curl ipinfo.io/ip";
+      };
+
       interactiveShellInit = ''
         set FISH_PATH $HOME/.config/fish
 
@@ -32,7 +74,6 @@ with lib;
         fundle init
 
         source $FISH_PATH/paths.fish
-        source $FISH_PATH/aliases.fish
 
         # do not show a welcome message
         set fish_greeting
