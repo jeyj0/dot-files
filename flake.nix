@@ -63,12 +63,16 @@
 
     lib = nixpkgs.lib;
 
-    frameworkSyncthingFolders = {
-      "02-areas" = true;
-      "02-areas/00-ttrpgs" = true;
-      "666-test" = true;
+    syncthingFolders = {
+      desktop = {
+        "666-test" = true;
+      };
+      framework = {
+        "02-areas" = true;
+        "02-areas/00-ttrpgs" = true;
+        "666-test" = true;
+      };
     };
-
   in {
     homeManagerConfigurations = {
       jeyj0 = home-manager.lib.homeManagerConfiguration {
@@ -98,6 +102,10 @@
               # wonderdraft.enable = true;
               freecad.enable = true;
               xfconf.enable = true;
+              syncthing = {
+                enable = true;
+                folders = syncthingFolders.desktop;
+              };
             };
           }
         ];
@@ -144,7 +152,7 @@
 
               syncthing = {
                 enable = true;
-                folders = frameworkSyncthingFolders;
+                folders = syncthingFolders.framework;
               };
             };
           }
@@ -162,6 +170,10 @@
           ({ ... }: {
             jeyj0 = {
               printing.enable = true;
+              syncthing = {
+                enable = true;
+                folders = syncthingFolders.desktop;
+              };
             };
           })
         ];
@@ -198,7 +210,7 @@
               user-jeyj0.enable = true;
               syncthing = {
                 enable = true;
-                folders = frameworkSyncthingFolders;
+                folders = syncthingFolders.framework;
               };
             };
           })

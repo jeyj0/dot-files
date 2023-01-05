@@ -101,14 +101,14 @@ in
         userServices = true;
       };
     };
-    syncthing = {
-      enable = true;
-      openDefaultPorts = true;
-      user = "jeyj0";
-      group = "jeyj0";
-      dataDir = "/home/jeyj0/Sync";
-      configDir = "/home/jeyj0/.config/syncthing/";
-    };
+    # syncthing = {
+    #   enable = true;
+    #   openDefaultPorts = true;
+    #   user = "jeyj0";
+    #   group = "jeyj0";
+    #   dataDir = "/home/jeyj0/Sync";
+    #   configDir = "/home/jeyj0/.config/syncthing/";
+    # };
     unclutter = {
       enable = true;
       keystroke = true;
