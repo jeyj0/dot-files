@@ -4,9 +4,10 @@
     label = "00-ttrpgs";
     path = "02-areas/00-ttrpgs";
     stignore = ''
-      .obsidian
+      .obsidian/workspace
+      .obsidian/workspaces.json
     '';
-    devices = [ "jeyj0-framework" ];
+    devices = [ "jeyj0-framework" "jeyj0-desktop" ];
   }
   {
     id = "02-areas";
@@ -16,14 +17,5 @@
       /00-ttrpgs
     '';
     devices = [ "jeyj0-framework" ];
-  }
-  {
-    id = "666-test";
-    label = "666-test";
-    path = "666-test";
-    stignore = ''
-      .obsidian
-    '';
-    devices = [ "jeyj0-nixos" "jeyj0-framework" ];
   }
 ]
