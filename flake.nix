@@ -119,7 +119,6 @@
               spotify.enable = true;
               slack.enable = true;
               zoom.enable = true;
-              xfconf.enable = true;
 
               syncthing.enable = true;
             };
