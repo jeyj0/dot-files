@@ -77,7 +77,7 @@
           {
             jeyj0 = {
               enable = true;
-              hostName = "jeyj0-nixos";
+              hostName = desktop;
 
               collections = {
                 core.enable = true;
