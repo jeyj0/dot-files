@@ -4,8 +4,7 @@ let
   phone = "jeyj0-phone";
   obsidianIgnore = ''
     .obsidian/workspace
-    .obsidian/workspace.json
-    .obsidian/workspaces.json
+    .obsidian/workspace*.json
   '';
 in
 [
