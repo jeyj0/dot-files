@@ -62,9 +62,12 @@
     };
 
     lib = nixpkgs.lib;
+
+    framework = "jeyj0-framework";
+    desktop = "jeyj0-nixos";
   in {
     homeManagerConfigurations = {
-      "jeyj0@jeyj0-nixos" = home-manager.lib.homeManagerConfiguration {
+      "jeyj0@${desktop}" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
  
         modules = [
@@ -98,7 +101,7 @@
         ];
       };
 
-      "jeyj0@jeyj0-framework" = home-manager.lib.homeManagerConfiguration {
+      "jeyj0@${framework}" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
           ./modules/home-manager
@@ -106,7 +109,7 @@
           {
             jeyj0 = {
               enable = true;
-              hostName = "jeyj0-framework";
+              hostName = framework;
 
               collections = {
                 core.enable = true;
@@ -126,7 +129,7 @@
     };
 
     nixosConfigurations = {
-      jeyj0-nixos = lib.nixosSystem {
+      "${desktop}" = lib.nixosSystem {
         inherit system pkgs;
 
         modules = [
@@ -141,14 +144,14 @@
         ];
       };
 
-      jeyj0-framework = lib.nixosSystem {
+      "${framework}" = lib.nixosSystem {
         inherit system pkgs;
 
         modules = [
           nixos-hardware.nixosModules.framework
           ./modules/nixos
           ({ ... }: {
-            networking.hostName = "jeyj0-framework";
+            networking.hostName = framework;
 
             # This value determines the NixOS release from which the default
             # settings for stateful data, like file locations and database versions
