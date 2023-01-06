@@ -7,7 +7,7 @@
       .obsidian/workspace
       .obsidian/workspaces.json
     '';
-    devices = [ "jeyj0-framework" "jeyj0-desktop" ];
+    devices = [ "jeyj0-framework" "jeyj0-nixos" ];
   }
   {
     id = "02-areas";
