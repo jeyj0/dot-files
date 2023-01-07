@@ -70,4 +70,13 @@ in
     stignore = baseIgnore;
     devices = [ framework desktop ];
   }
+  {
+    id = "05-media/00-phone-camera-inbox";
+    label = "00-phone-camera-inbox";
+    path = "05-media/00-phone-camera-inbox";
+    stignore = baseIgnore + ''
+      .thumbnails
+    '';
+    devices = [ desktop phone ];
+  }
 ]
