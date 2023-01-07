@@ -49,6 +49,10 @@ in
           addresses = [];
           id = "3ZTBTG5-UWL5OCR-ALQBKM3-CXC3EDW-7T4IRIB-5RWQPST-GCVC54P-BEE3XQQ";
         };
+        ronja-phone = {
+          addresses = [];
+          id = "RVI4BEL-YCCDBCR-J77I5NJ-2EK2SB4-3Q3CX7R-MJ3YDL5-7RMR5PB-GLY2OAV";
+        };
       };
 
       overrideFolders = true;
