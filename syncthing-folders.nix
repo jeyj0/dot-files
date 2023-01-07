@@ -71,9 +71,9 @@ in
     devices = [ framework desktop ];
   }
   {
-    id = "05-media/00-phone-camera-inbox";
-    label = "00-phone-camera-inbox";
-    path = "05-media/00-phone-camera-inbox";
+    id = "05-media/00-inbox/00-phone-camera";
+    label = "00-phone-camera";
+    path = "05-media/00-inbox/00-phone-camera";
     stignore = baseIgnore + ''
       .thumbnails
     '';
