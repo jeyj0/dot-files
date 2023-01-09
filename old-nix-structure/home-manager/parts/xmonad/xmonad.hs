@@ -567,23 +567,6 @@ projects =
               }
     , Project { projectName = "web"
               , projectDirectory = "~/"
-              , projectStartHook = Just $ do
-                  spawn myBrowser
-              }
-    , Project { projectName = "chat"
-              , projectDirectory = "~/"
-              , projectStartHook = Nothing
-              }
-    , Project { projectName = "music"
-              , projectDirectory = "~/"
-              , projectStartHook = Nothing
-              }
-    , Project { projectName = "ttrpg"
-              , projectDirectory = "~/Documents/02-areas/00-ttrpgs"
-              , projectStartHook = Nothing
-              }
-    , Project { projectName = "obsidian-ttrpg"
-              , projectDirectory = "~/Documents/02-areas/00-ttrpgs/.obsidian/plugins/obsidian-jeyj0-ttrpg"
               , projectStartHook = Nothing
               }
     , Project { projectName = "lychee"
