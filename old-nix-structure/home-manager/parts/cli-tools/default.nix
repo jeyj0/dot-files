@@ -3,7 +3,7 @@
   home.packages = with pkgs; [
     curl
     wget
-    htop
+    #htop
 
     unstable.gitui
 
