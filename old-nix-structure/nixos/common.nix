@@ -52,6 +52,7 @@ in
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users = {
+    extraGroups.vboxusers.members = [ "${userName}" ];
     groups = {
       "${userName}" = {
         members = [ "${userName}" ];
@@ -167,6 +168,10 @@ in
     docker = {
       enable = true;
       # enableNvidia = true;
+    };
+    virtualbox.host = {
+      enable = true;
+      enableExtensionPack = true;
     };
   };
 
