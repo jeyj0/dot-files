@@ -18,13 +18,10 @@ in
     home.packages = with pkgs.unstable; [
       pkgs.jeyj0.neovim
       prettier # for auto-formatting
+      ripgrep
     ];
-    # programs.neovim = {
-    #   enable = true;
-    #   package = pkgs.neovim;
-    # };
     home.file.neovimConfigs = {
-      source = ./xdg-config;
+      source = ./config;
       target = ".config/nvim";
       recursive = true;
     };
