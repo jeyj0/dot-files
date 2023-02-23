@@ -229,11 +229,11 @@ myBorderWidth = 5
 
 -- Border color of normal windows
 myNormColor :: String
-myNormColor   = "#282828"
+myNormColor   = "#222436"
 
 -- Border color of focused windows
 myFocusColor :: String
-myFocusColor  = "#8ec07c"
+myFocusColor  = "#c3e88d"
 
 -- Setting this for use in xprompts
 altMask :: KeyMask
@@ -358,12 +358,12 @@ tabs     = renamed [Replace "tabs"]
            $ tabbed shrinkText myTabTheme
 
 myTabTheme = def { fontName            = myFont
-                 , activeColor         = "#3c3836"
-                 , inactiveColor       = "#282828"
-                 , activeBorderColor   = "#3c3836"
-                 , inactiveBorderColor = "#1c1c1c"
-                 , activeTextColor     = "#ebdbb2"
-                 , inactiveTextColor   = "#928374"
+                 , activeColor         = "#222436"
+                 , inactiveColor       = "#1b1d2b"
+                 , activeBorderColor   = "#222436"
+                 , inactiveBorderColor = "#1b1d2b"
+                 , activeTextColor     = "#c8d3f5"
+                 , inactiveTextColor   = "#444a73"
                  }
 
 myLayoutHook =
@@ -640,11 +640,11 @@ polybarHook dbus =
   let
     wrapper c s | s /= "NSP" = wrap ("%{F" <> c <> "}") "%{F-}" s
                 | otherwise = mempty
-    green = "#8ec07c"
-    blue = "#458588"
-    gray = "#928374"
-    fg = "#ebdbb2"
-    red = "#cc241d"
+    green = "#c3e88d"
+    blue = "#82aaff"
+    gray = "#444a73"
+    fg = "#c8d3f5"
+    red = "#ff757f"
   in def
     { ppOutput = dbusOutput dbus
     , ppCurrent = wrapper green . wrap "[ " " ]"
