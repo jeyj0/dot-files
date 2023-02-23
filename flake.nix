@@ -193,6 +193,7 @@
 
       dotgen = pkgs.unstable.callPackage (import ./packages/dotgen) {};
       dotfiles-scripts = pkgs.unstable.callPackage (import ./packages/dotfiles-scripts) {};
+      xmonad = pkgs.unstable.callPackage (import ./packages/xmonad) {};
       # dotgen package marker
     };
 

@@ -145,18 +145,25 @@ in
     };
 
     windowManager = {
-      xmonad = {
-        enable = true;
-        enableContribAndExtras = true;
-        config = ../home-manager/parts/xmonad/xmonad.hs;
-        extraPackages = hpkgs: with hpkgs; [
-          xmonad
-          xmonad-contrib
-          xmonad-extras
-          dbus
-          monad-logger
-        ];
-      };
+      session = [{
+        name = "xmonad";
+        start = ''
+           systemd-cat -t xmonad -- ${pkgs.xmonad}/bin/xmonad ${lib.escapeShellArgs []} &
+           waitPID=$!
+        '';
+      }];
+      # xmonad = {
+      #   enable = true;
+      #   # enableContribAndExtras = true;
+      #   # config = ../home-manager/parts/xmonad/xmonad.hs;
+      #   # extraPackages = hpkgs: with hpkgs; [
+      #   #   xmonad
+      #   #   xmonad-contrib
+      #   #   xmonad-extras
+      #   #   dbus
+      #   #   monad-logger
+      #   # ];
+      # };
     };
   };
 
