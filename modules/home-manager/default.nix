@@ -33,6 +33,7 @@
     ./xfconf
     ./jeyj0
     ./syncthing
+    ./discord
     # dotgen home module marker
   ];
 }

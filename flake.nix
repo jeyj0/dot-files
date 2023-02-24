@@ -118,6 +118,7 @@
 
               spotify.enable = true;
               slack.enable = true;
+              discord.enable = true;
               zoom.enable = true;
 
               syncthing.enable = true;
