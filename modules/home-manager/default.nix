@@ -34,6 +34,7 @@
     ./jeyj0
     ./syncthing
     ./discord
+    ./gnome
     # dotgen home module marker
   ];
 }
