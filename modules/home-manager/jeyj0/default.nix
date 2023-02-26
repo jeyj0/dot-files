@@ -20,6 +20,9 @@ with lib;
       username = "jeyj0";
       homeDirectory = "/home/jeyj0";
       stateVersion = "22.05";
+      sessionVariables = mkIf config.jeyj0.neovim.enable {
+        EDITOR = "nvim";
+      };
     };
   };
 }
