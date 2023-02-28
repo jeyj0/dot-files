@@ -116,6 +116,8 @@
                 core-gui.enable = true;
               };
 
+              gnome.enable = true;
+
               spotify.enable = true;
               slack.enable = true;
               discord.enable = true;
