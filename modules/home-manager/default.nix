@@ -35,6 +35,7 @@
     ./syncthing
     ./discord
     ./gnome
+    ./gimp
     # dotgen home module marker
   ];
 }
