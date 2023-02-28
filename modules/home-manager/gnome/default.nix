@@ -36,7 +36,6 @@ with lib;
     };
     home.packages = with pkgs.unstable; [
       gnomeExtensions.user-themes
-      palenight-theme
       tokyo-night-gtk
     ];
   };
