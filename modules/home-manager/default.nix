@@ -36,6 +36,7 @@
     ./discord
     ./gnome
     ./gimp
+    ./microsoft-edge
     # dotgen home module marker
   ];
 }
