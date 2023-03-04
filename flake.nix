@@ -83,6 +83,8 @@
                 core.enable = true;
               };
 
+              "microsoft-edge".enable = true;
+
               polybar.enable = true;
               obsidian.enable = true;
               picom.enable = true;
