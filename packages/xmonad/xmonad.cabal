@@ -20,3 +20,4 @@ executable xmonad
         containers,
         utf8-string,
         dbus,
+        monad-logger,
