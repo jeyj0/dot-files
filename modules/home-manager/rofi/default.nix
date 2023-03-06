@@ -13,11 +13,8 @@ with lib;
     programs.rofi = {
       enable = true;
       package = pkgs.unstable.rofi;
-    };
-    home.file.rofiConfigs = {
-      source = ./xdg-config;
-      target = ".config/rofi";
-      recursive = true;
+      font = "Hack Nerd Font 14";
+      theme = ./tokyonight.rasi;
     };
   };
 }
