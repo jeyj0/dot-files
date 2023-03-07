@@ -405,10 +405,7 @@ myManageHook = composeAll
      , stringProperty "WM_WINDOW_ROLE" =? "GtkFileChooserDialog" --> (doRectFloat $ W.RationalRect (1%4) (1%4) (2%4) (2%4))
      , title =? "Error" --> (doRectFloat $ W.RationalRect (1%4) (1%4) (2%4) (2%4))
      , className =? "nnn" --> (doRectFloat $ W.RationalRect (1%4) (1%4) (2%4) (2%4))
-     , className =? "Rofi" --> composeAll
-        [ doRectFloat $ W.RationalRect (1%4) (1%4) (2%4) (2%4)
-        , hasBorder False
-        ]
+     , className =? "Rofi" --> composeAll [doFloat, hasBorder False]
      ]
 
 data EmacsOpenAction
