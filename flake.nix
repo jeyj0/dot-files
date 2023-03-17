@@ -156,7 +156,7 @@
         modules = [
           nixos-hardware.nixosModules.framework
           ./modules/nixos
-          ({ ... }: {
+          ({ config, ... }: {
             networking.hostName = framework;
 
             # This value determines the NixOS release from which the default
@@ -168,6 +168,9 @@
             system.stateVersion = "22.05"; # Did you read the comment?
 
             imports = [ ./framework-configuration.nix ];
+            boot.kernelPackages = pkgs.linuxPackages_latest;
+            boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
+            boot.kernelModules = [ "v4l2loopback" ];
 
             jeyj0 = {
               settings.enable = true;
