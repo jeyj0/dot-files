@@ -37,6 +37,7 @@
     ./gnome
     ./gimp
     ./microsoft-edge
+    ./obs-studio
     # dotgen home module marker
   ];
 }

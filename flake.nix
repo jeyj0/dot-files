@@ -124,6 +124,7 @@
               slack.enable = true;
               discord.enable = true;
               zoom.enable = true;
+              obs-studio.enable = true;
               gimp.enable = true;
 
               syncthing.enable = true;
