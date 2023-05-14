@@ -38,6 +38,7 @@
     ./gimp
     ./microsoft-edge
     ./obs-studio
+    ./nix
     # dotgen home module marker
   ];
 }

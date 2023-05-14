@@ -24,5 +24,7 @@ with lib;
         EDITOR = "nvim";
       };
     };
+
+    jeyj0.nix.enable = true;
   };
 }
