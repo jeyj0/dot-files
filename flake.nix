@@ -127,6 +127,7 @@
               obs-studio.enable = true;
               gimp.enable = true;
               freecad.enable = true;
+              freetube.enable = true;
 
               syncthing.enable = true;
             };

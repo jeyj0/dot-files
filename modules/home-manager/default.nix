@@ -39,6 +39,7 @@
     ./microsoft-edge
     ./obs-studio
     ./nix
+    ./freetube
     # dotgen home module marker
   ];
 }
