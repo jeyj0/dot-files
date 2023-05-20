@@ -11,11 +11,11 @@ with lib;
 
   config = mkIf config.jeyj0.collections.core-gui.enable {
     jeyj0 = {
-      alacritty.enable = true;
-      firefox.enable = true;
-      obsidian.enable = true;
-      signal.enable = true;
-      vscode.enable = true;
+      alacritty.enable = mkDefault true;
+      firefox.enable = mkDefault true;
+      obsidian.enable = mkDefault true;
+      signal.enable = mkDefault true;
+      vscode.enable = mkDefault true;
     };
   };
 }
