@@ -11,17 +11,17 @@ with lib;
 
   config = mkIf config.jeyj0.collections.core.enable {
     jeyj0 = {
-      git.enable = true;
-      fish.enable = true;
-      starship.enable = true;
-      neovim.enable = true;
-      exa.enable = true;
-      bat.enable = true;
-      trash.enable = true;
-      ag.enable = true;
-      clifm.enable = true;
-      htop.enable = true;
-      sshfs.enable = true;
+      git.enable = mkDefault true;
+      fish.enable = mkDefault true;
+      starship.enable = mkDefault true;
+      neovim.enable = mkDefault true;
+      exa.enable = mkDefault true;
+      bat.enable = mkDefault true;
+      trash.enable = mkDefault true;
+      ag.enable = mkDefault true;
+      clifm.enable = mkDefault true;
+      htop.enable = mkDefault true;
+      sshfs.enable = mkDefault true;
     };
   };
 }
