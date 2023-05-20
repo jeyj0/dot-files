@@ -81,9 +81,13 @@
 
               collections = {
                 core.enable = true;
+                core-gui.enable = true;
               };
 
               "microsoft-edge".enable = true;
+
+              # overridden from core-gui
+              firefox.enable = false; # override because it's controlled from old nix structure
 
               polybar.enable = true;
               obsidian.enable = true;
