@@ -3,7 +3,6 @@
   imports = [
     (import ./gui-and-media { pkgs = pkgs; })
     (import ./zathura { pkgs = pkgs; })
-    (import ./vscode { pkgs = pkgs; })
   ];
 
   home.packages = with pkgs; [
