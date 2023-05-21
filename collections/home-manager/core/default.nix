@@ -12,6 +12,7 @@ with lib;
   config = mkIf config.jeyj0.collections.core.enable {
     jeyj0 = {
       git.enable = mkDefault true;
+      home-manager.enable = mkDefault true;
       fish.enable = mkDefault true;
       starship.enable = mkDefault true;
       neovim.enable = mkDefault true;

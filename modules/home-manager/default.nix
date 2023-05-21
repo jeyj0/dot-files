@@ -40,6 +40,7 @@
     ./obs-studio
     ./nix
     ./freetube
+    ./home-manager
     # dotgen home module marker
   ];
 }
