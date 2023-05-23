@@ -14,33 +14,61 @@ with lib;
       enable = true;
       package = pkgs.jeyj0.helix;
       languages = {
-        language = [
+        language = let
+          prettierFormatter = parser: { command = "prettier"; args = ["--parser" parser]; };
+        in [
           {
             name = "typescript";
-            formatter = { command = "prettier"; args = ["--parser" "typescript"]; };
-            auto-format = true;
+            formatter = prettierFormatter "typescript";
+            language-servers = ["tailwindcss-typescript" "typescript-language-server"];
+          }
+          {
+            name = "tsx";
+            language-id = "typescriptreact";
+            formatter = prettierFormatter "typescript";
+            language-servers = ["tailwindcss-tsx" "typescript-language-server"];
           }
           {
             name = "javascript";
-            formatter = { command = "prettier"; args = ["--parser" "javascript"]; };
-            auto-format = true;
+            formatter = prettierFormatter "javascript";
+            language-servers = ["tailwindcss-javascript" "typescript-language-server"];
+          }
+          {
+            name = "jsx";
+            formatter = prettierFormatter "javascript";
+            language-servers = ["tailwindcss-jsx" "typescript-language-server"];
           }
           {
             name = "html";
-            formatter = { command = "prettier"; args = ["--parser" "html"]; };
-            auto-format = true;
+            formatter = prettierFormatter "html";
           }
           {
             name = "json";
-            formatter = { command = "prettier"; args = ["--parser" "json"]; };
-            auto-format = true;
+            formatter = prettierFormatter "json";
           }
           {
             name = "css";
-            formatter = { command = "prettier"; args = ["--parser" "css"]; };
-            auto-format = true;
+            scope = "source.css";
+            file-types = ["css" "postcss"];
+            formatter = prettierFormatter "css";
+            language-servers = ["tailwindcss-css" "vscode-css-language-server"];
           }
         ];
+
+        language-server = let
+          tailwindLanguageServer = language-id: {
+            language-id = "typescript";
+            command = "hx-tw";
+            args = ["--stdio"];
+            roots = ["tailwind.config.js" "tailwind.config.cjs" ".prettierrc" "nx.json"];
+          };
+        in {
+          tailwindcss-typescript = tailwindLanguageServer "typescript";
+          tailwindcss-tsx = tailwindLanguageServer "typescriptreact";
+          tailwindcss-javascript = tailwindLanguageServer "javascript";
+          tailwindcss-jsx = tailwindLanguageServer "javascriptreact";
+          tailwindcss-css = tailwindLanguageServer "css";
+        };
       };
       settings = {
         theme = "tokyonight_storm";
@@ -84,6 +112,8 @@ with lib;
       nodePackages_latest.dockerfile-language-server-nodejs
       pkgs.jeyj0.nil # nix language server
       pkgs.jeyj0.node-packages."@prisma/language-server"
+      pkgs.jeyj0.node-packages."@tailwindcss/language-server"
+      pkgs.jeyj0.node-packages."helix-twcss"
       taplo # TOML language server
     ];
   };
