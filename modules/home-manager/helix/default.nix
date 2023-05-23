@@ -73,6 +73,8 @@ with lib;
     };
 
     home.packages = with pkgs.unstable; [
+      nodePackages_latest.prettier
+
       # language servers
       nodePackages_latest.typescript-language-server
       nodePackages_latest.vscode-langservers-extracted
@@ -81,9 +83,6 @@ with lib;
       pkgs.jeyj0.nil # nix language server
       pkgs.jeyj0.node-packages."@prisma/language-server"
       taplo # TOML language server
-
-      # tree sitter grammars
-      tree-sitter-grammars.tree-sitter-nix
     ];
   };
 }
