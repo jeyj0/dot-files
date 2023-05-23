@@ -13,17 +13,17 @@ with lib;
     programs.helix = {
       enable = true;
       package = pkgs.jeyj0.helix;
-      languages = [
-        {
-          name = "typescript";
-          language-servers = with pkgs.nodePackages_latest; [
-            {
-              command = "${typescript-language-server}/bin/typescript-language-server";
-              args = [ "--stdio" "--tsserver-path=${typescript}/lib/node_modules/typescript/lib" ];
-            }
-          ];
-        }
-      ];
+      # languages = [
+      #   {
+      #     name = "typescript";
+      #     language-servers = with pkgs.nodePackages_latest; [
+      #       {
+      #         command = "${typescript-language-server}/bin/typescript-language-server";
+      #         args = [ "--stdio" "--tsserver-path=${typescript}/lib/node_modules/typescript/lib" ];
+      #       }
+      #     ];
+      #   }
+      # ];
       settings = {
         theme = "tokyonight_storm";
         editor = {
@@ -50,6 +50,8 @@ with lib;
       nodePackages_latest.yaml-language-server
       nodePackages_latest.dockerfile-language-server-nodejs
       pkgs.jeyj0.nil # nix language server
+      pkgs.jeyj0.node-packages."@prisma/language-server"
+      taplo # TOML language server
 
       # tree sitter grammars
       tree-sitter-grammars.tree-sitter-nix

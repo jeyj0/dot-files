@@ -8,6 +8,8 @@
     home-manager.url = "github:nix-community/home-manager/release-22.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    node2nix.url = "github:svanderburg/node2nix";
+
     helix.url = "github:helix-editor/helix";
     nil.url = "github:oxalica/nil";
 
@@ -29,6 +31,7 @@
     , nixpkgs
     , nixpkgs-unstable
     , home-manager
+    , node2nix
     , helix
     , nil
     , nixos-hardware
@@ -60,6 +63,7 @@
             neovim = nvim.packages.${system}.default;
             helix = helix.packages.${system}.default;
             nil = nil.packages.${system}.default;
+            node-packages = pkgs.unstable.callPackage (import ./packages/node-packages) {};
           };
         })
         (_: _: {
@@ -228,6 +232,7 @@
       packages = with pkgs; [
         dotgen
         dotfiles-scripts
+        node2nix.packages.${system}.default
       ];
     };
 
