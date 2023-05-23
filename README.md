@@ -3,6 +3,13 @@ This is my personal .dot-files repository, where all my custom dotfiles and inst
 
 To use it, clone the repo directly into the home directory.
 
+## Update home-manager configuration
+
+```sh
+# uses current username and hostname by default
+home-manager switch --flake .
+```
+
 ## Usage
 
 1. Download/clone this repository
