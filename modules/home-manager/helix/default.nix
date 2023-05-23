@@ -13,33 +13,35 @@ with lib;
     programs.helix = {
       enable = true;
       package = pkgs.jeyj0.helix;
-      languages = [
-        {
-          name = "typescript";
-          formatter = { command = "prettier"; args = ["--parser" "typescript"]; };
-          auto-format = true;
-        }
-        {
-          name = "javascript";
-          formatter = { command = "prettier"; args = ["--parser" "javascript"]; };
-          auto-format = true;
-        }
-        {
-          name = "html";
-          formatter = { command = "prettier"; args = ["--parser" "html"]; };
-          auto-format = true;
-        }
-        {
-          name = "json";
-          formatter = { command = "prettier"; args = ["--parser" "json"]; };
-          auto-format = true;
-        }
-        {
-          name = "css";
-          formatter = { command = "prettier"; args = ["--parser" "css"]; };
-          auto-format = true;
-        }
-      ];
+      languages = {
+        language = [
+          {
+            name = "typescript";
+            formatter = { command = "prettier"; args = ["--parser" "typescript"]; };
+            auto-format = true;
+          }
+          {
+            name = "javascript";
+            formatter = { command = "prettier"; args = ["--parser" "javascript"]; };
+            auto-format = true;
+          }
+          {
+            name = "html";
+            formatter = { command = "prettier"; args = ["--parser" "html"]; };
+            auto-format = true;
+          }
+          {
+            name = "json";
+            formatter = { command = "prettier"; args = ["--parser" "json"]; };
+            auto-format = true;
+          }
+          {
+            name = "css";
+            formatter = { command = "prettier"; args = ["--parser" "css"]; };
+            auto-format = true;
+          }
+        ];
+      };
       settings = {
         theme = "tokyonight_storm";
         editor = {

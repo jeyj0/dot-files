@@ -20,8 +20,8 @@ with lib;
       recursive = true;
     };
     home.sessionVariables = mkMerge [
-      (mkIf config.jeyj0.neovim.enable { GIT_EDITOR = "nvim"; })
-      (mkIf config.jeyj0.helix.enable { GIT_EDITOR = "hx"; })
+      (mkIf config.jeyj0.neovim.enable { GIT_EDITOR = mkOverride 1000 "nvim"; })
+      (mkIf config.jeyj0.helix.enable { GIT_EDITOR = mkOverride 1001 "hx"; })
     ];
   };
 }

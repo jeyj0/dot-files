@@ -5,15 +5,15 @@
   programs.firefox = {
     enable = true;
     package = pkgs.unstable.firefox;
-    extensions = with pkgs.firefox-addons; [
-      bitwarden
-      https-everywhere
-      privacy-badger
-      pushbullet
-      simple-tab-groups
-    ];
     profiles = {
       ${userName} = {
+        extensions = with pkgs.firefox-addons; [
+          bitwarden
+          https-everywhere
+          privacy-badger
+          pushbullet
+          simple-tab-groups
+        ];
         settings = {
           # first, disable stuff I don't want
           "extensions.pocket.enabled" = false;
