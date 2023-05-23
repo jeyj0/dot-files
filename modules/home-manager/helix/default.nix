@@ -32,12 +32,25 @@ with lib;
           auto-completion = true;
           completion-trigger-len = 1;
         };
-        keys.normal = {
-          space = {
-            space = "file_picker";
-            f = {
-              s = ":write";
+        keys = {
+          normal = {
+            space = {
+              space = "file_picker";
+              f = {
+                s = ":write";
+              };
+              b = {
+                b = "buffer_picker";
+                n = ":buffer-next";
+                p = ":buffer-previous";
+                d = ":buffer-close";
+                D = ":buffer-close!";
+                O = ":buffer-close-others";
+              };
             };
+          };
+          insert = {
+            "C-space" = "completion";
           };
         };
       };
