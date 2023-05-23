@@ -13,17 +13,33 @@ with lib;
     programs.helix = {
       enable = true;
       package = pkgs.jeyj0.helix;
-      # languages = [
-      #   {
-      #     name = "typescript";
-      #     language-servers = with pkgs.nodePackages_latest; [
-      #       {
-      #         command = "${typescript-language-server}/bin/typescript-language-server";
-      #         args = [ "--stdio" "--tsserver-path=${typescript}/lib/node_modules/typescript/lib" ];
-      #       }
-      #     ];
-      #   }
-      # ];
+      languages = [
+        {
+          name = "typescript";
+          formatter = { command = "prettier"; args = ["--parser" "typescript"]; };
+          auto-format = true;
+        }
+        {
+          name = "javascript";
+          formatter = { command = "prettier"; args = ["--parser" "javascript"]; };
+          auto-format = true;
+        }
+        {
+          name = "html";
+          formatter = { command = "prettier"; args = ["--parser" "html"]; };
+          auto-format = true;
+        }
+        {
+          name = "json";
+          formatter = { command = "prettier"; args = ["--parser" "json"]; };
+          auto-format = true;
+        }
+        {
+          name = "css";
+          formatter = { command = "prettier"; args = ["--parser" "css"]; };
+          auto-format = true;
+        }
+      ];
       settings = {
         theme = "tokyonight_storm";
         editor = {
