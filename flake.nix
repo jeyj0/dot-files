@@ -89,6 +89,8 @@
               # overridden from core-gui
               firefox.enable = false; # override because it's controlled from old nix structure
 
+              freetube.enable = true;
+
               polybar.enable = true;
               obsidian.enable = true;
               picom.enable = true;
