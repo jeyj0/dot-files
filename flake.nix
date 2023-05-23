@@ -8,6 +8,9 @@
     home-manager.url = "github:nix-community/home-manager/release-22.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    helix.url = "github:helix-editor/helix";
+    nil.url = "github:oxalica/nil";
+
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     nvim.url = "github:neovim/neovim?dir=contrib";
@@ -22,10 +25,12 @@
   };
 
   outputs =
-    { self
+    inputs@{ self
     , nixpkgs
     , nixpkgs-unstable
     , home-manager
+    , helix
+    , nil
     , nixos-hardware
     , nvim
     , nur
@@ -53,6 +58,8 @@
         (_: _: {
           jeyj0 = self.packages.${system} // {
             neovim = nvim.packages.${system}.default;
+            helix = helix.packages.${system}.default;
+            nil = nil.packages.${system}.default;
           };
         })
         (_: _: {
@@ -66,82 +73,6 @@
     framework = "jeyj0-framework";
     desktop = "jeyj0-nixos";
   in {
-    homeManagerConfigurations = {
-      "jeyj0@${desktop}" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
- 
-        modules = [
-          ./old-nix-structure/home-manager/jeyj0-nixos.nix
-          ./modules/home-manager
-          ./collections/home-manager
-          {
-            jeyj0 = {
-              enable = true;
-              hostName = desktop;
-
-              collections = {
-                core.enable = true;
-                core-gui.enable = true;
-              };
-
-              "microsoft-edge".enable = true;
-
-              # overridden from core-gui
-              firefox.enable = false; # override because it's controlled from old nix structure
-
-              freetube.enable = true;
-
-              polybar.enable = true;
-              obsidian.enable = true;
-              picom.enable = true;
-              thunar.enable = true;
-              rofi.enable = true;
-              alacritty = {
-                enable = true;
-                fontSize = 14.0;
-              };
-              # wonderdraft.enable = true;
-              freecad.enable = true;
-              xfconf.enable = true;
-              syncthing.enable = true;
-            };
-          }
-        ];
-      };
-
-      "jeyj0@${framework}" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [
-          ./modules/home-manager
-          ./collections/home-manager
-          {
-            jeyj0 = {
-              enable = true;
-              hostName = framework;
-
-              collections = {
-                core.enable = true;
-                core-gui.enable = true;
-              };
-
-              gnome.enable = true;
-
-              spotify.enable = true;
-              slack.enable = true;
-              discord.enable = true;
-              zoom.enable = true;
-              obs-studio.enable = true;
-              gimp.enable = true;
-              freecad.enable = true;
-              freetube.enable = true;
-
-              syncthing.enable = true;
-            };
-          }
-        ];
-      };
-    };
-
     nixosConfigurations = {
       "${desktop}" = lib.nixosSystem {
         inherit system pkgs;
@@ -213,9 +144,87 @@
       dotfiles-scripts = pkgs.unstable.callPackage (import ./packages/dotfiles-scripts) {};
       xmonad = pkgs.unstable.callPackage (import ./packages/xmonad) {};
       # dotgen package marker
+
+      homeConfigurations = {
+        "jeyj0@${desktop}" = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+
+          modules = [
+            ./old-nix-structure/home-manager/jeyj0-nixos.nix
+            ./modules/home-manager
+            ./collections/home-manager
+            {
+              jeyj0 = {
+                enable = true;
+                hostName = desktop;
+
+                collections = {
+                  core.enable = true;
+                  core-gui.enable = true;
+                };
+
+                "microsoft-edge".enable = true;
+
+                # overridden from core-gui
+                firefox.enable = false; # override because it's controlled from old nix structure
+
+                freetube.enable = true;
+
+                polybar.enable = true;
+                obsidian.enable = true;
+                picom.enable = true;
+                thunar.enable = true;
+                rofi.enable = true;
+                alacritty = {
+                  enable = true;
+                  fontSize = 14.0;
+                };
+                # wonderdraft.enable = true;
+                freecad.enable = true;
+                xfconf.enable = true;
+                syncthing.enable = true;
+
+                helix.enable = true;
+              };
+            }
+          ];
+        };
+
+        "jeyj0@${framework}" = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = [
+            ./modules/home-manager
+            ./collections/home-manager
+            {
+              jeyj0 = {
+                enable = true;
+                hostName = framework;
+
+                collections = {
+                  core.enable = true;
+                  core-gui.enable = true;
+                };
+
+                gnome.enable = true;
+
+                spotify.enable = true;
+                slack.enable = true;
+                discord.enable = true;
+                zoom.enable = true;
+                obs-studio.enable = true;
+                gimp.enable = true;
+                freecad.enable = true;
+                freetube.enable = true;
+
+                syncthing.enable = true;
+              };
+            }
+          ];
+        };
+      };
     };
 
-    devShell.${system} = pkgs.mkShell {
+    devShells.${system}.default = pkgs.mkShell {
       packages = with pkgs; [
         dotgen
         dotfiles-scripts
