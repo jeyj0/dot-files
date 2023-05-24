@@ -20,13 +20,19 @@ with lib;
           {
             name = "typescript";
             formatter = prettierFormatter "typescript";
-            language-servers = ["tailwindcss-typescript" "typescript-language-server"];
+            # TODO this currently causes some typescript-language-server features to not work
+            #      (such as space-k for viewing a variable's type)
+            # language-servers = ["tailwindcss-typescript" "typescript-language-server"];
+            language-servers = ["typescript-language-server"];
           }
           {
             name = "tsx";
             language-id = "typescriptreact";
             formatter = prettierFormatter "typescript";
-            language-servers = ["tailwindcss-tsx" "typescript-language-server"];
+            # TODO this currently causes some typescript-language-server features to not work
+            #      (such as space-k for viewing a variable's type)
+            # language-servers = ["tailwindcss-typescript" "typescript-language-server"];
+            language-servers = ["typescript-language-server"];
           }
           {
             name = "javascript";
@@ -77,11 +83,19 @@ with lib;
           auto-format = true;
           auto-completion = true;
           completion-trigger-len = 1;
+          gutters = ["diff" "diagnostics" "spacer" "line-numbers"];
+          idle-timeout = 0;
+          color-modes = true;
+          indent-guides.render = true;
+
+          lsp.goto-reference-include-declaration = false;
         };
         keys = {
           normal = {
             space = {
               space = "file_picker";
+              "." = "code_action";
+              c = "toggle_comments";
               f = {
                 s = ":write";
               };
