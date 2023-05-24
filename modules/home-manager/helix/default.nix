@@ -83,7 +83,7 @@ with lib;
           auto-format = true;
           auto-completion = true;
           completion-trigger-len = 1;
-          gutters = ["diff" "diagnostics" "spacer" "line-numbers"];
+          gutters = ["diff" "diagnostics" "spacer" "line-numbers" "spacer"];
           idle-timeout = 0;
           color-modes = true;
           indent-guides.render = true;
