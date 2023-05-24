@@ -20,44 +20,45 @@ with lib;
           {
             name = "typescript";
             formatter = prettierFormatter "typescript";
-            # TODO this currently causes some typescript-language-server features to not work
-            #      (such as space-k for viewing a variable's type)
-            # language-servers = ["tailwindcss-typescript" "typescript-language-server"];
-            language-servers = ["typescript-language-server"];
+            auto-format = true;
+            language-servers = ["typescript-language-server" "tailwindcss-typescript"];
           }
           {
             name = "tsx";
             language-id = "typescriptreact";
             formatter = prettierFormatter "typescript";
-            # TODO this currently causes some typescript-language-server features to not work
-            #      (such as space-k for viewing a variable's type)
-            # language-servers = ["tailwindcss-typescript" "typescript-language-server"];
-            language-servers = ["typescript-language-server"];
+            auto-format = true;
+            language-servers = [ "typescript-language-server" "tailwindcss-typescript"];
           }
           {
             name = "javascript";
             formatter = prettierFormatter "javascript";
-            language-servers = ["tailwindcss-javascript" "typescript-language-server"];
+            auto-format = true;
+            language-servers = ["typescript-language-server" "tailwindcss-javascript"];
           }
           {
             name = "jsx";
             formatter = prettierFormatter "javascript";
-            language-servers = ["tailwindcss-jsx" "typescript-language-server"];
+            auto-format = true;
+            language-servers = ["typescript-language-server" "tailwindcss-jsx"];
           }
           {
             name = "html";
             formatter = prettierFormatter "html";
+            auto-format = true;
           }
           {
             name = "json";
             formatter = prettierFormatter "json";
+            auto-format = true;
           }
           {
             name = "css";
             scope = "source.css";
             file-types = ["css" "postcss"];
             formatter = prettierFormatter "css";
-            language-servers = ["tailwindcss-css" "vscode-css-language-server"];
+            auto-format = true;
+            language-servers = ["vscode-css-language-server" "tailwindcss-css"];
           }
         ];
 
