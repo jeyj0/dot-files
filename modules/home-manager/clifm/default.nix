@@ -18,11 +18,11 @@ with lib;
       };
       clifmDefaultColorsWithStarshipPrompt = {
         source = ./default.cfm;
-        target = ".config/clifm/colors/default-starship.cfm";
+        target = ".config/clifm/colors/default-starship.clifm";
       };
       clifmDefaultProfileMimetypes = {
         source = ./mimelist.cfm;
-        target = "/home/jeyj0/.config/clifm/profiles/default/mimelist.cfm";
+        target = "/home/jeyj0/.config/clifm/profiles/default/mimelist.clifm";
       };
     };
   };
