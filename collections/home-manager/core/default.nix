@@ -15,7 +15,7 @@ with lib;
       home-manager.enable = mkDefault true;
       fish.enable = mkDefault true;
       starship.enable = mkDefault true;
-      neovim.enable = mkDefault true;
+      helix.enable = mkDefault true;
       exa.enable = mkDefault true;
       bat.enable = mkDefault true;
       trash.enable = mkDefault true;

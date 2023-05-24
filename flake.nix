@@ -187,8 +187,6 @@
                 freecad.enable = true;
                 xfconf.enable = true;
                 syncthing.enable = true;
-
-                helix.enable = true;
               };
             }
           ];
