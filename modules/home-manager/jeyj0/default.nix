@@ -20,9 +20,16 @@ with lib;
       username = "jeyj0";
       homeDirectory = "/home/jeyj0";
       stateVersion = "22.05";
-      sessionVariables = mkIf config.jeyj0.neovim.enable {
-        EDITOR = "nvim";
-      };
+      sessionVariables = mkMerge [
+        (mkIf config.jeyj0.neovim.enable {
+          EDITOR = mkOverride 1002 "nvim";
+          VISUAL = mkOverride 1002 "nvim";
+        })
+        (mkIf config.jeyj0.helix.enable {
+          EDITOR = mkOverride 1001 "hx";
+          VISUAL = mkOverride 1001 "hx";
+        })
+      ];
     };
 
     jeyj0.nix.enable = true;

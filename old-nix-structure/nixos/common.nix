@@ -197,8 +197,8 @@ in
 
   environment.variables = {
     TERMINAL = "alacritty";
-    EDITOR = "nvim";
-    VISUAL = "nvim";
+    # EDITOR = "nvim";
+    # VISUAL = "nvim";
   };
 
   fonts.fonts = with pkgs; [
