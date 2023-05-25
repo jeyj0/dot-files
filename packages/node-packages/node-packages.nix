@@ -535,13 +535,13 @@ let
         sha512 = "eXTJmRbm2TIt9MgWTsOH1wEuhew6XGZcMeGKCtLedIg/NCsg1iBePXkceTdK4Fii7pzmN9tGsZhKzZ4h7O/fxw==";
       };
     };
-    "electron-to-chromium-1.4.404" = {
+    "electron-to-chromium-1.4.407" = {
       name = "electron-to-chromium";
       packageName = "electron-to-chromium";
-      version = "1.4.404";
+      version = "1.4.407";
       src = fetchurl {
-        url = "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.4.404.tgz";
-        sha512 = "te57sWvQdpxmyd1GiswaodKdXdPgn9cN4ht8JlNa04QgtrfnUdWEo1261rY2vaC6TKaiHn0E7QerJWPKFCvMVw==";
+        url = "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.4.407.tgz";
+        sha512 = "5smEvFSFYMv90tICOzRVP7Opp98DAC4KW7RRipg3BuNpGbbV3N+x24Zh3sbLb1T5haGtOSy/hrBfXsWnIM9aCg==";
       };
     };
     "emoji-regex-8.0.0" = {
@@ -985,13 +985,13 @@ let
         sha512 = "RM5oyBy45cLEoHqCeh+MNuFAxO0vTFBLskvQbOKnEE7YTTSN4tbN8QWDIPQ6L+WvKsB/qLEGpYe2ZZ9d4W9OIQ==";
       };
     };
-    "node-releases-2.0.11" = {
+    "node-releases-2.0.12" = {
       name = "node-releases";
       packageName = "node-releases";
-      version = "2.0.11";
+      version = "2.0.12";
       src = fetchurl {
-        url = "https://registry.npmjs.org/node-releases/-/node-releases-2.0.11.tgz";
-        sha512 = "+M0PwXeU80kRohZ3aT4J/OnR+l9/KD2nVLNNoRgFtnf+umQVFdGBAO2N8+nCnEi0xlh/Wk3zOGC+vNNx+uM79Q==";
+        url = "https://registry.npmjs.org/node-releases/-/node-releases-2.0.12.tgz";
+        sha512 = "QzsYKWhXTWx8h1kIvqfnC++o0pEmpRQA/aenALsL2F4pqNVr7YzcdMlDij5WBnwftRbJCNJL/O7zdKaxKPHqgQ==";
       };
     };
     "nyc-15.1.0" = {
@@ -1524,7 +1524,7 @@ in
       sources."debug-4.3.4"
       sources."decamelize-1.2.0"
       sources."default-require-extensions-3.0.1"
-      sources."electron-to-chromium-1.4.404"
+      sources."electron-to-chromium-1.4.407"
       sources."emoji-regex-8.0.0"
       sources."es6-error-4.1.1"
       sources."escalade-3.1.1"
@@ -1578,7 +1578,7 @@ in
       sources."minimatch-3.1.2"
       sources."ms-2.1.2"
       sources."node-preload-0.2.1"
-      sources."node-releases-2.0.11"
+      sources."node-releases-2.0.12"
       sources."nyc-15.1.0"
       sources."once-1.4.0"
       sources."p-limit-2.3.0"
@@ -1667,10 +1667,10 @@ in
   helix-twcss = nodeEnv.buildNodePackage {
     name = "helix-twcss";
     packageName = "helix-twcss";
-    version = "0.0.14-alpha.3";
+    version = "0.0.14-alpha.5";
     src = fetchurl {
-      url = "https://registry.npmjs.org/helix-twcss/-/helix-twcss-0.0.14-alpha.3.tgz";
-      sha512 = "lYuqAIbYA0heYEGNKku+MS46DgYR/zcw+5aOBNH1PuQIopcKaMrQ0411RyndfzmLlK7yCA1puySKi9Wx+VcRAg==";
+      url = "https://registry.npmjs.org/helix-twcss/-/helix-twcss-0.0.14-alpha.5.tgz";
+      sha512 = "gZx1cDeAEY161XgLEnoTHedTMWTW/J5Cy93Z9M/QT7CDU95tkH2zu4odfjsJx6TRQQBZShAWWN30O+a9trklcQ==";
     };
     buildInputs = globalBuildInputs;
     meta = {
