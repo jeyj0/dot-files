@@ -501,6 +501,22 @@
         "type": "github"
       }
     },
+    "nixpkgs_7": {
+      "locked": {
+        "lastModified": 1679262748,
+        "narHash": "sha256-DQCrrAFrkxijC6haUzOC5ZoFqpcv/tg2WxnyW3np1Cc=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "60c1d71f2ba4c80178ec84523c2ca0801522e0a6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "node2nix": {
       "inputs": {
         "flake-utils": "flake-utils_4",
@@ -608,7 +624,8 @@
         "node2nix": "node2nix",
         "nur": "nur",
         "nvim": "nvim",
-        "solbera-dnd-fonts": "solbera-dnd-fonts"
+        "solbera-dnd-fonts": "solbera-dnd-fonts",
+        "typst": "typst"
       }
     },
     "rust-overlay": {
@@ -701,6 +718,24 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "typst": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_7"
+      },
+      "locked": {
+        "lastModified": 1684958630,
+        "narHash": "sha256-6ba7RRlIGNtRWSTf54rbiK5KIgKsTxqDAH7kPcZ1/DI=",
+        "owner": "typst",
+        "repo": "typst",
+        "rev": "3eb1f31e904151f5bee6300ef8d9dba0bbcce4c5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "typst",
+        "repo": "typst",
         "type": "github"
       }
     }

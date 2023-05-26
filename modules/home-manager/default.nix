@@ -41,6 +41,7 @@
     ./nix
     ./freetube
     ./home-manager
+    ./typst
     # dotgen home module marker
   ];
 }
