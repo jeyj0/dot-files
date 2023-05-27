@@ -118,6 +118,10 @@ in
           lsp.goto-reference-include-declaration = false;
         };
         keys = {
+          select = {
+            "}" = "goto_next_paragraph";
+            "{" = "goto_prev_paragraph";
+          };
           normal = {
             "}" = "goto_next_paragraph";
             "{" = "goto_prev_paragraph";
