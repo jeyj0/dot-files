@@ -7,8 +7,8 @@ let
   tree-sitter-typst-github = {
     owner = "frozolotl";
     repo = "tree-sitter-typst";
-    rev = "62949e2a23f1ee2a0b48114f800a06f054d0adbb";
-    sha256 = "sha256-UNrsRkezfkl+AFtoM0SySLpH9gQHPu++vqSQkr7B4YI=";
+    rev = "bb7682d2722517ef494c929af82e80d697e7fd69";
+    sha256 = "sha256-tiXwYFfz36ql4PS3RHV3dYmsPeUxGP0gUziPSD3Q9BI=";
   };
 in
 stdenv.mkDerivation rec {
