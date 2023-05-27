@@ -156,6 +156,7 @@
       dotgen = pkgs.unstable.callPackage (import ./packages/dotgen) {};
       dotfiles-scripts = pkgs.unstable.callPackage (import ./packages/dotfiles-scripts) {};
       xmonad = pkgs.unstable.callPackage (import ./packages/xmonad) {};
+      helix-tree-sitter-typst = pkgs.unstable.callPackage (import ./packages/helix-tree-sitter-typst) {};
       # dotgen package marker
 
       homeConfigurations = {
