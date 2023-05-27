@@ -84,7 +84,7 @@ in
 
         language-server = let
           tailwindLanguageServer = language-id: {
-            language-id = "typescript";
+            inherit language-id;
             command = "hx-tw";
             args = ["--stdio"];
             roots = ["tailwind.config.js" "tailwind.config.cjs" ".prettierrc" "nx.json"];
