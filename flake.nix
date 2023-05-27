@@ -71,7 +71,6 @@
             helix = helix.packages.${system}.default;
             nil = nil.packages.${system}.default;
             typst-lsp = typst-lsp.packages.${system}.default;
-            node-packages = pkgs.unstable.callPackage (import ./packages/node-packages) {};
             typst = typst.packages.${system}.default;
           };
         })
@@ -156,6 +155,7 @@
       dotgen = pkgs.unstable.callPackage (import ./packages/dotgen) {};
       dotfiles-scripts = pkgs.unstable.callPackage (import ./packages/dotfiles-scripts) {};
       xmonad = pkgs.unstable.callPackage (import ./packages/xmonad) {};
+      node-packages = pkgs.unstable.callPackage (import ./packages/node-packages) {};
       helix-tree-sitter-typst = pkgs.unstable.callPackage (import ./packages/helix-tree-sitter-typst) {};
       # dotgen package marker
 

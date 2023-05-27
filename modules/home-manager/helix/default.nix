@@ -174,12 +174,11 @@ in
       nodePackages_latest.yaml-language-server
       nodePackages_latest.dockerfile-language-server-nodejs
       pkgs.jeyj0.nil # nix language server
-      pkgs.jeyj0.node-packages."@prisma/language-server"
-      pkgs.jeyj0.node-packages."@tailwindcss/language-server"
-      pkgs.jeyj0.node-packages."helix-twcss"
+      pkgs.node-packages."@prisma/language-server"
+      pkgs.node-packages."@tailwindcss/language-server"
+      pkgs.node-packages."helix-twcss"
       taplo # TOML language server
       pkgs.jeyj0.typst-lsp
     ];
   };
 }
-
