@@ -4,6 +4,65 @@
 , ...
 }:
 with lib;
+let
+  HELIX_RUNTIME = ".config/helix/runtime";
+  tree-sitter-typst-github = {
+    owner = "frozolotl";
+    repo = "tree-sitter-typst";
+    rev = "62949e2a23f1ee2a0b48114f800a06f054d0adbb";
+    sha256 = "sha256-UNrsRkezfkl+AFtoM0SySLpH9gQHPu++vqSQkr7B4YI=";
+  };
+  frozolotl-tree-sitter-typst-src = pkgs.fetchFromGitHub tree-sitter-typst-github;
+  helix-tree-sitter-typst = pkgs.stdenv.mkDerivation rec {
+    # taken and simplified from https://github.com/helix-editor/helix/blob/3a8592abdb9f30c7ebb74f10fa5127e754d18bc6/grammars.nix#L51
+    pname = "helix-tree-sitter-typst";
+    version = tree-sitter-typst-github.rev;
+
+    src = frozolotl-tree-sitter-typst-src;
+
+    dontUnpack = true;
+    dontConfigure = true;
+
+    FLAGS = [
+      "-I${src}/src"
+      "-g"
+      "-O3"
+      "-fPIC"
+      "-fno-exceptions"
+      "-Wl,-z,relro,-z,now"
+    ];
+
+    buildPhase = ''
+      runHook preBuild
+
+      if [[ -e "$src/src/scanner.cc" ]]; then
+        $CXX -c "$src/src/scanner.cc" -o scanner.o $FLAGS
+      elif [[ -e "$src/src/scanner.c" ]]; then
+        $CC -c "$src/src/scanner.c" -o scanner.o $FLAGS
+      fi
+
+      $CC -c "$src/src/parser.c" -o parser.o $FLAGS
+      $CXX -shared -o typst.so *.o
+
+      ls -al
+
+      runHook postBuild
+    '';
+
+    installPhase = ''
+      runHook preInstall
+      mkdir $out
+      mv typst.so $out/
+      runHook postInstall
+    '';
+
+    fixupPhase = ''
+      runHook preFixup
+      $STRIP $out/typst.so
+      runHook postFixup
+    '';
+  };
+in
 {
   options.jeyj0.helix = {
     enable = mkEnableOption "helix";
@@ -75,18 +134,10 @@ with lib;
           }
         ];
 
-        grammar = let
-          frozolotl-tree-sitter-typst = pkgs.fetchFromGitHub {
-            owner = "frozolotl";
-            repo = "tree-sitter-typst";
-            rev = "62949e2a23f1ee2a0b48114f800a06f054d0adbb";
-            sha256 = "sha256-UNrsRkezfkl+AFtoM0SySLpH9gQHPu++vqSQkr7B4YI=";
-          };
-        in [
+        grammar = [
           {
             name = "typst";
-            # source = { path = "${pkgs.jeyj0.tree-sitter-typst}"; };
-            source.path = "${frozolotl-tree-sitter-typst}";
+            source.path = "${frozolotl-tree-sitter-typst-src}";
           }
         ];
 
@@ -149,6 +200,24 @@ with lib;
           };
         };
       };
+    };
+
+    home.file = {
+      helix-typst-queries = {
+        enable = config.jeyj0.typst.enable;
+        source = frozolotl-tree-sitter-typst-src + "/queries";
+        target = "${HELIX_RUNTIME}/queries/typst";
+        recursive = true;
+      };
+      helix-typst-grammar = {
+        enable = config.jeyj0.typst.enable;
+        source = helix-tree-sitter-typst + "/typst.so";
+        target = "${HELIX_RUNTIME}/grammars/typst.so";
+      };
+    };
+
+    home.sessionVariables = {
+      inherit HELIX_RUNTIME;
     };
 
     home.packages = with pkgs.unstable; [

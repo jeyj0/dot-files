@@ -65,6 +65,7 @@
         })
         (_: _: self.packages.${system})
         (_: _: {
+          inherit inputs;
           jeyj0 = self.packages.${system} // {
             neovim = nvim.packages.${system}.default;
             helix = helix.packages.${system}.default;
