@@ -178,6 +178,8 @@ in
         };
         keys = {
           normal = {
+            "}" = "goto_next_paragraph";
+            "{" = "goto_prev_paragraph";
             space = {
               space = "file_picker";
               "." = "code_action";
