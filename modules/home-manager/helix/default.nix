@@ -1,6 +1,7 @@
 { config
 , pkgs
 , lib
+, inputs
 , ...
 }:
 with lib;
@@ -60,6 +61,34 @@ with lib;
             auto-format = true;
             language-servers = ["vscode-css-language-server" "tailwindcss-css"];
           }
+          {
+            name = "typst";
+            scope = "source.typst";
+            injection-regex = "typst";
+            roots = [];
+            comment-token = "//";
+            file-types = ["typ"];
+            indent = { tab-width = 2; unit = " "; };
+            language-servers = ["typst-lsp"];
+            text-width = 80;
+            rulers = [80];
+            soft-wrap.wrap-at-text-width = true;
+          }
+        ];
+
+        grammar = let
+          frozolotl-tree-sitter-typst = pkgs.fetchFromGitHub {
+            owner = "frozolotl";
+            repo = "tree-sitter-typst";
+            rev = "62949e2a23f1ee2a0b48114f800a06f054d0adbb";
+            sha256 = "sha256-UNrsRkezfkl+AFtoM0SySLpH9gQHPu++vqSQkr7B4YI=";
+          };
+        in [
+          {
+            name = "typst";
+            # source = { path = "${pkgs.jeyj0.tree-sitter-typst}"; };
+            source.path = "${frozolotl-tree-sitter-typst}";
+          }
         ];
 
         language-server = let
@@ -75,6 +104,12 @@ with lib;
           tailwindcss-javascript = tailwindLanguageServer "javascript";
           tailwindcss-jsx = tailwindLanguageServer "javascriptreact";
           tailwindcss-css = tailwindLanguageServer "css";
+          typst-lsp = {
+            language-id = "typst";
+            command = "typst-lsp";
+            args = ["--stdio"];
+            roots = ["main.typ"];
+          };
         };
       };
       settings = {
@@ -130,6 +165,7 @@ with lib;
       pkgs.jeyj0.node-packages."@tailwindcss/language-server"
       pkgs.jeyj0.node-packages."helix-twcss"
       taplo # TOML language server
+      pkgs.jeyj0.typst-lsp
     ];
   };
 }

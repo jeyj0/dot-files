@@ -13,6 +13,8 @@
     helix.url = "github:helix-editor/helix";
     nil.url = "github:oxalica/nil";
 
+    typst-lsp.url = "github:nvarner/typst-lsp/75ba918c119cff83a2ef2ed2d2f73ed3231ac6a2";
+
     typst.url = "github:typst/typst";
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
@@ -36,6 +38,7 @@
     , node2nix
     , helix
     , nil
+    , typst-lsp
     , typst
     , nixos-hardware
     , nvim
@@ -66,6 +69,7 @@
             neovim = nvim.packages.${system}.default;
             helix = helix.packages.${system}.default;
             nil = nil.packages.${system}.default;
+            typst-lsp = typst-lsp.packages.${system}.default;
             node-packages = pkgs.unstable.callPackage (import ./packages/node-packages) {};
             typst = typst.packages.${system}.default;
           };
