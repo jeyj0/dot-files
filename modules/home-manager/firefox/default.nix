@@ -9,6 +9,8 @@ with lib;
     enable = mkEnableOption "firefox";
   };
 
+  # TODO follow this to install add-ons
+  # https://ryantm.github.io/nixpkgs/builders/packages/firefox/
   config = mkIf config.jeyj0.firefox.enable {
     programs.firefox = {
       enable = true;
