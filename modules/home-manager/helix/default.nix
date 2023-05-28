@@ -70,7 +70,7 @@ in
             roots = [];
             comment-token = "//";
             file-types = ["typ"];
-            indent = { tab-width = 2; unit = " "; };
+            indent = { tab-width = 2; unit = "  "; };
             language-servers = ["typst-lsp"];
             text-width = 80;
             rulers = [80];
