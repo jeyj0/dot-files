@@ -1,15 +1,22 @@
-{ stdenv, appimageTools
+{ lib
+, stdenv
+, pkgs
+, appimageTools
 , gsettings-desktop-schemas
-, gtk3, fetchurl
+, gtk3
+, fetchurl
+, ...
 }:
 let
+  version = "5.1.8";
   appImage = fetchurl {
-    url = "https://mango-lychee.nyc3.cdn.digitaloceanspaces.com/LycheeSlicer-4.1.0.AppImage";
-    sha256 = "sha256-TYGaSOfwThnSE9/x3F1PEWf8j7Ex3r6X5lC4TH9oYIY=";
+    url = "https://mango-lychee.nyc3.cdn.digitaloceanspaces.com/LycheeSlicer-${version}.AppImage";
+    sha256 = "sha256-HOSWQFuX8KTXL68Xb7qYXKpIcs62odifba1gc5IAJ2k=";
   };
 in
 appimageTools.wrapType2 {
-  name = "lycheeslicer";
+  pname = "lychee-slicer";
+  inherit version;
 
   src = appImage;
 

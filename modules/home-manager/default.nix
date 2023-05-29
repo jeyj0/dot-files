@@ -42,6 +42,7 @@
     ./freetube
     ./home-manager
     ./typst
+    ./lychee-slicer
     # dotgen home module marker
   ];
 }

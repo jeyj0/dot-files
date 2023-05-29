@@ -150,13 +150,14 @@
 
       picom = pkgs.callPackage (import ./old-nix-structure/nixos/nix/pkgs/picom) {};
       # wonderdraft = pkgs.callPackage (import ./old-nix-structure/nixos/nix/pkgs/wonderdraft) {};
-      lychee-slicer = pkgs.callPackage (import ./old-nix-structure/nixos/nix/pkgs/lychee-slicer) {};
 
       dotgen = pkgs.unstable.callPackage (import ./packages/dotgen) {};
       dotfiles-scripts = pkgs.unstable.callPackage (import ./packages/dotfiles-scripts) {};
       xmonad = pkgs.unstable.callPackage (import ./packages/xmonad) {};
       node-packages = pkgs.unstable.callPackage (import ./packages/node-packages) {};
       helix-tree-sitter-typst = pkgs.unstable.callPackage (import ./packages/helix-tree-sitter-typst) {};
+      # TODO lychee-slicer fails (at runtime) with unstable
+      lychee-slicer = pkgs.callPackage (import ./packages/lychee-slicer) {}; 
       # dotgen package marker
 
       homeConfigurations = {
@@ -178,6 +179,7 @@
                 };
 
                 "microsoft-edge".enable = true;
+                lychee-slicer.enable = true;
 
                 # overridden from core-gui
                 firefox.enable = false; # override because it's controlled from old nix structure

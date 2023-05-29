@@ -38,7 +38,6 @@
     appimage-run
     steam-run
 
-    lychee-slicer
     blender
   ];
 }
