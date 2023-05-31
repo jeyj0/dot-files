@@ -49,6 +49,7 @@ in
             name = "html";
             formatter = prettierFormatter "html";
             auto-format = true;
+            language-servers = ["emmet-html" "vscode-html-language-server"];
           }
           {
             name = "json";
@@ -89,12 +90,18 @@ in
             args = ["--stdio"];
             roots = ["tailwind.config.js" "tailwind.config.cjs" ".prettierrc" "nx.json"];
           };
+          emmet-ls = language-id: {
+            inherit language-id;
+            command = "emmet-ls";
+            args = ["--stdio"];
+          };
         in {
           tailwindcss-typescript = tailwindLanguageServer "typescript";
           tailwindcss-tsx = tailwindLanguageServer "typescriptreact";
           tailwindcss-javascript = tailwindLanguageServer "javascript";
           tailwindcss-jsx = tailwindLanguageServer "javascriptreact";
           tailwindcss-css = tailwindLanguageServer "css";
+          emmet-html = emmet-ls "html";
           typst-lsp = {
             language-id = "typst";
             command = "typst-lsp";
@@ -177,6 +184,7 @@ in
       pkgs.node-packages."@prisma/language-server"
       pkgs.node-packages."@tailwindcss/language-server"
       pkgs.node-packages."helix-twcss"
+      pkgs.node-packages."emmet-ls"
       taplo # TOML language server
       pkgs.jeyj0.typst-lsp
     ];
