@@ -1,5 +1,6 @@
 [
   "@prisma/language-server",
   "@tailwindcss/language-server",
-  "helix-twcss"
+  "helix-twcss",
+  "emmet-ls"
 ]
