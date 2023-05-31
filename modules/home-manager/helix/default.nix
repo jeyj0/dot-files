@@ -31,7 +31,7 @@ in
             language-id = "typescriptreact";
             formatter = prettierFormatter "typescript";
             auto-format = true;
-            language-servers = [ "typescript-language-server" "tailwindcss-typescript"];
+            language-servers = ["typescript-language-server" "tailwindcss-typescript"];
           }
           {
             name = "javascript";
@@ -49,7 +49,7 @@ in
             name = "html";
             formatter = prettierFormatter "html";
             auto-format = true;
-            language-servers = ["emmet-html" "vscode-html-language-server"];
+            language-servers = ["vscode-html-language-server" "tailwindcss-html"];
           }
           {
             name = "json";
@@ -100,7 +100,12 @@ in
           tailwindcss-tsx = tailwindLanguageServer "typescriptreact";
           tailwindcss-javascript = tailwindLanguageServer "javascript";
           tailwindcss-jsx = tailwindLanguageServer "javascriptreact";
+          tailwindcss-html = tailwindLanguageServer "html";
           tailwindcss-css = tailwindLanguageServer "css";
+          emmet-ts = emmet-ls "typescript";
+          emmet-tsx = emmet-ls "typescriptreact";
+          emmet-js = emmet-ls "javascript";
+          emmet-jsx = emmet-ls "javascriptreact";
           emmet-html = emmet-ls "html";
           typst-lsp = {
             language-id = "typst";
