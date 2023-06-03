@@ -7,7 +7,8 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+      # ./hardware-configuration.nix
+      ./fw-2tb-hw.nix
     ];
 
   # Bootloader.
