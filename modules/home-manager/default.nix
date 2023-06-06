@@ -1,4 +1,4 @@
-{ ... }:
+inputs: { ... }:
 {
   imports = [
     ./polybar
@@ -43,6 +43,7 @@
     ./home-manager
     ./typst
     ./lychee-slicer
+    (import ./nix-index inputs)
     # dotgen home module marker
   ];
 }

@@ -8,6 +8,9 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    nix-index-database.url = "github:Mic92/nix-index-database";
+    nix-index-database.inputs.nixpkgs.follows = "nixpkgs-unstable";
+
     node2nix.url = "github:svanderburg/node2nix";
 
     helix.url = "github:helix-editor/helix";
@@ -35,6 +38,7 @@
     , nixpkgs
     , nixpkgs-unstable
     , home-manager
+    , nix-index-database
     , node2nix
     , helix
     , nil
@@ -166,7 +170,7 @@
 
           modules = [
             ./old-nix-structure/home-manager/jeyj0-nixos.nix
-            ./modules/home-manager
+            (import ./modules/home-manager inputs)
             ./collections/home-manager
             {
               jeyj0 = {
@@ -208,7 +212,7 @@
         "jeyj0@${framework}" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           modules = [
-            ./modules/home-manager
+            (import ./modules/home-manager inputs)
             ./collections/home-manager
             {
               jeyj0 = {

@@ -11,6 +11,7 @@ with lib;
 
   config = mkIf config.jeyj0.collections.core.enable {
     jeyj0 = {
+      nix-index.enable = mkDefault true; # command-not-found replacement
       git.enable = mkDefault true;
       home-manager.enable = mkDefault true;
       fish.enable = mkDefault true;
