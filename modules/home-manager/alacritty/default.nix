@@ -18,6 +18,9 @@ with lib;
       enable = true;
       package = pkgs.unstable.alacritty;
       settings = {
+        key_bindings = [
+          { key = "F11"; action = "ToggleFullscreen"; }
+        ];
         font = {
           size = config.jeyj0.alacritty.fontSize;
           normal = { family = "Hack Nerd Font"; style = "Regular"; };
