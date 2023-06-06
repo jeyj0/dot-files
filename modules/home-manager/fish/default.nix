@@ -98,6 +98,9 @@ with lib;
           end
         end
 
+        # keybindings
+        bind \b 'backward-kill-word'
+
         # TokyoNight Color Palette
         set -l foreground c8d3f5
         set -l selection 3654a7
