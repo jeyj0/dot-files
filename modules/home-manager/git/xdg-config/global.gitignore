@@ -1,3 +1,6 @@
 *.swp
 .envrc
 shell.nix
+.direnv
+flake.nix
+flake.lock
