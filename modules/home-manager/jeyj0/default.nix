@@ -21,6 +21,9 @@ with lib;
       homeDirectory = "/home/jeyj0";
       stateVersion = "22.05";
       sessionVariables = mkMerge [
+        {
+          IHP_BROWSER="echo";
+        }
         (mkIf config.jeyj0.neovim.enable {
           EDITOR = mkOverride 1002 "nvim";
           VISUAL = mkOverride 1002 "nvim";
