@@ -406,6 +406,8 @@ myManageHook = composeAll
      , title =? "Error" --> (doRectFloat $ W.RationalRect (1%4) (1%4) (2%4) (2%4))
      , className =? "nnn" --> (doRectFloat $ W.RationalRect (1%4) (1%4) (2%4) (2%4))
      , className =? "Rofi" --> composeAll [doFloat, hasBorder False]
+     -- custom programs
+     , className =? "hexasphere-rust" --> doFloat
      ]
 
 data EmacsOpenAction
