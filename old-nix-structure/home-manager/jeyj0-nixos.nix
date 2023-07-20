@@ -12,8 +12,6 @@ in
       userName = userName;
     })
     (import ./parts/xmonad { pkgs = pkgs; })
-    (import ./parts/latex { pkgs = pkgs; })
-    (import ./parts/games { pkgs = pkgs; })
   ];
 
   home.packages = with pkgs; [
@@ -25,8 +23,6 @@ in
     unstable.atkinson-hyperlegible
     unstable.kdenlive
     unstable.libwebp
-
-    unstable.krita
   ];
 
   fonts.fontconfig.enable = true;
