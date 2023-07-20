@@ -169,7 +169,6 @@
           inherit pkgs;
 
           modules = [
-            ./old-nix-structure/home-manager/jeyj0-nixos.nix
             (import ./modules/home-manager inputs)
             ./collections/home-manager
             {
@@ -184,9 +183,6 @@
 
                 "microsoft-edge".enable = true;
                 lychee-slicer.enable = true;
-
-                # overridden from core-gui
-                firefox.enable = false; # override because it's controlled from old nix structure
 
                 freetube.enable = true;
 
