@@ -44,6 +44,7 @@ inputs: { ... }:
     ./typst
     ./lychee-slicer
     (import ./nix-index inputs)
+    ./xmonad
     # dotgen home module marker
   ];
 }
