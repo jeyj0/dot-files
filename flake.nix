@@ -181,6 +181,8 @@
                   core-gui.enable = true;
                 };
 
+                xmonad.enable = true;
+
                 "microsoft-edge".enable = true;
                 lychee-slicer.enable = true;
 
