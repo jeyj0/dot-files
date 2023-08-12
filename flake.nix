@@ -172,6 +172,11 @@
             (import ./modules/home-manager inputs)
             ./collections/home-manager
             {
+              home.packages = with pkgs; [
+                evince
+                gnome.file-roller
+                unstable.prismlauncher
+              ];
               jeyj0 = {
                 enable = true;
                 hostName = desktop;
@@ -198,6 +203,7 @@
                   fontSize = 14.0;
                 };
                 # wonderdraft.enable = true;
+                gimp.enable = true;
                 freecad.enable = true;
                 xfconf.enable = true;
                 syncthing.enable = true;
