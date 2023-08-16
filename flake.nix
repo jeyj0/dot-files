@@ -176,6 +176,7 @@
                 evince
                 gnome.file-roller
                 unstable.prismlauncher
+                unstable.chromium
               ];
               jeyj0 = {
                 enable = true;
@@ -193,6 +194,7 @@
 
                 freetube.enable = true;
 
+                slack.enable = true;
                 polybar.enable = true;
                 obsidian.enable = true;
                 picom.enable = true;
