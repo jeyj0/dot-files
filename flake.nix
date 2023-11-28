@@ -230,6 +230,11 @@
             (import ./modules/home-manager inputs)
             ./collections/home-manager
             {
+              home.packages = with pkgs; [
+                unstable.bun
+                unstable.nodePackages_latest.nodejs
+                unstable.vlc
+              ];
               jeyj0 = {
                 enable = true;
                 hostName = framework;
