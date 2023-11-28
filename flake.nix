@@ -127,6 +127,10 @@
             boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
             boot.kernelModules = [ "v4l2loopback" ];
 
+            hardware.opengl.driSupport32Bit = true;
+            hardware.opengl.enable = true;
+            hardware.pulseaudio.support32Bit = true;
+
             jeyj0 = {
               settings.enable = true;
               fonts.enable = true;
