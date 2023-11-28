@@ -177,6 +177,10 @@
                 gnome.file-roller
                 unstable.prismlauncher
                 unstable.chromium
+                unstable.vlc
+                unstable.audacity
+                unstable.darktable
+                unstable.lapce
               ];
               jeyj0 = {
                 enable = true;
@@ -193,6 +197,7 @@
                 lychee-slicer.enable = true;
 
                 freetube.enable = true;
+                discord.enable = true;
 
                 slack.enable = true;
                 polybar.enable = true;
