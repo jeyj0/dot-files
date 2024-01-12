@@ -55,6 +55,9 @@
 
     config = {
       allowUnfree = true;
+      permittedInsecurePackages = [
+        "electron-25.9.0" # added for obsidian 1.5.3; remove asap
+      ];
     };
 
     pkgs = import nixpkgs {
