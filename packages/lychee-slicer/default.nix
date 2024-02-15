@@ -8,10 +8,10 @@
 , ...
 }:
 let
-  version = "5.2.2";
+  version = "5.4.3";
   appImage = fetchurl {
     url = "https://mango-lychee.nyc3.cdn.digitaloceanspaces.com/LycheeSlicer-${version}.AppImage";
-    sha256 = "sha256-INRo3SYHPffFPTFAYGlqh09jpeA+ropWAnwqzvkbF7w=";
+    sha256 = "sha256-qi5YXWYIZf3Nf6zXEudzhgWdhchQfD66yAEb5P5WXEQ=";
   };
 in
 appimageTools.wrapType2 {
