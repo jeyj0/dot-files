@@ -188,6 +188,7 @@
                 unstable.audacity
                 unstable.darktable
                 unstable.lapce
+                unstable.vscode
               ];
               jeyj0 = {
                 enable = true;
