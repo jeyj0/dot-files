@@ -118,7 +118,7 @@ in
     openssh.enable = true;
     blueman.enable = true;
     redshift = {
-      enable = true;
+      enable = false;
       temperature = {
         night = 3000;
       };
