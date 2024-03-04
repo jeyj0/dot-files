@@ -12,7 +12,7 @@ with lib;
   config = mkIf config.jeyj0.vscode.enable {
     programs.vscode = {
       enable = true;
-      package = pkgs.unstable.vscodium;
+      package = pkgs.unstable.vscode;
     };
   };
 }
