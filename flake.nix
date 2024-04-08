@@ -186,7 +186,6 @@
                 unstable.chromium
                 unstable.vlc
                 unstable.audacity
-                unstable.darktable
                 unstable.lapce
                 unstable.krita
               ];
@@ -238,6 +237,7 @@
                 unstable.bun
                 unstable.nodePackages_latest.nodejs
                 unstable.vlc
+                unstable.rawtherapee
               ];
               jeyj0 = {
                 enable = true;
