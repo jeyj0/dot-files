@@ -64,16 +64,16 @@ in
     devices = [ framework desktop ];
   }
   {
-    id = "04-archive";
-    label = "04-archive";
-    path = "04-archive";
+    id = "05-photos";
+    label = "05-photos";
+    path = "05-photos";
     stignore = baseIgnore;
     devices = [ framework desktop ];
   }
   {
-    id = "05-media/00-inbox/00-phone-camera";
+    id = "07-media/00-inbox/00-phone-camera";
     label = "00-phone-camera";
-    path = "05-media/00-inbox/00-phone-camera";
+    path = "07-media/00-inbox/00-phone-camera";
     stignore = baseIgnore + ''
       .thumbnails
     '';
