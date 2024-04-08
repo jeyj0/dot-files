@@ -188,6 +188,7 @@
                 unstable.audacity
                 unstable.lapce
                 unstable.krita
+                unstable.rawtherapee
               ];
               jeyj0 = {
                 enable = true;
