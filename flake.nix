@@ -104,6 +104,8 @@
               printing.enable = true;
               syncthing.enable = true;
             };
+
+            hardware.opentabletdriver.enable = true;
           })
         ];
       };
