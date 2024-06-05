@@ -182,6 +182,7 @@
             ./collections/home-manager
             {
               home.packages = with pkgs; [
+                unstable.nixVersions.latest
                 evince
                 gnome.file-roller
                 unstable.prismlauncher
