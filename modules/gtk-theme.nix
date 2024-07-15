@@ -5,7 +5,7 @@
 }:
 let
   # source: https://github.com/NixOS/nixpkgs/blob/nixos-unstable/pkgs/by-name/to/tokyonight-gtk-theme/package.nix
-  tokyonight-storm = {
+  tokyonight-storm-derivation = {
     lib,
     stdenvNoCC,
     fetchFromGitHub,
@@ -61,18 +61,27 @@ let
       platforms = platforms.unix;
     };
   };
+
+  tokyonight-storm = pkgs.callPackage tokyonight-storm-derivation {};
 in
 {
-  home.file.gtk-theme-assets = {
+  # GTK 4
+  home.file.gtk4-theme-assets = {
     target = ".config/gtk-4.0/assets";
-    source = "${pkgs.callPackage tokyonight-storm {}}/share/themes/Tokyonight-Dark-Storm/gtk-4.0/assets";
+    source = "${tokyonight-storm}/share/themes/Tokyonight-Dark-Storm/gtk-4.0/assets";
   };
-  home.file.gtk-theme-gtk-dark-css = {
+  home.file.gtk4-theme-gtk-dark-css = {
     target = ".config/gtk-4.0/gtk-dark.css";
-    source = "${pkgs.callPackage tokyonight-storm {}}/share/themes/Tokyonight-Dark-Storm/gtk-4.0/gtk-dark.css";
+    source = "${tokyonight-storm}/share/themes/Tokyonight-Dark-Storm/gtk-4.0/gtk-dark.css";
   };
-  home.file.gtk-theme-gtk-css = {
+  home.file.gtk4-theme-gtk-css = {
     target = ".config/gtk-4.0/gtk.css";
-    source = "${pkgs.callPackage tokyonight-storm {}}/share/themes/Tokyonight-Dark-Storm/gtk-4.0/gtk.css";
+    source = "${tokyonight-storm}/share/themes/Tokyonight-Dark-Storm/gtk-4.0/gtk.css";
+  };
+
+  # GTK 3
+  home.file.gtk3-theme = {
+    target = ".themes/Tokyonight-Dark-Storm";
+    source = "${tokyonight-storm}/share/themes/Tokyonight-Dark-Storm";
   };
 }
