@@ -156,7 +156,8 @@
           "window.zoomLevel": 2,
           "workbench.preferredDarkColorTheme": "Tokyo Night Storm",
           "workbench.preferredLightColorTheme": "Tokyo Night Light",
-          "window.autoDetectColorScheme": true
+          "window.autoDetectColorScheme": true,
+          "workbench.chat.experimental.showWelcomeView": false
       }
     '';
   };
