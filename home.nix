@@ -158,7 +158,8 @@
           "workbench.preferredLightColorTheme": "Tokyo Night Light",
           "window.autoDetectColorScheme": true,
           "workbench.chat.experimental.showWelcomeView": false,
-          "git.confirmSync": false
+          "git.confirmSync": false,
+          "git.autofetch": true
       }
     '';
   };
