@@ -11,6 +11,7 @@
 
   imports = [
     ./jeyj0.nix
+    ./modules/gtk-theme.nix
     ./modules/git.nix
     ./modules/syncthing.nix
   ];
@@ -152,7 +153,7 @@
       {
           "window.titleBarStyle": "custom",
           "editor.fontFamily": "'Cascadia Code', 'Droid Sans Mono', 'monospace', monospace",
-          "window.zoomLevel": 3,
+          "window.zoomLevel": 2,
           "workbench.preferredDarkColorTheme": "Tokyo Night Storm",
           "workbench.preferredLightColorTheme": "Tokyo Night Light",
           "window.autoDetectColorScheme": true
