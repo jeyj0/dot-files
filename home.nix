@@ -157,7 +157,8 @@
           "workbench.preferredDarkColorTheme": "Tokyo Night Storm",
           "workbench.preferredLightColorTheme": "Tokyo Night Light",
           "window.autoDetectColorScheme": true,
-          "workbench.chat.experimental.showWelcomeView": false
+          "workbench.chat.experimental.showWelcomeView": false,
+          "git.confirmSync": false
       }
     '';
   };
