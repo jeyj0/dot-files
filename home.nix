@@ -159,7 +159,8 @@
           "window.autoDetectColorScheme": true,
           "workbench.chat.experimental.showWelcomeView": false,
           "git.confirmSync": false,
-          "git.autofetch": true
+          "git.autofetch": true,
+          "editor.minimap.enabled": false
       }
     '';
   };
