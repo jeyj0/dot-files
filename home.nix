@@ -160,7 +160,8 @@
           "workbench.chat.experimental.showWelcomeView": false,
           "git.confirmSync": false,
           "git.autofetch": true,
-          "editor.minimap.enabled": false
+          "editor.minimap.enabled": false,
+          "editor.formatOnSave": true
       }
     '';
   };
