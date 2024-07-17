@@ -161,7 +161,8 @@
           "git.confirmSync": false,
           "git.autofetch": true,
           "editor.minimap.enabled": false,
-          "editor.formatOnSave": true
+          "editor.formatOnSave": true,
+          "workbench.startupEditor": "none"
       }
     '';
   };
