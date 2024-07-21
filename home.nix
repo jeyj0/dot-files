@@ -162,7 +162,10 @@
           "git.autofetch": true,
           "editor.minimap.enabled": false,
           "editor.formatOnSave": true,
-          "workbench.startupEditor": "none"
+          "workbench.startupEditor": "none",
+          "[typescript]": {
+            "editor.defaultFormatter": "esbenp.prettier-vscode"
+          }
       }
     '';
   };
