@@ -151,24 +151,27 @@
     target = ".config/Code/User/settings.json";
     text = ''
       {
-          "window.titleBarStyle": "custom",
-          "editor.fontFamily": "'Cascadia Code', 'Droid Sans Mono', 'monospace', monospace",
-          "window.zoomLevel": 2,
-          "workbench.preferredDarkColorTheme": "Tokyo Night Storm",
-          "workbench.preferredLightColorTheme": "Tokyo Night Light",
-          "window.autoDetectColorScheme": true,
-          "workbench.chat.experimental.showWelcomeView": false,
-          "git.confirmSync": false,
-          "git.autofetch": true,
-          "editor.minimap.enabled": false,
-          "editor.formatOnSave": true,
-          "workbench.startupEditor": "none",
-          "[typescript]": {
-            "editor.defaultFormatter": "esbenp.prettier-vscode"
-          },
-          "[html]": {
-            "editor.defaultFormatter": "esbenp.prettier-vscode"
-          },
+        "window.titleBarStyle": "custom",
+        "editor.fontFamily": "'Cascadia Code', 'Droid Sans Mono', 'monospace', monospace",
+        "window.zoomLevel": 2,
+        "workbench.preferredDarkColorTheme": "Tokyo Night Storm",
+        "workbench.preferredLightColorTheme": "Tokyo Night Light",
+        "window.autoDetectColorScheme": true,
+        "workbench.chat.experimental.showWelcomeView": false,
+        "git.confirmSync": false,
+        "git.autofetch": true,
+        "editor.minimap.enabled": false,
+        "editor.formatOnSave": true,
+        "workbench.startupEditor": "none",
+        "[typescript]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "[html]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "[typescriptreact]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        }
       }
     '';
   };
