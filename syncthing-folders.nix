@@ -2,6 +2,7 @@ let
   desktop = "jeyj0-nixos";
   framework = "jeyj0-framework";
   phone = "jeyj0-phone";
+  pixel8 = "jeyj0-pixel8";
 
   baseIgnore = ''
     // MacOS
@@ -40,14 +41,14 @@ in
     label = "00-ttrpgs";
     path = "02-areas/00-ttrpgs";
     stignore = baseIgnore;
-    devices = [ framework desktop phone ];
+    devices = [ framework desktop phone pixel8 ];
   }
   {
     id = "02-areas/00-notes";
     label = "00-notes";
     path = "02-areas/00-notes";
     stignore = baseIgnore;
-    devices = [ framework desktop phone ];
+    devices = [ framework desktop phone pixel8 ];
   }
   {
     id = "03-resources";
