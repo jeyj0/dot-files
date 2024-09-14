@@ -78,6 +78,16 @@
 
       # utilities
       whatismyip = "curl ipinfo.io/ip";
+
+      # managing the windows vm for winapps
+      windows-create = "docker compose --file ~/.config/winapps/compose.yaml up -d"; # Create a new Windows VM (assuming none exists yet)
+      windows-destroy = "docker compose --file ~/.config/winapps/compose.yaml down"; # Destroy the Windows VM container (data is preserved)
+      windows-start = "docker compose --file ~/.config/winapps/compose.yaml start"; # Power on the Windows VM
+      windows-pause = "docker compose --file ~/.config/winapps/compose.yaml pause"; # Pause the Windows VM
+      windows-unpause = "docker compose --file ~/.config/winapps/compose.yaml unpause"; # Resume the Windows VM
+      windows-restart = "docker compose --file ~/.config/winapps/compose.yaml restart"; # Restart the Windows VM
+      windows-stop = "docker compose --file ~/.config/winapps/compose.yaml stop"; # Gracefully shut down the Windows VM
+      windows-kill = "docker compose --file ~/.config/winapps/compose.yaml kill"; # Force shut down the Windows VM
     };
   };
 
