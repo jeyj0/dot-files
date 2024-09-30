@@ -179,8 +179,20 @@
         "[html]": {
           "editor.defaultFormatter": "esbenp.prettier-vscode"
         },
+        "[javascript]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
         "[typescriptreact]": {
           "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "[json]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "github.copilot.enable": {
+          "*": false,
+          "plaintext": false,
+          "markdown": false,
+          "scminput": false
         }
       }
     '';
