@@ -199,4 +199,18 @@
       }
     '';
   };
+
+  home.file.vscode-keybindings = {
+    target = ".config/Code/User/keybindings.json";
+    text = ''
+      // Place your key bindings in this file to override the defaults
+      [
+        {
+          "key": "ctrl+right",
+          "command": "-editor.action.inlineSuggest.acceptNextWord",
+          "when": "inlineSuggestionVisible && !editorReadonly"
+        }
+      ]
+    '';
+  };
 }
