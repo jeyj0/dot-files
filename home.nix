@@ -193,7 +193,8 @@
           "plaintext": false,
           "markdown": false,
           "scminput": false
-        }
+        },
+        "supermaven.enableFixWithSupermaven": false
       }
     '';
   };
