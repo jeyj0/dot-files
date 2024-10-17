@@ -194,7 +194,8 @@
           "markdown": false,
           "scminput": false
         },
-        "supermaven.enableFixWithSupermaven": false
+        "supermaven.enableFixWithSupermaven": false,
+        "redhat.telemetry.enabled": false
       }
     '';
   };
