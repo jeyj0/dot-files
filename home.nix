@@ -188,6 +188,9 @@
         "[json]": {
           "editor.defaultFormatter": "esbenp.prettier-vscode"
         },
+        "[mdx]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
         "github.copilot.enable": {
           "*": false,
           "plaintext": false,
