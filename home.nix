@@ -191,6 +191,9 @@
         "[mdx]": {
           "editor.defaultFormatter": "esbenp.prettier-vscode"
         },
+        "[css]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
         "github.copilot.enable": {
           "*": false,
           "plaintext": false,
