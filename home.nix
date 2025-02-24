@@ -35,6 +35,7 @@
   home.packages = with pkgs; [
     # packages that don't have a programs module
     trash-cli
+    yq
   ];
 
   programs.eza.enable = true;
