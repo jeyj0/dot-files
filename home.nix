@@ -11,7 +11,7 @@
 
   imports = [
     ./jeyj0.nix
-    ./modules/gtk-theme.nix
+    # ./modules/gtk-theme.nix
     ./modules/git.nix
     ./modules/syncthing.nix
   ];
