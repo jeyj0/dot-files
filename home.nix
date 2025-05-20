@@ -202,7 +202,8 @@
           "scminput": false
         },
         "supermaven.enableFixWithSupermaven": false,
-        "redhat.telemetry.enabled": false
+        "redhat.telemetry.enabled": false,
+        "terminal.integrated.defaultProfile.linux": "fish"
       }
     '';
   };
