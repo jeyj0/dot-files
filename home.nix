@@ -41,6 +41,11 @@
   programs.eza.enable = true;
   programs.bat.enable = true;
 
+  programs.zoxide = {
+    enable = true;
+    options = ["--cmd cd"];
+  };
+
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
