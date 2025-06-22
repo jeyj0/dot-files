@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, lib, nixgl, pkgs, ... }:
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -15,6 +15,32 @@
     ./modules/git.nix
     ./modules/syncthing.nix
   ];
+
+  home.activation.copyDesktopFiles = lib.hm.dag.entryAfter ["installPackages"]  ''
+    if [ "$XDG_CURRENT_DESKTOP" = "GNOME" ]; then
+      if [ ! -d "${config.home.homeDirectory}/.local/share/applications" ]; then
+        mkdir "${config.home.homeDirectory}/.local/share/applications"
+      fi
+
+      if [ ! -d "${config.home.homeDirectory}/.local/share/applications/nix" ]; then
+        mkdir "${config.home.homeDirectory}/.local/share/applications/nix"
+      fi
+
+      ln -sf "${config.home.homeDirectory}/.nix-profile/share/applications" \
+        ${config.home.homeDirectory}/.local/share/applications/nix
+
+      if [ ! -d "${config.home.homeDirectory}/.local/share/icons" ]; then
+        mkdir "${config.home.homeDirectory}/.local/share/icons"
+      fi
+
+      if [ ! -d "${config.home.homeDirectory}/.local/share/icons/nix" ]; then
+        mkdir "${config.home.homeDirectory}/.local/share/icons/nix"
+      fi
+
+      ln -sf "${config.home.homeDirectory}/.nix-profile/share/icons" \
+        ${config.home.homeDirectory}/.local/share/icons/nix
+    fi
+  '';
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -38,6 +64,40 @@
     yq
   ];
 
+  nixGL = {
+    packages = nixgl.packages;
+    defaultWrapper = "mesa";
+    offloadWrapper = "nvidiaPrime";
+    installScripts = [ "mesa" "nvidiaPrime" ];
+  };
+
+  programs.ghostty = {
+    enable = true;
+    package = config.lib.nixGL.wrap pkgs.ghostty;
+    enableFishIntegration = true;
+    settings = {
+      theme = "0x96f";
+      font-size = 16;
+      font-feature = "-liga";
+      command = "fish";
+      shell-integration-features = "no-cursor";
+      cursor-style = "block";
+      keybind = [
+        "ctrl+shift+up=new_split:up"
+        "ctrl+shift+down=new_split:down"
+        "ctrl+shift+left=new_split:left"
+        "ctrl+shift+right=new_split:right"
+        "ctrl+up=goto_split:up"
+        "ctrl+down=goto_split:down"
+        "ctrl+left=goto_split:left"
+        "ctrl+right=goto_split:right"
+      ];
+    };
+  };
+
+  # nixGL.packages = import <nixgl> { inherit pkgs; };
+  # nixGL.defaultWrapper = "mesa";
+  # nixGL.offloadWrapper = "intel";
   programs.eza.enable = true;
   programs.bat.enable = true;
 
@@ -55,6 +115,7 @@
     enable = true;
     interactiveShellInit = ''
       source (/usr/bin/starship init fish --print-full-init | psub)
+      bind \b 'backward-kill-word'
     '';
     shellAliases = {
       # general
@@ -118,7 +179,7 @@
     enable = true;
     defaultEditor = true;
     settings = {
-      theme = "tokyonight_storm";
+      theme = "adwaita-dark";
       editor = {
         bufferline = "multiple";
         auto-format = true;
