@@ -87,10 +87,6 @@
         "ctrl+shift+down=new_split:down"
         "ctrl+shift+left=new_split:left"
         "ctrl+shift+right=new_split:right"
-        "ctrl+up=goto_split:up"
-        "ctrl+down=goto_split:down"
-        "ctrl+left=goto_split:left"
-        "ctrl+right=goto_split:right"
       ];
     };
   };
