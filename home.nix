@@ -74,7 +74,7 @@
     enable = true;
     defaultEditor = true;
     settings = {
-      theme = "base16_terminal";
+      theme = "tokyonight";
       editor = {
         bufferline = "multiple";
         auto-format = true;
