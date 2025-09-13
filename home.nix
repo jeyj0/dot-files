@@ -46,7 +46,6 @@
     exitShellOnExit = true;
     settings = {
       show_startup_tips = false;
-      simplified_ui = true;
       pane_frames = false;
       ui = {
         pane_frames = {
