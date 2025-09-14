@@ -108,12 +108,24 @@
               D = ":buffer-close!";
               O = ":buffer-close-others";
             };
+            w = {
+              z = ":toggle gutters.line-numbers.min-width 35 3";
+            };
           };
         };
         insert = {
           "C-space" = "completion";
         };
       };
+    };
+    languages = {
+      language = [{
+        name = "markdown";
+        soft-wrap = {
+          enable = true;
+          wrap-at-text-width = true;
+        };
+      }];
     };
   };
 }
