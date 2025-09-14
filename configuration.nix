@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -68,7 +68,9 @@
     enable = true;
     useXkbConfig = true;
     fonts = [{name = "Jetbrains Mono Nerd Font"; package = pkgs.nerd-fonts.jetbrains-mono;}];
-    extraOptions="--font-size 18";
+    extraOptions = lib.concatStringsSep " " [
+      "--font-size 18"
+    ];
     package = pkgs.kmscon.overrideAttrs ({
       mesonFlags = [ "-Dbackspace_sends_delete=true" ];
     });
