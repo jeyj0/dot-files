@@ -68,10 +68,7 @@
     enable = true;
     useXkbConfig = true;
     fonts = [{name = "Jetbrains Mono Nerd Font"; package = pkgs.nerd-fonts.jetbrains-mono;}];
-    # extraOptions = ''
-    #   --font-size=18
-    #   --xkb-layout=us
-    # '';
+    extraOptions="--font-size 18";
     package = pkgs.kmscon.overrideAttrs ({
       mesonFlags = [ "-Dbackspace_sends_delete=true" ];
     });
