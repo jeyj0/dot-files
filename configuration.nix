@@ -65,7 +65,12 @@
   services.kmscon = {
     enable = true;
     useXkbConfig = true;
-    fonts = [{name = "Jetbrains Mono Nerd Font"; package = pkgs.nerd-fonts.jetbrains-mono;}];
+    fonts = [
+      {
+        name = "Atkinson Hyperlegible Mono Nerd Font";
+        package = pkgs.nerd-fonts.atkynson-mono;
+      }
+    ];
     extraOptions = lib.concatStringsSep " " [
       "--font-size 18"
       "--palette custom"
