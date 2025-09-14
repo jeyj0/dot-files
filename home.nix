@@ -110,6 +110,10 @@
             };
             w = {
               z = ":toggle gutters.line-numbers.min-width 35 3";
+              t = {
+                d = ":theme tokyonight";
+                l = ":theme yo_light";
+              };
             };
           };
         };
