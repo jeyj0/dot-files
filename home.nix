@@ -42,8 +42,6 @@
 
   programs.zellij = {
     enable = true;
-    enableFishIntegration = true;
-    exitShellOnExit = true;
     settings = {
       show_startup_tips = false;
       pane_frames = false;
