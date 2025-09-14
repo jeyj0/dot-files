@@ -70,6 +70,26 @@
     fonts = [{name = "Jetbrains Mono Nerd Font"; package = pkgs.nerd-fonts.jetbrains-mono;}];
     extraOptions = lib.concatStringsSep " " [
       "--font-size 18"
+      "--palette custom"
+      # unless specific otherwise, colors taken from tokyonight alacritty theme
+      "--palette-black 21,22,30"
+      "--palette-red 247,118,142"
+      "--palette-green 158,206,106"
+      "--palette-yellow 224,175,104"
+      "--palette-blue 122,162,247"
+      "--palette-magenta 187,154,247"
+      "--palette-cyan 125,207,255"
+      "--palette-light-grey 115,122,162" # helix tokyonight fg-linenr
+      "--palette-dark-grey 59,66,97" # helix tokyonight fg-gutter
+      "--palette-light-red 255,137,157"
+      "--palette-light-green 159,224,68"
+      "--palette-light-yellow 250,186,74"
+      "--palette-light-blue 141,176,255"
+      "--palette-light-magenta 199,169,255"
+      "--palette-light-cyan 164,218,255"
+      "--palette-white 192,202,245" # tokynight alacritty bright white
+      "--palette-foreground 192,202,245"
+      "--palette-background 26,27,38"
     ];
     package = pkgs.kmscon.overrideAttrs ({
       mesonFlags = [ "-Dbackspace_sends_delete=true" ];
