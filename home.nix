@@ -40,6 +40,19 @@
     };
   };
 
+  programs.git = {
+    enable = true;
+    extraConfig = {
+      core = {
+        excludesFile = "~/.config/git/.gitignore";
+      };
+    };
+  };
+  home.file.global-gitignore = {
+    target = ".config/git/.gitignore";
+    text = ".helix/config.toml";
+  };
+
   programs.zellij = {
     enable = true;
     settings = {
