@@ -18,6 +18,10 @@
 
         modules = [
           ./home.nix
+          {
+            nix.registry.nixpkgs.flake = nixpkgs;
+            home.sessionVariables.NIX_PATH = "nixpkgs=flake:nixpkgs$\{NIX_PATH:+:$NIX_PATH}";
+          }
         ];
       };
 
@@ -26,6 +30,10 @@
           system = "x86_64-linux";
           modules = [
             ./configuration.nix
+            {
+              nix.registry.nixpkgs.flake = nixpkgs;
+              nix.nixPath = ["nixpkgs=flake:nixpkgs"];
+            }
           ];
         };
       };
