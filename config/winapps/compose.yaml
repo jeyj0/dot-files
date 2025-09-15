@@ -15,12 +15,12 @@ services:
       # https://github.com/dockur/windows?tab=readme-ov-file#how-do-i-select-the-windows-version
       # https://github.com/dockur/windows?tab=readme-ov-file#how-do-i-install-a-custom-image
       VERSION: "tiny11"
-      RAM_SIZE: "4G" # RAM allocated to the Windows VM.
+      RAM_SIZE: "16G" # RAM allocated to the Windows VM.
       CPU_CORES: "4" # CPU cores allocated to the Windows VM.
       DISK_SIZE: "64G" # Size of the primary hard disk.
       #DISK2_SIZE: "32G" # Uncomment to add an additional hard disk to the Windows VM. Ensure it is mounted as a volume below.
-      #USERNAME: "Docker" # Uncomment to set a custom Windows username. The default is 'Docker'.
-      #PASSWORD: "" # Uncomment to set a password for the Windows user. There is no default password.
+      USERNAME: "jeyj0" # Uncomment to set a custom Windows username. The default is 'Docker'.
+      PASSWORD: "jeyj0" # Uncomment to set a password for the Windows user. There is no default password.
       HOME: "${HOME}" # Set path to Linux user home folder.
     privileged: true # Grant the Windows VM extended privileges.
     ports:
