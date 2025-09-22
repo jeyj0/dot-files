@@ -110,7 +110,6 @@
   programs.fish = {
     enable = true;
     interactiveShellInit = ''
-      source (/usr/bin/starship init fish --print-full-init | psub)
       bind \b 'backward-kill-word'
     '';
     shellAliases = {
