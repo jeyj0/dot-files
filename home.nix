@@ -1,4 +1,4 @@
-{ config, lib, nixgl, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -64,16 +64,6 @@
     yq
   ];
 
-  nixGL = {
-    packages = nixgl.packages;
-    defaultWrapper = "mesa";
-    offloadWrapper = "nvidiaPrime";
-    installScripts = [ "mesa" "nvidiaPrime" ];
-  };
-
-  # nixGL.packages = import <nixgl> { inherit pkgs; };
-  # nixGL.defaultWrapper = "mesa";
-  # nixGL.offloadWrapper = "intel";
   programs.eza.enable = true;
   programs.bat.enable = true;
 

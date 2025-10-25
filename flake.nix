@@ -8,10 +8,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     winapps.url = "github:winapps-org/winapps/feat-nix-packaging";
-    nixgl.url = "github:nix-community/nixGL";
   };
 
-  outputs = { nixpkgs, home-manager, winapps, nixgl, ... }:
+  outputs = { nixpkgs, home-manager, winapps, ... }:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -29,7 +28,6 @@
         # Optionally use extraSpecialArgs
         # to pass through arguments to home.nix
         extraSpecialArgs = {
-          inherit nixgl;
         };
       };
     };
