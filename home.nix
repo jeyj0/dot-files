@@ -71,26 +71,6 @@
     installScripts = [ "mesa" "nvidiaPrime" ];
   };
 
-  programs.ghostty = {
-    enable = true;
-    package = config.lib.nixGL.wrap pkgs.ghostty;
-    enableFishIntegration = true;
-    settings = {
-      theme = "0x96f";
-      font-size = 16;
-      font-feature = "-liga";
-      command = "fish";
-      shell-integration-features = "no-cursor";
-      cursor-style = "block";
-      keybind = [
-        "ctrl+shift+up=new_split:up"
-        "ctrl+shift+down=new_split:down"
-        "ctrl+shift+left=new_split:left"
-        "ctrl+shift+right=new_split:right"
-      ];
-    };
-  };
-
   # nixGL.packages = import <nixgl> { inherit pkgs; };
   # nixGL.defaultWrapper = "mesa";
   # nixGL.offloadWrapper = "intel";
