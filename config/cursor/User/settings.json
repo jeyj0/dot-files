@@ -1,0 +1,60 @@
+{
+  "window.zoomLevel": 2,
+  "workbench.preferredDarkColorTheme": "Tokyo Night Storm",
+  "workbench.preferredLightColorTheme": "Tokyo Night Light",
+  "window.autoDetectColorScheme": true,
+  "workbench.chat.experimental.showWelcomeView": false,
+  "git.confirmSync": false,
+  "git.autofetch": true,
+  "editor.minimap.enabled": false,
+  "editor.formatOnSave": true,
+  "workbench.startupEditor": "none",
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "github.copilot.enable": {
+    "*": false,
+    "plaintext": false,
+    "markdown": false,
+    "scminput": false
+  },
+  "supermaven.enableFixWithSupermaven": false,
+  "redhat.telemetry.enabled": false,
+  "cursor.cpp.disabledLanguages": ["plaintext", "markdown", "scminput"],
+  "supermaven.enable": {},
+  "cursor.composer.shouldAllowCustomModes": true,
+  "terminal.integrated.defaultProfile.linux": "fish",
+  "workbench.editor.customLabels.patterns": {
+    "**/model.*": "🧬 ${dirname}",
+    "**/route.*": "🌐 ${dirname}",
+    "**/prisma/migrations/*/migration.sql": "🚚 ${dirname}",
+    "**/layout.tsx": "🖽 ${dirname}",
+    "**/index.*.*": "🗝️ ${dirname}:${extname(-1)}",
+    "**/page.*.*": "🌐 ${dirname}:${extname(-1)}",
+    "**/*/@x/*.*.*": "🗝️ ${dirname(1)} → ${filename}:${extname(-1)}",
+    "**/index.*": "🗝️ ${dirname}",
+    "**/page.tsx": "🌐 ${dirname}",
+    "**/*/@x/*.*": "🗝️ ${dirname(1)} → ${filename}"
+  },
+  "neonLocal.port": 5433,
+  "editor.fontFamily": "'Cascadia Code', 'Droid Sans Mono', 'monospace', monospace",
+  "editor.codeLensFontFamily": "'Cascadia Code'",
+  "editor.inlineSuggest.fontFamily": "'Cascadia Code'",
+  "debug.console.fontFamily": "'Cascadia Code'",
+  "scm.inputFontFamily": "'Cascadia Code'",
+  "terminal.integrated.fontFamily": "'Cascadia Code'",
+  "notebook.markup.fontFamily": "'Cascadia Code'",
+  "notebook.output.fontFamily": "'Cascadia Code'"
+}

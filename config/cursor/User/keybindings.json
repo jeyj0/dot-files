@@ -1,0 +1,86 @@
+// Place your key bindings in this file to override the defaults
+[
+  {
+    "key": "ctrl+l",
+    "command": "expandLineSelection",
+    "when": "editorFocus"
+  },
+  {
+    "key": "ctrl+p",
+    "command": "-expandLineSelection",
+    "when": "textInputFocus"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "-workbench.action.chat.newChat",
+    "when": "chatIsEnabled && inChat && chatLocation != 'editing-session'"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "-workbench.action.chat.newEditSession",
+    "when": "chatEditingParticipantRegistered && chatIsEnabled && inChat && chatLocation == 'editing-session'"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "-aichat.newchataction"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "composer.clearComposerTabs",
+    "when": "!editorFocus"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "-composer.sendToAgent",
+    "when": "editorHasPromptBar && editorPromptBarFocused"
+  },
+  {
+    "key": "ctrl+i",
+    "command": "workbench.action.toggleAuxiliaryBar"
+  },
+  {
+    "key": "ctrl+alt+b",
+    "command": "-workbench.action.toggleAuxiliaryBar"
+  },
+  {
+    "key": "ctrl+shift+a",
+    "command": "-notification.acceptPrimaryAction",
+    "when": "notificationFocus || notificationToastsVisible"
+  },
+  {
+    "key": "ctrl+shift+a",
+    "command": "-editor.action.blockComment",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "ctrl+shift+i",
+    "command": "-composer.newAgentChat"
+  },
+  {
+    "key": "ctrl+i",
+    "command": "-composer.startComposerPrompt",
+    "when": "cursor.appLayout != 'agent'"
+  },
+  {
+    "key": "ctrl+shift+a",
+    "command": "composerMode.chat"
+  },
+  {
+    "key": "ctrl+shift+i",
+    "command": "composerMode.agent"
+  },
+  {
+    "key": "ctrl+shift+e",
+    "command": "composerMode.background"
+  },
+  {
+    "key": "ctrl+w",
+    "command": "composer.closeComposerTab",
+    "when": "composerFocused && !editorTextFocus || !editorTextFocus && focusedView =~ /^workbench.panel.aichat.view/"
+  },
+  {
+    "key": "ctrl+w",
+    "command": "-composer.closeComposerTab",
+    "when": "composerFocused && !editorTextFocus || !editorTextFocus && focusedView =~ /^workbench.panel.aichat.view/"
+  }
+]
