@@ -57,5 +57,6 @@
   "scm.inputFontFamily": "'Cascadia Code'",
   "terminal.integrated.fontFamily": "'Cascadia Code'",
   "notebook.markup.fontFamily": "'Cascadia Code'",
-  "notebook.output.fontFamily": "'Cascadia Code'"
+  "notebook.output.fontFamily": "'Cascadia Code'",
+  "security.promptForLocalFileProtocolHandling": false
 }
