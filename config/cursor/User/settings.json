@@ -58,5 +58,10 @@
   "terminal.integrated.fontFamily": "'Cascadia Code'",
   "notebook.markup.fontFamily": "'Cascadia Code'",
   "notebook.output.fontFamily": "'Cascadia Code'",
-  "security.promptForLocalFileProtocolHandling": false
+  "security.promptForLocalFileProtocolHandling": false,
+  "json.schemaDownload.enable": true,
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "atlas.executablePath": "/home/linuxbrew/.linuxbrew/bin/atlas"
 }
