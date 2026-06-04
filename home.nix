@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -6,7 +11,7 @@
   home.homeDirectory = "/var/home/jeyj0";
 
   jeyj0 = {
-    hostName = "jeyj0-framework";
+    hostName = "jeyj0-framework-desktop";
   };
 
   imports = [
@@ -16,7 +21,7 @@
     ./modules/syncthing.nix
   ];
 
-  home.activation.copyDesktopFiles = lib.hm.dag.entryAfter ["installPackages"]  ''
+  home.activation.copyDesktopFiles = lib.hm.dag.entryAfter [ "installPackages" ] ''
     if [ "$XDG_CURRENT_DESKTOP" = "GNOME" ]; then
       if [ ! -d "${config.home.homeDirectory}/.local/share/applications" ]; then
         mkdir "${config.home.homeDirectory}/.local/share/applications"
@@ -62,6 +67,8 @@
     # packages that don't have a programs module
     trash-cli
     yq
+
+    atkinson-hyperlegible-mono
   ];
 
   programs.eza.enable = true;
@@ -69,7 +76,7 @@
 
   programs.zoxide = {
     enable = true;
-    options = ["--cmd cd"];
+    options = [ "--cmd cd" ];
   };
 
   programs.direnv = {
@@ -104,12 +111,14 @@
 
       # make deletion of files on command line safer
       rm = "trash";
-
       # alias e to the default editor
       e = "$VISUAL";
 
       # utilities
       whatismyip = "curl ipinfo.io/ip";
+
+      zed = "/home/linuxbrew/.linuxbrew/bin/zed";
+      omp = "~/.bun/bin/omp";
 
       # managing the windows vm for winapps
       windows-create = "docker compose --file ~/.config/winapps/compose.yaml up -d"; # Create a new Windows VM (assuming none exists yet)
@@ -150,7 +159,13 @@
         auto-format = true;
         auto-completion = true;
         completion-trigger-len = 1;
-        gutters = ["diff" "diagnostics" "spacer" "line-numbers" "spacer"];
+        gutters = [
+          "diff"
+          "diagnostics"
+          "spacer"
+          "line-numbers"
+          "spacer"
+        ];
         idle-timeout = 0;
         color-modes = true;
         indent-guides.render = true;
