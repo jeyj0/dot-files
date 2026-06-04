@@ -1,6 +1,5 @@
 {
   "window.zoomLevel": 2,
-  "workbench.preferredDarkColorTheme": "Tokyo Night Storm",
   "workbench.preferredLightColorTheme": "Tokyo Night Light",
   "window.autoDetectColorScheme": true,
   "workbench.chat.experimental.showWelcomeView": false,
@@ -50,18 +49,25 @@
     "**/*/@x/*.*": "idx:${dirname(1)} → ${filename}"
   },
   "neonLocal.port": 5433,
-  "editor.fontFamily": "'Cascadia Code', 'Droid Sans Mono', 'monospace', monospace",
-  "editor.codeLensFontFamily": "'Cascadia Code'",
-  "editor.inlineSuggest.fontFamily": "'Cascadia Code'",
-  "debug.console.fontFamily": "'Cascadia Code'",
-  "scm.inputFontFamily": "'Cascadia Code'",
-  "terminal.integrated.fontFamily": "'Cascadia Code'",
-  "notebook.markup.fontFamily": "'Cascadia Code'",
-  "notebook.output.fontFamily": "'Cascadia Code'",
+  "editor.fontFamily": "'Atkinson Hyperlegible Mono', 'Cascadia Code', 'Droid Sans Mono', 'monospace', monospace",
+  "editor.codeLensFontFamily": "'Atkinson Hyperlegible Mono', 'Cascadia Code', 'Droid Sans Mono', 'monospace', monospace",
+  "editor.inlineSuggest.fontFamily": "'Atkinson Hyperlegible Mono', 'Cascadia Code', 'Droid Sans Mono', 'monospace', monospace",
+  "debug.console.fontFamily": "'Atkinson Hyperlegible Mono', 'Cascadia Code', 'Droid Sans Mono', 'monospace', monospace",
+  "scm.inputFontFamily": "'Atkinson Hyperlegible Mono', 'Cascadia Code', 'Droid Sans Mono', 'monospace', monospace",
+  "terminal.integrated.fontFamily": "'Atkinson Hyperlegible Mono', 'Cascadia Code', 'Droid Sans Mono', 'monospace', monospace",
+  "notebook.markup.fontFamily": "'Atkinson Hyperlegible Mono', 'Cascadia Code', 'Droid Sans Mono', 'monospace', monospace",
+  "notebook.output.fontFamily": "'Atkinson Hyperlegible Mono', 'Cascadia Code', 'Droid Sans Mono', 'monospace', monospace",
+  "editor.fontWeight": "500",
+  "editor.fontSize": 13,
   "security.promptForLocalFileProtocolHandling": false,
   "json.schemaDownload.enable": true,
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "atlas.executablePath": "/home/linuxbrew/.linuxbrew/bin/atlas"
+  "window.commandCenter": true,
+  "workbench.preferredDarkColorTheme": "Tokyo Night Storm",
+  "typescript.experimental.useTsgo": false,
+  "editor.tabSize": 2,
+  "editor.letterSpacing": -0.4,
+  "terminal.integrated.letterSpacing": -0.4
 }
