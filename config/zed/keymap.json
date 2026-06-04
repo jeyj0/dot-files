@@ -1,0 +1,77 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  // TAB always accepts AI suggestion
+  {
+    "context": "Editor && edit_prediction",
+    "bindings": {
+      "tab": "editor::AcceptEditPrediction",
+    },
+  },
+
+  // custom helix keybindings
+  {
+    "context": "(vim_mode == helix_normal || vim_mode == helix_select) && !menu",
+    "bindings": {
+      "space space": "file_finder::Toggle",
+      "space f": null,
+      "space f s": "workspace::Save",
+      "space f S": "workspace::SaveWithoutFormat",
+      "space b": null,
+      "space b n": "pane::ActivateNextItem",
+      "space b p": "pane::ActivatePreviousItem",
+      "space b d": "pane::CloseActiveItem",
+      "space b b": "tab_switcher::ToggleAll",
+      "space .": "editor::ToggleCodeActions",
+      "space p left": "workspace::ActivatePaneLeft",
+      "space p right": "workspace::ActivatePaneRight",
+      "space p down": "workspace::ActivatePaneDown",
+      "space p up": "workspace::ActivatePaneUp",
+      "space g b": "editor::ToggleGitBlameInline",
+    },
+  },
+  {
+    "context": "Editor && (vim_mode == insert || vim_mode == helix_normal) && !menu",
+    "bindings": {
+      "ctrl-v": "editor::Paste",
+      "ctrl-c": "editor::Copy",
+      "ctrl-s": "workspace::Save",
+      "ctrl-S": "workspace::SaveWithoutFormat",
+    },
+  },
+  // restore/create non-helix shortcuts that I actively use
+  {
+    "context": "",
+    "bindings": {
+      "ctrl-b": "workspace::ToggleLeftDock",
+      "ctrl-w": "pane::CloseActiveItem",
+      "ctrl-I": "multi_workspace::ToggleWorkspaceSidebar",
+      "ctrl-t": "workspace::ToggleBottomDock",
+      "ctrl-i": "workspace::ToggleRightDock",
+      "ctrl-G": "workspace::ToggleRightDock",
+    },
+  },
+  {
+    "context": "!AgentPanel",
+    "bindings": {
+      "ctrl-i": "agent::ToggleFocus",
+    },
+  },
+  {
+    "context": "!GitPanel",
+    "bindings": {
+      "ctrl-G": "git_panel::ToggleFocus",
+    },
+  },
+  {
+    "context": "buffer_search_deployed > Editor && (vim_mode == helix_normal || vim_mode == helix_select)",
+    "bindings": {
+      "escape": "editor::Cancel",
+    },
+  },
+]

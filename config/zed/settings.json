@@ -1,0 +1,152 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "vim_mode": false,
+  "helix_mode": false,
+  "prettier": {
+    "allowed": true,
+  },
+  "diagnostics": {
+    "inline": {
+      "enabled": true,
+    },
+  },
+  "agent_ui_font_size": 22.0,
+  "agent_buffer_font_size": 18.0,
+  "hide_mouse": "on_typing_and_action",
+  "agent": {
+    "dock": "right",
+    "sidebar_side": "right",
+    "default_model": {
+      "provider": "lmstudio",
+      "model": "qwen/qwen3.6-35b-a3b",
+      "enable_thinking": false,
+    },
+    "favorite_models": [],
+    "model_parameters": [],
+  },
+  "title_bar": {
+    "show_branch_status_icon": false,
+  },
+  "tabs": {
+    "git_status": false,
+    "show_diagnostics": "all",
+    "file_icons": true,
+    "show_close_button": "hover",
+  },
+  "icon_theme": "VSCode Icons for Zed (Dark Official Icons)",
+  "completion_menu_item_kind": "symbol",
+  "completion_menu_scrollbar": "system",
+  "completions": {
+    "words_min_length": 0,
+  },
+  "edit_predictions": {
+    "provider": "zed",
+    "open_ai_compatible_api": {
+      "prompt_format": "zeta2",
+      "model": "zed-industries_zeta-2",
+      "api_url": "http://localhost:1234/v1/completions",
+    },
+  },
+  "git": {
+    "blame": {
+      "show_avatar": true,
+    },
+    "inline_blame": {
+      "show_commit_summary": true,
+      "enabled": false,
+    },
+  },
+  "project_panel": {
+    "diagnostic_badges": true,
+    "dock": "left",
+  },
+  "terminal": {
+    "shell": {
+      "program": "/var/home/jeyj0/.nix-profile/bin/fish",
+    },
+    "font_family": "Atkinson Hyperlegible Mono",
+    "font_fallbacks": ["Cascadia Code"],
+  },
+  "minimap": {
+    "show": "never",
+  },
+  "buffer_font_fallbacks": ["Cascadia Code"],
+  "buffer_font_family": "Atkinson Hyperlegible Mono",
+  "tab_size": 2,
+  "agent_servers": {
+    "cursor": {
+      "type": "registry",
+    },
+    "omp": {
+      "default_config_options": {
+        "model": "lm-studio/qwen/qwen3.6-27b",
+      },
+      "type": "custom",
+      "command": "/var/home/jeyj0/.bun/bin/omp",
+      "args": ["acp"],
+      "env": {},
+    },
+  },
+  "base_keymap": "VSCode",
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false,
+  },
+  "session": {
+    "trust_all_worktrees": false,
+  },
+  "ui_font_size": 20.0,
+  "buffer_font_size": 17.0,
+  "theme": {
+    "mode": "system",
+    "light": "One Light",
+    "dark": "Tokyo Night Moon",
+  },
+  "languages": {
+    "TypeScript": {
+      "code_actions_on_format": {
+        "source.fixAll.eslint": true,
+      },
+    },
+    "TSX": {
+      "code_actions_on_format": {
+        "source.fixAll.eslint": true,
+      },
+    },
+  },
+  "lsp": {
+    "eslint": {
+      "settings": {
+        "codeActionsOnSave": {
+          "rules": [
+            "import/order",
+            "og-import/enforce-node-protocol-usage",
+            "@typescript-eslint/method-signature-style",
+            "curly",
+          ],
+        },
+      },
+    },
+  },
+  "theme_overrides": {
+    "Tokyo Night Moon": {
+      "tab.active_background": "#222436",
+      "element.hover": "#2F334D",
+      "element.selected": "#2F334D",
+      "element.active": "#2F334D",
+      "ghost_element.hover": "#2F334D",
+      "ghost_element.selected": "#2F334D",
+      "ghost_element.active": "#2F334D",
+    },
+    "Tokyo Night Storm": {
+      "tab.active_background": "#1e202e",
+    },
+  },
+}
