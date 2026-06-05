@@ -69,6 +69,7 @@
     yq
 
     atkinson-hyperlegible-mono
+    atkinson-hyperlegible-next
   ];
 
   programs.eza.enable = true;
