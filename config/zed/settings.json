@@ -7,6 +7,19 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "sticky_scroll": {
+    "enabled": true
+  },
+  "diff_view_style": "unified",
+  "vim": {
+    "use_smartcase_find": true,
+  },
+  "toolbar": {
+    "agent_review": true,
+    "selections_menu": false,
+    "quick_actions": false,
+    "breadcrumbs": false,
+  },
   "vim_mode": false,
   "helix_mode": false,
   "prettier": {
@@ -49,8 +62,8 @@
   "edit_predictions": {
     "provider": "zed",
     "open_ai_compatible_api": {
-      "prompt_format": "zeta2",
-      "model": "zed-industries_zeta-2",
+      "prompt_format": "qwen",
+      "model": "qwen/qwen3-4b",
       "api_url": "http://localhost:1234/v1/completions",
     },
   },
