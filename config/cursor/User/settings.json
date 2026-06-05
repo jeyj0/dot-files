@@ -69,5 +69,6 @@
   "typescript.experimental.useTsgo": false,
   "editor.tabSize": 2,
   "editor.letterSpacing": -0.4,
-  "terminal.integrated.letterSpacing": -0.4
+  "terminal.integrated.letterSpacing": -0.4,
+  "cursor.composer.conversationDensity": "detailed"
 }
