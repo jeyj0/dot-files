@@ -10,7 +10,7 @@
   "ui_font_weight": 400.0,
   "ui_font_family": "Atkinson Hyperlegible Next",
   "sticky_scroll": {
-    "enabled": true
+    "enabled": true,
   },
   "diff_view_style": "unified",
   "vim": {
@@ -159,6 +159,7 @@
       "ghost_element.hover": "#2F334D",
       "ghost_element.selected": "#2F334D",
       "ghost_element.active": "#2F334D",
+      "panel.overlay_hover": "#2F334D",
     },
     "Tokyo Night Storm": {
       "tab.active_background": "#1e202e",
