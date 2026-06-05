@@ -7,6 +7,8 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "ui_font_weight": 400.0,
+  "ui_font_family": "Atkinson Hyperlegible Next",
   "sticky_scroll": {
     "enabled": true
   },
