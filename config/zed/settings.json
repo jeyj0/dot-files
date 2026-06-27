@@ -7,12 +7,14 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "buffer_font_weight": 500.0,
   "ui_font_weight": 400.0,
   "ui_font_family": "Atkinson Hyperlegible Next",
+  "ui_font_fallbacks": ["Noto Color Emoji", ".ZedSans"],
   "sticky_scroll": {
     "enabled": true,
   },
-  "diff_view_style": "unified",
+  "diff_view_style": "split",
   "vim": {
     "use_smartcase_find": true,
   },
@@ -36,6 +38,7 @@
   "agent_buffer_font_size": 18.0,
   "hide_mouse": "on_typing_and_action",
   "agent": {
+    "single_file_review": true,
     "dock": "right",
     "sidebar_side": "right",
     "default_model": {
@@ -92,7 +95,7 @@
   "minimap": {
     "show": "never",
   },
-  "buffer_font_fallbacks": ["Cascadia Code"],
+  "buffer_font_fallbacks": ["Noto Color Emoji", ".ZedMono"],
   "buffer_font_family": "Atkinson Hyperlegible Mono",
   "tab_size": 2,
   "agent_servers": {
@@ -118,13 +121,16 @@
     "trust_all_worktrees": false,
   },
   "ui_font_size": 20.0,
-  "buffer_font_size": 17.0,
+  "buffer_font_size": 17.5,
   "theme": {
     "mode": "system",
     "light": "One Light",
     "dark": "Tokyo Night Moon",
   },
   "languages": {
+    "Markdown": {
+      "show_edit_predictions": false
+    },
     "TypeScript": {
       "code_actions_on_format": {
         "source.fixAll.eslint": true,
