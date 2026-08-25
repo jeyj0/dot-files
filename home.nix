@@ -71,14 +71,18 @@
     atkinson-hyperlegible-mono
     atkinson-hyperlegible-next
   ];
-  home.activation.installAtkinsonNextFonts =
+  home.activation.installT3Fonts =
     lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-      fontDir="${config.home.homeDirectory}/.local/share/fonts/atkinson-next"
+      fontDir="${config.home.homeDirectory}/.local/share/fonts/t3code"
 
       $DRY_RUN_CMD mkdir -p "$fontDir"
 
       $DRY_RUN_CMD cp -f \
         ${pkgs.atkinson-hyperlegible-next}/share/fonts/opentype/*.otf \
+        "$fontDir/"
+
+      $DRY_RUN_CMD cp -f \
+        ${pkgs.noto-fonts-color-emoji}/share/fonts/noto/NotoColorEmoji.ttf \
         "$fontDir/"
     '';
 
