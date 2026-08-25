@@ -71,6 +71,16 @@
     atkinson-hyperlegible-mono
     atkinson-hyperlegible-next
   ];
+  home.activation.installAtkinsonNextFonts =
+    lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+      fontDir="${config.home.homeDirectory}/.local/share/fonts/atkinson-next"
+
+      $DRY_RUN_CMD mkdir -p "$fontDir"
+
+      $DRY_RUN_CMD cp -f \
+        ${pkgs.atkinson-hyperlegible-next}/share/fonts/opentype/*.otf \
+        "$fontDir/"
+    '';
 
   programs.eza.enable = true;
   programs.bat.enable = true;
